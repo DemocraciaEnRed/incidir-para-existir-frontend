@@ -1,0 +1,14 @@
+
+#home-carrousel .carrousel .overlay{
+  @apply absolute w-full h-full;
+  background: rgba(0,0,0,0.3);
+}
+
+#home-carrousel .overlay-content{
+  @apply absolute w-full h-full flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
+  pointer-events: all;
+}

@@ -1,0 +1,6 @@
+#navbar .navbar-item{
+  @apply text-white font-medium flex items-center;
+  &:hover{
+    @apply text-pumpkin-400;
+  }
+} 

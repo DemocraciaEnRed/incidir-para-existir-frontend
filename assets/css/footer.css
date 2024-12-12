@@ -1,0 +1,20 @@
+.the-footer{
+  @apply sticky top-[100vh] bg-[#3A27FF] p-4 w-full bottom-0 rounded-tl-xl rounded-tr-xl;
+}
+
+.the-footer .starbg{
+  background-image: url('../../public/img/star-footer.png');
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.the-footer .the-content{
+  position: relative;
+  z-index: 100;
+}
