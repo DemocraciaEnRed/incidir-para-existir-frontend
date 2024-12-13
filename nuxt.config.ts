@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
   // refer to https://auth.sidebase.io/guide/local/quick-start (0.9.4)
   auth: {
-    baseURL: process.env.NUXT_AUTH_BASE_URL || 'http://caquita:3000/',
+    baseURL: process.env.NUXT_AUTH_BASE_URL || 'http://localhost:3000/',
     provider: {
       type: 'local',
       endpoints: {
@@ -47,8 +47,8 @@ export default defineNuxtConfig({
         headerName: 'Authorization',
         maxAgeInSeconds: 172800, // 2days
         sameSiteAttribute: 'lax',
-        cookieDomain: 'localhost', // check
-        secureCookieAttribute: false,
+        cookieDomain: process.env.NUXT_PUBLIC_API_URL || 'http://localhost:4000',
+        secureCookieAttribute: process.env.NODE_ENV === 'production' ? true : false,
         httpOnlyCookieAttribute: false,
       },
     }
