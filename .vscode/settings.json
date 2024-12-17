@@ -4,5 +4,9 @@
     },
     "editor.quickSuggestions": {
         "strings": true
-    }
+    },
+    "tailwindCSS.classAttributes": [
+        "active-class",
+        "inactive-class"
+    ]
 }

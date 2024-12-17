@@ -1,5 +1,10 @@
 <script setup >
-import Joi from 'joi'
+import {
+  object as YupObject,
+  string as YupString,
+  number as YupNumber,
+  ref as YupRef,
+} from 'yup'
 
 const { $api } = useNuxtApp()
 
@@ -11,35 +16,35 @@ const props = defineProps({
   },
 });
 
-const schema = Joi.object({
-  firstName: Joi.string().label('Nombre').required(),
-  lastName: Joi.string().label('Apellido').required(),
-  email: Joi.string().label('Email').required(),
-  password: Joi.string().label('Password').required(),
-  passwordConfirmation: Joi.ref("password"),
-  selectedCity: Joi.number().required(),
-  selectedSubdivision: Joi.optional().when('selectedCity', {  
-    is: Joi.number().valid(1, 2),
-    then: Joi.required(),
-    otherwise: Joi.optional()
+const schema = YupObject({
+  firstName: YupString().label('Nombre').required('Este campo es requerido'),
+  lastName: YupString().label('Apellido').required('Este campo es requerido'),
+  email: YupString().label('Email').email('Por favor, ingresa un email válido').required('Este campo es requerido'),
+  password: YupString().label('Contraseña').min(6, 'La contraseña debe tener al menos 6 caracteres').required('Este campo es requerido'),
+  passwordConfirmation: YupString().label('Confirmar Contraseña').oneOf([YupRef('password'), null], 'Las contraseñas deben coincidir').required('Este campo es requerido'),
+  selectedCity: YupNumber().label('Ciudad').oneOf([1, 2, 99], 'Por favor, selecciona tu ciudad').required('Este campo es requerido'),
+  selectedSubdivision: YupNumber().label('Subdivisión').when('selectedCity', {
+    is: 1,
+    then: (schema) => schema.required('Por favor, selecciona tu corregimiento')
+  }).when('selectedCity', {
+    is: 2,
+    then: (schema) => schema.required('Por favor, selecciona tu comuna')
   })
-}).with('password', 'passwordConfirmation')
+})
 
 
 const { subdivisions } = props;
 
-const getRandomInt = function(max) {
-  return Math.floor(Math.random() * max);
-}
 const successfulSignUp = ref(false)
+const showFormErrorsAlert = ref(false)
 const isLoading = ref(false)
 
 const state = reactive({
-  firstName: 'Guillermo',
-  lastName: 'Croppi',
-  email: `guillermocroppi${getRandomInt(400)}@gmail.com`,
-  password: '123456',
-  passwordConfirmation: '123456',
+  firstName: null,
+  lastName: null,
+  email: null,
+  password: null,
+  passwordConfirmation: null,
   selectedCity: undefined,
   selectedSubdivision: undefined,
 })
@@ -94,20 +99,22 @@ watch(() => state.selectedCity, (newValue, oldValue) => {
   }
 })
 
-async function onSubmit(event) {
+async function onSubmit() {
   // Do something with data
-  console.log(event.data)
   const payload = {
     firstName: state.firstName,
     lastName: state.lastName,
     email: state.email,
     password: state.password,
   }
+
+  // if city is not Cali or Bogota
   if(state.selectedCity >= 1 || state.selectedCity <= 2) {
     payload.subdivision = state.selectedSubdivision
   }
-  console.log(payload)
+
   isLoading.value = true
+
   try {
     await $api('/auth/register', {
       method: 'POST',
@@ -121,17 +128,35 @@ async function onSubmit(event) {
   }
 }
 
-async function onError(event) {
-  console.error(event)
-  const theForm = useTemplateRef('theForm')
-  console.log(theForm)
-  theForm.validate();
+function onError() {
+  showFormErrorsAlert.value = true
+}
 
+function closeTheButton() {
+  showFormErrorsAlert.value = false
 }
 
 </script>
 
 <template>
+  <UAlert
+    v-if="showFormErrorsAlert"
+    icon="i-heroicons-exclamation-triangle"
+    color="red"
+    variant="subtle"
+    :close-button="{ 
+      icon: 'i-heroicons-x-mark-20-solid',
+      padded: false,
+      color: 'red',
+      variant: 'link',
+      onClick: closeTheButton
+    }"
+    class="mb-5"
+    title="Hay algunos errores en el formulario">
+    <template #description>
+      <p>Por favor, verifique los campos y vuelva a intentarlo</p>
+    </template>
+  </UAlert>
   <UCard v-if="successfulSignUp" class="text-center space-y-3">
     <UIcon name="i-heroicons-check-circle" class="text-6xl text-green-500" />
     <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡Registro exitoso!</p>
@@ -140,7 +165,7 @@ async function onError(event) {
   <UCard v-else>
     <template #default>
       <div class="space-y-4">
-          <UForm ref="theForm" :schema="schema" :state="state" class="space-y-4" :validate-on="['blur']" @error="onError" @submit.prevent="onSubmit">
+          <UForm ref="theForm" :schema="schema" :state="state" class="space-y-4" @error="onError" @submit.prevent="onSubmit">
             <div class="grid grid-cols-2 gap-3">
               <!-- firstName -->
               <UFormGroup class="" label="Nombre" name="firstName" required>
@@ -157,11 +182,11 @@ async function onError(event) {
             </UFormGroup>
             <div class="grid grid-cols-2 gap-3">
               <!-- password -->
-              <UFormGroup class="" label="Password" name="password" required >
+              <UFormGroup class="" label="Contraseña" name="password" required >
                 <UInput v-model="state.password" size="lg" type="password"  />
               </UFormGroup>
               <!-- passwordConfirmation -->
-              <UFormGroup class="" label="Confirmar Password" name="passwordConfirmation" required >
+              <UFormGroup class="" label="Confirmar Contraseña" name="passwordConfirmation" required >
                 <UInput v-model="state.passwordConfirmation" size="lg" type="password"  />
               </UFormGroup>
             </div>

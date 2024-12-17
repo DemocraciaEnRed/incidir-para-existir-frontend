@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/fa6-brands": "^1.2.5",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/fonts": "^0.10.2",
@@ -18,12 +19,12 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "echarts": "^5.5.1",
     "eslint": "^9.16.0",
-    "joi": "^17.13.3",
     "next-auth": "~4.21.1",
     "nuxt": "^3.14.159",
     "nuxt-echarts": "^0.2.4"
   },
   "dependencies": {
-    "@iconify-json/heroicons": "^1.2.1"
+    "@iconify-json/heroicons": "^1.2.1",
+    "yup": "^1.6.0"
   }
 }

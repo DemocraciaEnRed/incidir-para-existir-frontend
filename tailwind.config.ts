@@ -13,6 +13,7 @@ export default <Partial<Config>>{
         inter: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
+
         pumpkin: {
           '50': '#fff7ed',
           '100': '#ffeed4',
@@ -38,6 +39,20 @@ export default <Partial<Config>>{
           '800': '#9204d2', // default
           '900': '#71059e',
           '950': '#4e0078',
+        },
+        mindaro: {
+          DEFAULT: '#D4F779',
+          50: '#FFFFFF',
+          100: '#FFFFFF',
+          200: '#F9FEED',
+          300: '#EDFCC6',
+          400: '#E0F9A0',
+          500: '#D4F779',
+          600: '#C3F444',
+          700: '#B2F10F',
+          800: '#8BBC0B',
+          900: '#648808',
+          950: '#516D07'
         },
       }
     }
