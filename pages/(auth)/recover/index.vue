@@ -1,5 +1,9 @@
 <script setup>
-import Yup from 'yup'
+import {
+  object as YupObject,
+  string as YupString,
+} from 'yup'
+
 import { definePageMeta } from '#imports'
 const { $api } = useNuxtApp()
 
@@ -11,8 +15,8 @@ definePageMeta({
   }
 })
 
-const schema = Yup.object({
-  email: Yup.string().email('Por favor, ingresa un email válido').required('Este campo es requerido'),
+const schema = YupObject({
+  email: YupString().email('Por favor, ingresa un email válido').required('Este campo es requerido'),
 })
 
 const state = reactive({

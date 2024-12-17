@@ -1,6 +1,10 @@
 <script setup>
 // import { definePageMeta } from '#imports'
-import Yup from 'yup'
+import {
+  object as YupObject,
+  string as YupString,
+  ref as YupRef,
+} from 'yup'
 
 definePageMeta({
   name: 'resetPassword'
@@ -21,11 +25,10 @@ const state = reactive({
   passwordConfirmation: null,
 })
 
-const schema = Joi.object({
-  password: string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('Este campo es requerido'),
-  passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
+const schema = YupObject({
+  password: YupString().label('Contraseña').min(6, 'La contraseña debe tener al menos 6 caracteres').required('Este campo es requerido'),
+  passwordConfirmation: YupString().label('Confirmar Contraseña').oneOf([YupRef('password'), null], 'Las contraseñas deben coincidir').required('Este campo es requerido'),
 })
-
 
 onMounted(async () => {
   // get the query param token
