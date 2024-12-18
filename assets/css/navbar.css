@@ -1,5 +1,5 @@
 #navbar .navbar-item{
-  @apply text-white font-medium flex items-center;
+  @apply text-white font-medium flex flex-col items-center text-center;
   &:hover{
     @apply text-pumpkin-400;
   }

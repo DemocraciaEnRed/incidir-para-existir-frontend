@@ -49,7 +49,7 @@ const onError = (event) => {
 
 <template>
   <div class="flex flex-row justify-center items-center my-16">
-    <div class="w-1/3">
+    <div class="w-full md:w-1/3">
       <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="mx-auto px-10 mb-10 max-w-[250px]" >
       <p class="font-oswald text-center text-4xl mb-10 text-[#D4F779]">INGRESA A TU CUENTA</p>
       <UCard v-if="showErrorAlert" color="red" class="mb-4">

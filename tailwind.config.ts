@@ -1,4 +1,4 @@
-import { _aspectRatio } from '#tailwind-config/theme'
+// import { _aspectRatio } from '#tailwind-config/theme'
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import aspectRatio from '@tailwindcss/aspect-ratio'
@@ -15,6 +15,7 @@ export default <Partial<Config>>{
       colors: {
 
         pumpkin: {
+          DEFAULT: '#ff7109',
           '50': '#fff7ed',
           '100': '#ffeed4',
           '200': '#ffd8a8',
@@ -28,6 +29,7 @@ export default <Partial<Config>>{
           '950': '#451405',
         },
         electricViolet: {
+          DEFAULT: '#9204d2',
           '50': '#fcf3ff',
           '100': '#f7e3ff',
           '200': '#f0ccff',
@@ -42,17 +44,17 @@ export default <Partial<Config>>{
         },
         mindaro: {
           DEFAULT: '#D4F779',
-          50: '#FFFFFF',
-          100: '#FFFFFF',
-          200: '#F9FEED',
-          300: '#EDFCC6',
-          400: '#E0F9A0',
-          500: '#D4F779',
-          600: '#C3F444',
-          700: '#B2F10F',
-          800: '#8BBC0B',
-          900: '#648808',
-          950: '#516D07'
+          '50': '#FFFFFF',
+          '100': '#FFFFFF',
+          '200': '#F9FEED',
+          '300': '#EDFCC6',
+          '400': '#E0F9A0',
+          '500': '#D4F779',
+          '600': '#C3F444',
+          '700': '#B2F10F',
+          '800': '#8BBC0B',
+          '900': '#648808',
+          '950': '#516D07'
         },
       }
     }

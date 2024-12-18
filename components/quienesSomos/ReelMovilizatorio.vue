@@ -53,24 +53,22 @@ const openModal = (item) => {
         <div class="w-full md:w-1/3">
           <img :src="theImage" class="w-full rounded-br-xl rounded-tl-xl" draggable="false">
           <div class="p-2">
-            <div class="flex justify-center text-3xl gap-3 mt-5">
-              <a v-if="theInstagram" :href="theInstagram" target="_blank" class="text-pumpkin-500">
-                <UIcon name="i-fa6-brands-instagram" size="lg" />
-              </a>
-              <a v-if="theFacebook" :href="theFacebook" target="_blank" class="text-pumpkin-500">
-                <UIcon name="i-fa6-brands-instagram" size="lg" />
-              </a>
-              <a v-if="theTwitter" :href="theTwitter" target="_blank" class="text-pumpkin-500">
-                <UIcon name="i-fa6-brands-x-twitter" size="lg" />
-              </a>
-              <a v-if="theLinkedin" :href="theLinkedin" target="_blank" class="text-pumpkin-500">
-                <UIcon name="i-fa6-brands-linkedin" size="lg" />
-              </a>
+            <div class="flex justify-center text-3xl gap-3 my-5">
+              <UButton v-if="theInstagram" :to="theInstagram" target="_blank" color="mindaro" icon="i-fa6-brands-instagram" size="lg" class="px-3 rounded-full" />
+              <UButton v-if="theFacebook" :to="theFacebook" target="_blank" color="mindaro" icon="i-fa6-brands-facebook" size="lg" class="px-3 rounded-full" />
+              <UButton v-if="theTwitter" :to="theTwitter" target="_blank" color="mindaro" icon="i-fa6-brands-twitter" size="lg" class="px-3 rounded-full" />
+              <UButton v-if="theLinkedin" :to="theLinkedin" target="_blank" color="mindaro" icon="i-fa6-brands-linkedin" size="lg" class="px-3 rounded-full" />
             </div>
+            <!-- close button -->
+            <div class="flex justify-center">
+              <UButton color="pumpkin" variant="outline" size="lg" class="px-3 rounded-full" @click="isModalOpen = false">
+                Cerrar
+              </UButton>
+            </div>  
           </div>
         </div>
         <div class="w-full md:w-2/3 p-4 lg:p-6">
-          <h3 class="font-bold text-4xl mb-2">{{ theName }}</h3>
+          <h3 class="font-bold text-4xl mb-2 text-mindaro">{{ theName }}</h3>
           <p>{{ theBio }}</p>
         </div>
       </div>

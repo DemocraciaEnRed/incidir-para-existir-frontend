@@ -41,8 +41,8 @@ onMounted(() => {
       <div class="relative">
         <div class="overlay-content">
           <div class="w-9/12">
-            <p class="font-inter font-bold text-3xl md:text-5xl lg:text-7xl mb-3 drop-shadow-lg">Suma tus iniciativas</p>
-            <p class="font-inter font-bold lg:text-2xl">Un pequeño texto que hable sobre lo que hacemos y como ayudar para que el usuario quiera contactarse con Movilizatorio o sumar su iniciativa.</p>
+            <p class="font-inter font-bold text-2xl md:text-3xl lg:text-6xl mb-3 drop-shadow-lg">¡Les damos la bienvenida a Incidir para Existir!</p>
+            <p class="font-inter font-bold lg:text-2xl">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
           </div>
         </div>
         <UCarousel ref="carouselRef" v-slot="{ item }" :items="imgCallToAction" :ui="{ item: 'basis-full', indicators: {base: 'z-10'} }" class="carrousel rounded-lg overflow-hidden relative mb-6" indicators>
@@ -52,35 +52,25 @@ onMounted(() => {
       </div>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full md:w-8/12 lg:w-1/2">
-          <p class="font-oswald text-5xl  leading-tight text-[#D4F779] mb-5">¡BIENVENIDOS A 
+          <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¡BIENVENIDOS A 
             INCIDIR PARA EXISTIR!</p>
             <div class="space-y-3">
 
-              <p class="text-pumpkin-500 font-bold">En esta plataforma, descubrirás:</p>
+              <p class="text-pumpkin-500 font-bold">En esta plataforma, podrás:</p>
               <ul class="list-disc">
-                <li>Una red de jóvenes apasionados por crear cambio.</li>
-                <li>Iniciativas juveniles, proyectos y acciones que buscan transformar la sociedad.</li>
-                <li>Damos voz a las demandas de la juventud.</li>
-                <li>Estado de la participación juvenil con datos sobre la incidencia de los jóvenes en Bogotá y Cali</li>
+                <li>Encontrar y conectar con una red de jóvenes apasionados por crear cambio.</li>
+                <li>Ver y rastrear iniciativas juveniles, proyectos y acciones que buscan transformar la sociedad.</li>
+                <li>Reportar y conocer los desafios de la juventud en Bogotá y Cali</li>
+                <li>Descubir las voces y en qué anda la juventud Caleña y Bogotana.</li>
               </ul>
-              <p>Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo.</p>
+              <p>Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo</p>
             </div>
           </div>
         <div class="w-full md:w-1/3 lg:w-1/2">
           <img src="/img/home-figure1.jpg" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
         </div>
       </div>
-      <div class="flex gap-5 justify-between items-center my-10 flex-col-reverse md:flex-row">
-        <div class="w-full md:w-8/12 lg:w-1/2">
-          <img src="/img/undef-logo.png" alt="UNDEF" class="w-4/5 mx-auto my-5">
-        </div>
-        <div class="w-full md:w-8/12 lg:w-1/2">
-          <div class="space-y-3">
-            <p class="font-bold text-2xl">UNDEF</p>
-            <p>El Fondo Fiduciario de las Naciones Unidas para la Democracia (UNDEF) apoya proyectos que empoderan a la sociedad civil, promueven los derechos humanos y alientan la participación de todos los grupos en los procesos democráticos.</p>
-          </div>
-        </div>
-      </div>
+       
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full md:w-8/12 lg:w-1/2">
           <div class="space-y-3">
