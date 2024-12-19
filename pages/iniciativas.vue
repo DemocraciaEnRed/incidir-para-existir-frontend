@@ -6,7 +6,30 @@ definePageMeta({
   layout: 'full-width'
 })
 
+// const { signIn, token, data, status, lastRefreshedAt } = useAuth()
+const { status, data: sessionData } = useAuth()
+
 const showSection = ref(1)
+const showInitiativeForm = ref(false)
+
+const handleShowForm = async () => {
+  // if the status is "unauthenticated" then redirect to login
+  console.log(status.value)
+  if(status.value === 'unauthenticated') {
+    await navigateTo('/login')
+  } else {
+    showInitiativeForm.value = true
+  }
+}
+
+const isUserAuthenticated = computed(() => {
+  return status.value === 'authenticated'
+})
+
+const canUserCompleteForm = computed(() => {
+  // the condition is that the user requires to have a subdivisionId in his user data
+  return sessionData.value.user && sessionData.value.user.subdivision && sessionData.value.user.subdivision.id
+})
 
 </script>
 
@@ -17,12 +40,27 @@ const showSection = ref(1)
         <div class="w-full lg:w-1/2 text-center">
           <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¿QUIERES UNIRTE Y SER UN AGENTE DE CAMBIO?</p>
           <p class="font-bold text-xl leading-tight mb-5">¿Tienes una iniciativa o parche o movimiento o proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
-          <UButton to="/iniciativas" color="pumpkin" block size="xl" class="text-center text-3xl font-weight font-inter font-black rounded-full">¡Súmate!</UButton>
+          <UButton color="pumpkin" block size="xl" class="text-center text-3xl font-weight font-inter font-black rounded-full" @click="handleShowForm">¡Súmate!</UButton>
         </div>
         <div class="w-full lg:w-1/2">
           <img src="/img/iniciativas-01.png" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
         </div>
       </div>
+      <ClientOnly>
+      <div class="w-full" v-if="showInitiativeForm">
+        <UCard v-if="status == 'unauthenticated'" class="my-10 text-center">
+          <p class="font-bold text-2xl text-pumpkin leading-tight mb-3 uppercase">Inicia sesión para sumar tu iniciativa</p>
+          <p>Para poder sumar tu iniciativa, necesitas iniciar sesión en tu cuenta. Si no tienes una cuenta, puedes crear una <ULink to="/signup" class="text-pumpkin">aquí</ULink></p>
+        </UCard>
+        <UCard v-else-if="!canUserCompleteForm" class="my-10 text-center">
+          <p class="font-bold text-2xl text-pumpkin leading-tight mb-3 uppercase">Solo se aceptan iniciativas de Cali o Bogota</p>
+          <p>Contactate con nuestro equipo si deseas tener asistencia</p>
+        </UCard>
+        <div v-else>
+          <IniciativasForm />
+        </div>
+      </div>
+      </ClientOnly>
       <p class="font-bold text-2xl text-mindaro text-center leading-tight my-10">Explorá las iniciativas</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-10">
         <div

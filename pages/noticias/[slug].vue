@@ -37,7 +37,7 @@ useSeoMeta({
       <div class="aspect-w-5 aspect-h-2 my-8">
         <img v-if="data.imageUrl" :src="data.imageUrl" class="object-cover w-full h-full rounded-xl">
       </div>
-      <div class="border-gray-400 border-2 rounded-xl px-3 py-4" v-html="data.text" />
+      <div class="border-gray-400 border-2 rounded-xl px-3 py-4 whitespace-pre-wrap" v-html="data.text" />
       <div class="flex flex-row gap-2 my-5">
       <UBadge color="gray">{{data.category.name}}</UBadge>
       <UBadge color="gray">{{data.section.name}}</UBadge>
