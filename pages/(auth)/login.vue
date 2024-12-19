@@ -31,7 +31,7 @@ const showErrorAlert = ref(false);
 const handleLogin = async () => {
   isLoading.value = true  
   try {
-    await signIn({ email: state.email, password: state.password }, { callbackUrl: '/protected' })
+    await signIn({ email: state.email, password: state.password }, { callbackUrl: '/' })
   } catch (error) {
     console.log(error)
     showErrorAlert.value = true
