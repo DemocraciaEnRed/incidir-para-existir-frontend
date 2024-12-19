@@ -6,6 +6,10 @@
         "strings": true
     },
     "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        "class:list",
         "active-class",
         "inactive-class"
     ]
