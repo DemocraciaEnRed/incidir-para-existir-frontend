@@ -1,5 +1,7 @@
 <script setup>
-
+useHead({
+  title: 'Desafios de la juventud'
+})
 </script>
 
 <template>

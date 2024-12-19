@@ -2,6 +2,9 @@
 definePageMeta({
   layout: 'full-width'
 })
+useHead({
+  title: '¿Quienes Somos?'
+})
 
 const team = [
  {

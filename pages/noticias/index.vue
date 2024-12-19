@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Noticias'
+})
 definePageMeta({
   layout: 'full-width'
 })

@@ -9,10 +9,9 @@ const slug = route.params.slug
 
 const { data } = await useAPI(`/blog/${slug}`)
 
-
 // SEO
 useSeoMeta({
-  title: () => `${data.value.title} - Incidir para existir`,
+  title: () => `${data.value.title}`,
   description: () => data.value.subtitle,
   lang: () => 'es',
   url: () => `https://example.com/noticias/${data.value.slug}`,

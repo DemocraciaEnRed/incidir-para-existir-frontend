@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Iniciativas de la juventud'
+})
 definePageMeta({
   layout: 'full-width'
 })
