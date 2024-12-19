@@ -110,7 +110,7 @@ async function onSubmit() {
 
   // if city is not Cali or Bogota
   if(state.selectedCity >= 1 || state.selectedCity <= 2) {
-    payload.subdivision = state.selectedSubdivision
+    payload.subdivisionId = state.selectedSubdivision
   }
 
   isLoading.value = true
