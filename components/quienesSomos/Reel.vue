@@ -67,7 +67,7 @@ const openModal = (item) => {
             <UButton v-if="theLinkedin" :to="theLinkedin" target="_blank" color="mindaro" icon="i-fa6-brands-linkedin" size="lg" class="px-3 rounded-full" />
           </div>
           <div class="flex justify-center">
-            <UButton color="pumpkin" variant="outline" size="lg" class="px-3 rounded-full" @click="isModalOpen = false">
+            <UButton color="pumpkin" variant="outline" class="px-3 rounded-full" @click="isModalOpen = false">
               Cerrar
             </UButton>
           </div>

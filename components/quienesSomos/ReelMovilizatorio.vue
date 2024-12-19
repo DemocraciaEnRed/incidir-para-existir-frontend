@@ -61,7 +61,7 @@ const openModal = (item) => {
             </div>
             <!-- close button -->
             <div class="flex justify-center">
-              <UButton color="pumpkin" variant="outline" size="lg" class="px-3 rounded-full" @click="isModalOpen = false">
+              <UButton color="pumpkin" variant="outline" class="px-3 rounded-full" @click="isModalOpen = false">
                 Cerrar
               </UButton>
             </div>  
