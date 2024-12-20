@@ -44,6 +44,11 @@ const showDesafiosForm = ref(false)
     <div class="my-10 w-full md:w-2/3 mx-auto" v-if="showDesafiosForm">
       <DesafiosForm />
     </div>
+  <UDivider size="md" class="my-5" />
+    <p class="font-oswald text-4xl text-center uppercase leading-tight text-mindaro mb-5">Estadisticas</p>
+    <ClientOnly>
+      <DesafiosStats />
+    </ClientOnly>
   </UContainer> 
 </template>
 

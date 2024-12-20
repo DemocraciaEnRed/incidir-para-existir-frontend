@@ -18,7 +18,7 @@ const handleLogout = async () => {
     <UContainer>
       <div class="flex justify-between items-center">
         <NuxtLink to="/" class="flex-1">
-          <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="h-12 w-auto mx-auto md:mr-auto" >
+          <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="h-12 w-auto ml-auto mr-auto md:ml-0 md:mr-auto" >
         </NuxtLink>
         <div class="hidden md:flex items-center space-x-5 font-oswald uppercase">
           <NuxtLink to="/" class="navbar-item">Inicio</NuxtLink>
