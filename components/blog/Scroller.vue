@@ -60,15 +60,15 @@ watch(page, (newValue, oldValue) => {
     <UProgress animation="carousel" color="pumpkin"/>
   </UCard>
   <div v-else>
-    <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
+    <div class="flex gap-5  my-10 flex-col md:flex-row">
       <div v-for="item in items" :key="item.id" class="w-full lg:w-1/2">
         <div class="aspect-h-2 aspect-w-5 bg-gray-600 w-full rounded-tl-xl rounded-tr-xl" >
           <img :src="item.imageUrl" class="object-cover w-full h-full rounded-tl-xl rounded-tr-xl">
         </div>
-        <div class="flex flex-row justify-between items-start py-3 px-4 bg-gray-800 w-full rounded-bl-xl rounded-br-xl">
-          <div class="w-2/3">
+        <div class="flex flex-row justify-between items-stretch py-3 px-4 bg-gray-800 w-full rounded-bl-xl rounded-br-xl">
+          <div class="w-2/3 gap-3 space-y-3">
             <p class="font-oswald text-2xl text-[#D4F779]">{{ item.title }}</p>
-            <p class="font-inter text-sm">{{ item.subtitle }} {{ item.subtitle }} {{ item.subtitle }} {{ item.subtitle }} {{ item.subtitle }}</p>
+            <p class="font-inter text-sm truncate">{{ item.subtitle }}</p>
             <UButton :to="{name: 'blog-post', params: {slug: item.slug}}">Ir al post</UButton>
           </div>
           <div class="w-1/3 text-right space-y-3">
