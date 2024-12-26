@@ -61,7 +61,7 @@ const canUserCompleteForm = computed(() => {
         </div>
       </div>
       </ClientOnly>
-      <p class="font-bold text-2xl text-mindaro text-center leading-tight my-10">Explorá las iniciativas</p>
+      <p class="font-bold text-2xl text-mindaro text-center leading-tight my-10">Explorá las líneas temáticas</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-10">
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
