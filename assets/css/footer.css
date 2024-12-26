@@ -1,5 +1,5 @@
 .the-footer{
-  @apply sticky top-[100vh] bg-[#3A27FF] p-4 w-full bottom-0 rounded-tl-xl rounded-tr-xl;
+  @apply sticky top-[100vh] bg-[#3A27FF] p-4 w-full bottom-0;
 }
 
 .the-footer .starbg{
