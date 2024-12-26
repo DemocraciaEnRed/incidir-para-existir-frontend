@@ -13,13 +13,7 @@ const showSection = ref(1)
 const showInitiativeForm = ref(false)
 
 const handleShowForm = async () => {
-  // if the status is "unauthenticated" then redirect to login
-  console.log(status.value)
-  if(status.value === 'unauthenticated') {
-    await navigateTo('/login')
-  } else {
-    showInitiativeForm.value = true
-  }
+  showInitiativeForm.value = true
 }
 
 const isUserAuthenticated = computed(() => {
@@ -47,10 +41,10 @@ const canUserCompleteForm = computed(() => {
         </div>
       </div>
       <ClientOnly>
-      <div class="w-full" v-if="showInitiativeForm">
-        <UCard v-if="status == 'unauthenticated'" class="my-10 text-center">
+      <div v-if="showInitiativeForm" class="w-full">
+        <UCard v-if="!isUserAuthenticated" class="my-10 text-center">
           <p class="font-bold text-2xl text-pumpkin leading-tight mb-3 uppercase">Inicia sesión para sumar tu iniciativa</p>
-          <p>Para poder sumar tu iniciativa, necesitas iniciar sesión en tu cuenta. Si no tienes una cuenta, puedes crear una <ULink to="/signup" class="text-pumpkin">aquí</ULink></p>
+          <p>Para poder sumar tu iniciativa, necesitas <ULink to="/login" class="text-pumpkin">Iniciar sesión</ULink> en tu cuenta. Si no tienes una cuenta, puedes <ULink to="/signup" class="text-pumpkin">registrarte aquí</ULink></p>
         </UCard>
         <UCard v-else-if="!canUserCompleteForm" class="my-10 text-center">
           <p class="font-bold text-2xl text-pumpkin leading-tight mb-3 uppercase">Solo se aceptan iniciativas de Cali o Bogota</p>
