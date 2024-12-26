@@ -517,7 +517,7 @@ const showSection = ref(1)
     <div class="bg-electricViolet-800 pt-10 rounded-tr-2xl rounded-tl-2xl">
       <img src="/img/quienes-somos-01.png" class="w-full" alt="">
       <UContainer class="py-10">
-        <p class="font-oswald text-5xl leading-tight text-[#D4F779] text-center lg:text-left mb-5">NUESTRO EQUIPO</p>
+        <p class="font-oswald text-5xl leading-tight text-[#D4F779] text-center lg:text-left mb-5">AGENTES DE CAMBIO</p>
         <p class="text-3xl font-bold text-center lg:text-left my-5">CALI</p>
         <QuienesSomosReel :members="cali" />
         <p class="text-3xl font-bold text-center lg:text-left my-5">BOGOTA</p>
