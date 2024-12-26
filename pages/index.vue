@@ -52,10 +52,8 @@ onMounted(() => {
       </div>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full md:w-8/12 lg:w-1/2">
-          <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¡BIENVENIDOS A 
-            INCIDIR PARA EXISTIR!</p>
+          <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¡BIENVENIDOS A INCIDIR PARA EXISTIR!</p>
             <div class="space-y-3">
-
               <p class="text-pumpkin-500 font-bold">En esta plataforma, podrás:</p>
               <ul class="list-disc">
                 <li>Encontrar y conectar con una red de jóvenes apasionados por crear cambio.</li>
@@ -71,15 +69,17 @@ onMounted(() => {
         </div>
       </div>
        
-      <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
-        <div class="w-full md:w-8/12 lg:w-1/2">
-          <div class="space-y-3">
-            <p class="font-bold text-2xl">MOVILIZATORIO</p>
-            <p>Es un laboratorio de impacto e innovación social que trabaja por promover la participación ciudadana de forma activa y consciente para una sociedad mejor. En este sentido, movilizamos a las personas para construir una sociedad mejor a través del diálogo, la negociación y la educación. Investigamos y aplicamos metodologías y tecnologías probadas e innovadoras.</p>
+      <div class="space-y-7 my-16 lg:w-10/12 mx-auto">
+        <div class="flex flex-col sm:flex-row gap-8 justify-between items-center">
+          <div class="w-full md:w-1/2">
+            <a href="https://movilizatorio.org/" ><img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="w-full"></a>
+          </div>
+          <div class="w-full md:w-1/2">
+            <img src="/img/undef-logo.png" alt="UNDEF" class="w-full">
           </div>
         </div>
-        <div class="w-full md:w-8/12 lg:w-1/2">
-          <img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="w-4/5 mx-auto my-5">
+        <div class="w-full text-center">
+            <p class="font-bold text-2xl">Este es un proyecto de Movilizatorio apoyado por el Fondo de las Naciones Unidas para la Democracia</p>
         </div>
       </div>
       <UCarousel v-slot="{ item }" :items="imgPhotoCarrousel" :ui="{ wrapper: 'relative px-10',item: 'basis-full md:basis-1/2 lg:basis-1/4' }" arrows>
