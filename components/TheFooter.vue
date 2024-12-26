@@ -28,7 +28,7 @@ const rounded = computed(() => {
         <NuxtLink to="/quienes-somos" class="text-center leading-none hover:text-mindaro">¿Quiénes somos?</NuxtLink>
         <NuxtLink to="/iniciativas" class="text-center leading-none hover:text-mindaro">Iniciativas <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
         <NuxtLink to="/desafios" class="text-center leading-none hover:text-mindaro">Desafios <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
-        <NuxtLink to="/noticias" class="text-center leading-none hover:text-mindaro">Actualidad <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
+        <NuxtLink to="/actualidad" class="text-center leading-none hover:text-mindaro">Actualidad <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
       </div>
     </UContainer>
   </footer>
