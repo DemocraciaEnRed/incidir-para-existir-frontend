@@ -14,8 +14,8 @@ export default defineNuxtConfig({
   },
   echarts: {
     renderer: ['svg', 'canvas'],
-    charts: ['PieChart', 'RadarChart'],
-    components: ['TitleComponent','TooltipComponent','LegendComponent']
+    charts: ['PieChart', 'RadarChart','MapChart'],
+    components: ['TitleComponent','TooltipComponent','LegendComponent','VisualMapComponent','GeoComponent']
   },
   runtimeConfig: {
     public: {
