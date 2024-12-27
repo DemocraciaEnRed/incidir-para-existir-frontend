@@ -1,5 +1,5 @@
 <script setup>
-import { DesafiosModalForm } from '#components'
+
 
 useHead({
   title: 'Desafios de la juventud'
@@ -47,7 +47,17 @@ const showDesafiosForm = ref(false)
   <UDivider size="md" class="my-5" />
     <p class="font-oswald text-4xl text-center uppercase leading-tight text-mindaro mb-5">Estadisticas</p>
     <ClientOnly>
-      <DesafiosStats />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <DesafiosChartsDimensions class="md:col-span-2" />
+        <DesafiosChartsSubdivisionsCali class="" />
+        <DesafiosChartsSubdivisionsBogota class="" />
+      </div>
+      <template #fallback>
+        <!-- this will be rendered on server side -->
+        <UCard>
+          <UProgress />
+        </UCard>
+      </template>
     </ClientOnly>
   </UContainer> 
 </template>

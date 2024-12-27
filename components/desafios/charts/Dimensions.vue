@@ -1,54 +1,68 @@
 
 <script setup>
-provide(THEME_KEY, 'dark');
-const props = defineProps({
-  graphData: {
-    type: Object,
-    required: true
-  }
-});
 
-console.log(props.graphData);
+const chartOption = ref(null);
 
-const option = ref({
-  backgroundColor: 'transparent',
-  title: {
-    text: 'Cantidad de desafíos por dimensiones',
-    subtext: 'Cada serie representa una ciudad',
-    top: 0,
-    left: 0
-  },
-  legend: {
-    data: props.graphData.legendData,
-    right: 0,
-    bottom: 0
-  },
-  tooltip: {
-    trigger: 'item'
-  },
-  radar: {
-    // shape: 'circle',
-    indicator: props.graphData.radarIndicator
-  },
-  series: [
-    {
-      name: 'Budget vs spending',
-      type: 'radar',
-      data: props.graphData.radar.data
+const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/count-by-dimension',{
+  onResponse({ request, response, options }) {
+    const chartData = response._data;
+    chartOption.value = {
+      backgroundColor: 'transparent',
+      title: {
+        text: 'Cantidad de desafíos por dimensiones',
+        subtext: 'Cada serie representa una ciudad',
+        top: 0,
+        left: 0
+      },
+      legend: {
+        data: chartData.legendData,
+        right: 0,
+        bottom: 0
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          saveAsImage: {
+            show: true,
+            title: 'Descargar',
+            name: 'Desafios por localidad en Bogota'
+          }
+        }
+      },
+      radar: {
+        // shape: 'circle',
+        indicator: chartData.radarIndicator
+      },
+      series: [
+        {
+          name: 'Budget vs spending',
+          type: 'radar',
+          data: chartData.radar.data
+        }
+      ]
     }
-  ]
-});
+  }
+})
+
+provide(THEME_KEY, 'dark');
+
+const isLoading = computed(() => status.value === 'pending');
 
 </script>
 
 <template>
   <UCard>
-    <VChart class="chart" :option="option" />
+    <UProgress v-if="isLoading" />
+    <VChart class="chart" :option="chartOption" autoresize />
   </UCard>
 </template>
 
 <style scoped>
 .chart {
   height: 500px;
+  width: 100%;
 }
 </style>
