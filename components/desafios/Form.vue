@@ -152,7 +152,7 @@ const selectDimension = (dimension) => {
       </template>
     </UAlert>
     <div v-if="!submitSuccess">
-      <p class="text-2xl text-pumpkin-500 font-bold mb-5">REPORTA DESAFIOS DE LA JUVENTUD</p>
+      <p class="text-2xl text-pumpkin-500 font-bold mb-5 uppercase">Quiero reportar desafíos y propuestas de la juventud</p>
       <UForm :state="state" :schema="schema" class="space-y-4" @submit="handleSubmit">
         <!-- <UFormGroup class="" label="Linea temática" name="dimensionId" required>
           <USelect v-model.number="state.dimensionId" :options="dimensions" value-attribute="id" option-attribute="name" :disabled="submitLoading"/>
@@ -179,23 +179,20 @@ const selectDimension = (dimension) => {
         </UFormGroup>
         <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
           <template #description>
-            Comparte tu necesidad y/o desafio <i class="text-pumpkin">Max. 500 caracteres.</i>
+            Comparte el desafio de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
           </template>
           <UTextarea v-model="state.needsAndChallenges"  :disabled="submitLoading" />
         </UFormGroup>
         <UFormGroup class="" label="Propuesta" name="proposal" required>
           <template #description>
-            ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">Max. 500 caracteres.</i>
+            ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
           </template>
           <template #help>
             <span v-if="state.proposal" class="text-xs">Caracteres: {{ state.proposal.length }}</span>
           </template>
           <UTextarea v-model="state.proposal" placeholder="Ingresá tu propuesta aquí"  :disabled="submitLoading"/>
         </UFormGroup>
-        <UFormGroup class="" label="En pocas palabras" name="inWords" required>
-          <template #description>
-            ¿Cómo describirías tu propuesta en pocas palabras?
-          </template>
+        <UFormGroup class="" label="En máximo dos palabras ¿Cómo resumirias el desafio que enfrenta la juventud?" name="inWords" required>
           <UInput v-model="state.inWords" :disabled="submitLoading" />
         </UFormGroup>
         <UFormGroup class="flex items-center" name="acceptsTerms" required>
@@ -206,7 +203,7 @@ const selectDimension = (dimension) => {
           </UCheckbox>
         </UFormGroup>
         <UDivider />
-        <UButton color="pumpkin" block size="xl" type="submit" :loading="submitLoading">Enviar</UButton>
+        <UButton color="pumpkin" block size="xl" type="submit" :loading="submitLoading">Reportar</UButton>
       </UForm>
     </div>
     <div v-else class="text-center">

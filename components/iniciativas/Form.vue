@@ -187,7 +187,7 @@ const handleSubmitInitiativeForm = async () => {
       <div v-if="showInitiativeForm">
         <UDivider size="lg" class="my-8" label="Paso 2. Datos de la iniciativa" />
         <UForm :state="initiativeState" :schema="initiativeSchema" class="space-y-4" @submit="handleSubmitInitiativeForm">
-          <UFormGroup name="dimensionIds" label="Ejes tematicos de la iniciativa" required>
+          <UFormGroup name="dimensionIds" label="Ejes tematicos de la iniciativa" description="Sabemos que algunas iniciativas trabajan diferentes temáticas, para este mapeo selecciona máximo 2." required>
             <div class="flex flex-wrap gap-2 pt-1">
               <UBadge 
               v-for="dimension in dimensions"
@@ -212,13 +212,13 @@ const handleSubmitInitiativeForm = async () => {
           </UFormGroup>
           <UFormGroup name="description" label="Descripción" required>
             <template #description>
-              Describe de forma breve tu iniciativa. <i class="text-pumpkin">Max. 500 caracteres.</i>
+              Describe de forma breve tu iniciativa. <i class="text-pumpkin">(Máximo 500 caracteres)</i>
             </template>
             <UTextarea v-model="initiativeState.description" />
           </UFormGroup>
           <UFormGroup name="needsAndOffers" label="Necesidades y ofertas" required>
             <template #description>
-              ¿Qué necesidades y/o oportunidades tiene tu iniciativa para ofrecer? <i class="text-pumpkin">Max. 500 caracteres.</i>
+              ¿Qué podría ofrecer o compartir la red a mi iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
             </template>
             <UTextarea v-model="initiativeState.needsAndOffers" />
           </UFormGroup>

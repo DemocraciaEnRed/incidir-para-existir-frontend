@@ -33,7 +33,7 @@ const canUserCompleteForm = computed(() => {
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full lg:w-1/2 text-center">
           <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¿QUIERES UNIRTE Y SER UN AGENTE DE CAMBIO?</p>
-          <p class="font-bold text-xl leading-tight mb-5">¿Tienes una iniciativa o parche o movimiento o proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
+          <p class="font-bold text-xl leading-tight mb-5">¿Tienes una iniciativa, parche y/o movimiento, proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
           <UButton color="pumpkin" block size="xl" class="text-center text-3xl font-weight font-inter font-black rounded-full" @click="handleShowForm">¡Súmate!</UButton>
         </div>
         <div class="w-full lg:w-1/2">
@@ -64,7 +64,7 @@ const canUserCompleteForm = computed(() => {
           >
           <div>
             <p class="text-bold">Educación de calidad</p>
-            <p class="text-sm">Porque merecemos aprender sin límites</p>
+            <p class="text-sm">Merecemos aprender sin límites</p>
           </div>
         </div>
         <div
