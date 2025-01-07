@@ -9,7 +9,7 @@ definePageMeta({
 // const { signIn, token, data, status, lastRefreshedAt } = useAuth()
 const { status, data: sessionData } = useAuth()
 
-const showSection = ref(1)
+const topicDescription = ref(1)
 const showInitiativeForm = ref(false)
 
 const handleShowForm = async () => {
@@ -24,6 +24,13 @@ const canUserCompleteForm = computed(() => {
   // the condition is that the user requires to have a subdivisionId in his user data
   return sessionData.value.user && sessionData.value.user.subdivision && sessionData.value.user.subdivision.id
 })
+
+const showTopicDescription = (sectionNumber) => {
+  topicDescription.value = sectionNumber
+  // scroll to the description
+  const element = document.getElementById('theDescription')
+  element.scrollIntoView({ behavior: 'smooth' })
+}
 
 </script>
 
@@ -59,8 +66,8 @@ const canUserCompleteForm = computed(() => {
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-10">
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 1 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 1"
+          :class="topicDescription === 1 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(1)"
           >
           <div>
             <p class="text-bold">Educación de calidad</p>
@@ -69,8 +76,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 2 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 2"
+          :class="topicDescription === 2 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(2)"
           >
           <div>
             <p class="text-bold">Empleo Digno</p>
@@ -79,8 +86,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 3 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 3"
+          :class="topicDescription === 3 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(3)"
           >
           <div>
             <p class="text-bold">Espacios Públicos Seguros</p>
@@ -89,8 +96,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 4 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 4"
+          :class="topicDescription === 4 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(4)"
           >
           <div>
             <p class="text-bold">Participación Política Juvenil</p>
@@ -99,8 +106,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 5 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 5"
+          :class="topicDescription === 5 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(5)"
           >
           <div>
             <p class="text-bold">Transporte Público Digno</p>
@@ -109,8 +116,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 6 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 6"
+          :class="topicDescription === 6 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(6)"
           >
           <div>
             <p class="text-bold">Salud Integral</p>
@@ -119,8 +126,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 7 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
-          @click="showSection = 7"
+          :class="topicDescription === 7 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
+          @click="showTopicDescription(7)"
           >
           <div>
             <p class="text-bold">Ambiente Sano</p>
@@ -129,8 +136,8 @@ const canUserCompleteForm = computed(() => {
         </div>
         <div
           class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
-          :class="showSection === 8 ? 'text-black bg-mindaro border-mindaro' : 'text-white'" 
-          @click="showSection = 8"
+          :class="topicDescription === 8 ? 'text-black bg-mindaro border-mindaro' : 'text-white'" 
+          @click="showTopicDescription(8)"
           >
           <div>
             <p class="text-bold">Ocio y Cultura</p>
@@ -139,36 +146,36 @@ const canUserCompleteForm = computed(() => {
         </div>
       </div>
       <div class="my-10 px-5 text-center">
-        <UCard>
-          <div v-if="showSection === 1">
+        <UCard id="theDescription">
+          <div v-if="topicDescription === 1">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Educación de calidad</p>
             <p>Tenemos derecho a una educación que realmente nos prepare para el mundo, sin importar dónde vivamos o qué recursos tengamos. Apostamos por una educación que valore nuestras historias y que sea accesible para todas las personas.</p>
           </div>
-          <div v-if="showSection === 2">
+          <div v-if="topicDescription === 2">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Empleo Digno</p>
             <p>Sabemos lo difícil que es encontrar un trabajo estable y justo. Exigimos empleos formales que incluyan seguridad social y pensiones, sin contratos basura. Además, queremos que se apoyen los emprendimientos juveniles para que seamos quienes generemos empleo, con oportunidades reales de crecimiento económico y personal.</p>
           </div>
-          <div v-if="showSection === 3">
+          <div v-if="topicDescription === 3">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Espacios Públicos Seguros</p>
             <p>Las calles y los espacios públicos deberían ser seguros para todas las personas, sin importar su género o identidad. Necesitamos lugares donde podamos caminar sin miedo, con botones de pánico y acciones para prevenir la violencia de género y basada en el prejuicio. Creemos en espacios seguros, inclusivos y llenos de vida.</p>
           </div>
-          <div v-if="showSection === 4">
+          <div v-if="topicDescription === 4">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Participación Política Juvenil</p>
             <p>Queremos ser parte activa en las decisiones que afectan nuestras vidas. Exigimos espacios donde nuestra voz se escuche y tenga impacto real. Desde los Consejos de Juventud hasta las mesas de dialogo, estamos listos para liderar y transformar la política con ideas frescas y una perspectiva juvenil.</p>
           </div>
-          <div v-if="showSection === 5">
+          <div v-if="topicDescription === 5">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Transporte Público Digno</p>
             <p>Moverse por la ciudad no debería ser un lujo. Queremos tarifas justas para estudiantes, transporte accesible y seguro las 24 horas, y que sea sostenible con el ambiente. El transporte público debería estar pensado para nuestras necesidades, sin importar si es de día o de noche.</p>
           </div>
-          <div v-if="showSection === 6">
+          <div v-if="topicDescription === 6">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Salud Integral</p>
             <p>La salud va más allá de lo físico. Necesitamos servicios de salud mental y sexual que no nos juzguen ni nos estigmaticen. Queremos acceso a programas que nos hablen de autocuidado, consentimiento y desarrollo libre de nuestra sexualidad, con profesionales que entiendan nuestras realidades y necesidades.</p>
           </div>
-          <div v-if="showSection === 7">
+          <div v-if="topicDescription === 7">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Ambiente Sano</p>
             <p>El cambio climático es nuestro problema, y queremos soluciones reales. Exigimos ser parte de las decisiones que afectan el ambiente, desde la conservación de humedales hasta políticas climáticas internacionales. La juventud está lista para liderar la protección del planeta.</p>
           </div>
-          <div v-if="showSection === 8">
+          <div v-if="topicDescription === 8">
             <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Ocio y Cultura</p>
             <p>Necesitamos más lugares donde podamos expresarnos libremente. Queremos acceso a actividades culturales, deportivas y recreativas que nos ayuden a crecer y a desarrollar nuestras pasiones. El ocio y la cultura también son esenciales para vivir una vida plena y conectada con nuestras comunidades.</p>
           </div>
