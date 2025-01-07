@@ -45,9 +45,17 @@ onMounted(() => {
             <p class="font-inter font-bold lg:text-2xl">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
           </div>
         </div>
-        <UCarousel ref="carouselRef" v-slot="{ item }" :items="imgCallToAction" :ui="{ item: 'basis-full', indicators: {base: 'z-10'} }" class="carrousel rounded-lg overflow-hidden relative mb-6" indicators>
-          <div class="overlay" />
-          <img :src="item" class="w-full" draggable="false">
+        <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px]', container: 'rounded-lg h-full', indicators: {base: 'z-10', wrapper: 'relative bottom-0 h-[40px]'} }" 
+        class="carrousel rounded-lg overflow-hidden relative mb-6 min-h-[500px]" indicators>
+          <template #default="{ item }">
+            <div class="overlay" />
+            <div class="w-full h-full">
+              <img :src="item" class="w-full h-full object-cover" draggable="false">
+            </div>
+          </template>
+          <template #indicator="{ onClick, page, active }">
+            <UButton  color="mindaro" :variant="active ? 'solid' : 'outline'" size="2xs" class="rounded-full min-w-4 min-h-4 justify-center" @click="onClick(page)" />
+          </template>
         </UCarousel>
       </div>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
