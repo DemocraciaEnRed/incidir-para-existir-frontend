@@ -34,11 +34,12 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
       },
       radar: {
         // shape: 'circle',
-        indicator: chartData.radarIndicator
+        indicator: chartData.radarIndicator,
+
       },
       series: [
         {
-          name: 'Budget vs spending',
+          name: 'Dimensiones Cali Vs. Bogota',
           type: 'radar',
           data: chartData.radar.data
         }

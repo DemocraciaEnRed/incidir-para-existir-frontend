@@ -36,8 +36,11 @@ export default defineNuxtConfig({
       session: {
         dataType: { 
           id: 'string', 
+          firstName: 'string',
+          lastName: 'string',
           email: 'string', 
-           role: '\'admin\' | \'user\'', 
+          role: '\'admin\' | \'user\'', 
+          subdivision: '{ id: number, name: string, city: { id: number, name: string } }',
         },
         // dataResponsePointer: '/'
       },

@@ -41,7 +41,7 @@ const showDesafiosForm = ref(false)
       <UButton color="pumpkin" block size="xl" class="text-center text-xl sm:text-2x lg:text-3xl font-weight font-inter font-black rounded-full" @click="showDesafiosForm = true">Quiero reportar desafíos y propuestas de la juventud</UButton>
       <!-- <UButton color="pumpkin" block size="xl" class="text-center text-3xl font-weight font-inter font-black rounded-full">Quiero reportar desafios de la juventud</UButton> -->
     </div>
-    <div class="my-10 w-full md:w-2/3 mx-auto" v-if="showDesafiosForm">
+    <div v-if="showDesafiosForm" class="my-10 w-full md:w-2/3 mx-auto">
       <DesafiosForm />
     </div>
   <UDivider size="md" class="my-5" />

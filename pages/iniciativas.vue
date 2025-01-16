@@ -65,118 +65,118 @@ const showTopicDescription = (sectionNumber) => {
       <p class="font-bold text-2xl text-mindaro text-center leading-tight my-10">Explorá las líneas temáticas</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-10">
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 1 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(1)"
           >
           <div>
-            <p class="text-bold">Educación de calidad</p>
-            <p class="text-sm">Merecemos aprender sin límites</p>
+            <p class="font-medium">Educación de calidad</p>
+            <p class="text-sm italic ">Merecemos aprender sin límites</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 2 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(2)"
           >
           <div>
-            <p class="text-bold">Empleo Digno</p>
-            <p class="text-sm">Trabajar bien, vivir mejor</p>
+            <p class="font-medium">Empleo Digno</p>
+            <p class="text-sm italic ">Trabajar bien, vivir mejor</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 3 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(3)"
           >
           <div>
-            <p class="text-bold">Espacios Públicos Seguros</p>
-            <p class="text-sm">Calles sin miedo</p>
+            <p class="font-medium">Espacios Públicos Seguros</p>
+            <p class="text-sm italic ">Calles sin miedo</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 4 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(4)"
           >
           <div>
-            <p class="text-bold">Participación Política Juvenil</p>
-            <p class="text-sm">Alzar la voz, ser parte del cambio</p>
+            <p class="font-medium">Participación Política Juvenil</p>
+            <p class="text-sm italic ">Alzar la voz, ser parte del cambio</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 5 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(5)"
           >
           <div>
-            <p class="text-bold">Transporte Público Digno</p>
-            <p class="text-sm">Movilidad sin barreras</p>
+            <p class="font-medium">Transporte Público Digno</p>
+            <p class="text-sm italic ">Movilidad sin barreras</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 6 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(6)"
           >
           <div>
-            <p class="text-bold">Salud Integral</p>
-            <p class="text-sm">Cuerpo y mente en equilibrio</p>
+            <p class="font-medium">Salud Integral</p>
+            <p class="text-sm italic ">Cuerpo y mente en equilibrio</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 7 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(7)"
           >
           <div>
-            <p class="text-bold">Ambiente Sano</p>
-            <p class="text-sm">El planeta es nuestro hogar</p>
+            <p class="font-medium">Ambiente Sano</p>
+            <p class="text-sm italic ">El planeta es nuestro hogar</p>
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl font-semibold text-xl w-full border-solid border-2 flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 8 ? 'text-black bg-mindaro border-mindaro' : 'text-white'" 
           @click="showTopicDescription(8)"
           >
           <div>
-            <p class="text-bold">Ocio y Cultura</p>
-            <p class="text-sm">Espacios para crear y soñar</p>
+            <p class="font-medium">Ocio y Cultura</p>
+            <p class="text-sm italic ">Espacios para crear y soñar</p>
           </div>
         </div>
       </div>
       <div class="my-10 px-5 text-center">
         <UCard id="theDescription">
           <div v-if="topicDescription === 1">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Educación de calidad</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Educación de calidad</p>
             <p>Tenemos derecho a una educación que realmente nos prepare para el mundo, sin importar dónde vivamos o qué recursos tengamos. Apostamos por una educación que valore nuestras historias y que sea accesible para todas las personas.</p>
           </div>
           <div v-if="topicDescription === 2">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Empleo Digno</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Empleo Digno</p>
             <p>Sabemos lo difícil que es encontrar un trabajo estable y justo. Exigimos empleos formales que incluyan seguridad social y pensiones, sin contratos basura. Además, queremos que se apoyen los emprendimientos juveniles para que seamos quienes generemos empleo, con oportunidades reales de crecimiento económico y personal.</p>
           </div>
           <div v-if="topicDescription === 3">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Espacios Públicos Seguros</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Espacios Públicos Seguros</p>
             <p>Las calles y los espacios públicos deberían ser seguros para todas las personas, sin importar su género o identidad. Necesitamos lugares donde podamos caminar sin miedo, con botones de pánico y acciones para prevenir la violencia de género y basada en el prejuicio. Creemos en espacios seguros, inclusivos y llenos de vida.</p>
           </div>
           <div v-if="topicDescription === 4">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Participación Política Juvenil</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Participación Política Juvenil</p>
             <p>Queremos ser parte activa en las decisiones que afectan nuestras vidas. Exigimos espacios donde nuestra voz se escuche y tenga impacto real. Desde los Consejos de Juventud hasta las mesas de dialogo, estamos listos para liderar y transformar la política con ideas frescas y una perspectiva juvenil.</p>
           </div>
           <div v-if="topicDescription === 5">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Transporte Público Digno</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Transporte Público Digno</p>
             <p>Moverse por la ciudad no debería ser un lujo. Queremos tarifas justas para estudiantes, transporte accesible y seguro las 24 horas, y que sea sostenible con el ambiente. El transporte público debería estar pensado para nuestras necesidades, sin importar si es de día o de noche.</p>
           </div>
           <div v-if="topicDescription === 6">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Salud Integral</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Salud Integral</p>
             <p>La salud va más allá de lo físico. Necesitamos servicios de salud mental y sexual que no nos juzguen ni nos estigmaticen. Queremos acceso a programas que nos hablen de autocuidado, consentimiento y desarrollo libre de nuestra sexualidad, con profesionales que entiendan nuestras realidades y necesidades.</p>
           </div>
           <div v-if="topicDescription === 7">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Ambiente Sano</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Ambiente Sano</p>
             <p>El cambio climático es nuestro problema, y queremos soluciones reales. Exigimos ser parte de las decisiones que afectan el ambiente, desde la conservación de humedales hasta políticas climáticas internacionales. La juventud está lista para liderar la protección del planeta.</p>
           </div>
           <div v-if="topicDescription === 8">
-            <p class="font-bold text-2xl underline text-pumpkin leading-tight mb-3">Ocio y Cultura</p>
+            <p class="font-medium text-3xl text-pumpkin-500 uppercase leading-tight mb-3">Ocio y Cultura</p>
             <p>Necesitamos más lugares donde podamos expresarnos libremente. Queremos acceso a actividades culturales, deportivas y recreativas que nos ayuden a crecer y a desarrollar nuestras pasiones. El ocio y la cultura también son esenciales para vivir una vida plena y conectada con nuestras comunidades.</p>
           </div>
         </UCard>

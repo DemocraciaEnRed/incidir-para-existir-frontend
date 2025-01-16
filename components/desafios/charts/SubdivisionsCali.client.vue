@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 
 <script setup>
 import { registerMap } from 'echarts/core';
@@ -45,16 +46,8 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
         max: maxValue,
         inRange: {
           color: [
-            '#fff7ed',
-            '#ffeed4',
-            '#ffd8a8',
-            '#ffbc70',
-            '#ff9437',
-            '#ff7109',
-            '#f05906',
-            '#c74207',
-            '#9e340e',
-            '#7f2d0f',
+          '#00000000',
+          '#ff7109ff',
           ]
         },
         text: ['High', 'Low'],
@@ -63,13 +56,21 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
       series: [{
         name: 'Desafios',
         type: 'map',
+        roam: true,
         map: 'cali_map',
         emphasis: {
+          itemStyle: {
+            areaColor: null,
+            borderColor: "#FFFFFF",
+            borderWidth: 3,
+            label: {
+              show: false
+            }
+          },
           label: {
             show: false
           }
         },
-
         data: graphDataAux
       }]
     }

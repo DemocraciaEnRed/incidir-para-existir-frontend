@@ -20,11 +20,12 @@
     "echarts": "^5.5.1",
     "eslint": "^9.16.0",
     "next-auth": "~4.21.1",
-    "nuxt": "^3.14.159",
+    "nuxt": "^3.15.0",
     "nuxt-echarts": "^0.2.4"
   },
   "dependencies": {
     "@iconify-json/heroicons": "^1.2.1",
+    "vue-picture-cropper": "^0.7.0",
     "yup": "^1.6.0"
   }
 }

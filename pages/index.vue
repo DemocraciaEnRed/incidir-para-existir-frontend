@@ -41,7 +41,7 @@ onMounted(() => {
       <div class="relative">
         <div class="overlay-content">
           <div class="w-9/12">
-            <p class="font-inter font-bold text-2xl md:text-3xl lg:text-6xl mb-3 drop-shadow-lg">¡Les damos la bienvenida a Incidir para Existir!</p>
+            <p class="font-inter font-bold text-4xl lg:text-6xl mb-3 drop-shadow-xl">¡Les damos la bienvenida a Incidir para Existir!</p>
             <p class="font-inter font-bold lg:text-2xl">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
           </div>
         </div>
@@ -90,8 +90,8 @@ onMounted(() => {
             <p class="font-bold text-2xl">Este es un proyecto de Movilizatorio apoyado por el Fondo de las Naciones Unidas para la Democracia</p>
         </div>
       </div>
-      <UCarousel v-slot="{ item }" :items="imgPhotoCarrousel" :ui="{ wrapper: 'relative px-10',item: 'basis-full md:basis-1/2 lg:basis-1/4' }" arrows>
-        <img :src="item" class="w-full px-6" draggable="false">
+      <UCarousel v-slot="{ item }" :items="imgPhotoCarrousel" :ui="{ wrapper: 'relative px-10',item: 'basis-full md:basis-1/2 lg:basis-1/4 my-3 mx-4 rounded-lg' }" arrows>
+        <img :src="item" class="w-full rounded-lg cursor-grab" draggable="false">
       </UCarousel>
       <h3 class="text-center font-black text-2xl lg:text-4xl text-pumpkin-500 my-20">¡WOW! ¡Gracias por creer en el poder de la juventud! Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</h3>
     </UContainer>
