@@ -48,7 +48,7 @@
 
 <template>
   <div>
-    <UCard v-if="isLoading">
+    <UCard class="my-3" v-if="isLoading">
       <LoadingBar  />
     </UCard>
     <div class="space-y-3">
