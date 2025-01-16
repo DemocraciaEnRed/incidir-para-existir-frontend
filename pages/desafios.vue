@@ -29,7 +29,7 @@ const showDesafiosForm = ref(false)
 <template>
   <UContainer>
     <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
-      <div class="w-full lg:w-1/2 text-center md:text-left">
+      <div class="w-full lg:w-1/2 text-center">
         <p class="font-oswald text-5xl uppercase leading-tight text-mindaro mb-5">Entérate de los desafíos de las juventudes en tu ciudad y déjanos saber cuáles son tus propuestas</p>
       </div>
       <div class="w-full lg:w-1/2">
