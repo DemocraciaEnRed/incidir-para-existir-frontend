@@ -65,7 +65,7 @@ const showTopicDescription = (sectionNumber) => {
       <p class="font-bold text-2xl text-mindaro text-center leading-tight my-10">Explorá las líneas temáticas</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-10">
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 1 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(1)"
           >
@@ -75,7 +75,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 2 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(2)"
           >
@@ -85,7 +85,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 3 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(3)"
           >
@@ -95,7 +95,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 4 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(4)"
           >
@@ -105,7 +105,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 5 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(5)"
           >
@@ -115,7 +115,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 6 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(6)"
           >
@@ -125,7 +125,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 7 ? 'text-black bg-mindaro border-mindaro' : 'text-white'"
           @click="showTopicDescription(7)"
           >
@@ -135,7 +135,7 @@ const showTopicDescription = (sectionNumber) => {
           </div>
         </div>
         <div
-          class="px-5 py-3 rounded-xl text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
+          class="px-5 py-3 rounded-full text-xl w-full border-solid border flex items-center justify-between cursor-pointer"
           :class="topicDescription === 8 ? 'text-black bg-mindaro border-mindaro' : 'text-white'" 
           @click="showTopicDescription(8)"
           >
