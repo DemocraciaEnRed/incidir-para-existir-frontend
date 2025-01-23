@@ -5,11 +5,15 @@ const links = [{
   to: '/admin/blog',
   exact: true
 }, {
-  label: 'Crear',
+  label: 'Crear entrada',
   icon: 'i-heroicons-plus',
   to: '/admin/blog/crear',
   exact: true
-}]
+}, {
+  label: 'Categorias',
+  to: '/admin/blog/categorias',
+  exact: true
+},]
 </script>
 
 <template>

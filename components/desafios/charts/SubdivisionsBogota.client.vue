@@ -87,6 +87,9 @@ const isLoading = computed(() => status.value === 'pending');
   <UCard>
     <UProgress v-if="isLoading" />
     <VChart class="chart" :option="chartOption" autoresize />
+    <template #footer>
+      <p class="text-xs text-gray-400"><b>Este mapa es interactivo</b>: Selecciona una ciudad para explorar los desafíos reportados en detalle. Las áreas demarcadas reflejan la concentración de reportes y la intensidad de los desafíos según los colores</p>
+    </template>
   </UCard>
 </template>
 

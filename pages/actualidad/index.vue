@@ -9,13 +9,15 @@ definePageMeta({
 </script>
 <template>
   <div class="mt-10">
-    <UContainer class="py-9">
-      <div class="grid grid-cols-2 gap-4">
-        <div>
+    <UContainer class="">
+      <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
+        <div class="w-full lg:w-1/2 text-center">
           <p class="font-oswald text-5xl  leading-tight text-[#D4F779] mb-5">ACTUALIDAD DE LA JUVENTUD</p>
           <p class="font-bold text-xl leading-tight mb-5">En este espacio podrás interactuar con noticias, eventos, actualidad, opiniones y enlaces que te pueden interesar.<br><br>¡Explora y mantente al tanto de todo lo que le importa a la juventud!</p>
         </div>
-        <img src="/img/noticias01.png" class="w-full rounded-2xl" alt="">
+        <div class="w-full lg:w-1/2">
+          <img src="/img/noticias01.png" class="w-full lg:w-4/5 mx-auto rounded-2xl" alt="">
+        </div>
       </div>
     </UContainer>
     <div class="bg-electricViolet-800">

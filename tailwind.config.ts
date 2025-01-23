@@ -2,6 +2,7 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import aspectRatio from '@tailwindcss/aspect-ratio'
+import typography from '@tailwindcss/typography'
 
 export default <Partial<Config>>{
   theme: {
@@ -60,6 +61,7 @@ export default <Partial<Config>>{
     }
   },
   plugins: [
-    aspectRatio
+    aspectRatio,
+    typography
   ]
 }

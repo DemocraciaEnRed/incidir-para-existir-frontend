@@ -8,8 +8,8 @@ import {
 } from 'yup'
 
 const { $api } = useNuxtApp()
-const { data: sessionData } = useAuth()
 
+const toast = useToast()
 
 const isLoading = ref(false)
 const dimensions = ref([])
@@ -29,9 +29,9 @@ const contactSchema = YupObject({
 })
 
 const contactState = reactive({
-  fullname: 'Mauricio Quines Lorea',
-  email: 'afakemail@yahoo.com',
-  phone: '6512316543',
+  fullname: '',
+  email: '',
+  phone: '',
   keepPrivate: true // privacy by default
 })
 
@@ -40,14 +40,16 @@ const initiativeSchema = YupObject({
   description: YupString().max(500).required('Este campo es requerido'),
   needsAndOffers: YupString().max(500).required('Este campo es requerido'),
   subdivisionId: YupNumber().required('Este campo es requerido'),
+  cityId: YupNumber().required('Este campo es requerido'),
   // dimensionsIds must be an array and there must be one or two dimension IDs 
   dimensionIds: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes tematicos').required('Este campo es requerido')
 })
 
 const initiativeState = reactive({
-  name: 'Estaban los pájaros cantando',
-  description: 'En la rama de un árbol',
-  needsAndOffers: 'Cuando llegó el cazador',
+  name: '',
+  description: '',
+  needsAndOffers: '',
+  cityId: null,
   subdivisionId: null,
   dimensionIds: []
 })
@@ -66,6 +68,7 @@ const getInitData = async () => {
     ])
     dimensions.value = dimensionsData
     subdivisions.value = subdivisionsData
+
   } catch (error) {
     console.error(error)
   } finally {
@@ -81,30 +84,48 @@ const addDimention = (dimension) => {
   } else {
     if(initiativeState.dimensionIds.length < 2) {
       initiativeState.dimensionIds.push(dimension.id)
+    } else {
+      // show a toast
+      toast.add({
+        title: 'Solo puedes seleccionar hasta dos ejes temáticos',
+        description: 'Por favor, deselecciona uno de los ejes temáticos seleccionados',
+        color: 'red',
+      })
     }
   }
 }
 
+const citiesOptions = computed(() => {
+  const cities = []
+  if(!subdivisions.value) return []
+  subdivisions.value.forEach(subdivision => {
+    // check if city is already in the list
+    const city = cities.find(city => city.id === subdivision.city.id)
+    if(!city) {
+      cities.push(subdivision.city)
+    }
+  })
+  return cities
+})
+
 const subdivisionsOptions = computed(() => {
-  if(!sessionData.value.user.subdivision) return []
-  if(!sessionData.value.user.subdivision.city) return []
-  if(!sessionData.value.user.subdivision.city.id) return []
+  if(!initiativeState.cityId) return []
   // filtered subdivisions
   const filteredSubdivisions = subdivisions.value.filter(subdivision => {
-    return subdivision.city.id === sessionData.value.user.subdivision.city.id
+    if(!initiativeState.cityId) return true
+    return subdivision.city.id === initiativeState.cityId
   })
   return filteredSubdivisions
 })
 
 const selectedLabelSubdivisions = computed(() => {
-  if(sessionData.value.user.subdivision.city.id === 1) return "Cali: Selecciona el corregimiento de la iniciativa"
-  if(sessionData.value.user.subdivision.city.id === 2) return "Bogota: Selecciona la comuna de la iniciativa"
+  if(initiativeState.cityId === 1) return "Cali: Selecciona el corregimiento de la iniciativa"
+  if(initiativeState.cityId === 2) return "Bogota: Selecciona la comuna de la iniciativa"
   return '-'
 })
 
 const handleSubmitContactForm = async () => {
   try {
-    console.log(sessionData.value.user)
     showContactForm.value = true
     showInitiativeForm.value = true
     contactFormIsValid.value = true
@@ -117,7 +138,11 @@ const handleSubmitInitiativeForm = async () => {
   try {
     submitLoading.value = true
     const payload = {
-      ...initiativeState,
+      name: initiativeState.name,
+      description: initiativeState.description,
+      needsAndOffers: initiativeState.needsAndOffers,
+      subdivisionId: initiativeState.subdivisionId,
+      dimensionIds: initiativeState.dimensionIds,
       contact: contactState
     }
     await $api('/initiatives', {
@@ -160,17 +185,16 @@ const handleSubmitInitiativeForm = async () => {
       </template>
     </UAlert>
     <div v-if="!submitSuccess">
-      <p class="text-2xl text-pumpkin-500 font-bold mb-5 text-center">SUMÁ TU INICIATIVA</p>
-      <UDivider size="lg" class="my-8" label="Paso 1. Datos de contacto" />
+      <UDivider size="lg" class="mb-8" label="Paso 1. Datos de contacto" />
       <UForm v-if="showContactForm" :state="contactState" :schema="contactSchema" class="space-y-4" @submit="handleSubmitContactForm">
         <UFormGroup name="fullname" label="Nombre completo" required>
-          <UInput v-model="contactState.fullname" size="lg" icon="i-heroicons-user" :disabled="contactFormIsValid" />
+          <UInput v-model="contactState.fullname" size="lg" icon="i-heroicons-user" :disabled="contactFormIsValid" placeholder="Escriba aquí..." />
         </UFormGroup>
         <UFormGroup name="email" label="Email" required>
-          <UInput v-model="contactState.email" size="lg" icon="i-heroicons-envelope" :disabled="contactFormIsValid" />
+          <UInput v-model="contactState.email" size="lg" icon="i-heroicons-envelope" :disabled="contactFormIsValid"  placeholder="Escriba aquí..." />
         </UFormGroup>
         <UFormGroup name="phone" label="Teléfono" required>
-          <UInput v-model="contactState.phone" size="lg" icon="i-heroicons-phone" :disabled="contactFormIsValid" />
+          <UInput v-model="contactState.phone" size="lg" icon="i-heroicons-phone" :disabled="contactFormIsValid"  placeholder="Escriba aquí..." />
         </UFormGroup>
         <UFormGroup name="keepPrivate" label="Privacidad" required>
           <template #description>
@@ -182,7 +206,7 @@ const handleSubmitInitiativeForm = async () => {
             </template>
           </UCheckbox>
         </UFormGroup>
-        <UButton v-if="!showInitiativeForm" type="submit" color="pumpkin" block size="lg" >Siguiente</UButton>
+        <UButton v-if="!showInitiativeForm" class="text-xl font-medium" type="submit" variant="outline" color="pumpkin" block size="lg" :ui="{ rounded: 'rounded-full' }" >Siguiente</UButton>
       </UForm>
       <div v-if="showInitiativeForm">
         <UDivider size="lg" class="my-8" label="Paso 2. Datos de la iniciativa" />
@@ -195,6 +219,7 @@ const handleSubmitInitiativeForm = async () => {
               :color="initiativeState.dimensionIds.includes(dimension.id) ? 'mindaro' : 'white'"
               :variant="initiativeState.dimensionIds.includes(dimension.id) ? 'solid' : 'outline'"
               class="cursor-pointer px-3"
+              size="lg"
               :ui="{ rounded: 'rounded-full' }"
               @click="addDimention(dimension)">
                 {{ dimension.name }}
@@ -205,25 +230,28 @@ const handleSubmitInitiativeForm = async () => {
             <template #description>
               ¿Cómo se llama tu iniciativa / parche o movimiento?
             </template>
-            <UInput v-model="initiativeState.name" size="lg" />
+            <UInput v-model="initiativeState.name" size="lg" placeholder="Escriba aquí..." />
           </UFormGroup>
-          <UFormGroup class="" :label="selectedLabelSubdivisions" name="subdivisionId" required>
-            <USelect v-model.number="initiativeState.subdivisionId" :options="subdivisionsOptions" value-attribute="id" option-attribute="name" />
+          <UFormGroup label="Seleccione la ciudad de la iniciativa" name="cityId" required>
+            <USelect v-model.number="initiativeState.cityId" :options="citiesOptions" value-attribute="id" option-attribute="name" placeholder="Seleccione una ciudad" />
+          </UFormGroup>
+          <UFormGroup v-if="initiativeState.cityId" class="" :label="selectedLabelSubdivisions" name="subdivisionId" required>
+            <USelect v-model.number="initiativeState.subdivisionId" :options="subdivisionsOptions" value-attribute="id" option-attribute="name" placeholder="Selecciona una opcion" />
           </UFormGroup>
           <UFormGroup name="description" label="Descripción" required>
             <template #description>
               Describe de forma breve tu iniciativa. <i class="text-pumpkin">(Máximo 500 caracteres)</i>
             </template>
-            <UTextarea v-model="initiativeState.description" />
+            <UTextarea v-model="initiativeState.description" placeholder="Escriba aquí..." />
           </UFormGroup>
           <UFormGroup name="needsAndOffers" label="Necesidades y ofertas" required>
             <template #description>
               ¿Qué podría ofrecer o compartir la red a mi iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
             </template>
-            <UTextarea v-model="initiativeState.needsAndOffers" />
+            <UTextarea v-model="initiativeState.needsAndOffers" placeholder="Escriba aquí..." />
           </UFormGroup>
           <UDivider size="lg" class="py-5" label="Paso 3. Enviar formulario" />
-          <UButton type="submit" class="text-xl font-semibold" block color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Enviar</UButton>
+          <UButton type="submit" class="text-xl font-medium" block color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Enviar</UButton>
         </UForm>
       </div>
     </div>

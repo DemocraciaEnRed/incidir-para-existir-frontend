@@ -2,13 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-13",
   devtools: { enabled: true },
-  modules: [
-    "@nuxt/ui",
-    "@nuxt/fonts",
-    "@sidebase/nuxt-auth",
-    '@nuxt/eslint',
-    'nuxt-echarts'
-  ],
+  modules: ["@nuxt/ui", "@nuxt/fonts", "@sidebase/nuxt-auth", '@nuxt/eslint', 'nuxt-echarts', 'nuxt-tiptap-editor'],
   colorMode: {
     preference: 'dark'
   },
@@ -38,6 +32,7 @@ export default defineNuxtConfig({
           id: 'string', 
           firstName: 'string',
           lastName: 'string',
+          fullName: 'string',
           email: 'string', 
           role: '\'admin\' | \'user\'', 
           subdivision: '{ id: number, name: string, city: { id: number, name: string } }',

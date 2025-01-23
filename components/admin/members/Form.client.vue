@@ -149,7 +149,7 @@ const setPictureResult = async (cropperResult) => {
               <p class="text-xs">La imagen debe ser cuadrada. Se abrirá un modal para que pueda ajustar la imagen</p>
             </template>
             <img v-if="pictureResult && pictureResult.dataURL" :src="pictureResult.dataURL" alt="Imagen de perfil" class="border border-gray-700 rounded-xl mx-auto my-2" >
-            <UploadPictureSetup :aspect-ratio="1/1" @set-picture="setPictureResult" />
+            <UploadPicture :aspect-ratio="1/1" @set-picture="setPictureResult" />
           </UFormGroup>
           <UFormGroup v-else label="Foto de perfil">
             <img v-if="editMode && alreadyHasPicture" :src="props.existingMember.imageUrl" alt="Imagen de perfil" class="border border-gray-700 rounded-xl mx-auto" >

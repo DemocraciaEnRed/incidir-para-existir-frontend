@@ -1,4 +1,6 @@
 <script setup>
+import { AdminBlogDeleteModal } from '#components'
+
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',
@@ -8,10 +10,10 @@ definePageMeta({
   }
 })
 
-// const { $api } = useNuxtApp()
+const { $api } = useNuxtApp()
 
-// const modal = useModal()
-// const toast = useToast()
+const modal = useModal()
+const toast = useToast()
 
 const posts = ref([])
 const page = ref(1)
@@ -59,16 +61,16 @@ const itemsMenu = (row) => {
   }], [{
     label: 'Editar',
     icon: 'i-heroicons-pencil-square-20-solid',
-    disabled: true,
-    click: () => navigateTo(`/admin/usuarios/${row.id}/editar`)
+    click: () => navigateTo(`/admin/blog/${row.id}/editar`)
   }, {
     label: 'Eliminar',
     icon: 'i-heroicons-trash-20-solid',
-    disabled: true,
-    // click: () => openDeleteInitiativeModal(row)
+    click: () => openDeleteEntryModal(row)
   }]]
   return options
 }
+
+
 
 const columns = [
   {
@@ -89,11 +91,43 @@ const columns = [
     rowClass: 'text-xs text-center'
   },
   {
+    key: 'createdAt',
+    label: 'Publicado',
+    class: 'text-center',
+    rowClass: 'text-xs text-center'
+  },
+  {
     key: 'actions',
     rowClass: 'text-right',
   },
 ]
 
+
+const openDeleteEntryModal = (entry) => {
+  modal.open(AdminBlogDeleteModal, {
+    entry: entry,
+    onDeleteEntry: () => {
+      deleteEntry(entry)
+    },
+    onCloseModal: () => {
+      modal.close()
+    }
+  })
+}
+
+const deleteEntry = async (entry) => {
+  try {
+    await $api(`/blog/${entry.id}`, {
+      method: 'DELETE'
+    })
+    refresh()
+    // close the modal
+    modal.close()
+  } catch (error) {
+    console.log('Error', error)
+    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el post', color: 'red' })
+  }
+}
 </script>
 
 <template>
@@ -114,6 +148,9 @@ const columns = [
       <template #title-data="{ row }">
         <p class="font-medium">{{ row.title }}</p>
         <p class="text-xs text-gray-500">{{ row.subtitle }}</p>
+      </template>
+      <template #createdAt-data="{ row }">
+        <p>{{ formatDate(row.createdAt) }}</p>
       </template>
       <template #actions-data="{ row }">
         <UDropdown :items="itemsMenu(row)">

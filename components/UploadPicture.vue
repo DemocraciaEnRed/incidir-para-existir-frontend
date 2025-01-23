@@ -4,16 +4,15 @@
     <section class="section">
 
       <!-- Set a button that invokes selecting an image -->
-      <button class="select-picture">
-        <UButton @click="openFile">Seleccionar imagen</UButton>
-        <input
-          ref="uploadInput"
-          type="file"
-          class="hidden"
-          accept="image/jpg, image/jpeg, image/png, image/gif"
-          @change="selectFile"
-        >
-      </button>
+      <UButton v-if="!pic" @click="openFile">Seleccionar imagen</UButton>
+      <UButton v-else @click="erasePicture" >Borrar</UButton>
+      <input
+        ref="uploadInput"
+        type="file"
+        class="hidden"
+        :accept="accept"
+        @change="selectFile"
+      >
     </section>
 
     <!-- Crop result preview -->
@@ -60,7 +59,7 @@
                 viewMode: 1,
                 dragMode: 'crop',
                 // aspectRatio: 16 / 9,
-                aspectRatio: 1/1,
+                aspectRatio: props.aspectRatio,
               }"
               @ready="ready"
             />
@@ -71,121 +70,122 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
-import VuePictureCropper, { cropper } from 'vue-picture-cropper'
+<script setup lang="ts">
+  import { reactive, ref,  } from 'vue'
+  import VuePictureCropper, { cropper } from 'vue-picture-cropper'
 
+  const emit = defineEmits(['setPicture'])
 
-export default defineComponent({
-  components: {
-    VuePictureCropper,
-  },
-  setup() {
-    const isShowModal = ref<boolean>(false)
-    const uploadInput = ref<HTMLInputElement | null>(null)
-    const pic = ref<string>('')
-    const result = reactive({
-      dataURL: '',
-      blobURL: '',
+  const props = defineProps({
+    aspectRatio: {
+      type: Number,
+      default() {
+        return 1/1
+      }
+    },
+    accept:{
+      type: String,
+      default() {
+        return 'image/jpg, image/jpeg, image/png'
+      }    
+    }
+  })
+
+  const isShowModal = ref<boolean>(false)
+  const uploadInput = ref<HTMLInputElement | null>(null)
+  const pic = ref<string>('')
+  const result = reactive({
+    dataURL: '',
+    blobURL: '',
+  })
+
+  function erasePicture() {
+    pic.value = ''
+    result.dataURL = ''
+    result.blobURL = ''
+    emit('setPicture', {})
+  }
+
+  /**
+   * Select the picture to be cropped
+   */
+  function selectFile(e: Event) {
+    // Reset last selection and results
+    pic.value = ''
+    result.dataURL = ''
+    result.blobURL = ''
+
+    // Get selected files
+    const { files } = e.target as HTMLInputElement
+    if (!files || !files.length) return
+
+    // Convert to dataURL and pass to the cropper component
+    const file = files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      // Update the picture source of the `img` prop
+      pic.value = String(reader.result)
+
+      // Show the modal
+      isShowModal.value = true
+
+      // Clear selected files of input element
+      if (!uploadInput.value) return
+      uploadInput.value.value = ''
+    }
+  }
+
+  /**
+   * Get cropping results
+   */
+  async function getResult() {
+    if (!cropper) return
+    const base64 = cropper.getDataURL()
+    const blob: Blob | null = await cropper.getBlob()
+    if (!blob) return
+
+    const file = await cropper.getFile({
+      fileName: 'test-test',
     })
 
-    /**
-     * Select the picture to be cropped
-     */
-    function selectFile(e: Event) {
-      // Reset last selection and results
-      pic.value = ''
-      result.dataURL = ''
-      result.blobURL = ''
+    console.log({ base64, blob, file })
+    result.dataURL = base64
+    result.blobURL = URL.createObjectURL(blob)
+    isShowModal.value = false
+    // emit
+    emit('setPicture', result)
+  }
 
-      // Get selected files
-      const { files } = e.target as HTMLInputElement
-      if (!files || !files.length) return
+  /**
+   * Clear the crop box
+   */
+  function clear() {
+    if (!cropper) return
+    cropper.clear()
+  }
 
-      // Convert to dataURL and pass to the cropper component
-      const file = files[0]
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => {
-        // Update the picture source of the `img` prop
-        pic.value = String(reader.result)
+  /**
+   * Reset the default cropping area
+   */
+  function reset() {
+    if (!cropper) return
+    cropper.reset()
+  }
 
-        // Show the modal
-        isShowModal.value = true
+  /**
+   * The ready event passed to Cropper.js
+   */
+  function ready() {
+    console.log('Cropper is ready.')
+  }
 
-        // Clear selected files of input element
-        if (!uploadInput.value) return
-        uploadInput.value.value = ''
-      }
-    }
-
-    /**
-     * Get cropping results
-     */
-    async function getResult() {
-      if (!cropper) return
-      const base64 = cropper.getDataURL()
-      const blob: Blob | null = await cropper.getBlob()
-      if (!blob) return
-
-      const file = await cropper.getFile({
-        fileName: 'test-test',
-      })
-
-      console.log({ base64, blob, file })
-      result.dataURL = base64
-      result.blobURL = URL.createObjectURL(blob)
-      isShowModal.value = false
-    }
-
-    /**
-     * Clear the crop box
-     */
-    function clear() {
-      if (!cropper) return
-      cropper.clear()
-    }
-
-    /**
-     * Reset the default cropping area
-     */
-    function reset() {
-      if (!cropper) return
-      cropper.reset()
-    }
-
-    /**
-     * The ready event passed to Cropper.js
-     */
-    function ready() {
-      console.log('Cropper is ready.')
-    }
-
-    /**
-     * Open the file dialog
-     */
-    function openFile(event: MouseEvent) {
-      event.preventDefault()
-      if (!uploadInput.value) return
-      uploadInput.value.click()
-    }
-
-    return {
-
-      // Data
-      uploadInput,
-      pic,
-      result,
-      isShowModal,
-      openFile,
-
-      // Methods
-      selectFile,
-      getResult,
-      clear,
-      reset,
-      ready,
-    }
-  },
-})
+  /**
+   * Open the file dialog
+   */
+  function openFile(event: MouseEvent) {
+    event.preventDefault()
+    if (!uploadInput.value) return
+    uploadInput.value.click()
+  }
 </script>

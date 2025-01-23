@@ -2,7 +2,7 @@
   const { $api } = useNuxtApp();
 
   const selectedCategory = defineModel({
-    type: [Object, null],
+    type: [Object, Number, null],
     required: true,
     default: () => null
   })
@@ -19,6 +19,10 @@
         method: 'GET'
       })
       categories.value = data
+      // if selectedCategory is a number, find the object in the array
+      if(typeof selectedCategory.value === 'number'){
+        selectedCategory.value = data.find(category => category.id === selectedCategory.value)
+      }
     } catch (error) {
       console.error(error)
       toast.add({ title: 'Error', description: 'Hubo un error al cargar las categorias de blog', color: 'red' })

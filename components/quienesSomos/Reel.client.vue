@@ -32,13 +32,11 @@
           team: props.team
         }
       })
-      console.log(dataResponse)
       members.value = dataResponse
       isLoading.value = false
     } catch (error) {
       toast.add({title: 'Error', description: 'Ocurrió un error al cargar los miembros', color: 'red'})
       console.error(error)
-
     }
   }
 

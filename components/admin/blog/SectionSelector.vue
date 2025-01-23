@@ -2,7 +2,7 @@
   const { $api } = useNuxtApp();
 
   const selectedSection = defineModel({
-    type: [Object, null],
+    type: [Object, Number, null],
     required: true,
     default: () => null
   })
@@ -19,6 +19,10 @@
         method: 'GET'
       })
       sections.value = data
+      // if selectedSection is a number, find the object in the array
+      if(typeof selectedSection.value === 'number'){
+        selectedSection.value = data.find(section => section.id === selectedSection.value)
+      }
     } catch (error) {
       console.error(error)
       toast.add({ title: 'Error', description: 'Hubo un error al cargar las seccións de blog', color: 'red' })

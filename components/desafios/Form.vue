@@ -152,7 +152,7 @@ const selectDimension = (dimension) => {
       </template>
     </UAlert>
     <div v-if="!submitSuccess">
-      <p class="text-2xl text-pumpkin-500 font-bold mb-5 uppercase">Quiero reportar desafíos y propuestas de la juventud</p>
+      <p class="text-2xl text-mindaro font-bold mb-5 uppercase">Reportar un nuevo desafío</p>
       <UForm :state="state" :schema="schema" class="space-y-4" @submit="handleSubmit">
         <!-- <UFormGroup class="" label="Linea temática" name="dimensionId" required>
           <USelect v-model.number="state.dimensionId" :options="dimensions" value-attribute="id" option-attribute="name" :disabled="submitLoading"/>
@@ -203,7 +203,7 @@ const selectDimension = (dimension) => {
           </UCheckbox>
         </UFormGroup>
         <UDivider />
-        <UButton color="pumpkin" block size="xl" type="submit" :loading="submitLoading">Reportar</UButton>
+        <UButton class="text-xl font-medium" :loading="submitLoading" type="submit" color="pumpkin" block size="lg" :ui="{ rounded: 'rounded-full' }">Reportar</UButton>
       </UForm>
     </div>
     <div v-else class="text-center">

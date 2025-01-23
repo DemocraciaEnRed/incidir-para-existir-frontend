@@ -41,8 +41,8 @@ onMounted(() => {
       <div class="relative">
         <div class="overlay-content">
           <div class="w-9/12">
-            <p class="font-inter font-bold text-4xl lg:text-6xl mb-3 drop-shadow-xl">¡Les damos la bienvenida a Incidir para Existir!</p>
-            <p class="font-inter font-bold lg:text-2xl">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
+            <p class="font-inter font-bold text-4xl lg:text-6xl mb-3 drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">¡Les damos la bienvenida a Incidir para Existir!</p>
+            <p class="font-inter font-bold lg:text-2xl drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
           </div>
         </div>
         <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px]', container: 'rounded-lg h-full', indicators: {base: 'z-10', wrapper: 'relative bottom-0 h-[40px]'} }" 
@@ -54,22 +54,34 @@ onMounted(() => {
             </div>
           </template>
           <template #indicator="{ onClick, page, active }">
-            <UButton  color="mindaro" :variant="active ? 'solid' : 'outline'" size="2xs" class="rounded-full min-w-4 min-h-4 justify-center" @click="onClick(page)" />
+            <UButton  color="mindaro" :variant="active ? 'solid' : 'outline'" size="2xs" class="rounded-full min-w-5 min-h-5 justify-center" @click="onClick(page)" />
           </template>
         </UCarousel>
       </div>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full md:w-8/12 lg:w-1/2">
           <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¡BIENVENIDOS A INCIDIR PARA EXISTIR!</p>
-            <div class="space-y-3">
-              <p class="text-pumpkin-500 font-bold">En esta plataforma, podrás:</p>
-              <ul class="list-disc">
-                <li>Encontrar y conectar con una red de jóvenes apasionados por crear cambio.</li>
-                <li>Ver y rastrear iniciativas juveniles, proyectos y acciones que buscan transformar la sociedad.</li>
-                <li>Reportar y conocer los desafios de la juventud en Bogotá y Cali</li>
-                <li>Descubir las voces y en qué anda la juventud Caleña y Bogotana.</li>
-              </ul>
-              <p>Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo</p>
+            <div class="space-y-4">
+              <p class="font-medium">Somos una red de jóvenes activistas en Cali y Bogotá que buscan la construcción de realidades dignas para las juventudes. <span class="text-pumpkin-500">En esta plataforma, podrás:</span></p>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <UButton to="/quienes-somos" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
+                  <p>Encontrar y conectar con una <ULink to="/quienes-somos" class="text-mindaro-500 underline">red de jóvenes</ULink> apasionados por crear cambio</p>
+                </div>
+                <div class="flex items-center">
+                  <UButton to="/iniciativas" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
+                  <p>Ver y rastrear <ULink to="/iniciativas" class="text-mindaro-500 underline">iniciativas</ULink> juveniles, proyectos y acciones que buscan transformar la sociedad</p>
+                </div>
+                <div class="flex items-center">
+                  <UButton to="/desafios" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
+                  <p>Reportar y conocer los <ULink to="/desafios" class="text-mindaro-500 underline">desafios</ULink> de la juventud en Bogotá y Cali</p>
+                </div>
+                <div class="flex items-center">
+                  <UButton to="/actualidad" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
+                  <p><ULink to="/actualidad" class="text-mindaro-500 underline">Descubir</ULink> las voces y en qué anda la juventud Caleña y Bogotana</p>
+                </div>
+              </div>
+              <p class="font-medium italic">Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo</p>
             </div>
           </div>
         <div class="w-full md:w-1/3 lg:w-1/2">
@@ -78,22 +90,14 @@ onMounted(() => {
       </div>
        
       <div class="space-y-7 my-16 lg:w-10/12 mx-auto">
-        <div class="flex flex-col sm:flex-row gap-8 justify-between items-center">
-          <div class="w-full md:w-1/2">
-            <a href="https://movilizatorio.org/" ><img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="w-full"></a>
-          </div>
-          <div class="w-full md:w-1/2">
-            <img src="/img/undef-logo.png" alt="UNDEF" class="w-full">
-          </div>
-        </div>
         <div class="w-full text-center">
-            <p class="font-bold text-2xl">Este es un proyecto de Movilizatorio apoyado por el Fondo de las Naciones Unidas para la Democracia</p>
+            <p class="font-bold text-xl md:text-2xl">Este es un proyecto de <ULink to="https://movilizatorio.org" class="text-mindaro underline">Movilizatorio</ULink> apoyado por el <ULink to="https://www.un.org/democracyfund/" class="text-mindaro underline">Fondo de las Naciones Unidas para la Democracia</ULink></p>
         </div>
       </div>
       <UCarousel v-slot="{ item }" :items="imgPhotoCarrousel" :ui="{ wrapper: 'relative px-10',item: 'basis-full md:basis-1/2 lg:basis-1/4 my-3 mx-4 rounded-lg' }" arrows>
         <img :src="item" class="w-full rounded-lg cursor-grab" draggable="false">
       </UCarousel>
-      <h3 class="text-center font-black text-2xl lg:text-4xl text-pumpkin-500 my-20">¡WOW! ¡Gracias por creer en el poder de la juventud! Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</h3>
+      <h3 class="text-center font-black text-2xl lg:text-3xl text-pumpkin-500 my-20">¡WOW! ¡Gracias por creer en el poder de la juventud! Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</h3>
     </UContainer>
   </div>
 </template>

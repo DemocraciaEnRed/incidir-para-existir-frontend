@@ -14,9 +14,10 @@ definePageMeta({
 
 <template>
   <div>
-    <h1 class="font-oswald text-4xl">PANEL DE ADMINISTRACIÓN</h1>
-    <UDivider class="my-3" />
-    <h1 class="font-oswald text-2xl font-light">Algunas estadisticas...</h1>
+    <div class="space-y-1">
+      <h1 class="font-oswald text-4xl">PANEL DE ADMINISTRACIÓN</h1>
+      <h1 class="font-oswald text-2xl font-light text-gray-500">Algunas estadisticas...</h1>
+    </div>
     <AdminStatDashboard />
   </div>
 </template>
