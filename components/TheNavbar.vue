@@ -52,7 +52,7 @@ const items = computed(() => [
             <NuxtLink to="/iniciativas" active-class="text-mindaro" class="navbar-item leading-none text-center">Iniciativas<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item leading-none text-center">Desafios<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item leading-none text-center">Actualidad<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
-            <UButton to="https://linktr.ee/incidirparaexistir" target="_blank" color="mindaro" :ui="{ rounded: 'rounded-full' }">Contactános</UButton>
+            <UButton to="https://linktr.ee/incidirparaexistir" target="_blank" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize">Contactános</UButton>
             <!-- <UButton v-if="!loggedIn" to="/login" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton> -->
             <!-- <UButton v-if="loggedIn" color="orange" variant="solid" icon="i-heroicons-arrow-left-start-on-rectangle-16-solid" @click="handleLogout">Salir</UButton> -->
             <!-- <NuxtLink v-if="!loggedIn" to="/login" class="navbar-item">
