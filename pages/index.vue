@@ -45,7 +45,7 @@ onMounted(() => {
             <p class="font-inter font-bold lg:text-2xl drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
           </div>
         </div>
-        <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px]', container: 'rounded-lg h-full', indicators: {base: 'z-10', wrapper: 'relative bottom-0 h-[40px]'} }" 
+        <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px]', container: 'h-full', indicators: {base: 'z-10', wrapper: 'relative bg-gray-800 bottom-0 h-[40px]'} }" 
         class="carrousel rounded-lg overflow-hidden relative mb-6 min-h-[500px]" indicators>
           <template #default="{ item }">
             <div class="overlay" />
