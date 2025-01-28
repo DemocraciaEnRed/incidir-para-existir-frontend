@@ -1,4 +1,7 @@
 <script setup>
+import { AdminUserDisableModal, AdminUserEnableModal  } from '#components'
+
+
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',
@@ -8,10 +11,10 @@ definePageMeta({
   }
 })
 
-// const { $api } = useNuxtApp()
+const { $api } = useNuxtApp()
 
-// const modal = useModal()
-// const toast = useToast()
+const modal = useModal()
+const toast = useToast()
 
 const users = ref([])
 const page = ref(1)
@@ -42,29 +45,22 @@ const itemsMenu = (row) => {
   const options = [{
     label: 'Editar',
     icon: 'i-heroicons-pencil-square-20-solid',
-    disabled: true,
     click: () => navigateTo(`/admin/usuarios/${row.id}/editar`)
-  }, {
-    label: 'Eliminar',
-    icon: 'i-heroicons-trash-20-solid',
-    disabled: true,
-    // click: () => openDeleteInitiativeModal(row)
   }]
-  
-  // if(row.emailVerified) {
-  //   // push at the beginning
-  //   options.unshift({
-  //     label: 'Inhabilitar',
-  //     icon: 'i-heroicons-eye-slash-20-solid',
-  //     click: () => disableUser(row)
-  //   })
-  // } else {
-  //   options.unshift({
-  //     label: 'Habilitar',
-  //     icon: 'i-heroicons-eye-20-solid',
-  //     click: () => enableUser(row)
-  //   })
-  // }
+  if(row.emailVerified) {
+    // push at the beginning
+    options.unshift({
+      label: 'Inhabilitar',
+      icon: 'i-heroicons-eye-slash-20-solid',
+      click: () => openDisableUserModal(row)
+    })
+  } else {
+    options.unshift({
+      label: 'Habilitar',
+      icon: 'i-heroicons-eye-20-solid',
+      click: () => openEnableUserModal(row)
+    })
+  }
 
   return [options]
 }
@@ -88,6 +84,12 @@ const columns = [
   },
   {
     key: 'emailVerified',
+    label: 'Verificado',
+    class: 'text-center',
+    rowClass: 'text-center',
+  },
+  {
+    key: 'disabled',
     label: 'Habilitado',
     class: 'text-center',
     rowClass: 'text-center',
@@ -99,6 +101,57 @@ const columns = [
   },
 ]
 
+const openDisableUserModal = (user) => {
+  modal.open(AdminUserDisableModal, {
+    user: user,
+    onDisableUser: () => {
+      disableUser(user)
+    },
+    onCloseModal: () => {
+      modal.close()
+    }
+  })
+}
+
+const openEnableUserModal = (user) => {
+  modal.open(AdminUserEnableModal, {
+    user: user,
+    onEnableUser: () => {
+      enableUser(user)
+    },
+    onCloseModal: () => {
+      modal.close()
+    }
+  })
+}
+
+const disableUser = async (user) => {
+  try {
+    await $api(`/users/${user.id}/disable`, {
+      method: 'PUT'
+    })
+    refresh()
+    // close the modal
+    modal.close()
+  } catch (error) {
+    console.log('Error', error)
+    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el miembro', color: 'red' })
+  }
+}
+
+const enableUser = async (user) => {
+  try {
+    await $api(`/users/${user.id}/enable`, {
+      method: 'PUT'
+    })
+    refresh()
+    // close the modal
+    modal.close()
+  } catch (error) {
+    console.log('Error', error)
+    toast.add({ title: 'Error', description: 'Hubo un error al habilitar el miembro', color: 'red' })
+  }
+}
 </script>
 
 <template>
@@ -113,11 +166,15 @@ const columns = [
       </template>
       <template #name-data="{ row }">
         <div class="flex items-center gap-2">
-          <UAvatar size="xs" :alt="row.fullName" />{{ row.fullName }}
+          <UAvatar size="xs" :alt="row.fullName" :src="row.imageUrl ?? null" />{{ row.fullName }}
         </div>
       </template>
       <template #emailVerified-data="{ row }">
           <UIcon v-if="row.emailVerified" name="i-heroicons-check" class="text-green-500 text-lg " />
+          <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg " />
+      </template>
+      <template #disabled-data="{ row }">
+          <UIcon v-if="!row.disabled" name="i-heroicons-check" class="text-green-500 text-lg " />
           <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg " />
       </template>
       <template #actions-data="{ row }">

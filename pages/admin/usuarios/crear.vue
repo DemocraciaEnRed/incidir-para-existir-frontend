@@ -1,5 +1,4 @@
 <script setup>
-
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',
@@ -13,8 +12,8 @@ definePageMeta({
 <template>
   <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo Usuario</h1>
-    <p>Próximamente</p>
-    <br>   
+    <br>
+    <AdminUserFormNew />
   </div>
 </template>
 
