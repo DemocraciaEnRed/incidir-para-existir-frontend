@@ -2,7 +2,16 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-13",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxt/fonts", "@sidebase/nuxt-auth", '@nuxt/eslint', 'nuxt-echarts', 'nuxt-tiptap-editor'],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/fonts",
+    "@sidebase/nuxt-auth",
+    '@nuxt/eslint',
+    'nuxt-echarts',
+    'nuxt-tiptap-editor',
+    'nuxt-gtag',
+    '@nuxtjs/leaflet'
+  ],
   colorMode: {
     preference: 'dark'
   },
@@ -15,6 +24,10 @@ export default defineNuxtConfig({
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     }
+  },
+  gtag: {
+    // enabled: process.env.NODE_ENV === 'production',
+    id: 'G-PEBQCM582H'
   },
   // refer to https://auth.sidebase.io/guide/local/quick-start (0.9.4)
   auth: {

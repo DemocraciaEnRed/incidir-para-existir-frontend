@@ -24,6 +24,10 @@ useSeoMeta({
   twitterImage: '/sharer.jpg',
   twitterCard: 'summary_large_image',
 })
+
+const colorMode = useColorMode()
+
+console.log(colorMode.preference)
 </script>
 
 <template>
@@ -33,6 +37,7 @@ useSeoMeta({
       <NuxtPage />
     </NuxtLayout>
     <UNotifications />
+    <USlideovers />
     <UModals />
   </div>
 </template>
