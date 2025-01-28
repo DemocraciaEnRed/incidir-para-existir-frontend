@@ -26,6 +26,11 @@ const links = [
     to: '/admin/blog',
   }, 
   {
+    label: 'Terminos y Condiciones',
+    icon: 'i-heroicons-document-text',
+    to: '/admin/tos',
+  }, 
+  {
     label: 'Usuarios',
     icon: 'i-heroicons-user',
     to: '/admin/usuarios',
