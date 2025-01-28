@@ -4,10 +4,9 @@
 </script>
 <template>
   <UContainer>
-    <h3 class="text-center font-oswald text-2xl lg:text-5xl text-mindaro my-20">Terminos y condiciones</h3>
-    <div class="text-white">
-      {{ configs.tos }}
-    </div>
+    <h3 class="text-left font-oswald text-2xl lg:text-5xl text-mindaro uppercase">Terminos y condiciones</h3>
+    <hr class="my-10" />
+    <div class="prose dark:prose-invert focus:outline-none max-w-none" v-html="configs.tos"/>
   </UContainer>
 </template>
 
