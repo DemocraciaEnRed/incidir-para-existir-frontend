@@ -161,7 +161,7 @@ const setPictureResult = async (cropperResult) => {
       <UFormGroup name="bio" label="Acerca de" required>
         <UTextarea v-model="memberState.bio" autoresize :maxrows="10" placeholder="Escriba aquí..." />
       </UFormGroup>
-      <UButton type="submit" block class="text-xlb font-semiold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
+      <UButton type="submit" block class="text-xl font-semibold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
     </UForm>
   </UCard>
 </template>

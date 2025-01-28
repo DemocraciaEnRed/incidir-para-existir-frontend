@@ -6,6 +6,8 @@ import {
   string as YupString,
 } from 'yup'
 
+const { data: userData } = useAuth()
+
 const { $api } = useNuxtApp()
 const toast = useToast()
 
@@ -16,7 +18,6 @@ const props = defineProps({
   },
   refresh: {
     type: Function,
-    required: true,
   }
 })
 
@@ -26,6 +27,7 @@ const stateSchema = YupObject({
   subtitle: YupString().required('Este campo es requerido'),
   category: YupObject().required('Este campo es requerido'),
   section: YupObject().required('Este campo es requerido'),
+  author: YupObject().required('Este campo es requerido'),
 })
 
 const state = reactive({
@@ -34,6 +36,7 @@ const state = reactive({
   subtitle: '',
   category: null,
   section: null,
+  author: null,
 })
 
 const editMode = ref(false)
@@ -52,6 +55,7 @@ if(props.existingEntry){
   state.subtitle = props.existingEntry.subtitle
   state.category = props.existingEntry.categoryId
   state.section = props.existingEntry.sectionId
+  state.author = props.existingEntry.author
   previousContentIfExists = props.existingEntry.text
   if(props.existingEntry.imageUrl){
     enableUploadPicture.value = false
@@ -91,6 +95,7 @@ const handleSubmit = async () => {
     formData.append('subtitle', state.subtitle)
     formData.append('categoryId', state.category.id)
     formData.append('sectionId', state.section.id)
+    formData.append('authorId', state.author.id)
     const contentHtml = textEditor.value.getHTML()
     formData.append('text', contentHtml)
     
@@ -125,20 +130,33 @@ const handleSubmit = async () => {
     submitLoading.value = false
   }
 }
+
+const urlFinal = computed(() => {
+  if(!state.slug) return null
+  return `https://incidirparaexistir.democraciaenred.org/actualidad/${state.slug}`
+})
+
+const isUserAdmin = computed(() => {
+  return userData.value?.role === 'admin'
+})
+
 </script>
 
 <template>
   <div>
   <UForm :state="state" :schema="stateSchema" class="space-y-4" @submit="handleSubmit">
     <UFormGroup name="title" label="Titulo" required>
-      <UInput v-model="state.title" placeholder="Escriba aquí..." @blur="updateSlug" />
+      <UInput v-model="state.title" size="xl" placeholder="Escriba aquí..." @blur="updateSlug" />
     </UFormGroup>
-    <UFormGroup name="slug" label="Slug" required>        
+    <UFormGroup name="slug" label="Slug" :help="urlFinal" required>        
       <UInput v-model="state.slug" :disabled="!enableSlugEdit" />
       <UCheckbox v-model="enableSlugEdit" class="mt-2" label="Editar slug" />
     </UFormGroup>
-    <UFormGroup name="subtitle" label="Subtitulo" required>
+    <UFormGroup name="subtitle" label="Subtitulo" help="" required>
       <UTextarea v-model="state.subtitle" autoresize placeholder="Escriba aquí..." />
+    </UFormGroup>
+    <UFormGroup v-if="isUserAdmin" name="author" label="Usuario">
+      <AdminUserSelector v-model="state.author" />
     </UFormGroup>
     <div class="flex space-x-2">
       <UFormGroup name="category" label="Categoría" class="w-full" required>
@@ -164,7 +182,7 @@ const handleSubmit = async () => {
       <TextEditor ref="theEditor" :content="previousContentIfExists" />
     </UFormGroup>
     <UFormGroup>
-      <UButton type="submit" block class="text-xlb font-semiold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
+      <UButton type="submit" block class="text-xl font-semibold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
     </UFormGroup>
   </UForm>
 </div>
