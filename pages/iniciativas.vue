@@ -176,6 +176,7 @@ const accordionItems = [
           <IniciativasForm/>
         </ClientOnly>
       </div>
+
     </UContainer>
     <div class="bg-electricViolet-800 pt-10 rounded-tr-2xl rounded-tl-2xl">
       <UContainer>
@@ -184,6 +185,13 @@ const accordionItems = [
         <br>
       </UContainer>
     </div>
+    <UContainer>
+      <br>
+      <br>
+      <IniciativasList />
+      <br>
+      <br>
+    </UContainer>
   </div>
 
 </template>
