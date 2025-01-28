@@ -1,16 +1,17 @@
 <script lang="ts" setup>
 const links = [{
-  label: 'Ver entradas',
-  icon: 'i-heroicons-document-text',
+  label: 'Listado',
+  icon: 'i-heroicons-list-bullet',
   to: '/admin/blog',
   exact: true
 }, {
-  label: 'Crear entrada',
+  label: 'Crear',
   icon: 'i-heroicons-plus',
   to: '/admin/blog/crear',
   exact: true
 }, {
-  label: 'Categorias',
+  label: 'Administrar categorias',
+  icon: 'i-heroicons-list-bullet',
   to: '/admin/blog/categorias',
   exact: true
 },]

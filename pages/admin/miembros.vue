@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const links = [{
-  label: 'Ver miembros',
-  icon: 'i-heroicons-users',
+  label: 'Listado',
+  icon: 'i-heroicons-list-bullet',
   to: '/admin/miembros',
   exact: true
 }, {
   label: 'Crear',
-  icon: 'i-heroicons-user-plus',
+  icon: 'i-heroicons-plus',
   to: '/admin/miembros/crear',
   exact: true
 }]

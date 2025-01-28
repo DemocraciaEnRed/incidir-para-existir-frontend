@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const links = [{
-  label: 'Ver Iniciativas',
-  icon: 'i-heroicons-document-text',
+  label: 'Listado',
+  icon: 'i-heroicons-list-bullet',
   to: '/admin/iniciativas',
   exact: true
 }, {
