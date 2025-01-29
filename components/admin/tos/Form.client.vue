@@ -40,7 +40,7 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div>
+  <div class="space-y-4">
     <UFormGroup >
       <TextEditor ref="theEditor" :content="previousContentIfExists" />
     </UFormGroup>
