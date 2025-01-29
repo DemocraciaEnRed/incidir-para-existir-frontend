@@ -55,7 +55,6 @@ const itemsMenu = (row) => {
   {
     label: 'Editar',
     icon: 'i-heroicons-pencil-square-20-solid',
-    disabled: true,
     click: () => navigateTo(`/admin/desafios/${row.id}/editar`)
   }, {
     label: 'Eliminar',
