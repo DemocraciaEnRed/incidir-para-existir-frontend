@@ -21,7 +21,7 @@
       dimensions.value = data
     } catch (error) {
       console.error(error)
-      toast.add({ title: 'Error', description: 'Hubo un error al cargar las seccións de blog', color: 'red' })
+      toast.add({ title: 'Error', description: 'Hubo un error al cargar los ejes temáticos', color: 'red' })
     } finally {
       isLoading.value = false
     }
@@ -45,7 +45,7 @@
 <template>
   <div>
     <div class="flex gap-2">
-      <USelectMenu v-model="selectedDimension" class="w-full" :options="dimensions" :loading="isLoading" placeholder="Seleccione una dimensión" >
+      <USelectMenu v-model="selectedDimension" class="w-full" :options="dimensions" :loading="isLoading" placeholder="Seleccione un eje temático" >
         <template #option="{ option }">
           <div class="flex items-center">
             <span>{{ option.name }}</span>
@@ -53,7 +53,7 @@
         </template>
         <template #label>
           <span v-if="selectedDimension">{{ selectedDimension.name }}</span>
-          <span v-else>Seleccione una dimensión</span>
+          <span v-else>Seleccione un eje temático</span>
         </template>
       </USelectMenu>
       <UButton color="white" :disabled="clearDisabled" variant="outline" @click="clearFilter">
