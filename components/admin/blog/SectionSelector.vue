@@ -15,10 +15,14 @@
   const fetchSections = async () => {
     isLoading.value = true
     try {
-      const data = await $api('/utils/blog-sections',{
+      const data = await $api('/blog/section',{
+        query: {
+          page: 1,
+          limit: 10000,
+        },
         method: 'GET'
       })
-      sections.value = data
+      sections.value = data.rows
       // if selectedSection is a number, find the object in the array
       if(typeof selectedSection.value === 'number'){
         selectedSection.value = data.find(section => section.id === selectedSection.value)

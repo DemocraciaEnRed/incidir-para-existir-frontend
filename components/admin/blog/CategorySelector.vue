@@ -15,10 +15,14 @@
   const fetchCategories = async () => {
     isLoading.value = true
     try {
-      const data = await $api('/utils/blog-categories',{
+      const data = await $api('/blog/category',{
+        query: {
+          page: 1,
+          limit: 10000,
+        },
         method: 'GET'
       })
-      categories.value = data
+      categories.value = data.rows
       // if selectedCategory is a number, find the object in the array
       if(typeof selectedCategory.value === 'number'){
         selectedCategory.value = data.find(category => category.id === selectedCategory.value)
