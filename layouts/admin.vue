@@ -11,7 +11,7 @@ const links = [
     to: '/admin/iniciativas'
   },
   {
-    label: 'Desafios',
+    label: 'Reportes de Desafios',
     icon: 'i-heroicons-document-text',
     to: '/admin/desafios'
   }, 
@@ -21,9 +21,14 @@ const links = [
     to: '/admin/miembros'
   }, 
   {
-    label: 'Blog',
+    label: 'Actualidad (Blog)',
     icon: 'i-heroicons-document-text',
     to: '/admin/blog',
+  }, 
+  {
+    label: 'Enlaces de interes',
+    icon: 'i-heroicons-document-text',
+    to: '/admin/recursos',
   }, 
   {
     label: 'Terminos y Condiciones',
