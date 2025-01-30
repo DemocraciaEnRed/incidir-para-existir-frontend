@@ -51,11 +51,6 @@ watch([selectedDimensions], () => {
 
 <template>
   <div>
-    <div class="text-center">
-      <h1 class="text-3xl font-bold">Iniciativas</h1>
-      <p class="text-sm text-gray-500">Listado de iniciativas</p>
-    </div>
-    <br>
     <LoadingBar v-if="!firstLoad">Loading...</LoadingBar>
     <div v-else-if="error">{{ error.message }}</div>
     <div v-else>

@@ -185,12 +185,13 @@ const accordionItems = [
         <br>
       </UContainer>
     </div>
-    <UContainer>
-      <br>
-      <br>
-      <IniciativasList />
-      <br>
-      <br>
+    <UContainer class="my-10">
+      <div class="space-y-7">
+        <div class="text-center">
+          <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">LISTADO DE INICIATIVAS</p>
+        </div>
+        <IniciativasList />
+      </div>
     </UContainer>
   </div>
 
