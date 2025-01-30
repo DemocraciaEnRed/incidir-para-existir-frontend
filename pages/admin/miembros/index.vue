@@ -60,11 +60,11 @@ const columns = [
 
 const itemsMenu = row => [
   [{
-    label: 'Edit',
+    label: 'Editar',
     icon: 'i-heroicons-pencil-square-20-solid',
     click: () => navigateTo(`/admin/miembros/${row.id}/editar`)
   }, {
-    label: 'Delete',
+    label: 'Eliminar',
     icon: 'i-heroicons-trash-20-solid',
     click: () => openDeleteMemberModal(row)
   }]
