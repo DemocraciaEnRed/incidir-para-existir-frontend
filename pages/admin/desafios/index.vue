@@ -120,7 +120,7 @@ const deleteChallenge = async (challenge) => {
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">DESAFIOS</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">REPORTES DE DESAFIOS</h1>
     <br>
     <div class="flex gap-2">
       <AdminDimensionSelector v-model="selectedDimension" class="w-full"/>
