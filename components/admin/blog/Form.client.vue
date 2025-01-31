@@ -16,9 +16,6 @@ const props = defineProps({
     type: [Object, null, undefined],
     default: () => null,
   },
-  refresh: {
-    type: Function,
-  }
 })
 
 const stateSchema = YupObject({

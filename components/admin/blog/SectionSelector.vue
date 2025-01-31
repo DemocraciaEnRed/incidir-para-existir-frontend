@@ -25,7 +25,7 @@
       sections.value = data.rows
       // if selectedSection is a number, find the object in the array
       if(typeof selectedSection.value === 'number'){
-        selectedSection.value = data.find(section => section.id === selectedSection.value)
+        selectedSection.value = data.rows.find(section => section.id === selectedSection.value)
       }
     } catch (error) {
       console.error(error)
