@@ -60,6 +60,12 @@ const showDesafiosForm = ref(false)
         </UCard>
       </template>
     </ClientOnly>
+    <div class="space-y-7">
+      <div class="text-center">
+        <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">REPORTES DE DESAFIOS</p>
+      </div>
+      <DesafiosList />
+    </div>
   </UContainer> 
 </template>
 
