@@ -22,7 +22,7 @@ const totalChallenges = ref(0)
 const selectedDimension = ref(null)
 
 const selectedDimensionId = computed(() => {
-  return selectedDimension.value ? selectedDimension.value.id : undefined
+  return selectedDimension.value ? [selectedDimension.value.id] : null
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
