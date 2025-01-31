@@ -33,9 +33,9 @@ const isLoading = computed(() => status.value === 'pending');
       <template #header>
         <div class="flex items-center justify-between">
           <h3
-            class="text-base font-semibold leading-6 text-gray-900 dark:text-white"
+            class="font-inter text-base font-semibold leading-6 text-gray-900 dark:text-white"
           >
-            Iniciativa N° 00{{ props.iniciativaId }}
+            Iniciativa N° {{ addLeadingZeros(props.iniciativaId) }}
           </h3>
           <UButton
             color="gray"
@@ -54,7 +54,7 @@ const isLoading = computed(() => status.value === 'pending');
           <div class="space-y-8">
             <p class="font-bold text-3xl">{{ data.name }}</p>
             <div class="space-y-2">
-              <p class="text-sm text-gray-500">Dimensiones</p>
+              <p class="text-sm text-gray-500">Ejes temáticos</p>
               <div class="flex gap-2">
                 <UBadge 
                 v-for="(dimension, index) in data.dimensions" 
@@ -66,6 +66,10 @@ const isLoading = computed(() => status.value === 'pending');
                   {{ dimension.name }}
                 </UBadge>
               </div>
+            </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500">Ubicación</p>
+              <p class="">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.subdivision.city.name }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Descripción de la iniciativa</p>
