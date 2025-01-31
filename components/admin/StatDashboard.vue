@@ -53,48 +53,6 @@
     </UCard>
     <div class="space-y-3">
       <div>
-        <UDivider label="Usuarios" :ui="{ wrapper: { base: 'my-5' } }" />
-      </div>
-      <UCard>
-        <div class="flex justify-between items-center">
-          <div>
-            <p class="font-medium text-lg">Total Usuarios</p>
-            <p class="text-gray-500 text-sm">Usuarios registrados en la plataforma</p>
-          </div>
-          <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalUsers }}</p>
-        </div>
-      </UCard>
-      <UCard>
-        <div class="flex justify-between items-center">
-          <div>
-            <p class="font-medium text-lg">Usuarios Verificados</p>
-            <p class="text-gray-500 text-sm">Usuarios que han verificado su correo</p>
-          </div>
-          <p class="font-mono text-3xl font-bold ml-5">{{ stats.usersVerified }}</p>
-        </div>
-      </UCard>
-      <UCard>
-        <div class="flex justify-between items-center">
-          <div>
-            <p class="font-medium text-lg">Usuarios No Verificados</p>
-            <p class="text-gray-500 text-sm">Usuarios que no han verificado su correo</p>
-          </div>
-          <p class="font-mono text-3xl font-bold ml-5">{{ stats.usersNotVerified }}</p>
-        </div>
-      </UCard>
-      <div>
-        <UDivider label="Desafios" :ui="{ wrapper: { base: 'my-5' } }" />
-      </div>
-      <UCard>
-        <div class="flex justify-between items-center">
-          <div>
-            <p class="font-medium text-lg">Total Desafios</p>
-            <p class="text-gray-500 text-sm">Desafios en la plataforma</p>
-          </div>
-          <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalChallenges }}</p>
-        </div>
-      </UCard>
-      <div>
         <UDivider label="Iniciativas" :ui="{ wrapper: { base: 'my-5' } }" />
       </div>
       <UCard>
@@ -125,6 +83,18 @@
         </div>
       </UCard>
       <div>
+        <UDivider label="Desafios" :ui="{ wrapper: { base: 'my-5' } }" />
+      </div>
+      <UCard>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium text-lg">Total Desafios</p>
+            <p class="text-gray-500 text-sm">Desafios en la plataforma</p>
+          </div>
+          <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalChallenges }}</p>
+        </div>
+      </UCard>
+      <div>
         <UDivider label="Blog" :ui="{ wrapper: { base: 'my-5' } }" />
       </div>
       <UCard>
@@ -134,6 +104,36 @@
             <p class="text-gray-500 text-sm">Entradas publicadas en la plataforma</p>
           </div>
           <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalEntries }}</p>
+        </div>
+      </UCard>
+      <div>
+        <UDivider label="Usuarios" :ui="{ wrapper: { base: 'my-5' } }" />
+      </div>
+      <UCard>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium text-lg">Total Usuarios</p>
+            <p class="text-gray-500 text-sm">Usuarios registrados en la plataforma</p>
+          </div>
+          <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalUsers }}</p>
+        </div>
+      </UCard>
+      <UCard>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium text-lg">Usuarios Verificados</p>
+            <p class="text-gray-500 text-sm">Usuarios que han verificado su correo</p>
+          </div>
+          <p class="font-mono text-3xl font-bold ml-5">{{ stats.usersVerified }}</p>
+        </div>
+      </UCard>
+      <UCard>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium text-lg">Usuarios No Verificados</p>
+            <p class="text-gray-500 text-sm">Usuarios que no han verificado su correo</p>
+          </div>
+          <p class="font-mono text-3xl font-bold ml-5">{{ stats.usersNotVerified }}</p>
         </div>
       </UCard>
     </div>
