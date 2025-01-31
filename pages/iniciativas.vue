@@ -163,7 +163,7 @@ const accordionItems = [
         </template>
       </UAccordion>
       <UDivider class="my-6"/>
-      <div class="space-y-5">
+      <div class="space-y-5 my-6">
         <p class="text-2xl font-medium text-center leading-tight">¿Tienes una iniciativa, parche y/o movimiento, proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
         <div class="flex justify-center items-center gap-5 text-5xl text-pumpkin">
           <UIcon name="i-heroicons-arrow-small-down" />
