@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const { status, signOut, data: userData } = useAuth()
 
 // computed loggedIn
@@ -21,21 +21,60 @@ const handleLogout = async () => {
   }
 }
 
-const items = computed(() => [
-  [{
-    label: userFullname.value,
-    disabled: true
-  }], [{
-    label: 'Admin',
-    to: '/admin',
-    icon: 'i-heroicons-cog'
-  }, {
-    label: 'Salir',
-    icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
-    click: () => handleLogout()
-  }]
-])
+const items = computed(() => {
+  if(!userData.value) return []
 
+  const navbarOptions = [
+    [{
+      label: userFullname.value,
+      disabled: true
+    }]
+  ]
+
+  if(userData && userData.value.role == 'admin') {
+    const adminOptions = [{
+      label: 'Admin',
+      to: '/admin',
+      icon: 'i-heroicons-cog'
+    }, {
+      label: 'Salir',
+      icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
+      click: () => handleLogout()
+    }]
+    navbarOptions.push(adminOptions)
+  } else if (userData && userData.value.role == 'reporter') {
+    const memberOptions = [
+    [{
+      label: 'Mis posteos',
+      to: '/reporterx',
+      icon: 'i-heroicons-document-text'
+    }],
+    [{
+      label: 'Mi perfil',
+      to: '/perfil',
+      icon: 'i-heroicons-user'
+    }, {
+      label: 'Salir',
+      icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
+      click: () => handleLogout()
+    }]
+    ]
+    navbarOptions.push(...memberOptions)
+  } else {
+    const memberOptions = [{
+      label: 'Mi perfil',
+      to: '/perfil',
+      icon: 'i-heroicons-user'
+    }, {
+      label: 'Salir',
+      icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
+      click: () => handleLogout()
+    }]
+    navbarOptions.push(memberOptions)
+  }
+
+  return navbarOptions
+}) 
 </script>
 
 <template>
@@ -58,7 +97,7 @@ const items = computed(() => [
             <!-- <NuxtLink v-if="!loggedIn" to="/login" class="navbar-item">
               Ingresa<UIcon name="i-heroicons-arrow-left-end-on-rectangle-16-solid" class="size-6 ml-2" />
             </NuxtLink> -->
-            <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-start' }">
+            <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
               <UAvatar :alt="userFullname" />
             </UDropdown>
           </div>
