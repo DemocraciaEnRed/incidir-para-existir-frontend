@@ -8,9 +8,9 @@
   })
 
   const props = defineProps({
-    showBadges: {
-      type: Boolean,
-      default: () => true
+    limit: {
+      type: Number,
+      default: () => 1
     }
   })
 
@@ -71,8 +71,8 @@
 
   // make a watcher that avoids selecting more than 2 dimensions
   watch(selectedDimensions, (newValue, oldValue) => {
-    if(newValue.length > 2) {
-      toast.add({ title: 'Error', description: 'Solo puedes filtrar hasta 2 dimensiones', color: 'red' })
+    if(newValue.length > props.limit) {
+      toast.add({ title: 'Error', description: `Solo puedes filtrar hasta ${props.limit} ${props.limit > 1 ? 'ejes temáticos' : 'eje temático'}`, color: 'red' })
       selectedDimensions.value = oldValue
     }
   })
