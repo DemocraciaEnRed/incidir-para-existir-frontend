@@ -1,0 +1,23 @@
+<script setup>
+definePageMeta({
+  middleware: ['auth'],
+  layout: 'perfil',
+  auth: {
+    unauthenticatedOnly: false,
+    navigateUnauthenticatedTo: '/login'
+  }
+})
+
+
+
+</script>
+
+<template>
+  <div>
+    <div class="space-y-1">
+      <h1 class="font-oswald uppercase text-4xl">Editar perfil</h1>
+      <br>
+      <p>Proximamente...</p>
+    </div>
+  </div>
+</template>
