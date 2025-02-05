@@ -25,9 +25,9 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const colorMode = useColorMode()
+// const colorMode = useColorMode()
 
-console.log(colorMode.preference)
+// console.log(colorMode.preference)
 </script>
 
 <template>
