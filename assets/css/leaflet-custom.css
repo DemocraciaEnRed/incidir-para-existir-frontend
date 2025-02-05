@@ -1,0 +1,24 @@
+.leaflet-tooltip.custom-tooltip {
+  width: 350px;
+  max-width: 350px;
+  border: 0px;
+  padding: 8px;
+  background-color: rgb(34, 34, 34);
+  text-wrap: auto;
+  font-size: 14px;
+  height: auto;
+}
+.leaflet-tooltip-left.custom-tooltip:before {
+  right: 0;
+  margin-right: -12px;
+  border-left-color: rgba(34, 34, 34, 1);
+}
+.leaflet-tooltip-right.custom-tooltip:before {
+  left: 0;
+  margin-left: -12px;
+  border-right-color: rgba(34, 34, 34, 1);
+}
+
+.leaflet-pane{
+  z-index: 10 !important;
+}

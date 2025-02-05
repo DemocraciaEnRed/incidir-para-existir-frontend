@@ -4,6 +4,7 @@
 @import 'footer.css';
 @import 'home.css';
 @import 'navbar.css';
+@import 'leaflet-custom.css';
 
 .custom-class{
   @apply bg-red-500 text-white;
