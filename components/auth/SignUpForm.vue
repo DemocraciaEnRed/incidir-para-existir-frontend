@@ -79,7 +79,7 @@ const subdivisionsOptions = computed(() => {
 
 const selectedLabelSubdivisions = computed(() => {
   if(state.selectedCity === 1) return "Cali: Selecciona tu corregimiento"
-  if(state.selectedCity === 2) return "Bogota: Selecciona tu comuna"
+  if(state.selectedCity === 2) return "Bogotá: Selecciona tu comuna"
   return '-'
 })
 
@@ -108,7 +108,7 @@ async function onSubmit() {
     password: state.password,
   }
 
-  // if city is not Cali or Bogota
+  // if city is not Cali or Bogotá
   if(state.selectedCity >= 1 || state.selectedCity <= 2) {
     payload.subdivisionId = state.selectedSubdivision
   }
