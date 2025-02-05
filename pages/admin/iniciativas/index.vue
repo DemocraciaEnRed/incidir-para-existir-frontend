@@ -1,5 +1,6 @@
 <script setup>
 import { AdminInitiativesDeleteModal } from '#components'
+import debounce from 'debounce';
 
 definePageMeta({
   middleware: ['auth', 'only-admins'],
@@ -21,6 +22,7 @@ const pageCount = ref(20)
 const totalInitiatives = ref(0)
 const selectedDimensions = ref([])
 const nameQuery = ref('')
+const undebouncedNameQuery = ref('')
 
 const dimensionsIds = computed(() => {
   if(selectedDimensions.value.length === 0) return null
@@ -75,9 +77,28 @@ const itemsMenu = (row) => {
   return [options]
 }
 
+/**
+ * Watch the page and refresh the data
+ */
 watch(() => page, (newValue, oldValue) => {
   if (newValue != oldValue) {
     refresh()
+  }
+})
+
+/**
+ * Debounce the name query
+ */
+const changeNameQuery = debounce(() => {
+  nameQuery.value = undebouncedNameQuery.value
+}, 1000)
+
+/**
+ * Watch the undebounced name query
+ */
+watch(undebouncedNameQuery, (newValue, oldValue) => {
+  if (newValue != oldValue) {
+    changeNameQuery()
   }
 })
 
@@ -89,13 +110,13 @@ const columns = [
   {
     key:'name',
     label: 'Nombre',
-    class: "w-3/6",
-    rowClass: 'truncate'
+    class: "",
+    rowClass: 'text-wrap'
   },
   {
     key: 'subdivision',
-    label: 'Subdivision',
-    class: "w-2/6",
+    label: 'Ubicación',
+    class: "w-[20%]",
     rowClass: 'text-xs',
   },
   {
@@ -103,12 +124,19 @@ const columns = [
     label: {
       icon: 'i-heroicons-check-circle-20-solid',
     },
-    class: "w-0"
+    class: "w-[1%]",
+  },
+  {
+    key: 'map',
+    label: {
+      icon: 'i-heroicons-map-pin',
+    },
+    class: "w-[1%]",
   },
   {
     key: 'actions',
     rowClass: 'text-right',
-    class: "w-0"
+    class: "w-[1%]",
   },
 ]
 
@@ -172,13 +200,18 @@ const unpublishInitiative = async (initiative) => {
     <h1 class="font-oswald uppercase text-4xl mb-2">INICIATIVAS</h1>
     <p>Lista de iniciativas</p>
     <br>
-    <UInput v-model="nameQuery" placeholder="Buscar por nombre" class="mb-3" />
+    <UInput v-model="undebouncedNameQuery" placeholder="Buscar por nombre" class="mb-3" />
     <AdminMultipleDimensionSelector v-model="selectedDimensions" :show-badges="true" />
     <br>
-    <UTable :rows="initiatives" :columns="columns" :loading="isLoading" :ui="{td: { base: 'max-w-[0]' } }">
+    <UTable :rows="initiatives" :columns="columns" :loading="isLoading" :ui="{}">
       <template #publishedAt-header>
         <UTooltip text="¿Publicado?">
           <UIcon name="i-heroicons-eye" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
+      <template #map-header>
+        <UTooltip text="Con ubicación">
+          <UIcon name="i-heroicons-map-pin" class="flex flex-row items-center text-lg" />
         </UTooltip>
       </template>
       <template #loading-state>
@@ -187,9 +220,10 @@ const unpublishInitiative = async (initiative) => {
         </div>
       </template>
       <template #name-data="{ row }">
-        <p class="truncate font-medium">{{ row.name }}</p>
-        <div class="flex-wrap flex items-center">
-          <div v-for="(dimension, index) in row.dimensions" :key="`ini-${row.id}-dim-${dimension.id}`" class="text-xs font-light">
+        <p class="font-medium">{{ row.name }}</p>
+        <div class="flex-wrap flex items-center font-inter text-xs text-gray-500">
+          <p>#{{ addLeadingZeros(row.id) }} |&nbsp;</p>
+          <div v-for="(dimension, index) in row.dimensions" :key="`ini-${row.id}-dim-${dimension.id}`" class="">
             {{ dimension.name }}{{ index < row.dimensions.length - 1 ? '&nbsp;|&nbsp;' : '' }}
           </div>
         </div>
@@ -203,6 +237,12 @@ const unpublishInitiative = async (initiative) => {
       <template #publishedAt-data="{ row }">
         <div>
           <UIcon v-if="row.publishedAt" name="i-heroicons-check" class="text-green-500 text-lg" />
+          <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg" />
+        </div>
+      </template>
+      <template #map-data="{ row }">
+        <div>
+          <UIcon v-if="row.latitude && row.longitude" name="i-heroicons-map-pin" class="text-green-500 text-lg" />
           <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg" />
         </div>
       </template>

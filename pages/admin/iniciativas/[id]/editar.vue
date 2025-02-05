@@ -7,12 +7,23 @@ definePageMeta({
     navigateUnauthenticatedTo: '/login'
   }
 })
+
+const route = useRoute()
+const existingInitiative = ref(null)
+
+// Fetch
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { data, refresh, status } = useAPI(`/initiatives/${route.params.id}`,{
+  onResponse({ response }) {
+    existingInitiative.value = response._data
+  }
+})
 </script>
 
 <template>
 <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Editar iniciativa</h1>
-    <p>Próximamente</p>
     <br>   
+    <AdminInitiativesForm v-if="existingInitiative" :existing-initiative="existingInitiative" />
   </div>
 </template>

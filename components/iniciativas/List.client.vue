@@ -61,7 +61,7 @@ watch([selectedDimensions], () => {
         <UButton variant="outline" size="xl" color="mindaro" :disabled="page === 1" @click="page--">Anterior</UButton>
         <UButton variant="outline" size="xl" color="mindaro" :disabled="page === lastPage" @click="page++">Siguiente</UButton>
       </div>
-      <div v-for="row in data.rows" :key="`iniciativa-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border border-slate-800">
+      <div v-for="row in data.rows" :key="`iniciativa-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-gray-900 hover:bg-gray-800 border-slate-800 transition-colors duration-200">
         <div class="grow w-9/12">
           <div class="space-x-2 flex flex-row items-center font-inter">
             <!-- <UBadge 
