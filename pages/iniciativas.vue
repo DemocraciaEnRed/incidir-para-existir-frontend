@@ -172,17 +172,14 @@ const accordionItems = [
              </p>
           <UIcon name="i-heroicons-arrow-small-down" />
         </div>
-        <ClientOnly>
-          <IniciativasForm/>
-        </ClientOnly>
+        <IniciativasForm/>
       </div>
 
     </UContainer>
-    <div class="bg-electricViolet-800 pt-10 rounded-tr-2xl rounded-tl-2xl">
-      <UContainer>
-        <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">MAPA DE INICIATIVAS</p>
-        <p class="font-oswald font-thin text-3xl leading-tight text-mindaro text-center my-10">Próximamente</p>
-        <br>
+    <div class="bg-electricViolet-800 py-10 rounded-tr-2xl rounded-tl-2xl">
+      <UContainer class="">
+        <p class="font-oswald text-5xl leading-tight text-mindaro text-center">MAPA DE INICIATIVAS</p>
+        <IniciativasMapList />
       </UContainer>
     </div>
     <UContainer class="my-10">
