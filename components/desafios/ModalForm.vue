@@ -80,7 +80,7 @@ const subdivisionsOptions = computed(() => {
 
 const selectedLabelSubdivisions = computed(() => {
   if(state.city === 1) return "Cali: Selecciona tu corregimiento"
-  if(state.city === 2) return "Bogota: Selecciona tu comuna"
+  if(state.city === 2) return "Bogotá: Selecciona tu comuna"
   return '-'
 })
 
