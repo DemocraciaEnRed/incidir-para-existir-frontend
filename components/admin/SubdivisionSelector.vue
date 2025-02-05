@@ -45,7 +45,7 @@
 <template>
   <div>
     <div class="flex gap-2">
-      <USelectMenu v-model="selected" class="w-full" :options="subdivisions" :loading="isLoading" placeholder="Seleccione una comuna, corregimiento o localidad de Cali o Bogota" >
+      <USelectMenu v-model="selected" class="w-full" :options="subdivisions" :loading="isLoading" placeholder="Seleccione una comuna, corregimiento o localidad de Cali o Bogotá" >
         <template #option="{ option }">
           <div class="flex items-center">
             <span>{{ option.type }} {{ option.name }}, {{ option.city.name }}</span>
@@ -53,7 +53,7 @@
         </template>
         <template #label>
           <span v-if="selected">{{ selected.type }} {{ selected.name }}, {{ selected.city.name }}</span>
-          <span v-else>Seleccione una comuna, corregimiento o localidad de Cali o Bogota</span>
+          <span v-else>Seleccione una comuna, corregimiento o localidad de Cali o Bogotá</span>
         </template>
       </USelectMenu>
       <UButton color="white" :disabled="clearDisabled" variant="outline" @click="clearFilter">
