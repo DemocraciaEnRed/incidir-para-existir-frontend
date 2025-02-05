@@ -28,7 +28,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
           saveAsImage: {
             show: true,
             title: 'Descargar',
-            name: 'Desafios por localidad en Bogota'
+            name: 'Desafios por localidad en Bogotá'
           }
         }
       },
@@ -39,7 +39,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
       },
       series: [
         {
-          name: 'Dimensiones Cali Vs. Bogota',
+          name: 'Dimensiones Cali Vs. Bogotá',
           type: 'radar',
           data: chartData.radar.data
         }
