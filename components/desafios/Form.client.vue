@@ -6,21 +6,32 @@ import {
   number as YupNumber,
 } from 'yup'
 
+import { RecaptchaModal } from '#components'
+
 const { $api } = useNuxtApp()
 
+const toast = useToast()
+const modal = useModal()
 
+
+// form state
 const isLoading = ref(false)
-const dimensions = ref([])
-const subdivisions = ref([])
 const submitSuccess = ref(false)
 const submitError = ref(false)
 const submitLoading = ref(false)
+// data 
+const dimensions = ref([])
+const cities = ref([])
+// complexData
+const selectedCoordinates = ref(null)
+const recaptchaResponse = ref(null)
 
+const successMessageDiv = useTemplateRef('success-message')
 
 const schema = YupObject({
   dimensionId: YupNumber().required('Este campo es requerido'),
-  cityId: YupNumber().required('Este campo es requerido'),
-  subdivisionId: YupNumber().required('Este campo es requerido'),
+  city: YupObject().required('Este campo es requerido'),
+  subdivision: YupObject().required('Este campo es requerido'),
   needsAndChallenges: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
   proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
   inWords: YupString().matches(/^\w+(\s\w+)?$/, { excludeEmptyString: true, message: 'Solo se permite una o dos palabras' }).required('Este campo es requerido'),
@@ -29,8 +40,8 @@ const schema = YupObject({
 
 const state = reactive({
   dimensionId: null,
-  cityId: null,
-  subdivisionId: null,
+  city: null,
+  subdivision: null,
   needsAndChallenges: null,
   proposal: null,
   inWords: null,
@@ -46,12 +57,13 @@ onMounted(() => {
 const getInitData = async () => {
   isLoading.value = true
   try {
-    const [dimensionsData, subdivisionsData] = await Promise.all([
+    const [dimensionsData, citiesData] = await Promise.all([
       $api('/utils/dimensions'),
-      $api('/utils/subdivisions')
+      $api('/utils/cities')
     ])
     dimensions.value = dimensionsData
-    subdivisions.value = subdivisionsData
+    cities.value = citiesData
+
   } catch (error) {
     console.error(error)
   } finally {
@@ -59,62 +71,78 @@ const getInitData = async () => {
   }
 }
 
-const citiesOptions = computed(() => {
-  const cities = []
-  if(!subdivisions.value) return cities
-  if(!subdivisions.value.length) return cities
-  subdivisions.value.forEach(subdivision => {
-    // check if city is already in the list
-    const city = cities.find(city => city.id === subdivision.city.id)
-    if(!city) {
-      cities.push(subdivision.city)
+const subdivisionsOptions = computed(() => {
+  if(!state.city) return []
+  // filtered subdivisions
+  return state.city.subdivisions
+})
+
+watch(() => state.city, () => {
+  state.subdivision = null
+  selectedCoordinates.value = null
+})
+
+const startRecaptchaChallenge = async () => {
+  modal.open(RecaptchaModal, {
+    onSubmitRecaptcha: (response) => {
+      recaptchaResponse.value = response 
+      handleSubmit()
+      modal.close()
+    },
+    onCloseModal: () => {
+      modal.close()
     }
   })
-  return cities
-})
-
-const subdivisionsOptions = computed(() => {
-  if(!state.cityId) return []
-  // filtered subdivisions
-  const filteredSubdivisions = subdivisions.value.filter(subdivision => {
-    return subdivision.city.id === state.cityId
-  })
-  return filteredSubdivisions
-})
-
-const selectedLabelSubdivisions = computed(() => {
-  if(state.cityId === 1) return "Cali: Selecciona tu corregimiento"
-  if(state.cityId === 2) return "Bogota: Selecciona tu comuna"
-  return '-'
-})
-
-watch(() => state.cityId, (newValue, oldValue) => {
-  if(newValue != oldValue) {
-    state.subdivisionId = null
-  }
-})
+}
 
 const handleSubmit = async () => {
-  const payload = {
-    dimensionId: state.dimensionId,
-    subdivisionId: state.subdivisionId,
-    needsAndChallenges: state.needsAndChallenges,
-    proposal: state.proposal,
-    inWords: state.inWords,
-  }
-
-  submitLoading.value = true
   try {
+    const payload = {
+      dimensionId: state.dimensionId,
+      subdivisionId: state.subdivision.id,
+      needsAndChallenges: state.needsAndChallenges,
+      latitude: undefined,
+      longitude: undefined,
+      proposal: state.proposal,
+      inWords: state.inWords,
+    }
+
+    if(selectedCoordinates.value) {
+      payload.latitude = selectedCoordinates.value[0]
+      payload.longitude = selectedCoordinates.value[1]
+    }
+
+    if(recaptchaResponse.value) {
+      payload.recaptchaResponse = recaptchaResponse.value
+    } else {
+      toast.add({
+        title: 'Error',
+        description: 'Por favor, completa el captcha',
+        color: 'red'
+      })
+      return
+    }
+
+    submitLoading.value = true
+
     await $api('/challenges', {
       method: 'POST',
       body: JSON.stringify(payload)
     })
     submitSuccess.value = true
     submitError.value = false
+    setTimeout(() => {
+      successMessageDiv.value.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 100)
   } catch (error) {
+    console.error(error)
     submitError.value = true
     submitSuccess.value = false
-    console.error(error)
+    toast.add({
+      title: 'Error',
+      description: 'Hubo un error al enviar el formulario',
+      color: 'red'
+    })
   } finally {
     submitLoading.value = false
   }
@@ -153,7 +181,7 @@ const selectDimension = (dimension) => {
     </UAlert>
     <div v-if="!submitSuccess">
       <p class="text-2xl text-mindaro font-bold mb-5 uppercase">Reportar un nuevo desafío</p>
-      <UForm :state="state" :schema="schema" class="space-y-4" @submit="handleSubmit">
+      <UForm :state="state" :schema="schema" class="space-y-4" @submit="startRecaptchaChallenge">
         <!-- <UFormGroup class="" label="Linea temática" name="dimensionId" required>
           <USelect v-model.number="state.dimensionId" :options="dimensions" value-attribute="id" option-attribute="name" :disabled="submitLoading"/>
         </UFormGroup> -->
@@ -165,17 +193,32 @@ const selectDimension = (dimension) => {
             :color="state.dimensionId  == dimension.id ? 'mindaro' : 'white'"
             :variant="state.dimensionId == dimension.id ? 'solid' : 'outline'"
             class="cursor-pointer px-3"
+            size="lg"
             :ui="{ rounded: 'rounded-full' }"
             @click="selectDimension(dimension)">
               {{ dimension.name }}
             </UBadge>
           </div>
         </UFormGroup>
-        <UFormGroup class="" label="Ciudad" name="cityId" required>
-          <USelect v-model.number="state.cityId" :options="citiesOptions" value-attribute="id" option-attribute="name" :disabled="submitLoading"/>
+        <UFormGroup label="Seleccione la ciudad de la iniciativa" name="city" required>
+          <USelectMenu v-model="state.city" :options="cities" option-attribute="name" placeholder="Seleccione una ciudad" size="lg" :ui-menu="{ container: 'z-[1500] group' }"/>
         </UFormGroup>
-        <UFormGroup v-if="state.cityId" class="" :label="selectedLabelSubdivisions" name="subdivisionId" required>
-          <USelect v-model.number="state.subdivisionId" :options="subdivisionsOptions" value-attribute="id" option-attribute="name" :disabled="!state.cityId || submitLoading"/>
+        <UFormGroup v-if="state.city" class="" label="Seleccione la ubicación de la iniciativa" name="subdivision" required>
+          <USelectMenu v-model="state.subdivision" :options="subdivisionsOptions" placeholder="Seleccione la ubicación" size="lg" :ui-menu="{ container: 'z-[1500] group' }">
+            <template #option="{ option }">
+              <span>{{ option.type }} {{ option.name }}</span>
+            </template>
+            <template #label>
+              <span v-if="state.subdivision">{{ state.subdivision.type }} {{ state.subdivision.name }}</span>
+              <span v-else>Seleccione la ubicación</span>
+            </template>
+          </USelectMenu>
+        </UFormGroup>
+        <UFormGroup label="Ubicación del desafio en el mapa" class="w-full">
+          <template #description>
+            <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafio en el mapa. Si el desafio no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
+          </template>
+          <MapSelectPosition v-if="state.subdivision" :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="state.subdivision" />
         </UFormGroup>
         <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
           <template #description>
@@ -206,7 +249,7 @@ const selectDimension = (dimension) => {
         <UButton class="text-xl font-medium" :loading="submitLoading" type="submit" color="pumpkin" block size="lg" :ui="{ rounded: 'rounded-full' }">Reportar</UButton>
       </UForm>
     </div>
-    <div v-else class="text-center">
+    <div v-else ref="success-message" class="text-center">
       <UIcon name="i-heroicons-check-circle" class="text-6xl text-green-500" />
       <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡GRACIAS POR REPORTAR TU DESAFIO!</p>
       <p>Tu reporte ha sido guardado en nuestra base de datos</p>

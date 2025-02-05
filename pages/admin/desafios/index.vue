@@ -72,15 +72,22 @@ const columns = [
   },
   {
     key: 'subdivision',
-    label: 'Subdivision',
+    label: 'Ubicación',
     rowClass: 'text-xs',
     class: ''
   },
   {
     key: 'dimension.name',
-    label: 'Dimensión',
+    label: 'Ejé temático',
     rowClass: 'text-xs text-center',
     class: 'text-center'
+  },
+  {
+    key: 'map',
+    label: {
+      icon: 'i-heroicons-map-pin',
+    },
+    // class: "w-1/6",
   },
   {
     key: 'actions',
@@ -132,15 +139,26 @@ const deleteChallenge = async (challenge) => {
           <LoadingBar class="text-gray-400" />
         </div>
       </template>
+      <template #map-header>
+        <UTooltip text="Con ubicación">
+          <UIcon name="i-heroicons-map-pin" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
       <template #title-data="{ row }">
         <p class="font-medium">{{ truncateText(row.needsAndChallenges, 50) }}</p>
-        <p class="text-xs text-gray-500">Propuesta: {{ truncateText(row.proposal, 75) }}</p>
+        <p class="font-inter text-xs">#{{addLeadingZeros(row.id)}} | <span class="text-gray-600">Propuesta: {{ truncateText(row.proposal, 75) }}</span></p>
       </template>
       <template #subdivision-data="{ row }">
         <p>{{ row.subdivision.name }}</p>
         <p class="text-xs text-gray-500">
           {{ row.subdivision.city.name }}
         </p>
+      </template>
+      <template #map-data="{ row }">
+        <div>
+          <UIcon v-if="row.latitude && row.longitude" name="i-heroicons-map-pin" class="text-green-500 text-lg" />
+          <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg" />
+        </div>
       </template>
       <template #actions-data="{ row }">
         <UDropdown :items="itemsMenu(row)">

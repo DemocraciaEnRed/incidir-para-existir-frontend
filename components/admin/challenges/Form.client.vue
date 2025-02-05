@@ -33,13 +33,16 @@ const challengeState = reactive({
   subdivision: null,
 })
 
-console.log(props.existingChallenge)
+const selectedCoordinates = ref(null)
 
 if(props.existingChallenge){
   console.log('Editing')
   editMode.value = true
   for(const key in challengeState){
     challengeState[key] = props.existingChallenge[key] || ''
+  }
+  if(props.existingChallenge.latitude && props.existingChallenge.longitude){
+    selectedCoordinates.value = [props.existingChallenge.latitude, props.existingChallenge.longitude]
   }
 }
 
@@ -52,7 +55,14 @@ const handleSubmit = async () => {
       proposal: challengeState.proposal,
       inWords: challengeState.inWords,
       dimensionId: challengeState.dimension.id,
-      subdivisionId: challengeState.subdivision.id
+      subdivisionId: challengeState.subdivision.id,
+      recaptchaResponse: '-',
+      latitude: undefined,
+      longitude: undefined
+    }
+    if(selectedCoordinates.value){
+      payload.latitude = selectedCoordinates.value[0]
+      payload.longitude = selectedCoordinates.value[1]
     }
     if(editMode.value){
       await $api(`/challenges/${props.existingChallenge.id}`, {
@@ -112,6 +122,12 @@ const onError = (event) => {
     </UFormGroup>
     <UFormGroup label="Ubicación">
       <AdminSubdivisionSelector v-model="challengeState.subdivision" />
+    </UFormGroup>
+    <UFormGroup v-if="challengeState.subdivision" label="Ubicación del desafio en el mapa" class="w-full">
+      <template #description>
+        <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafio en el mapa. Si el desafio no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
+      </template>
+      <MapSelectPosition :key="`map-subdivision-${challengeState.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="challengeState.subdivision" />
     </UFormGroup>
     <UButton type="submit" block class="text-xl font-semibold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
   </UForm>
