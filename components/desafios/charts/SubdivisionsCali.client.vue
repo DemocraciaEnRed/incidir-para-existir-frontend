@@ -23,7 +23,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
       backgroundColor: 'transparent',
       title: {
         text: 'Desafios por localidad en Cali',
-        subtext: 'Nota: No se incluye Area Urbana'
+        subtext: 'Izquierda: Corregimientos de Cali | Derecha: Comunas de Cali',
       },
       tooltip: {
         trigger: 'item',
