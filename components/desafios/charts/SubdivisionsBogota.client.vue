@@ -23,7 +23,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
     chartOption.value = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Desafios por localidad en Bogota',
+        text: 'Desafios por localidad en Bogotá',
       },
       tooltip: {
         trigger: 'item',
@@ -36,7 +36,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
           saveAsImage: {
             show: true,
             title: 'Descargar',
-            name: 'Desafios por localidad en Bogota'
+            name: 'Desafios por localidad en Bogotá'
           },
         }
       },

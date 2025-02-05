@@ -36,7 +36,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
           saveAsImage: {
             show: true,
             title: 'Descargar',
-            name: 'Desafios por localidad en Bogota'
+            name: 'Desafios por localidad en Cali'
           }
         }
       },
