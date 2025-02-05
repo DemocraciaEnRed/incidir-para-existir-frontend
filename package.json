@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@iconify-json/heroicons": "^1.2.1",
+    "debounce": "^2.2.0",
     "slug": "^10.0.0",
     "vue-picture-cropper": "^0.7.0",
     "yup": "^1.6.0"
