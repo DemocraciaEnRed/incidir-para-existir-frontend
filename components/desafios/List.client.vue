@@ -110,7 +110,7 @@ const clearFilters = () => {
     <div v-else-if="error">{{ error.message }}</div>
     <div v-else>
       <p class="text-center text-sm my-3 font-medium">Filtrar por nombre</p>
-      <UInput v-model="undebouncedNameQuery" placeholder="Escriba aqui..." size="lg" class="w-full md:w-6/12 md:mx-auto " />
+      <UInput v-model="undebouncedNameQuery" placeholder="Escriba aqui..." size="lg" class="w-full md:w-4/12 md:mx-auto " />
       <p class="text-center text-sm my-3 font-medium">Filtrar por ubicación</p>
       <LocalizationSelector v-model:selected-city="selectedCity" v-model:selected-subdivision="selectedSubdivision" />
       <p class="text-center text-sm my-3 font-medium">Filtrar por eje temático (Hasta 1)</p>
