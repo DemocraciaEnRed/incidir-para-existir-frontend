@@ -38,7 +38,7 @@ const isLoading = computed(() => status.value === 'pending');
 // When the map is ready
 const onMapReady = () => {
     // Access the Leaflet map instance
-    console.log(map.value.leafletObject)
+    // console.log(map.value.leafletObject)
     // Add a marker to the map
     data.value.initiatives.forEach(initiative => {
       const marker = new Marker([initiative.latitude, initiative.longitude], { icon: customIcon })
