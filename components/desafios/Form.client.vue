@@ -200,10 +200,10 @@ const selectDimension = (dimension) => {
             </UBadge>
           </div>
         </UFormGroup>
-        <UFormGroup label="Seleccione la ciudad de la iniciativa" name="city" required>
+        <UFormGroup label="Seleccione la ciudad del desafio" name="city" required>
           <USelectMenu v-model="state.city" :options="cities" option-attribute="name" placeholder="Seleccione una ciudad" size="lg" :ui-menu="{ container: 'z-[1500] group' }"/>
         </UFormGroup>
-        <UFormGroup v-if="state.city" class="" label="Seleccione la ubicación de la iniciativa" name="subdivision" required>
+        <UFormGroup v-if="state.city" class="" label="Seleccione la ubicación del desafio" name="subdivision" required>
           <USelectMenu v-model="state.subdivision" :options="subdivisionsOptions" placeholder="Seleccione la ubicación" size="lg" :ui-menu="{ container: 'z-[1500] group' }">
             <template #option="{ option }">
               <span>{{ option.type }} {{ option.name }}</span>
