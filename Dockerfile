@@ -1,5 +1,5 @@
 # ARG NODE_VERSION=20.14.0
-ARG NODE_VERSION=22.11.0
+ARG NODE_VERSION=22.13.1
 
 # Create build stage
 FROM node:${NODE_VERSION}-slim AS build
@@ -10,6 +10,8 @@ RUN npm install -g pnpm
 # Enable pnpm
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+# Update corepack npm install -g corepack@latest
+RUN npm install -g corepack@latest
 RUN corepack enable
 
 
