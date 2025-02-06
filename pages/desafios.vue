@@ -56,9 +56,17 @@ const showDesafiosForm = ref(false)
         <DesafiosMapList />
       </UContainer>
     </div>
-    <UContainer>
-      <div class="my-10">
-      <p class="font-oswald text-4xl text-center uppercase leading-tight text-mindaro mb-5">Estadisticas</p>
+    <UContainer class="my-12">
+      <div class="space-y-7">
+        <div class="text-center">
+          <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">REPORTES DE DESAFIOS</p>
+        </div>
+        <DesafiosList />
+      </div>
+    </UContainer>
+    <div class="bg-electricViolet-800 py-1 my-12" />
+    <UContainer class="my-12">
+      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADISTICAS</p>
       <ClientOnly>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <DesafiosChartsDimensions class="md:col-span-2" />
@@ -72,16 +80,7 @@ const showDesafiosForm = ref(false)
           </UCard>
         </template>
       </ClientOnly>
-      <div class="space-y-7">
-        <div class="text-center">
-          <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">REPORTES DE DESAFIOS</p>
-        </div>
-        <DesafiosList />
-      </div>
-    </div>
-
     </UContainer>
-
   </div>
 </template>
 
