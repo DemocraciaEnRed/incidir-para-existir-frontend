@@ -1,5 +1,5 @@
 <script setup>
-import { Marker, LatLng, LatLngBounds } from 'leaflet';
+import { Marker, LatLng, LatLngBounds, Icon } from 'leaflet';
 import { IniciativasDetail } from '#components'
 
 const { $api } = useNuxtApp();
@@ -12,7 +12,16 @@ const defaultZoom = 10
 const zoom = ref(defaultZoom)
 const mapReady = ref(false)
 
-// const { data } = useAPI('/initiatives/list/geolocalized')
+const customIcon = new Icon({
+  iconUrl: "/maps/marker-icon.png",
+  iconRetinaUrl: "/maps/marker-icon-2x.png",
+  shadowUrl: "/maps/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
 
 const { data, status } = await useAsyncData('map-initiatives', async () => {
   const [cities, initiatives] = await Promise.all([
@@ -32,7 +41,7 @@ const onMapReady = () => {
     console.log(map.value.leafletObject)
     // Add a marker to the map
     data.value.initiatives.forEach(initiative => {
-      const marker = new Marker([initiative.latitude, initiative.longitude])
+      const marker = new Marker([initiative.latitude, initiative.longitude], { icon: customIcon })
       marker.bindTooltip(getTooltipHtml(initiative),{
         className: 'custom-tooltip'
       })

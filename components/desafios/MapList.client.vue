@@ -12,7 +12,16 @@ const defaultZoom = 10
 const zoom = ref(defaultZoom)
 const mapReady = ref(false)
 
-// const { data } = useAPI('/challenges/list/geolocalized')
+const customIcon = new Icon({
+  iconUrl: "/maps/marker-icon.png",
+  iconRetinaUrl: "/maps/marker-icon-2x.png",
+  shadowUrl: "/maps/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
 
 const { data, status } = await useAsyncData('map-challenges', async () => {
   const [cities, challenges] = await Promise.all([
@@ -32,7 +41,7 @@ const onMapReady = () => {
     console.log(map.value.leafletObject)
     // Add a marker to the map
     data.value.challenges.forEach(challenge => {
-      const marker = new Marker([challenge.latitude, challenge.longitude])
+      const marker = new Marker([challenge.latitude, challenge.longitude], { icon: customIcon })
       marker.bindTooltip(getTooltipHtml(challenge),{
         className: 'custom-tooltip'
       })
@@ -53,7 +62,6 @@ const getTooltipHtml = (challenge) => {
       <p class="font-inter text-mindaro text-xs my-1">${challenge.dimension.name}</p>
       <h1 class="font-inter text-gray-400 leading-tight text-xs italic my-1">${challenge.needsAndChallenges}</h1>
       <p class="font-inter text-white text-xs"><span class="uppercase">${challenge.subdivision.city.name}</span> | ${challenge.subdivision.type} ${challenge.subdivision.name}</p>
-
     </div>
   `
 }
