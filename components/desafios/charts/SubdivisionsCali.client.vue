@@ -22,13 +22,24 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
     chartOption.value = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Desafios por localidad en Cali',
+        text: 'Reportes por localidad en Cali',
         subtext: 'Izquierda: Corregimientos de Cali | Derecha: Comunas de Cali',
       },
       tooltip: {
         trigger: 'item',
         showDelay: 0,
-        transitionDuration: 0.2
+        transitionDuration: 0.2,
+        formatter: function (params) {
+          return `<div><p><b>${params.name}</b></p><p>${params.value} reportes</p><div>`;
+        },
+        textStyle: {
+          fontFamily: 'Inter',
+          color: 'white',
+          lineHeight: 14,
+          fontSize: 14
+        },
+        padding: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
       },
       toolbox: {
         show: true,
@@ -36,9 +47,13 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
           saveAsImage: {
             show: true,
             title: 'Descargar',
-            name: 'Desafios por localidad en Cali'
-          }
-        }
+            name: 'cant-reportes-desafios-cali'
+          },
+          restore: {
+            show: true,
+            title: 'Restaurar'
+          },
+        },
       },
       visualMap: {
         left: 'right',
@@ -46,11 +61,13 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
         max: maxValue,
         inRange: {
           color: [
-          '#00000000',
+          '#000000ff',
           '#ff7109ff',
           ]
         },
-        text: ['High', 'Low'],
+        text: ['Alto', 'Bajo'],
+        orient: 'horizontal',
+        realtime: true,
         calculable: true
       },
       series: [{
@@ -87,9 +104,9 @@ const isLoading = computed(() => status.value === 'pending');
   <UCard>
     <UProgress v-if="isLoading" />
     <VChart class="chart" :option="chartOption" autoresize />
-    <template #footer>
+    <!-- <template #footer>
       <p class="text-xs text-gray-400"><b>Este mapa es interactivo</b>: Selecciona una ciudad para explorar los desafíos reportados en detalle. Las áreas demarcadas reflejan la concentración de reportes y la intensidad de los desafíos según los colores</p>
-    </template>
+    </template> -->
   </UCard>
 </template>
 

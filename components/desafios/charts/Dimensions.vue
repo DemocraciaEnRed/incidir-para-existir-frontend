@@ -20,7 +20,17 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
         bottom: 0
       },
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        showDelay: 0,
+        transitionDuration: 0.2,
+        textStyle: {
+          fontFamily: 'Inter',
+          color: 'white',
+          lineHeight: 10,
+          fontSize: 14
+        },
+        padding: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
       },
       toolbox: {
         show: true,
@@ -29,7 +39,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
             show: true,
             title: 'Descargar',
             name: 'Desafios por localidad en Bogotá'
-          }
+          },
         }
       },
       radar: {
