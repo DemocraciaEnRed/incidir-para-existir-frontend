@@ -86,7 +86,7 @@
     accept:{
       type: String,
       default() {
-        return 'image/jpg, image/jpeg, image/png'
+        return 'image/jpg, image/jpeg'
       }    
     }
   })
@@ -141,15 +141,21 @@
    */
   async function getResult() {
     if (!cropper) return
-    const base64 = cropper.getDataURL()
-    const blob: Blob | null = await cropper.getBlob()
+    const base64 = cropper.getDataURL({
+      maxWidth: 1200,
+      imageSmoothingQuality: 'high'
+    })
+    const blob: Blob | null = await cropper.getBlob({
+      maxWidth: 1200,
+      imageSmoothingQuality: 'high'
+    })
     if (!blob) return
 
     const file = await cropper.getFile({
-      fileName: 'test-test',
+      fileName: 'picture',
     })
 
-    console.log({ base64, blob, file })
+    // console.log({ base64, blob, file })
     result.dataURL = base64
     result.blobURL = URL.createObjectURL(blob)
     isShowModal.value = false
