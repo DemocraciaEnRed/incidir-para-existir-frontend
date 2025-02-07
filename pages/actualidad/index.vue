@@ -16,7 +16,7 @@ definePageMeta({
           <p class="font-bold text-xl leading-tight mb-5">En este espacio podrás interactuar con noticias, eventos, actualidad, opiniones y enlaces que te pueden interesar.<br><br>¡Explora y mantente al tanto de todo lo que le importa a la juventud!</p>
         </div>
         <div class="w-full lg:w-1/2">
-          <img src="/img/noticias01.png" class="w-full lg:w-4/5 mx-auto rounded-2xl" alt="">
+          <img src="/img/noticias02.jpg" class="w-full lg:w-4/5 mx-auto rounded-2xl" alt="">
         </div>
       </div>
     </UContainer>

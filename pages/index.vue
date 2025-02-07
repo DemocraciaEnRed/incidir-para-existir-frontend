@@ -18,6 +18,10 @@ const imgPhotoCarrousel = [
   '/img/photos/home-carrousel-04.jpg',
   '/img/photos/home-carrousel-05.jpg',
   '/img/photos/home-carrousel-06.jpg',
+  '/img/photos/home-carrousel-07.jpg',
+  '/img/photos/home-carrousel-08.jpg',
+  '/img/photos/home-carrousel-09.jpg',
+  '/img/photos/home-carrousel-10.jpg',
 ]
 
 const carouselRef = ref()
@@ -43,9 +47,10 @@ onMounted(() => {
           <div class="w-9/12">
             <p class="font-inter font-bold text-4xl lg:text-6xl mb-3 drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">¡Les damos la bienvenida a Incidir para Existir!</p>
             <p class="font-inter font-bold lg:text-2xl drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
+            <UButton to="/iniciativas" color="pumpkin" size="xl" class="text-3xl font-bold mt-5 px-6" :ui="{ rounded: 'rounded-full' }">Suma tu iniciativa</UButton>
           </div>
         </div>
-        <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px]', container: 'h-full', indicators: {base: 'z-10', wrapper: 'relative bg-gray-800 bottom-0 h-[40px]'} }" 
+        <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px] max-h-[500px]', container: 'h-full', indicators: {base: 'z-10', wrapper: 'relative bg-gray-800 bottom-0 h-[40px]'} }" 
         class="carrousel rounded-lg overflow-hidden relative mb-6 min-h-[500px]" indicators>
           <template #default="{ item }">
             <div class="overlay" />
@@ -60,7 +65,6 @@ onMounted(() => {
       </div>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full md:w-8/12 lg:w-1/2">
-          <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¡BIENVENIDOS A INCIDIR PARA EXISTIR!</p>
             <div class="space-y-4">
               <p class="font-medium">Somos una red de jóvenes activistas en Cali y Bogotá que buscan la construcción de realidades dignas para las juventudes. <span class="text-pumpkin-500">En esta plataforma, podrás:</span></p>
               <div class="space-y-3">
@@ -85,7 +89,7 @@ onMounted(() => {
             </div>
           </div>
         <div class="w-full md:w-1/3 lg:w-1/2">
-          <img src="/img/home-figure1.jpg" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
+          <img src="/img/home-figure2.jpg" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
         </div>
       </div>
        

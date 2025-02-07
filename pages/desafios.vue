@@ -39,7 +39,7 @@ const showDesafiosForm = ref(false)
 
         </div>
         <div class="w-full lg:w-1/2">
-          <img src="/img/desafios-01.png" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
+          <img src="/img/desafios-02.jpg" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
         </div>
       </div>
       <div class="my-10 w-full md:w-4/5 mx-auto space-y-5">

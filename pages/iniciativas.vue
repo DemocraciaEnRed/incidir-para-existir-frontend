@@ -63,7 +63,7 @@ const accordionItems = [
           <p class="font-bold text-xl leading-tight mb-5">Explora nuestras líneas temáticas y conoce cómo trabajamos colectivamente por un cambio transformador en Cali y Bogotá.</p>
         </div>
         <div class="w-full lg:w-1/2">
-          <img src="/img/iniciativas-01.png" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
+          <img src="/img/iniciativas-02.jpg" alt="Incidir para existir" class="w-full lg:w-4/5 mx-auto rounded-lg">
         </div>
       </div>
       <UDivider class="my-6"/>
