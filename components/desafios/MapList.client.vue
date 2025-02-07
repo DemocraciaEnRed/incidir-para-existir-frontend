@@ -1,5 +1,5 @@
 <script setup>
-import { Marker, LatLng, LatLngBounds } from 'leaflet';
+import { Marker, LatLng, LatLngBounds, Icon } from 'leaflet';
 import { DesafiosDetail } from '#components'
 
 const { $api } = useNuxtApp();
