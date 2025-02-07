@@ -9,7 +9,7 @@ onMounted(() => {
     console.log('Recaptcha response:', response)
     setTimeout(() => {
       emit('submitRecaptcha', response)
-    }, 1000)
+    }, 500)
   })
 })
 
@@ -25,7 +25,7 @@ function closeModal() {
     <UCard>
       <div class="space-y-2">
         <h1 class="font-oswald uppercase text-2xl mb-2">Complete el captcha</h1>
-        <p>Para enviar el formulario, complete el desafio</p>
+        <p>Para continuar, por favor, completa el captcha</p>
         <!-- The reCAPTCHA widget -->
         <div id="recaptcha-widget" />
         <div class="flex flex-row justify-between align-middle my-3">
