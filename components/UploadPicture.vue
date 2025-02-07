@@ -151,9 +151,9 @@
     })
     if (!blob) return
 
-    const file = await cropper.getFile({
-      fileName: 'picture',
-    })
+    // const file = await cropper.getFile({
+    //   fileName: 'picture',
+    // })
 
     // console.log({ base64, blob, file })
     result.dataURL = base64
