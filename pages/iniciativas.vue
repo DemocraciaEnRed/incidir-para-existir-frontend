@@ -7,21 +7,6 @@ definePageMeta({
 })
 
 // const { signIn, token, data, status, lastRefreshedAt } = useAuth()
-const { status, data: sessionData } = useAuth()
-
-const topicDescription = ref(1)
-const showInitiativeForm = ref(false)
-
-const handleShowForm = async () => {
-  showInitiativeForm.value = true
-}
-
-const showTopicDescription = (sectionNumber) => {
-  topicDescription.value = sectionNumber
-  // scroll to the description
-  const element = document.getElementById('theDescription')
-  element.scrollIntoView({ behavior: 'smooth' })
-}
 
 const accordionItems = [
   {
@@ -176,18 +161,46 @@ const accordionItems = [
       </div>
 
     </UContainer>
-    <div class="bg-electricViolet-800 py-10 rounded-tr-2xl rounded-tl-2xl">
+    <div class="bg-electricViolet-800 py-12 rounded-tr-2xl rounded-tl-2xl">
       <UContainer class="">
         <p class="font-oswald text-5xl leading-tight text-mindaro text-center">MAPA DE INICIATIVAS</p>
         <IniciativasMapList />
       </UContainer>
     </div>
-    <UContainer class="my-10">
+    <UContainer class="my-12">
       <div class="space-y-7">
         <div class="text-center">
           <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">LISTADO DE INICIATIVAS</p>
         </div>
         <IniciativasList />
+      </div>
+    </UContainer>
+    <div class="bg-electricViolet-800 py-1 my-12" />
+    <UContainer class="my-12">
+      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADISTICAS</p>
+      <ClientOnly>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <IniciativasChartsDimensions class="md:col-span-2" />
+          <IniciativasChartsDimensionsBars class="md:col-span-2" />
+          <IniciativasChartsSubdivisionsCali class="" />
+          <IniciativasChartsSubdivisionsBogota class="" />
+        </div>
+        <template #fallback>
+          <!-- this will be rendered on server side -->
+          <UCard>
+            <UProgress />
+          </UCard>
+        </template>
+      </ClientOnly>
+      <div class="my-12 text-center">
+        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">CREA TUS PROPIOS REPORTES</p>
+        <div class="my-4">
+          <p>¿Te interesan los datos abiertos?</p>
+          <p>Descarga las iniciativas en formato CSV para hacer tus propios reportes</p>
+        </div>
+        <div class="w-6/12 mx-auto">
+          <IniciativasDownloadCsv />
+        </div>
       </div>
     </UContainer>
   </div>
