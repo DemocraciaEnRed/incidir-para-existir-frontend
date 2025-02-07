@@ -50,7 +50,7 @@ const showDesafiosForm = ref(false)
         <DesafiosForm />
       </div>
     </UContainer> 
-    <div class="bg-electricViolet-800 py-10 rounded-tr-2xl rounded-tl-2xl">
+    <div class="bg-electricViolet-800 py-12 rounded-tr-2xl rounded-tl-2xl">
       <UContainer class="">
         <p class="font-oswald text-5xl leading-tight text-mindaro text-center">MAPA DE DESAFIOS</p>
         <DesafiosMapList />
@@ -70,6 +70,7 @@ const showDesafiosForm = ref(false)
       <ClientOnly>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <DesafiosChartsDimensions class="md:col-span-2" />
+          <DesafiosChartsDimensionsBars class="md:col-span-2" />
           <DesafiosChartsSubdivisionsCali class="" />
           <DesafiosChartsSubdivisionsBogota class="" />
         </div>
@@ -80,6 +81,16 @@ const showDesafiosForm = ref(false)
           </UCard>
         </template>
       </ClientOnly>
+      <div class="my-12 text-center">
+        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">CREA TUS PROPIOS REPORTES</p>
+        <div class="my-4">
+          <p>¿Te interesan los datos abiertos?</p>
+          <p>Descarga los reportes de desafíos en formato CSV para hacer tus propios reportes</p>
+        </div>
+        <div class="w-6/12 mx-auto">
+          <DesafiosDownloadCsv />
+        </div>
+      </div>
     </UContainer>
   </div>
 </template>

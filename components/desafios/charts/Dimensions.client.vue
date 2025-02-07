@@ -49,7 +49,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
       },
       series: [
         {
-          name: 'Dimensiones Cali Vs. Bogotá',
+          name: 'Ejes tematicos Cali Vs. Bogotá',
           type: 'radar',
           data: chartData.radar.data
         }
