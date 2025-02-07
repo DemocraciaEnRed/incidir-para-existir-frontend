@@ -32,16 +32,20 @@ const items = computed(() => {
   ]
 
   if(userData && userData.value.role == 'admin') {
-    const adminOptions = [{
+    const adminOptions = [[{
       label: 'Admin',
       to: '/admin',
       icon: 'i-heroicons-cog'
+    }], [{
+      label: 'Mi perfil',
+      to: '/perfil',
+      icon: 'i-heroicons-user'
     }, {
       label: 'Salir',
       icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
       click: () => handleLogout()
-    }]
-    navbarOptions.push(adminOptions)
+    }]]
+    navbarOptions.push(...adminOptions)
   } else if (userData && userData.value.role == 'reporter') {
     const memberOptions = [
     [{
