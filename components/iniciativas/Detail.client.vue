@@ -79,7 +79,20 @@ const isLoading = computed(() => status.value === 'pending');
               <p class="text-sm text-gray-500">Necesidades de la iniciativa</p>
               <p class="">{{ data.needsAndOffers }}</p>
             </div>
-
+            <UDivider />
+            <p class="font-bold text-xl">Datos de contacto</p>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500">Nombre del contacto</p>
+              <p class="">{{ data.contact.publicData.fullname }}</p>
+            </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500">Email de contacto</p>
+              <p class="">{{ data.contact.publicData.email }}</p>
+            </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500">Teléfono de contacto</p>
+              <p class="">{{ data.contact.publicData.phone }}</p>
+            </div>
           </div>
         </div>
       </div>
