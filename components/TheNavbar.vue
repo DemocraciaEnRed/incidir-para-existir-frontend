@@ -11,7 +11,7 @@ const userFullname = computed(() => {
   return '-'
 })
 
-// const mobileBurgerActive = ref(false)
+const mobileBurgerActive = ref(false)
 
 const handleLogout = async () => {
   try {
@@ -95,7 +95,7 @@ const items = computed(() => {
             <NuxtLink to="/iniciativas" active-class="text-mindaro" class="navbar-item leading-none text-center">Iniciativas<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item leading-none text-center">Desafios<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item leading-none text-center">Actualidad<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
-            <UButton to="https://linktr.ee/incidirparaexistir" target="_blank" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize">Contactános</UButton>
+            <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize">Contactanos</UButton>
             <!-- <UButton v-if="!loggedIn" to="/login" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton> -->
             <!-- <UButton v-if="loggedIn" color="orange" variant="solid" icon="i-heroicons-arrow-left-start-on-rectangle-16-solid" @click="handleLogout">Salir</UButton> -->
             <!-- <NuxtLink v-if="!loggedIn" to="/login" class="navbar-item">
@@ -105,8 +105,31 @@ const items = computed(() => {
               <UAvatar :alt="userFullname" />
             </UDropdown>
           </div>
+          <div class="cursor-pointer"  @click="mobileBurgerActive = !mobileBurgerActive" >
+            <UIcon name="i-heroicons-bars-3-16-solid" class="size-8 md:hidden"/>
+          </div>
+          
         </div>
       </UContainer>
+    </div>
+    <div v-if="mobileBurgerActive" class="bg-[#440d39f5] fixed top-0 left-0 h-screen w-screen z-[100000]">
+      <div class="absolute top-0 right-0 p-5 cursor-pointer" @click="mobileBurgerActive = !mobileBurgerActive">
+        <UIcon name="i-heroicons-x-mark" class="size-8"/>
+      </div>
+      <div class="flex flex-col items-center justify-center space-y-5 h-full text-xl font-oswald uppercase">
+        <NuxtLink to="/" class="mb-5">
+          <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="h-[80px] w-auto mr-auto md:ml-0 md:mr-auto" >
+        </NuxtLink>
+        <NuxtLink to="/" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Inicio</NuxtLink>
+        <NuxtLink to="/quienes-somos" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">¿Quienes Somos?</NuxtLink>
+        <NuxtLink to="/iniciativas" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Iniciativas</NuxtLink>
+        <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Desafios</NuxtLink>
+        <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Actualidad</NuxtLink>
+        <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize" @click="mobileBurgerActive = !mobileBurgerActive">Contactanos</UButton>
+        <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
+          <UAvatar :alt="userFullname" />
+        </UDropdown>
+      </div>
     </div>
   </nav>
 </template>
