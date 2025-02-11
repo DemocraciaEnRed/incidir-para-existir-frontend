@@ -85,7 +85,7 @@ const showDesafiosForm = ref(false)
         <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">CREA TUS PROPIOS REPORTES</p>
         <div class="my-4">
           <p>¿Te interesan los datos abiertos?</p>
-          <p>Descarga los reportes de desafíos en formato CSV para hacer tus propios reportes</p>
+          <p>Descarga los datos completos aquí para conocer más detalles sobre los desafíos reportados en cada ciudad. Esta información puede ser útil para investigaciones, propuestas y acciones de incidencia.</p>
         </div>
         <div class="w-6/12 mx-auto">
           <DesafiosDownloadCsv />
