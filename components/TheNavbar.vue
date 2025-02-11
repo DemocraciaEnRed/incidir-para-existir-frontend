@@ -102,7 +102,7 @@ const items = computed(() => {
               Ingresa<UIcon name="i-heroicons-arrow-left-end-on-rectangle-16-solid" class="size-6 ml-2" />
             </NuxtLink> -->
             <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
-              <UAvatar :alt="userFullname" />
+              <UAvatar :src="userData.imageUrl" :alt="userFullname" />
             </UDropdown>
           </div>
           <div class="cursor-pointer"  @click="mobileBurgerActive = !mobileBurgerActive" >
