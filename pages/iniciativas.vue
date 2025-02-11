@@ -196,7 +196,7 @@ const accordionItems = [
         <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">CREA TUS PROPIOS REPORTES</p>
         <div class="my-4">
           <p>¿Te interesan los datos abiertos?</p>
-          <p>Descarga las iniciativas en formato CSV para hacer tus propios reportes</p>
+          <p>Descarga los datos completos aquí para conocer más detalles sobre las iniciativas reportadas en cada ciudad.</p>
         </div>
         <div class="w-6/12 mx-auto">
           <IniciativasDownloadCsv />
