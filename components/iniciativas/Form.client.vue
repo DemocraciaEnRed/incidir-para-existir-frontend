@@ -183,7 +183,7 @@ const handleSubmit = async () => {
       event_label: 'initiative_form',
       value: 1
     });
-
+Como tu, hay otros jóvenes con causas similares, gracias por hacer parte del cambio
     submitSuccess.value = true
     submitError.value = false
     // scroll to the success message, make it to the center of the screen
@@ -340,7 +340,9 @@ watch(() => initiativeState.city, () => {
     <div v-else ref="success-message" class="text-center">
       <UIcon name="i-heroicons-check-circle" class="text-6xl text-green-500" />
       <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡GRACIAS POR SUMAR TU INICIATIVA!</p>
-      <p>Tu iniciativa ha sido guardado en nuestra base de datos</p>
+      <p>Como tu, hay otros jóvenes con causas similares, gracias por hacer parte del cambio</p>
+      <br>
+      <p class="text-sm">¿Quieres descubrir más iniciativas juveniles? Explora el siguiente mapa, busca por ciudad ¡y conecta con ellas ahora!</p>
     </div>
 
   </UCard>
