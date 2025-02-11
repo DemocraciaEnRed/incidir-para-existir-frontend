@@ -19,7 +19,61 @@ const accordionItems = [{
   slot: 'que-nos-mueve'
 }]
 
-// const showSection = ref(1)
+const carouselItems = [
+  {
+    id: 'timeline01',
+    title: '2019 - 2021: Los estallidos sociales históricos en Colombia',
+    text: [
+      'En estos años, Colombia vivió una serie de estallidos sociales sin precedentes. Multitudinarias movilizaciones, plantones, tomas del espacio público y acciones simbólicas tanto online como offline canalizaron la inconformidad ciudadana.',
+      'La juventud se destacó por su liderazgo, creatividad y valentía, siendo el motor de estas luchas colectivas. Sin embargo, también enfrentó graves vulneraciones como violencia física, desapariciones forzadas y tratos crueles e inhumanos.'
+    ]
+  },
+  {
+    id: 'timeline02',
+    title: '2023: El nacimiento de "Incidir para Existir"',
+    text: [
+      'Surge como un espacio para el encuentro de líderes y lideresas juveniles, promoviendo la formación y el diálogo con la institucionalidad.',
+      'Con el objetivo de facilitar la incidencia política desde la escucha, la propuesta y la exigencia de demandas juveniles, con un enfoque en la dignificación de la vida y los sentires de los jóvenes de Cali y Bogotá.',
+    ]
+  },
+  {
+    id: 'timeline03',
+    title: '2023: Creación de las agendas ciudadanas',
+    text: [
+      'A través de bootcamps y mentorías, se definieron colectivamente las demandas juveniles de ambas ciudades. Estas fueron consignadas en agendas ciudadanas que sirvieron como hoja de ruta para la incidencia política.'
+    ]
+  },
+  {
+    id: 'timeline04',
+    title: '2024: Organización interna y trabajo colectivo',
+    text: [
+      'Se fortalecieron los grupos juveniles en Cali y Bogotá, adaptando los procesos organizativos a las realidades sociopolíticas locales.',
+      'La red comenzó a estructurarse bajo una lógica de macroprocesos, integrando diferentes vertientes necesarias para alcanzar los objetivos iniciales y materializar su teoría de cambio.',
+    ]
+  },
+  {
+    id: 'timeline05',
+    title: '2024: Dialogo y transformación',
+    text: [
+      'Funcionarios de las Alcaldias de Cali y Bogotá conocieron las agendas juveniles y se incluyeron propuestas importantes en los Planes de Desarrollo Locales.',
+      '"Incidir para Existir" se posiciona como una plataforma de liderazgo juvenil, promoviendo la participación organizada y transformadora de los jóvenes en los contextos urbanos.'
+    ]
+  },
+  {
+    id: 'timeline06',
+    title: '2024: Campañas de Incidencia',
+    text: [
+      'Como RED desarrollamos tres campañas importantes: La primera exigiendonoslas Tarifa diferencial en el transporte público para estudiantes en la ciudad de Cali, la segunda exigiendo condiciones de Trabajo Digno para las juventudes en Bogotá y la tercera en el marco de la COP-16 relacionada con la exigencia de defensa de la vida de los lideres socioambientales.'
+    ]
+  },
+  {
+    id: 'timeline07',
+    title: '2025 (y más allá): Seguimos construyendo',
+    text: [
+      'Seguiremos construyendo ciudades más justas y dignas para las juventudes.'
+    ]
+  },
+]
 
 </script>
 
@@ -67,7 +121,7 @@ const accordionItems = [{
                 social u otras acciones de participación, sus liderazgos fueron opacados y diferentes hechos violentos
                 contra la juventud tuvieron lugar: violencia física, sexual, desaparición forzada, tratos crueles e
                 inhumanos.</p>
-              <p>Bajo este contexto nace Incidir para Existir como un espacio para el encuentro de líderes y lideresas,
+              <p>Bajo este contexto nace <b>Incidir para Existir</b> como un espacio para el encuentro de líderes y lideresas,
                 como un lugar para promover el diálogo de la juventud hacia la institucionalidad y desde allí, facilitar
                 la incidencia política desde la propuesta, la escucha y por supuesto, la exigencia de sus demandas para
                 así, promover la dignificación de la vida y sentires de los y las jóvenes de las ciudades de Cali y
@@ -81,6 +135,38 @@ const accordionItems = [{
                 procesos que engloban todas las vertientes que implican nuestro objetivo inicial y nuestra teoría de
                 cambio.</p>
             </div>
+            <br>  
+            <h1 class="text-3xl uppercase font-oswald text-mindaro text-center">Línea de tiempo:<br>El nacimiento y evolución de "Incidir para Existir"</h1>
+            <UCarousel
+              :items="carouselItems"
+              :ui="{
+                item: 'basis-full',
+                container: 'rounded-lg'
+              }"
+              arrows
+              class="w-8/12 mx-auto my-5"
+            >
+              <template #default="{ item }">
+                <UCard class="w-full m-3 flex flex-col items-center justify-center text-center">
+                  <h3 class="font-oswald text-2xl uppercase text-pumpkin-300 mb-5">{{ item.title }}</h3> 
+                  <p v-for="(text, index) in item.text" :key="`p-${item.id}-${index}`" class="text-base text-white mb-3">
+                    {{ text }}
+                  </p>
+                </UCard>
+              </template>
+
+              <template #prev="{ onClick, disabled }">
+                <button :disabled="disabled" @click="onClick">
+                  Anterior
+                </button>
+              </template>
+
+              <template #next="{ onClick, disabled }">
+                <button :disabled="disabled" @click="onClick">
+                  Siguiente
+                </button>
+              </template>
+            </UCarousel>
           </template>
           <template #que-hemos-logrado>
             <div class="text-base text-white space-y-3 text-justify my-3 px-6">
