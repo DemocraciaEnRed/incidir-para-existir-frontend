@@ -3,6 +3,7 @@
 import { RecaptchaModal } from '#components'
 
 const { $api } = useNuxtApp()
+const { gtag } = useGtag()
 
 const modal = useModal()
 const toast = useToast()
@@ -48,6 +49,13 @@ const handleSubmit = async () => {
     a.click()
     recaptchaResponse.value = null
     isLoading.value = false
+    
+    gtag('event', 'download_csv', {
+      event_category: 'engagement',
+      event_label: 'download_csv_initiatives',
+      method: 'click',
+      value: 1
+    });
   } catch (error) {
     console.log(error)
     toast.add({ title: 'Error', description: 'Hubo un error al descargar el CSV', color: 'red' })
