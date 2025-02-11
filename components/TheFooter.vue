@@ -36,7 +36,7 @@ const rounded = computed(() => {
         <ULink to="https://linktr.ee/incidirparaexistir" target="_blank" class="text-center text-sm"><img src="/svg/linktree-logo-icon.svg" class="h-5" alt="Linktree"/></ULink>
       </div>
       <hr class="opacity-60">
-      <p class="my-8 text-center text-sm">Desarrollado por <ULink to="https://democraciaenred.org" class="font-inter font-semibold underline hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
+      <p class="my-8 text-center text-sm">Desarrollado por <ULink to="https://democraciaenred.org" class="font-inter font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
     </UContainer>
   </footer>
 </template>
