@@ -183,8 +183,8 @@ const handleSubmit = async () => {
       event_label: 'initiative_form',
       value: 1
     });
-Como tu, hay otros jóvenes con causas similares, gracias por hacer parte del cambio
-    submitSuccess.value = true
+
+   submitSuccess.value = true
     submitError.value = false
     // scroll to the success message, make it to the center of the screen
     setTimeout(() => {
