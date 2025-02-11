@@ -15,9 +15,9 @@ definePageMeta({
 <template>
   <div>
     <div class="space-y-1">
-      <h1 class="font-oswald uppercase text-4xl">Editar perfil</h1>
+      <h1 class="font-oswald uppercase text-4xl">Cambiar contraseña</h1>
       <br>
-      <p>Proximamente...</p>
+      <PerfilFormPassword />
     </div>
   </div>
 </template>

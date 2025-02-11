@@ -47,6 +47,7 @@ export default defineNuxtConfig({
           lastName: 'string',
           fullName: 'string',
           email: 'string', 
+          imageUrl: 'string',
           role: '\'admin\' | \'reporter\' | \'user\'', 
           subdivision: '{ id: number, name: string, city: { id: number, name: string } }',
         },
