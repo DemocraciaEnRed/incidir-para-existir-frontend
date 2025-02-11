@@ -94,7 +94,7 @@ const goTo = (slug) => navigateTo({
         </div>
       </div>
     </div>
-    <UPagination v-model="page" :page-count="2" :total="totalItems" />
+    <UPagination v-model="page" :page-count="limit" :total="totalItems" />
   </div>
   <div v-else>
     <p class="text-white text-sm my-10">No hay posts disponibles en esta sección</p>
