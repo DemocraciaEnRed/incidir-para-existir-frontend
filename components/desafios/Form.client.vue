@@ -9,7 +9,7 @@ import {
 import { RecaptchaModal } from '#components'
 
 const { $api } = useNuxtApp()
-
+const { gtag } = useGtag()
 const toast = useToast()
 const modal = useModal()
 
@@ -129,6 +129,13 @@ const handleSubmit = async () => {
       method: 'POST',
       body: JSON.stringify(payload)
     })
+
+    gtag('event', 'form_submission', {
+      event_category: 'engagement',
+      event_label: 'challenge_form',
+      value: 1
+    });
+    
     submitSuccess.value = true
     submitError.value = false
     setTimeout(() => {
