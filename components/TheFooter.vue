@@ -35,8 +35,8 @@ const rounded = computed(() => {
         <NuxtLink to="/contacto" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Contacto</NuxtLink>
         <ULink to="https://linktr.ee/incidirparaexistir" target="_blank" class="text-center text-sm"><img src="/svg/linktree-logo-icon.svg" class="h-5" alt="Linktree"/></ULink>
       </div>
-      <hr class="opacity-30">
-      <p class="font-inter my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
+      <!-- <hr class="opacity-30">
+      <p class="font-inter my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p> -->
     </UContainer>
   </footer>
 </template>
