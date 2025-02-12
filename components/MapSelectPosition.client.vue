@@ -1,5 +1,5 @@
 <script setup>
-  import { Marker } from 'leaflet';
+  import { Marker, Icon } from 'leaflet';
   
   const selectedCoordinates = defineModel({
     type: [Array, null],
@@ -22,6 +22,17 @@
   const mapReady = ref(false)
   const originalCoordinates = ref(null)
 
+  const customIcon = new Icon({
+  iconUrl: "/maps/marker-icon.png",
+  iconRetinaUrl: "/maps/marker-icon-2x.png",
+  shadowUrl: "/maps/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
+
   // When the map is ready
   const onMapReady = () => {
     // Access the Leaflet map instance
@@ -29,7 +40,7 @@
 
     if(selectedCoordinates.value && selectedCoordinates.value.length > 0) {
       originalCoordinates.value = selectedCoordinates.value
-      marker.value = new Marker(selectedCoordinates.value)
+      marker.value = new Marker(selectedCoordinates.value, { icon: customIcon })
       marker.value.addTo(map.value.leafletObject)
       map.value.leafletObject.setView(selectedCoordinates.value, defaultZoom)
     } else {
@@ -44,7 +55,7 @@
         map.value.leafletObject.removeLayer(marker.value)
       }
       selectedCoordinates.value = [e.latlng.lat, e.latlng.lng]
-      marker.value = new Marker([e.latlng.lat, e.latlng.lng])
+      marker.value = new Marker([e.latlng.lat, e.latlng.lng], { icon: customIcon })
       marker.value.addTo(map.value.leafletObject)
       // center the map to the selected coordinates
       map.value.leafletObject.setView([e.latlng.lat, e.latlng.lng], zoom.value)
@@ -57,7 +68,7 @@
     }
     if(originalCoordinates.value) {
       selectedCoordinates.value = originalCoordinates.value
-      marker.value = new Marker(originalCoordinates.value)
+      marker.value = new Marker(originalCoordinates.value, { icon: customIcon })
       marker.value.addTo(map.value.leafletObject)
       map.value.leafletObject.setView(originalCoordinates.value, zoom.value)
     }
