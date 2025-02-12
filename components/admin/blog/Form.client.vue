@@ -81,6 +81,15 @@ const updateSlug = () => {
 const setPictureResult = async (cropperResult) => {
   // cropperREsult has dataUrl, blobUrl, file
   pictureResult.value = cropperResult
+  if(Object.keys(cropperResult).length === 0 && cropperResult.constructor === Object){
+    if(props.existingEntry.imageUrl){
+      enableUploadPicture.value = false
+      alreadyHasPicture.value = true
+    } else {
+      enableUploadPicture.value = true
+      alreadyHasPicture.value = false
+    }
+  }
 }
 
 const handleSubmit = async () => {
@@ -168,7 +177,7 @@ const isUserAdmin = computed(() => {
         <p class="text-xs">La imagen debe ser 16:9. Se abrirá un modal para que pueda ajustar la imagen</p>
       </template>
       <img v-if="pictureResult && pictureResult.dataURL" :src="pictureResult.dataURL" alt="Cover del posteo" class="border border-gray-700 rounded-xl mx-auto my-2" >
-      <UploadPicture :aspect-ratio="16/9" @set-picture="setPictureResult" />
+      <UploadPicture :aspect-ratio="16/9" :image-height="900" :image-width="1600" @set-picture="setPictureResult" />
     </UFormGroup>
     <UFormGroup v-else label="Cover del post">
       <img v-if="editMode && alreadyHasPicture" :src="props.existingEntry.imageUrl" alt="Imagen de perfil" class="border border-gray-700 rounded-xl mx-auto" >

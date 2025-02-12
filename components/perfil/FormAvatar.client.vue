@@ -48,6 +48,16 @@ const handleSubmit = async () => {
 const setPictureResult = async (cropperResult) => {
   // cropperREsult has dataUrl, blobUrl, file
   pictureResult.value = cropperResult
+  // check if empty object or null
+  if(Object.keys(cropperResult).length === 0 && cropperResult.constructor === Object){
+    if(userData.value.imageUrl){
+      enableUploadPicture.value = false
+      alreadyHasPicture.value = true
+    } else {
+      enableUploadPicture.value = true
+      alreadyHasPicture.value = false
+    }
+  }
 }
 
 
@@ -61,7 +71,7 @@ const setPictureResult = async (cropperResult) => {
           <p class="text-xs">La imagen debe ser cuadrada. Se abrirá un modal para que pueda ajustar la imagen</p>
         </template>
         <img v-if="pictureResult && pictureResult.dataURL" :src="pictureResult.dataURL" alt="Imagen de perfil" class="border border-gray-700 rounded-xl my-2 max-w-[200px]" >
-        <UploadPicture :aspect-ratio="1/1" @set-picture="setPictureResult" />
+        <UploadPicture :aspect-ratio="1/1" :image-height="500" :image-width="500" @set-picture="setPictureResult" />
       </UFormGroup>
       <UFormGroup v-else label="Foto de perfil">
         <img v-if="alreadyHasPicture" :src="userData.imageUrl" alt="Imagen de perfil" class="border border-gray-700 rounded-xl max-w-[200px]" >
