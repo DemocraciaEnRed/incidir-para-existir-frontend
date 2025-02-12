@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-  middleware: ['auth',],
+  middleware: ['auth'],
   layout: 'perfil',
   auth: {
     unauthenticatedOnly: false,
@@ -25,7 +25,7 @@ const { data: userData } = useAuth()
           <UAvatar size="3xl" :src="userData && userData.imageUrl || undefined" :alt="userData.fullName" />
           <div> 
             <p class="font-inter text-3xl font-bold">{{ userData.fullName }}</p>
-            <p>{{ userData.subdivision.name }}, {{ userData.subdivision.city.name }}</p>
+            <p v-if="userData.subdivisionId">{{ userData.subdivision.name }}, {{ userData.subdivision.city.name }}</p>
           </div>
         </div>
       </UCard>

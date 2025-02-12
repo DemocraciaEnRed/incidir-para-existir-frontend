@@ -6,9 +6,14 @@ const links = [
     to: '/perfil'
   },
   {
-    label: 'Editar perfil',
+    label: 'Cambiar foto de perfil',
     icon: 'i-heroicons-pencil',
-    to: '/perfil/editar'
+    to: '/perfil/editar/avatar'
+  },
+  {
+    label: 'Cambiar contraseña',
+    icon: 'i-heroicons-pencil',
+    to: '/perfil/editar/password'
   },
   ]
 </script>

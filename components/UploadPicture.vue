@@ -36,10 +36,10 @@
           Ajuste de imagen
         </template>
         <template #footer>
-          <div class="flex justify-end gap-2">
-            <UButton color="white" variant="ghost" @click="isShowModal = false">Cancelar</UButton>
-            <UButton color="white" variant="ghost" @click="clear">Limpiar</UButton>
-            <UButton color="white" variant="ghost" @click="reset">Reset</UButton>
+          <div class="flex justify-between gap-2">
+            <UButton color="white" variant="ghost" @click="cancelPicture">Cancelar</UButton>
+            <!-- <UButton color="white" variant="ghost" @click="clear">Limpiar</UButton> -->
+            <!-- <UButton color="white" variant="ghost" @click="reset">Reset</UButton> -->
             <UButton color="mindaro" @click="getResult">Aceptar</UButton>
           </div>
         </template>
@@ -83,6 +83,18 @@
         return 1/1
       }
     },
+    imageWidth: {
+      type: Number,
+      default() {
+        return 1200
+      }
+    },
+    imageHeight: {
+      type: Number,
+      default() {
+        return 1200
+      }
+    },
     accept:{
       type: String,
       default() {
@@ -104,6 +116,11 @@
     result.dataURL = ''
     result.blobURL = ''
     emit('setPicture', {})
+  }
+
+  function cancelPicture() {
+    erasePicture()
+    isShowModal.value = false
   }
 
   /**
@@ -141,14 +158,14 @@
    */
   async function getResult() {
     if (!cropper) return
-    const base64 = cropper.getDataURL({
-      maxWidth: 1200,
+    const imageOptions = {
+      width: props.imageWidth,
+      height: props.imageHeight,
       imageSmoothingQuality: 'high'
-    })
-    const blob: Blob | null = await cropper.getBlob({
-      maxWidth: 1200,
-      imageSmoothingQuality: 'high'
-    })
+    }
+    
+    const base64 = cropper.getDataURL(imageOptions)
+    const blob: Blob | null = await cropper.getBlob(imageOptions)
     if (!blob) return
 
     // const file = await cropper.getFile({
