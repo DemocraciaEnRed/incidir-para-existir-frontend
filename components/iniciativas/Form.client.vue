@@ -40,9 +40,9 @@ const contactSchema = YupObject({
 })
 
 const contactState = reactive({
-  fullname: 'Guillemro',
-  email: 'guillermo@democracy.io',
-  phone: '45242451',
+  fullname: '',
+  email: '',
+  phone: '',
   keepEmailPrivate: true, // privacy by default
   keepPhonePrivate: true // privacy by default
 })
