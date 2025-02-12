@@ -15,37 +15,37 @@ const accordionItems = [
     slot: 'educacion-de-calidad',
   },
   {
-    label: 'Empleo Digno',
+    label: 'Empleo digno',
     subtitle: 'Trabajar bien, vivir mejor',
     slot: 'empleo-digno',
   },
   {
-    label: 'Espacios Públicos Seguros',
+    label: 'Espacios públicos seguros',
     subtitle: 'Calles sin miedo',
     slot: 'espacios-publicos-seguros',
   },
   {
-    label: 'Participación Política Juvenil',
+    label: 'Participación política juvenil',
     subtitle: 'Alzar la voz, ser parte del cambio',
     slot: 'participacion-politica-juvenil',
   },
   {
-    label: 'Transporte Público Digno',
+    label: 'Transporte público digno',
     subtitle: 'Movilidad sin barreras',
     slot: 'transporte-publico-digno',
   },
   {
-    label: 'Salud Integral',
+    label: 'Salud integral',
     subtitle: 'Cuerpo y mente en equilibrio',
     slot: 'salud-integral',
   },
   {
-    label: 'Ambiente Sano',
+    label: 'Ambiente sano',
     subtitle: 'El planeta es nuestro hogar',
     slot: 'ambiente-sano',
   },
   {
-    label: 'Ocio y Cultura',
+    label: 'Ocio y cultura',
     subtitle: 'Espacios para crear y soñar',
     slot: 'ocio-y-cultura',
   }
@@ -96,10 +96,8 @@ const accordionItems = [
         </template>
         <template #empleo-digno>
           <div class="text-base text-white space-y-3 text-justify my-1 px-6">
-            <p>Sabemos lo difícil que es encontrar un trabajo estable y justo. Exigimos empleos formales que incluyan
-              seguridad social y pensiones, sin contratos basura.</p><p>Además, queremos que se apoyen los emprendimientos
-              juveniles para que seamos quienes generemos empleo, con oportunidades reales de crecimiento económico y
-              personal.</p>
+            <p>Sabemos lo difícil que es encontrar un trabajo estable y justo. Exigimos empleos formales que incluyan seguridad social y pensiones, sin contratos basura. Además, queremos que se apoyen los emprendimientos juveniles para que seamos quienes generemos empleo, con oportunidades reales de crecimiento económico y personal.</p>
+            <p>Esto mediante nuestra campaña por el Trabajo Digno hemos compartido nuestras exigencias y nuestras apuestas con las juventudes de Bogotá y los tomadores de decisiones de la ciudad.</p>
           </div>
         </template>
         <template #espacios-publicos-seguros>
@@ -133,9 +131,9 @@ const accordionItems = [
         </template>
         <template #ambiente-sano>
           <div class="text-base text-white space-y-3 text-justify my-1 px-6">
-            <p>El cambio climático es nuestro problema, y queremos soluciones reales.</p><p>Exigimos ser parte de las
-              decisiones que afectan el ambiente, desde la conservación de humedales hasta políticas climáticas
-              internacionales. La juventud está lista para liderar la protección del planeta.</p>
+            <p>El cambio climático es nuestro problema, y queremos soluciones reales.</p>
+            <p>Exigimos ser parte de las decisiones que afectan el ambiente, desde la conservación de humedales hasta políticas climáticas internacionales. La juventud está lista para liderar la protección del planeta.</p>
+            <p>Participamos en la COP-16 y exigimos la defensa de la vida de quienes cuidan y protegen el ambiente porque no podemos seguir permitiendo que defender la vida nos cueste la nuestra.</p>
           </div>
         </template>
         <template #ocio-y-cultura>
