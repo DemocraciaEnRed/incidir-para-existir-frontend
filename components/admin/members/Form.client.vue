@@ -124,16 +124,6 @@ const setPictureResult = async (cropperResult) => {
       alreadyHasPicture.value = false
     }
   }
-  // check if empty object or null
-  if(Object.keys(cropperResult).length === 0 && cropperResult.constructor === Object){
-    if(props.existingMember.imageUrl){
-      enableUploadPicture.value = false
-      alreadyHasPicture.value = true
-    } else {
-      enableUploadPicture.value = true
-      alreadyHasPicture.value = false
-    }
-  }
 }
 
 
