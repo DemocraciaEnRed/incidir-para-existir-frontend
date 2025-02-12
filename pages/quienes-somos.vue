@@ -210,7 +210,7 @@ const carouselItems = [
         <QuienesSomosReel team="cali" />
         <p class="text-3xl font-bold text-center lg:text-left my-5">BOGOTÁ</p>
         <QuienesSomosReel team="bogota" />
-        <p class="text-3xl font-bold text-center lg:text-left my-5">STAFF MOVILIZATORIO</p>
+        <p class="text-3xl font-bold text-center lg:text-left my-5">EQUIPO MOVILIZATORIO</p>
         <QuienesSomosReel team="movilizatorio" />
       </UContainer>
     </div>
