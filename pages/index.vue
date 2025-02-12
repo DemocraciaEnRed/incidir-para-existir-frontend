@@ -82,7 +82,7 @@ onMounted(() => {
                 </div>
                 <div class="flex items-center">
                   <UButton to="/actualidad" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                  <p><ULink to="/actualidad" class="text-mindaro-500 underline">Descubir</ULink> las voces y en qué anda la juventud Caleña y Bogotana</p>
+                  <p><ULink to="/actualidad" class="text-mindaro-500 underline">Descubrir</ULink> las voces y en qué anda la juventud caleña y bogotana</p>
                 </div>
               </div>
               <p class="font-medium italic">Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo</p>
