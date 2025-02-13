@@ -3,7 +3,6 @@ import {
   object as YupObject,
   string as YupString,
   boolean as YupBoolean,
-  number as YupNumber,
 } from 'yup'
 
 import { RecaptchaModal } from '#components'
@@ -81,7 +80,7 @@ const handleSubmit = async () => {
     })
     
 
-    gtag('event', 'form_submission', {
+    gtag('event', 'form_submit_contacto', {
       event_category: 'engagement',
       event_label: 'contact_form',
       value: 1

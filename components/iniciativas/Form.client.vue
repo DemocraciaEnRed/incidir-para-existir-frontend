@@ -178,7 +178,7 @@ const handleSubmit = async () => {
       body: JSON.stringify(payload)
     })
     
-    gtag('event', 'form_submission', {
+    gtag('event', 'form_submit_iniciativa', {
       event_category: 'engagement',
       event_label: 'initiative_form',
       value: 1
