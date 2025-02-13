@@ -2,17 +2,7 @@
 const links = [{
   label: 'Listado',
   icon: 'i-heroicons-list-bullet',
-  to: '/admin/recursos',
-  exact: true
-}, {
-  label: 'Crear',
-  icon: 'i-heroicons-plus',
-  to: '/admin/recursos/crear',
-  exact: true
-},{
-  label: 'Administrar categorias',
-  icon: 'i-heroicons-list-bullet',
-  to: '/admin/recursos/categorias',
+  to: '/admin/botResponses',
   exact: true
 }]
 </script>

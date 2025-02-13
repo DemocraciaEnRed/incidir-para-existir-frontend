@@ -36,6 +36,11 @@ const links = [
     to: '/admin/tos',
   }, 
   {
+    label: 'Respuestas de Bot',
+    icon: 'i-heroicons-chat-bubble-bottom-center-text',
+    to: '/admin/botResponses',
+  }, 
+  {
     label: 'Usuarios',
     icon: 'i-heroicons-user',
     to: '/admin/usuarios',

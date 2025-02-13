@@ -12,7 +12,7 @@ definePageMeta({
 <template>
   <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo enlace de interes</h1>
-    <p>Próximamente</p>
-    <br>   
+    <br>
+    <AdminResourcesForm />
   </div>
 </template>
