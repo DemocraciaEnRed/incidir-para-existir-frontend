@@ -4,7 +4,6 @@ import {
   string as YupString,
 } from 'yup'
 
-import { definePageMeta } from '#imports'
 const { $api } = useNuxtApp()
 
 definePageMeta({
@@ -58,19 +57,17 @@ const onError = (event) => {
       <p class="font-oswald text-center text-4xl mb-10 text-[#D4F779]">RECUPERAR CONSTRASEÑA</p>
       <UCard>
         <template #default>
-          <UForm :schema="schema" :state="state" @submit.prevent="handleRecover">
-            <UForm class="space-y-4" :validate-on="['blur']" @error="onError" @submit.prevent="handleRecover">
-              <UFormGroup class="" label="Email" name="email" >
-                <UInput v-model="email" size="lg" icon="i-heroicons-envelope" />
-              </UFormGroup>
-              <UButton color="pumpkin" size="lg" block type="submit" :loading="isLoading" :disabled="isLoading" icon="i-heroicons-paper-airplane" trailing>Recuperar contraseña</UButton>
-            </UForm>
+          <UForm :schema="schema" :state="state" class="space-y-4" @submit.prevent="handleRecover">
+            <UFormGroup class="" label="Email" name="email" >
+              <UInput v-model="email" size="lg" icon="i-heroicons-envelope" />
+            </UFormGroup>
+            <UButton color="pumpkin" size="lg" block type="submit" :loading="isLoading" :disabled="isLoading" icon="i-heroicons-paper-airplane" trailing>Recuperar contraseña</UButton>
           </UForm>
         </template>
         <template #footer>
           <div class="flex flex-col items-center justify-center">
             <div>
-              <UButton to="login" color="orange"  variant="text"><UIcon name="i-heroicons-arrow-left-16-solid" />Volver al Login</UButton>
+              <UButton to="login" color="orange"><UIcon name="i-heroicons-arrow-left-16-solid" />Volver al Login</UButton>
             </div>
           </div>
         </template>
