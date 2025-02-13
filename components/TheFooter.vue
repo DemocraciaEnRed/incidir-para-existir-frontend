@@ -24,6 +24,7 @@ const rounded = computed(() => {
         <NuxtLink to="/"><img src="/img/incidir-para-existir-logo.png" alt="Incidir Para Existir" class="h-10 px-6"></NuxtLink>
         <a href="https://www.un.org/democracyfund/" target="_blank"><img src="/img/undef-logo.png" alt="UNDEF" class="h-11 px-6"></a>
         <a href="https://movilizatorio.org/" target="_blank"><img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="h-8 px-6"></a>
+        <a href="https://elavispero.org/" target="_blank"><img src="/img/avispero-logo.png" alt="El Avispero<" class="h-8 px-6"></a>
       </div>
       <hr class="opacity-30">
       <div class="flex flex-col justify-center gap-5 md:flex-row my-10 font-oswald uppercase items-center">
@@ -35,8 +36,8 @@ const rounded = computed(() => {
         <NuxtLink to="/contacto" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Contacto</NuxtLink>
         <ULink to="https://linktr.ee/incidirparaexistir" target="_blank" class="text-center text-sm"><img src="/svg/linktree-logo-icon.svg" class="h-5" alt="Linktree"></ULink>
       </div>
-      <!-- <hr class="opacity-30">
-      <p class="font-inter my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p> -->
+      <hr class="opacity-30">
+      <p class="font-inter my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
     </UContainer>
   </footer>
 </template>
