@@ -23,6 +23,7 @@ const initiativeSchema = YupObject({
   keepEmailPrivate: YupBoolean().required('Este campo es requerido'),
   keepPhonePrivate: YupBoolean().required('Este campo es requerido'),
   name: YupString().required('Este campo es requerido'),
+  source: YupString().oneOf(['web', 'whatsapp' ], 'Por favor, seleccione un equipo').required('Este campo es requerido'),
   description: YupString().max(500).required('Este campo es requerido'),
   needsAndOffers: YupString().max(500).required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
@@ -40,6 +41,7 @@ const initiativeState = reactive({
   keepEmailPrivate: true,
   keepPhonePrivate: true,
   name: '',
+  source: 'web',
   description: '',
   needsAndOffers: '',
   subdivision: null,
@@ -57,6 +59,7 @@ if(props.existingInitiative){
   initiativeState.keepEmailPrivate = props.existingInitiative.contact.keepEmailPrivate ?? true
   initiativeState.keepPhonePrivate = props.existingInitiative.contact.keepPhonePrivate ?? true
   initiativeState.name = props.existingInitiative.name
+  initiativeState.source = props.existingInitiative.source || 'web'
   initiativeState.description = props.existingInitiative.description
   initiativeState.needsAndOffers = props.existingInitiative.needsAndOffers
   initiativeState.subdivision = props.existingInitiative.subdivision
@@ -78,6 +81,7 @@ const handleSubmit = async () => {
     }
     const payload = {
       name: initiativeState.name,
+      source: initiativeState.source,
       description: initiativeState.description,
       needsAndOffers: initiativeState.needsAndOffers,
       dimensionIds: initiativeState.dimensions.map(d => d.id),
@@ -166,6 +170,12 @@ const onError = (event) => {
       </template>
       <UInput v-model="initiativeState.name" size="lg" placeholder="Escriba aquí..." />
     </UFormGroup>
+    <UFormGroup name="source" label="Fuente de la iniciativa" required>
+      <template #description>
+        ¿Cómo llegó la iniciativa a Incidir para Existir?
+      </template>
+      <USelect v-model="initiativeState.source" :options="[{ label: 'Web', value: 'web' }, { label: 'Whatsapp', value: 'whatsapp' }]" />
+    </UFormGroup>
     <UFormGroup name="dimensions" label="Dimensiones de la iniciativa">
       <template #description>
         Selecciona los ejes temáticos de la iniciativa. <i class="text-pumpkin">(Hasta 2)</i>
@@ -194,5 +204,23 @@ const onError = (event) => {
       <UTextarea v-model="initiativeState.needsAndOffers" placeholder="Escriba aquí..." />
     </UFormGroup>
     <UButton type="submit" block class="text-xl font-semibold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
+    <div v-if="editMode" class="space-y-4">
+      <UDivider label="Datos extra - Whatsapp Bot" />
+      <!-- Add any additional fields or notes related to extra data here -->
+       <div class="border py-4 px-6 bg-gray-900 border-gray-700 rounded-lg space-y-4">
+
+         <div class="flex space-x-3">
+           <UFormGroup label="Bot: Campo Ciudad" class="w-full">
+             <p class="text-xs font-mono ">{{ props.existingInitiative.customCity || '- Sin completar -' }}</p>
+          </UFormGroup>
+          <UFormGroup label="Bot: Campo Localidad" class="w-full">
+            <p class="text-xs font-mono ">{{ props.existingInitiative.customSubdivision || '- Sin completar -' }}</p>
+          </UFormGroup>
+        </div>
+        <UFormGroup label="Bot: Otros datos" class="w-full">
+          <p class="text-xs font-mono ">{{ props.existingInitiative.extra || '- Sin completar -' }}</p>
+        </UFormGroup>
+      </div>
+    </div>
   </UForm>
 </template>

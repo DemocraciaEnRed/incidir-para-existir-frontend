@@ -15,6 +15,7 @@ const props = defineProps({
 })
 
 const challengeSchema = YupObject({
+  source: YupString().oneOf(['web', 'whatsapp' ], 'Por favor, seleccione un equipo').required('Este campo es requerido'),
   needsAndChallenges: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
   proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
   inWords: YupString().matches(/^\w+(\s\w+)?$/, { excludeEmptyString: true, message: 'Solo se permite una o dos palabras' }).required('Este campo es requerido'),
@@ -26,6 +27,7 @@ const editMode = ref(false)
 const submitLoading = ref(false)
 
 const challengeState = reactive({
+  source: 'web',
   needsAndChallenges: '',
   proposal: '',
   inWords: '',
@@ -51,6 +53,7 @@ const handleSubmit = async () => {
     submitLoading.value = true
   
     const payload = {
+      source: challengeState.source,
       needsAndChallenges: challengeState.needsAndChallenges,
       proposal: challengeState.proposal,
       inWords: challengeState.inWords,
@@ -96,6 +99,12 @@ const onError = (event) => {
 
 <template>
   <UForm :state="challengeState" :schema="challengeSchema" class="space-y-4" @submit="handleSubmit" @error="onError">
+    <UFormGroup name="source" label="Fuente de la iniciativa" required>
+      <template #description>
+        ¿Cómo llegó el reporte de desafio a Incidir para Existir?
+      </template>
+      <USelect v-model="challengeState.source" :options="[{ label: 'Web', value: 'web' }, { label: 'Whatsapp', value: 'whatsapp' }]" />
+    </UFormGroup>
     <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
       <template #description>
         Comparte el desafio de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
@@ -130,5 +139,23 @@ const onError = (event) => {
       <MapSelectPosition :key="`map-subdivision-${challengeState.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="challengeState.subdivision" />
     </UFormGroup>
     <UButton type="submit" block class="text-xl font-semibold" color="pumpkin" :ui="{ rounded: 'rounded-full' }" :loading="submitLoading">Guardar</UButton>
+    <div v-if="editMode" class="space-y-4">
+      <UDivider label="Datos extra - Whatsapp Bot" />
+      <!-- Add any additional fields or notes related to extra data here -->
+       <div class="border py-4 px-6 bg-gray-900 border-gray-700 rounded-lg space-y-4">
+
+         <div class="flex space-x-3">
+           <UFormGroup label="Bot: Campo Ciudad" class="w-full">
+             <p class="text-xs font-mono ">{{ props.existingChallenge.customCity || '- Sin completar -' }}</p>
+          </UFormGroup>
+          <UFormGroup label="Bot: Campo Localidad" class="w-full">
+            <p class="text-xs font-mono ">{{ props.existingChallenge.customSubdivision || '- Sin completar -' }}</p>
+          </UFormGroup>
+        </div>
+        <UFormGroup label="Bot: Otros datos" class="w-full">
+          <p class="text-xs font-mono ">{{ props.existingChallenge.extra || '- Sin completar -' }}</p>
+        </UFormGroup>
+      </div>
+    </div>
   </UForm>
 </template>
