@@ -34,8 +34,7 @@ definePageMeta({
     <div class="bg-electricViolet-800">
       <UContainer class="py-9">
         <p class="font-oswald text-5xl  leading-tight text-[#ffffff] mb-5">ENLACES DE INTERES</p>
-        <h3 class="text-center font-oswald text-xl lg:text-4xl text-mindaro my-20">PROXIMAMENTE</h3>
-
+        <ResourceListing />
       </UContainer>
     </div>
   </div>
