@@ -127,6 +127,13 @@ const columns = [
     class: "w-[1%]",
   },
   {
+    key: 'source',
+    label: {
+      icon: 'i-fa6-brands-whatsapp'
+    },
+    class: "w-[1%]",
+  },
+  {
     key: 'map',
     label: {
       icon: 'i-heroicons-map-pin',
@@ -209,6 +216,11 @@ const unpublishInitiative = async (initiative) => {
           <UIcon name="i-heroicons-eye" class="flex flex-row items-center text-lg" />
         </UTooltip>
       </template>
+      <template #source-header>
+        <UTooltip text="Fuente">
+          <UIcon name="i-heroicons-rss-16-solid" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
       <template #map-header>
         <UTooltip text="Con ubicación">
           <UIcon name="i-heroicons-map-pin" class="flex flex-row items-center text-lg" />
@@ -238,6 +250,12 @@ const unpublishInitiative = async (initiative) => {
         <div>
           <UIcon v-if="row.publishedAt" name="i-heroicons-check" class="text-green-500 text-lg" />
           <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg" />
+        </div>
+      </template>
+      <template #source-data="{ row }">
+        <div>
+          <UIcon v-if="row.source == 'web'" name="i-heroicons-computer-desktop" class="text-sky-400 text-lg" />
+          <UIcon v-else name="i-fa6-brands-whatsapp" class="text-green-500 text-lg" />
         </div>
       </template>
       <template #map-data="{ row }">

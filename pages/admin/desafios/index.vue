@@ -83,6 +83,13 @@ const columns = [
     class: 'text-center'
   },
   {
+    key: 'source',
+    label: {
+      icon: 'i-fa6-brands-whatsapp'
+    },
+    class: "w-[1%]",
+  },
+  {
     key: 'map',
     label: {
       icon: 'i-heroicons-map-pin',
@@ -139,6 +146,11 @@ const deleteChallenge = async (challenge) => {
           <LoadingBar class="text-gray-400" />
         </div>
       </template>
+      <template #source-header>
+        <UTooltip text="Fuente">
+          <UIcon name="i-heroicons-rss-16-solid" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
       <template #map-header>
         <UTooltip text="Con ubicación">
           <UIcon name="i-heroicons-map-pin" class="flex flex-row items-center text-lg" />
@@ -153,6 +165,12 @@ const deleteChallenge = async (challenge) => {
         <p class="text-xs text-gray-500">
           {{ row.subdivision.city.name }}
         </p>
+      </template>
+      <template #source-data="{ row }">
+        <div>
+          <UIcon v-if="row.source == 'web'" name="i-heroicons-computer-desktop" class="text-sky-400 text-lg" />
+          <UIcon v-else name="i-fa6-brands-whatsapp" class="text-green-500 text-lg" />
+        </div>
       </template>
       <template #map-data="{ row }">
         <div>
