@@ -36,6 +36,11 @@ const links = [
     to: '/admin/tos',
   }, 
   {
+    label: 'Política de Privacidad',
+    icon: 'i-heroicons-document-text',
+    to: '/admin/privacidad',
+  }, 
+  {
     label: 'Respuestas de Bot',
     icon: 'i-heroicons-chat-bubble-bottom-center-text',
     to: '/admin/botResponses',
