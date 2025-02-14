@@ -1,31 +1,53 @@
 <script setup>
 definePageMeta({
   name: 'blog-post',
-  layout: 'full-width'
+  layout: 'full-width-with-fb'
 })
 
 const route = useRoute()
 const slug = route.params.slug
 
 const { data } = await useAPI(`/blog/${slug}`)
+const runtimeConfig = useRuntimeConfig()
+
+useHead({
+  script: [
+    {
+      src: `https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v22.0&appId=${runtimeConfig.public.facebookAppId}`,
+      crossorigin: 'anonymous',
+      async: true,
+      defer: true
+    }
+  ],
+  meta: [
+    {
+      property: 'fb:app_id',
+      content: runtimeConfig.public.facebookAppId
+    }
+  ]
+})
 
 // SEO
 useSeoMeta({
   title: () => `${data.value.title}`,
   description: () => data.value.subtitle,
   lang: () => 'es',
-  url: () => `https://example.com/noticias/${data.value.slug}`,
+  url: () => `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`,
   ogTitle: () => data.value.title,
   ogDescription: () => data.value.subtitle,
-  ogImage: () => data.value.imageUrl,
-  ogUrl: () => `https://example.com/noticias/${data.value.slug}`,
+  ogImage: () => data.value.imageUrl || `${runtimeConfig.public.fullUrl}/img/quienes-somos-01.png`,
+  ogUrl: () => `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`,
   twitterTitle: () => data.value.title,
   twitterDescription: () => data.value.subtitle,
-  twitterImage: () => data.value.imageUrl,
+  twitterImage: () => data.value.imageUrl || `${runtimeConfig.public.fullUrl}/img/quienes-somos-01.png`,
   twitterCard: () => 'summary_large_image',
 })
 
 
+const pageUrl = `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`
+
+console.log(pageUrl)
+console.log(runtimeConfig.public.facebookAppId)
 </script>
 
 <template>
@@ -64,6 +86,10 @@ useSeoMeta({
         <div class=" w-full md:w-8/12 md:mx-auto">
           <div class="px-3 py-5 rounded-lg w-full prose focus:outline-none max-w-none" v-html="data.text" />
         </div>
+        {{ pageUrl }}
+        <ClientOnly>
+          <div class="fb-comments" :data-href="pageUrl" data-width="100%" data-lazy="true" data-numposts="10"/>
+        </ClientOnly>
       </UContainer>
     </div>
   </div>

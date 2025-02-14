@@ -23,6 +23,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
+      facebookAppId: process.env.NUXT_PUBLIC_FACEBOOK_APP_ID,
+      fullUrl: process.env.NUXT_PUBLIC_FULL_URL,
     }
   },
   gtag: {
