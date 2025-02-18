@@ -59,7 +59,7 @@ const isLoading = computed(() => {
     <br>
     <UAccordion v-if="!isLoading" :items="entries" color="white" variant="solid">
       <template #item="{ item }">
-        <pre>{{ item.response }}</pre>
+        <pre>{{ item.payload }}</pre>
       </template>
     </UAccordion>
     <div v-else class="space-y-2">
