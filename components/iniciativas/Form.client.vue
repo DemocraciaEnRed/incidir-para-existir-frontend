@@ -146,6 +146,7 @@ const handleSubmit = async () => {
   try {
     const payload = {
       name: initiativeState.name,
+      source: 'web',
       description: initiativeState.description,
       needsAndOffers: initiativeState.needsAndOffers,
       subdivisionId: initiativeState.subdivision.id,

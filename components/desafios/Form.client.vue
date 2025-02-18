@@ -99,6 +99,7 @@ const handleSubmit = async () => {
   try {
     const payload = {
       dimensionId: state.dimensionId,
+      source: 'web',
       subdivisionId: state.subdivision.id,
       needsAndChallenges: state.needsAndChallenges,
       latitude: undefined,
