@@ -13,7 +13,7 @@ const existingData = ref(null)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { data, refresh, status } = useAPI(`/utils/configs?key=privacy`,{
   onResponse({ response }) {
-    existingData.value = response._data.tos
+    existingData.value = response._data.privacy
   }
 })
 </script>
@@ -22,6 +22,6 @@ const { data, refresh, status } = useAPI(`/utils/configs?key=privacy`,{
    <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Política de Privacidad</h1>
     <br>
-    <AdminTosForm v-if="existingData" :existing-data="existingData" />
+    <AdminPrivacyForm v-if="existingData" :existing-data="existingData" />
   </div>
 </template>

@@ -24,15 +24,15 @@ const handleSubmit = async () => {
     await $api(`/utils/configs`, {
       method: 'PUT',
       body: {
-        key: 'tos',
+        key: 'privacy',
         value: contentHtml
       }
     })
     // await props.refresh()
-    toast.add({ title: 'Terminos y condiciones actualizado', description: 'El texto ha sido actualizado exitosamente', color: 'green'})
+    toast.add({ title: 'Politica de privacidad actualizado', description: 'El texto ha sido actualizado exitosamente', color: 'green'})
   } catch (error) {
-    console.log('Error', error)
-    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar editar los terminos y condiciones`, color: 'red'})
+    console.log('Error', error);
+    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar editar la política de privacidad`, color: 'red' });
   } finally {
     submitLoading.value = false
   }
