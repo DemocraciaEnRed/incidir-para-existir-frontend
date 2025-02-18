@@ -44,12 +44,12 @@ onMounted(() => {
     <UContainer>
       <div class="relative">
         <div class="overlay-content">
-          <div class="w-9/12">
-            <p class="font-inter font-bold text-4xl lg:text-6xl mb-3 drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">¡Les damos la bienvenida a Incidir para Existir!</p>
-            <p class="font-inter font-bold lg:text-2xl drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
-            <UButton to="/iniciativas" color="pumpkin" size="xl" class="text-3xl font-bold mt-5 px-6" :ui="{ rounded: 'rounded-full' }">Suma tu iniciativa</UButton>
+          <div class="w-full sn:w-9/12">
+            <p class="font-oswald font-bold uppercase leading-tight text-3xl sm:text-4xl lg:text-6xl mb-3 drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">¡Les damos la bienvenida a Incidir para Existir!</p>
+            <p class="font-inter font-bold leading-tight sm:text-2xl drop-shadow-[0_1.4px_1.4px_rgba(0,0,0,0.8)]">Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</p>
+            <UButton to="/iniciativas" color="pumpkin"  class="text-xl sm:text-3xl font-bold mt-5 px-6" :ui="{ rounded: 'rounded-full' }">Suma tu iniciativa</UButton>
           </div>
-        </div>
+        </div>  
         <UCarousel ref="carouselRef" :items="imgCallToAction" :ui="{ item: 'basis-full min-h-[500px] max-h-[500px]', container: 'h-full', indicators: {base: 'z-10', wrapper: 'relative bg-gray-800 bottom-0 h-[40px]'} }" 
         class="carrousel rounded-lg overflow-hidden relative mb-6 min-h-[500px]" indicators>
           <template #default="{ item }">
