@@ -10,23 +10,6 @@ const slug = route.params.slug
 const { data } = await useAPI(`/blog/${slug}`)
 const runtimeConfig = useRuntimeConfig()
 
-useHead({
-  script: [
-    {
-      src: `https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v22.0&appId=${runtimeConfig.public.facebookAppId}`,
-      crossorigin: 'anonymous',
-      async: true,
-      defer: true
-    }
-  ],
-  meta: [
-    {
-      property: 'fb:app_id',
-      content: runtimeConfig.public.facebookAppId
-    }
-  ]
-})
-
 // SEO
 useSeoMeta({
   title: () => `${data.value.title}`,
@@ -46,8 +29,6 @@ useSeoMeta({
 
 const pageUrl = `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`
 
-console.log(pageUrl)
-console.log(runtimeConfig.public.facebookAppId)
 </script>
 
 <template>
@@ -83,12 +64,18 @@ console.log(runtimeConfig.public.facebookAppId)
         <div v-if="data.imageUrl" class="aspect-w-5 aspect-h-2 my-8">
           <img :src="data.imageUrl" class="object-cover w-full h-full rounded-xl border border-slate-300 shadow-lg">
         </div>
-        <div class=" w-full md:w-8/12 md:mx-auto">
+        <div class="w-full md:w-9/12 md:mx-auto">
           <div class="px-3 py-5 rounded-lg w-full prose focus:outline-none max-w-none" v-html="data.text" />
         </div>
-        {{ pageUrl }}
+        <UDivider label="Comentarios" class="my-5" :ui="{ label: 'text-black' }" />
         <ClientOnly>
-          <div class="fb-comments" :data-href="pageUrl" data-width="100%" data-lazy="true" data-numposts="10"/>
+          <div class="fb-comments" :data-href="pageUrl" data-width="100%" data-numposts="10">
+            <LoadingBar class="w-full md:w-9/12 md:mx-auto" />
+          </div>
+          <template #fallback>
+            <!-- this will be rendered on server side -->
+            <p>Loading comments...</p>
+          </template>
         </ClientOnly>
       </UContainer>
     </div>

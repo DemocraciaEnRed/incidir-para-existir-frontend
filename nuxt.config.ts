@@ -27,6 +27,24 @@ export default defineNuxtConfig({
       fullUrl: process.env.NUXT_PUBLIC_FULL_URL,
     }
   },
+  app: {
+    head: {
+      script: [
+        {
+          src: `https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v22.0&appId=${process.env.NUXT_PUBLIC_FACEBOOK_APP_ID}`,
+          crossorigin: 'anonymous',
+          async: true,
+          defer: true
+        }
+      ],
+      meta: [
+        {
+          property: 'fb:app_id',
+          content: process.env.NUXT_PUBLIC_FACEBOOK_APP_ID
+        }
+      ]
+    }
+  },
   gtag: {
     // enabled: process.env.NODE_ENV === 'production',
     id: 'G-PEBQCM582H'
