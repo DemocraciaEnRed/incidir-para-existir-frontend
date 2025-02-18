@@ -32,7 +32,6 @@ const scrollHelper = useTemplateRef(`section${props.section.value}-scroll`)
 
 
 onMounted(() => {
-  console.log('Mounted')
   getBlogPosts().then((data) => {
     items.value = data.rows
     totalItems.value = data.count
@@ -44,7 +43,6 @@ onMounted(() => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 watch(page, (newValue, oldValue) => {
-  console.log('Page changed', newValue)
   getBlogPosts().then((data) => {
     items.value = data.rows
     totalItems.value = data.count
