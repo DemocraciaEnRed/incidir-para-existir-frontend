@@ -14,7 +14,6 @@ export default <Partial<Config>>{
         inter: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-
         pumpkin: {
           DEFAULT: '#ff7109',
           '50': '#fff7ed',
@@ -57,9 +56,21 @@ export default <Partial<Config>>{
           '900': '#648808',
           '950': '#516D07'
         },
-      }
+      },
+      typography: ({theme}) => ({
+        DEFAULT: {
+          css: {
+            lineHeight: 1.5
+          }
+        },
+        invert: {
+          css: {
+            color: 'white'
+          }
+        }
+      })
     }
-  },
+  },  
   plugins: [
     aspectRatio,
     typography
