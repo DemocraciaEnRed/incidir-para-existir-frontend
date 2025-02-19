@@ -20,12 +20,12 @@ const closeModal = () => {
 </script>
 
 <template>
-  <UModal :ui="{width: 'w-full sm:w-2/3 sm:max-w-[800px]'}">
+  <UModal :ui="{width: 'w-full sm:w-4/5 sm:max-w-[800px]'}">
     <div class="flex w-full flex-col md:flex-row">
       <div class="sm:sticky sm:top-1 h-full w-full md:w-1/3">
         <img :src="getMemberImageUrl(member.imageUrl)" class="w-full rounded-br-xl rounded-tl-xl" draggable="false">
         <div class="p-2">
-          <div class="flex justify-center text-3xl gap-3 my-5">
+          <div class="flex justify-center text-3xl gap-3 my-3 md:my-3">
             <UButton v-if="member.instagram" :to="member.instagram" target="_blank" color="mindaro" icon="i-fa6-brands-instagram" size="lg" class="px-3 rounded-full" />
             <UButton v-if="member.facebook" :to="member.facebook" target="_blank" color="mindaro" icon="i-fa6-brands-facebook" size="lg" class="px-3 rounded-full" />
             <UButton v-if="member.twitter" :to="member.twitter" target="_blank" color="mindaro" icon="i-fa6-brands-twitter" size="lg" class="px-3 rounded-full" />
@@ -33,7 +33,7 @@ const closeModal = () => {
           </div>
           <!-- close button -->
           <div class="flex justify-center">
-            <UButton color="pumpkin" variant="outline" size="lg" class="px-3 text- rounded-full" @click="closeModal">
+            <UButton color="pumpkin" variant="outline" class="px-3 text-xl rounded-full" @click="closeModal">
               Cerrar
             </UButton>
           </div>  
