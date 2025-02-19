@@ -20,11 +20,17 @@ const rounded = computed(() => {
     <div class="starbg"/>
     <NuxtLink v-if="!loggedIn" to="/login" class="absolute opacity-25 bottom-1 text-xs z-50">Login</NuxtLink>
     <UContainer class="the-content">
-      <div class="flex justify-center items-center my-5 flex-col sm:flex-row space-y-5 gap-4 sm:space-y-0">
+      <div class="hidden sm:flex justify-center items-center my-5 flex-col sm:flex-row space-y-5 gap-4 sm:space-y-0">
         <NuxtLink to="/"><img src="/img/incidir-para-existir-logo.png" alt="Incidir Para Existir" class="max-h-10"></NuxtLink>
         <NuxtLink to="https://www.un.org/democracyfund/" target="_blank"><img src="/img/undef-logo.png" alt="UNDEF" class="max-h-11"></NuxtLink>
         <NuxtLink to="https://movilizatorio.org/" target="_blank"><img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="max-h-8"></NuxtLink>
         <NuxtLink to="https://elavispero.org/" target="_blank"><img src="/img/avispero-logo.png" alt="El Avispero<" class="max-h-8"></NuxtLink>
+      </div>
+      <div class="grid grid-cols-2 gap-5 align-middle justify-center sm:hidden my-5">
+        <NuxtLink to="/"><img src="/img/incidir-para-existir-logo.png" alt="Incidir Para Existir" class="max-h-10 mx-auto"></NuxtLink>
+        <NuxtLink to="https://www.un.org/democracyfund/" target="_blank"><img src="/img/undef-logo.png" alt="UNDEF" class="max-h-11 mx-auto"></NuxtLink>
+        <NuxtLink to="https://movilizatorio.org/" target="_blank"><img src="/img/movilizatorio-logo.png" alt="Movilizatorio" class="max-h-8 mx-auto"></NuxtLink>
+        <NuxtLink to="https://elavispero.org/" target="_blank"><img src="/img/avispero-logo.png" alt="El Avispero<" class="max-h-8 mx-auto"></NuxtLink>
       </div>
       <hr class="opacity-30">
       <div class="my-10 space-y-5">

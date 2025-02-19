@@ -86,7 +86,7 @@ const items = computed(() => {
     <div class="bg-primary-800 py-4 rounded-br-2xl rounded-bl-2xl">
       <UContainer>
         <div class="flex justify-between items-center">
-          <NuxtLink to="/" class="flex-1">
+          <NuxtLink to="/" class="">
             <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="h-12 w-auto mr-auto md:ml-0 md:mr-auto" >
           </NuxtLink>
           <div class="hidden md:flex items-center space-x-5 font-oswald uppercase">
@@ -105,8 +105,8 @@ const items = computed(() => {
               <UAvatar :src="userData.imageUrl" :alt="userFullname" />
             </UDropdown>
           </div>
-          <div class="cursor-pointer"  @click="mobileBurgerActive = !mobileBurgerActive" >
-            <UIcon name="i-heroicons-bars-3-16-solid" class="size-8 md:hidden"/>
+          <div class="md:hidden flex-1 text-right">
+            <UIcon name="i-heroicons-bars-3-16-solid" class="cursor-pointer size-8"  @click="mobileBurgerActive = !mobileBurgerActive"/>
           </div>
           
         </div>

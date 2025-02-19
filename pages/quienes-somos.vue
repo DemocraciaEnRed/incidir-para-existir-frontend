@@ -144,7 +144,7 @@ const carouselItems = [
                 container: 'rounded-lg'
               }"
               arrows
-              class="w-8/12 mx-auto my-5"
+              class="sm:w-8/12 mx-auto my-5"
             >
               <template #default="{ item }">
                 <UCard class="w-full m-3 flex flex-col items-center justify-center text-center">

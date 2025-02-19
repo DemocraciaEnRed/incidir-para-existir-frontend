@@ -118,8 +118,8 @@ const clearFilters = () => {
       <UDivider class="my-7" />
       <div v-for="row in data.rows" :key="`desafio-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-gray-900 hover:bg-gray-800 border-slate-800 transition-colors duration-200">
         <div class="grow w-9/12">
-          <div class="space-x-2 flex flex-row items-center font-inter">
-          <p 
+          <div class="flex-wrap flex flex-row items-center font-inter gap-x-2 mb-2">
+            <p 
           class="text-xs text-white border-r pr-2 border-purple-500" 
           >#{{ addLeadingZeros(row.id) }}</p>
           <p

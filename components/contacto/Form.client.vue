@@ -112,8 +112,7 @@ const handleSubmit = async () => {
   <UCard>
     <div v-if="!submitSuccess">
       <UForm :state="state" :schema="schema" class="space-y-4" @submit="startRecaptchaChallenge">
-        <div class="grid grid-cols-2 gap-4">
-
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <UFormGroup class="" label="Nombre completo" name="fullname" required>
             <template #description>
               Ingrese su nombre completo

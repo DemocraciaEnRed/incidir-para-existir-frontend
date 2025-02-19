@@ -69,13 +69,13 @@
 
 <template>
   <div class="flex gap-2 w-full md:w-8/12 md:mx-auto">
-  <div class="flex gap-2 w-1/2 mx-auto">
+  <div class="flex gap-2 mx-auto" :class="{ 'w-1/2': selectedCity, 'w-full': !selectedCity }">
     <USelectMenu v-model="selectedCity" :options="cities" option-attribute="name" :loading="isLoading" placeholder="Filtrar por ciudad" size="lg" class="w-full" :ui-menu="{ container: 'z-[1500] group' }"/>
     <UButton color="white" :disabled="clearCityDisabled" variant="ghost" @click="clearCityFilter">
       <UIcon name="i-heroicons-backspace" class="text-lg"/>
     </UButton>
   </div>
-  <div class="flex gap-2 w-1/2 mx-auto" v-if="selectedCity">
+  <div v-if="selectedCity" class="flex gap-2 mx-auto">
       <USelectMenu v-model="selectedSubdivision" :options="subdivisionsOptions" :loading="isLoading" placeholder="Filtrar por ubicación" size="lg" class="w-full" :ui-menu="{ container: 'z-[1500] group' }">
         <template #option="{ option }">
           <span>{{ option.type }} {{ option.name }}</span>
