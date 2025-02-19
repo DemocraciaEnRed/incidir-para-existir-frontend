@@ -28,7 +28,7 @@ const initiativeSchema = YupObject({
   needsAndOffers: YupString().max(500).required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
   // dimensionsIds must be an array and there must be one or two dimension IDs 
-  dimensions: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes tematicos').required('Este campo es requerido')
+  dimensions: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes temáticos').required('Este campo es requerido')
 })
 
 const editMode = ref(false)

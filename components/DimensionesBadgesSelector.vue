@@ -28,7 +28,7 @@
       dimensions.value = data
     } catch (error) {
       console.error(error)
-      toast.add({ title: 'Error', description: 'Hubo un error al cargar las dimensiones', color: 'red' })
+      toast.add({ title: 'Error', description: 'Hubo un error al cargar los ejes temáticos', color: 'red' })
     } finally {
       isLoading.value = false
     }

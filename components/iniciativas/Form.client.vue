@@ -54,7 +54,7 @@ const initiativeSchema = YupObject({
   city: YupObject().required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
   // dimensionsIds must be an array and there must be one or two dimension IDs 
-  dimensionIds: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes tematicos').required('Este campo es requerido')
+  dimensionIds: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes temáticos').required('Este campo es requerido')
 })
 
 const initiativeState = reactive({
@@ -238,19 +238,19 @@ watch(() => initiativeState.city, () => {
       <UDivider size="lg" class="mb-4" label="Paso 1. Datos del referente de la iniciativa" />
       <UForm v-if="showContactForm" :state="contactState" :schema="contactSchema" class="space-y-6" @submit="handleSubmitContactForm">
         <p>Ingrese sus datos de contacto como <b>referente de la iniciativa</b>.</p>
-        <div class="flex space-x-3">
-          <UFormGroup name="fullname" label="Nombre completo" required class="w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <UFormGroup name="fullname" label="Nombre completo" required class="">
             <UInput v-model="contactState.fullname" size="lg" icon="i-heroicons-user" :disabled="contactFormIsValid" placeholder="Escriba aquí..." />
           </UFormGroup>
-          <UFormGroup name="email" label="Email de contacto" required class="w-full">
+          <UFormGroup name="email" label="Email de contacto" required class="">
             <UInput v-model="contactState.email" size="lg" icon="i-heroicons-envelope" :disabled="contactFormIsValid"  placeholder="Escriba aquí..." />
           </UFormGroup>
-          <UFormGroup name="phone" label="Teléfono de contacto" required class="w-full">
+          <UFormGroup name="phone" label="Teléfono de contacto" required class="">
             <UInput v-model="contactState.phone" size="lg" icon="i-heroicons-phone" :disabled="contactFormIsValid"  placeholder="Escriba aquí..." />
           </UFormGroup>
         </div>
         <UFormGroup label="Privacidad de tus datos" help="Selecciona si deseas que tus datos de contacto sean visibles al público" class="w-full">
-            <div class="flex space-x-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <UFormGroup name="keepEmailPrivate" class="w-full border border-gray-800 rounded-xl p-4" >
               <UCheckbox v-model="contactState.keepEmailPrivate" :disabled="contactFormIsValid">
                 <template #label>
@@ -280,7 +280,7 @@ watch(() => initiativeState.city, () => {
       <div v-if="showInitiativeForm">
         <UDivider size="lg" class="my-8" label="Paso 2. Datos de la iniciativa" />
         <UForm :state="initiativeState" :schema="initiativeSchema" class="space-y-4" @submit="startRecaptchaChallenge">
-          <UFormGroup name="dimensionIds" label="Ejes tematicos de la iniciativa" description="Sabemos que algunas iniciativas trabajan diferentes temáticas, para este mapeo selecciona máximo 2." required>
+          <UFormGroup name="dimensionIds" label="Ejes temáticos de la iniciativa" description="Sabemos que algunas iniciativas trabajan diferentes temáticas, para este mapeo selecciona máximo 2." required>
             <div class="flex flex-wrap gap-2 pt-1">
               <UBadge 
               v-for="dimension in dimensions"
@@ -315,11 +315,11 @@ watch(() => initiativeState.city, () => {
               </template>
             </USelectMenu>
           </UFormGroup>
-          <UFormGroup label="Ubicación de la iniciativa en el mapa" class="w-full">
+          <UFormGroup v-if="initiativeState.subdivision" :key="`map-city-${initiativeState.city.id}-subdivision-${initiativeState.subdivision.id}`" label="Ubicación de la iniciativa en el mapa" class="w-full">
             <template #description>
               <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación de la iniciativa en el mapa. Si la iniciativa no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
             </template>
-           <MapSelectPosition v-if="initiativeState.subdivision" :key="`map-city-${initiativeState.city.id}-subdivision-${initiativeState.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="initiativeState.subdivision" />
+           <MapSelectPosition v-model="selectedCoordinates" :selected-subdivision="initiativeState.subdivision" />
           </UFormGroup>
           <UFormGroup name="description" label="Descripción" required>
             <template #description>

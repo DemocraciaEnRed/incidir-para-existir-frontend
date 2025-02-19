@@ -9,7 +9,7 @@ const { data, error, status, refresh } = await useAPI('/initiatives/stats/chart/
     chartOption.value = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Cantidad de iniciativas por dimensiones',
+        text: 'Cantidad de iniciativas por ejes temáticos',
         subtext: 'Cada serie representa una ciudad',
         top: 0,
         left: 0
@@ -49,7 +49,7 @@ const { data, error, status, refresh } = await useAPI('/initiatives/stats/chart/
       },
       series: [
         {
-          name: 'Ejes tematicos Cali Vs. Bogotá',
+          name: 'Ejes temáticos Cali Vs. Bogotá',
           type: 'radar',
           data: chartData.radar.data
         }
