@@ -1,5 +1,5 @@
 .the-footer{
-  @apply sticky top-[100vh] bg-[#3A27FF] p-4 w-full bottom-0;
+  @apply relative bg-[#3A27FF] p-4 w-full;
 }
 
 .the-footer .starbg{

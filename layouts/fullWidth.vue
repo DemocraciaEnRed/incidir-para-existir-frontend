@@ -5,9 +5,11 @@ definePageMeta({
 </script> -->
 
 <template>
-  <div class="min-h-screen">
-    <TheNavbar />
-    <slot />
+  <div class="flex h-screen flex-col">
+    <div class="flex-grow flex-shrink basis-auto">
+      <TheNavbar />
+      <slot />
+    </div>
     <TheFooter />
   </div>
 </template>

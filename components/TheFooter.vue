@@ -16,7 +16,7 @@ const rounded = computed(() => {
 </script>
 
 <template>
-  <footer class="the-footer" :class="rounded ? 'rounded-tl-xl rounded-tr-xl' : null">
+  <footer class="the-footer flex-shrink-0" :class="rounded ? 'rounded-tl-xl rounded-tr-xl' : null">
     <div class="starbg"/>
     <NuxtLink v-if="!loggedIn" to="/login" class="absolute opacity-25 bottom-1 text-xs z-50">Login</NuxtLink>
     <UContainer class="the-content">

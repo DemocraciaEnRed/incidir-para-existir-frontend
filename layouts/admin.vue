@@ -55,18 +55,20 @@ const links = [
 
 
 <template>
-  <div class="min-h-screen">
-    <TheNavbar />
-    <UContainer class="my-9">
-      <div class="flex gap-8">
-        <div class="w-1/4">
-          <UVerticalNavigation :links="links" class="sticky  top-5" />
+  <div class="flex h-screen flex-col">
+    <div class="flex-grow flex-shrink basis-auto">
+      <TheNavbar />
+      <UContainer class="my-9">
+        <div class="flex gap-8">
+          <div class="w-1/4">
+            <UVerticalNavigation :links="links" class="sticky top-5" />
+          </div>
+          <div class="w-3/4"> 
+            <slot />
+          </div>
         </div>
-        <div class="w-3/4"> 
-          <slot />
-        </div>
-      </div>
-    </UContainer>
+      </UContainer>
+    </div>
     <TheFooter />
   </div>
 </template>

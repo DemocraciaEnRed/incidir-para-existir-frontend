@@ -2,11 +2,13 @@
 </script>
 
 <template>
-  <div class="min-h-screen">
-    <TheNavbar />
-    <UContainer class="my-9">
-      <slot />
-    </UContainer>
+  <div class="flex h-screen flex-col">
+    <div class="flex-grow flex-shrink basis-auto">
+      <TheNavbar />
+      <UContainer class="my-9">
+        <slot />
+      </UContainer>
+    </div>
     <TheFooter />
   </div>
 </template>
