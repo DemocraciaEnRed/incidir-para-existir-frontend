@@ -222,11 +222,11 @@ const selectDimension = (dimension) => {
             </template>
           </USelectMenu>
         </UFormGroup>
-        <UFormGroup label="Ubicación del desafio en el mapa" class="w-full">
+        <UFormGroup v-if="state.subdivision"  :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" label="Ubicación del desafio en el mapa" class="w-full">
           <template #description>
             <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafio en el mapa. Si el desafio no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
           </template>
-          <MapSelectPosition v-if="state.subdivision" :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="state.subdivision" />
+          <MapSelectPosition v-model="selectedCoordinates" :selected-subdivision="state.subdivision" />
         </UFormGroup>
         <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
           <template #description>
