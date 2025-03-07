@@ -12,29 +12,26 @@
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.2.5",
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint": "^0.7.6",
-    "@nuxt/fonts": "^0.10.3",
-    "@nuxt/ui": "^2.21.0",
+    "@nuxt/eslint": "^0.7.2",
+    "@nuxt/fonts": "^0.10.2",
+    "@nuxt/ui": "^2.19.2",
     "@nuxtjs/leaflet": "^1.2.6",
     "@sidebase/nuxt-auth": "^0.9.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.16",
-    "echarts": "^5.6.0",
-    "eslint": "^9.21.0",
+    "echarts": "^5.5.1",
+    "eslint": "^9.16.0",
     "next-auth": "~4.21.1",
-    "nuxt": "^3.16.0",
-    "nuxt-echarts": "^0.2.6",
+    "nuxt": "^3.15.0",
+    "nuxt-echarts": "^0.2.4",
     "nuxt-gtag": "^3.0.2",
     "nuxt-tiptap-editor": "^2.1.4"
   },
   "dependencies": {
-    "@iconify-json/heroicons": "^1.2.2",
+    "@iconify-json/heroicons": "^1.2.1",
     "debounce": "^2.2.0",
     "slug": "^10.0.0",
     "vue-picture-cropper": "^0.7.0",
-    "yup": "^1.6.1"
-  },
-  "overrides": {
-    "ohash": "^1.1.4"
+    "yup": "^1.6.0"
   }
 }
