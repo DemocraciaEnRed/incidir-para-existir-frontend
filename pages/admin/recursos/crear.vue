@@ -11,7 +11,7 @@ definePageMeta({
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo enlace de interes</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo enlace de interés</h1>
     <br>
     <AdminResourcesForm />
   </div>

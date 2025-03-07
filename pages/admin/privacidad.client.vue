@@ -23,5 +23,6 @@ const { data, refresh, status } = useAPI(`/utils/configs?key=privacy`,{
     <h1 class="font-oswald uppercase text-4xl mb-2">Política de Privacidad</h1>
     <br>
     <AdminPrivacyForm v-if="existingData" :existing-data="existingData" />
+    <LoadingBar v-else />
   </div>
 </template>

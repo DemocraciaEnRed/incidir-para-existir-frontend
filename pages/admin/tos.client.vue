@@ -20,8 +20,9 @@ const { data, refresh, status } = useAPI(`/utils/configs?key=tos`,{
 
 <template>
    <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Terminos y Condiciones</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Términos y Condiciones</h1>
     <br>
     <AdminTosForm v-if="existingData" :existing-data="existingData" />
+    <LoadingBar v-else />
   </div>
 </template>

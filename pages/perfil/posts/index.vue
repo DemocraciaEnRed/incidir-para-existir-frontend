@@ -1,10 +1,10 @@
 <script setup>
 
-import { AdminBlogDeleteModal } from '#components'
+import { PerfilPostDeleteModal } from '#components'
 
 definePageMeta({
-  middleware: ['auth', 'only-reporters'],
-  layout: 'reporterx',
+  middleware: ['auth'],
+  layout: 'user',
   auth: {
     unauthenticatedOnly: false,
     navigateUnauthenticatedTo: '/login'
@@ -28,7 +28,7 @@ const selectedCategoryId = computed(() => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { data, refresh, status } = useAPI('/reporter/blog', {
+const { data, refresh, status } = useAPI('/users/posts', {
   server: false,
   query: {
     page,
@@ -53,11 +53,12 @@ const itemsMenu = (row) => {
     {
     label: 'Ver',
     icon: 'i-heroicons-eye-20-solid',
-    click: () => navigateTo(`/actualidad/${row.slug}`)
+    click: () => navigateTo(`/actualidad/${row.slug}`),
+    disabled: !row.publishedAt
   }], [{
     label: 'Editar',
     icon: 'i-heroicons-pencil-square-20-solid',
-    click: () => navigateTo(`/reporterx/${row.id}/editar`)
+    click: () => navigateTo(`/perfil/posts/${row.id}/editar`)
   }, {
     label: 'Eliminar',
     icon: 'i-heroicons-trash-20-solid',
@@ -81,10 +82,11 @@ const columns = [
     rowClass: 'text-xs text-center'
   },
   {
-    key: 'createdAt',
-    label: 'Publicado',
-    class: 'text-center',
-    rowClass: 'text-xs text-center'
+    key: 'publishedAt',
+    label: {
+      icon: 'i-heroicons-check-circle-20-solid',
+    },
+    class: "w-[1%]",
   },
   {
     key: 'actions',
@@ -94,7 +96,7 @@ const columns = [
 
 
 const openDeleteEntryModal = (entry) => {
-  modal.open(AdminBlogDeleteModal, {
+  modal.open(PerfilPostDeleteModal, {
     entry: entry,
     onDeleteEntry: () => {
       deleteEntry(entry)
@@ -107,7 +109,7 @@ const openDeleteEntryModal = (entry) => {
 
 const deleteEntry = async (entry) => {
   try {
-    await $api(`/reporter/blog/${entry.id}`, {
+    await $api(`/users/posts/${entry.id}`, {
       method: 'DELETE'
     })
     refresh()
@@ -126,11 +128,20 @@ const deleteEntry = async (entry) => {
     <div class="space-y-1">
       <h1 class="font-oswald uppercase text-4xl">Mis Posteos</h1>
       <br>
+      <p>Aquí puede crear sus posteos para el blog de Incidir para Existir. Luego de crea un nuevo posteo, un administrador deberá aprobarlo para que sea publicado.</p>
+      <p><UIcon name="i-heroicons-clock" class="text-mindaro text-lg" /> - Pendiente de aprobación para su publicación</p>
+      <p><UIcon name="i-heroicons-check" class="text-green-500 text-lg" /> - Posteo publicado</p>
+      <br>
       <div class="flex gap-2">
       <AdminBlogCategorySelector v-model="selectedCategory" class="w-full"/>
     </div>
     <br>
     <UTable :rows="posts" :columns="columns" :loading="isLoading">
+      <template #publishedAt-header>
+        <UTooltip text="¿Publicado?">
+          <UIcon name="i-heroicons-eye" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
       <template #loading-state>
         <div class="px-3 py-6">
           <LoadingBar class="text-gray-400" />
@@ -140,8 +151,11 @@ const deleteEntry = async (entry) => {
         <p class="font-medium">{{ row.title }}</p>
         <p class="text-xs text-gray-500">{{ row.subtitle }}</p>
       </template>
-      <template #createdAt-data="{ row }">
-        <p>{{ formatDate(row.createdAt) }}</p>
+      <template #publishedAt-data="{ row }">
+        <div class="flex items-center justify-center">
+          <UIcon v-if="row.publishedAt" name="i-heroicons-check" class="text-green-500 text-lg" />
+          <UIcon v-else name="i-heroicons-clock" class="text-mindaro text-lg" />
+        </div>
       </template>
       <template #actions-data="{ row }">
         <UDropdown :items="itemsMenu(row)">

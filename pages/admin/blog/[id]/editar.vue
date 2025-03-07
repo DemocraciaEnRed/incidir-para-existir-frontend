@@ -29,5 +29,6 @@ const { data, refresh, status } = useAPI(`/blog/byId/${route.params.id}`,{
     <p>Aquí puede editar el posteo. Debe completar los campos que son requeridos (<span class="text-red">*</span>) y, de querer, acompañar con una foto cuya relación de aspecto sea 16/9 aprox y se acepta JPG.</p>
     <br>   
     <AdminBlogForm v-if="existingEntry" :existing-entry="existingEntry" :refresh="refresh" />
+    <LoadingBar v-else />
   </div>
 </template>

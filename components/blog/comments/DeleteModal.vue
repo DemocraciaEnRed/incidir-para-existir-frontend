@@ -21,8 +21,8 @@ function deleteEntry() {
   <UModal>
     <UCard>
       <div class="space-y-2">
-      <h1 class="font-oswald uppercase text-2xl mb-2">Eliminar enlace de interés</h1>
-      <p>¿Desea eliminar el post <span class="font-bold">{{ entry.title }}</span>?</p>
+      <h1 class="font-oswald uppercase text-2xl mb-2">Eliminar comentario</h1>
+      <p>¿Desea eliminar el comentario?</p>
 
         <div class="flex flex-row justify-between align-middle">
           <UButton variant="outline" color="white" @click="closeModal">

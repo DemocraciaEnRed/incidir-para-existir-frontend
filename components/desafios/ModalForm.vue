@@ -108,7 +108,7 @@ const handleSubmit = async () => {
     <UProgress color="pumpkin" />
   </UCard>
   <UCard>
-    <p class="text-2xl text-pumpkin-500 font-bold mb-5">REPORTA DESAFIOS DE LA JUVENTUD</p>
+    <p class="text-2xl text-pumpkin-500 font-bold mb-5">REPORTA DESAFÍOS DE LA JUVENTUD</p>
     <UForm :state="state" :schema="schema" class="space-y-4" @submit="handleSubmit">
       <!-- <UFormGroup class="" label="Linea temática" name="dimension" required>
         <USelect v-model="state.dimension" :options="dimensions" value-attribute="id" option-attribute="name"/>
@@ -121,7 +121,7 @@ const handleSubmit = async () => {
       </UFormGroup>
       <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
         <template #description>
-          Comparte tu necesidad y/o desafio <i class="text-pumpkin">Max. 500 caracteres.</i>
+          Comparte tu necesidad y/o desafío <i class="text-pumpkin">Max. 500 caracteres.</i>
         </template>
         <UTextarea v-model="state.needsAndChallenges" />
       </UFormGroup>

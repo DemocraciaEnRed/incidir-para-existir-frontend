@@ -6,7 +6,9 @@
   <div class="flex h-screen flex-col">
     <div class="flex-grow flex-shrink basis-auto">
       <TheNavbar />
-      <slot />
+      <UContainer class="my-9">
+        <slot/>
+      </UContainer>
     </div>
     <TheFooter />
   </div>

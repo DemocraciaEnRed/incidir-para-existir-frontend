@@ -18,7 +18,6 @@ const rounded = computed(() => {
 <template>
   <footer class="the-footer flex-shrink-0" :class="rounded ? 'rounded-tl-xl rounded-tr-xl' : null">
     <div class="starbg"/>
-    <NuxtLink v-if="!loggedIn" to="/login" class="absolute opacity-25 bottom-1 text-xs z-50">Login</NuxtLink>
     <UContainer class="the-content">
       <div class="hidden sm:flex justify-center items-center my-5 flex-col sm:flex-row space-y-5 gap-4 sm:space-y-0">
         <NuxtLink to="/"><img src="/img/incidir-para-existir-logo.png" alt="Incidir Para Existir" class="max-h-10"></NuxtLink>
@@ -39,7 +38,7 @@ const rounded = computed(() => {
           <NuxtLink to="/" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Inicio</NuxtLink>
           <NuxtLink to="/quienes-somos" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">¿Quiénes somos?</NuxtLink>
           <NuxtLink to="/iniciativas"  active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Iniciativas <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
-          <NuxtLink to="/desafios"  active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Desafios <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
+          <NuxtLink to="/desafios"  active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Desafíos <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
           <NuxtLink to="/actualidad"  active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Actualidad <br class="hidden sm:block"><span class="sm:text-sm font-normal">de la juventud</span></NuxtLink>
           <NuxtLink to="/contacto" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Contacto</NuxtLink>
           <ULink to="https://linktr.ee/incidirparaexistir" target="_blank" class="text-center text-sm"><img src="/svg/linktree-logo-icon.svg" class="h-5" alt="Linktree"></ULink>

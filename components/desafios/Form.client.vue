@@ -193,7 +193,7 @@ const selectDimension = (dimension) => {
         <!-- <UFormGroup class="" label="Linea temática" name="dimensionId" required>
           <USelect v-model.number="state.dimensionId" :options="dimensions" value-attribute="id" option-attribute="name" :disabled="submitLoading"/>
         </UFormGroup> -->
-        <UFormGroup name="dimensionId" label="Eje tematico del desafio" required>
+        <UFormGroup name="dimensionId" label="Eje tematico del desafío" required>
           <div class="flex flex-wrap gap-2 pt-1">
             <UBadge 
             v-for="dimension in dimensions"
@@ -208,10 +208,10 @@ const selectDimension = (dimension) => {
             </UBadge>
           </div>
         </UFormGroup>
-        <UFormGroup label="Seleccione la ciudad del desafio" name="city" required>
+        <UFormGroup label="Seleccione la ciudad del desafío" name="city" required>
           <USelectMenu v-model="state.city" :options="cities" option-attribute="name" placeholder="Seleccione una ciudad" size="lg" :ui-menu="{ container: 'z-[1500] group' }"/>
         </UFormGroup>
-        <UFormGroup v-if="state.city" class="" label="Seleccione la ubicación del desafio" name="subdivision" required>
+        <UFormGroup v-if="state.city" class="" label="Seleccione la ubicación del desafío" name="subdivision" required>
           <USelectMenu v-model="state.subdivision" :options="subdivisionsOptions" placeholder="Seleccione la ubicación" size="lg" :ui-menu="{ container: 'z-[1500] group' }">
             <template #option="{ option }">
               <span>{{ option.type }} {{ option.name }}</span>
@@ -222,15 +222,15 @@ const selectDimension = (dimension) => {
             </template>
           </USelectMenu>
         </UFormGroup>
-        <UFormGroup v-if="state.subdivision"  :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" label="Ubicación del desafio en el mapa" class="w-full">
+        <UFormGroup v-if="state.subdivision"  :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" label="Ubicación del desafío en el mapa" class="w-full">
           <template #description>
-            <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafio en el mapa. Si el desafio no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
+            <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafío en el mapa. Si el desafío no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
           </template>
           <MapSelectPosition v-model="selectedCoordinates" :selected-subdivision="state.subdivision" />
         </UFormGroup>
         <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
           <template #description>
-            Comparte el desafio de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+            Comparte el desafío de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
           </template>
           <UTextarea v-model="state.needsAndChallenges"  :disabled="submitLoading" />
         </UFormGroup>
@@ -243,7 +243,7 @@ const selectDimension = (dimension) => {
           </template>
           <UTextarea v-model="state.proposal" placeholder="Ingresá tu propuesta aquí"  :disabled="submitLoading"/>
         </UFormGroup>
-        <UFormGroup class="" label="En máximo dos palabras ¿Cómo resumirias el desafio que enfrenta la juventud?" name="inWords" required>
+        <UFormGroup class="" label="En máximo dos palabras ¿Cómo resumirias el desafío que enfrenta la juventud?" name="inWords" required>
           <UInput v-model="state.inWords" :disabled="submitLoading" />
         </UFormGroup>
         <UFormGroup class="flex items-center" name="acceptsTerms" required>
@@ -259,7 +259,7 @@ const selectDimension = (dimension) => {
     </div>
     <div v-else ref="success-message" class="text-center">
       <UIcon name="i-heroicons-check-circle" class="text-6xl text-green-500" />
-      <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡GRACIAS POR REPORTAR TU DESAFIO!</p>
+      <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡GRACIAS POR REPORTAR TU DESAFÍO!</p>
       <p>Tu reporte ha sido guardado en nuestra base de datos</p>
     </div>
 

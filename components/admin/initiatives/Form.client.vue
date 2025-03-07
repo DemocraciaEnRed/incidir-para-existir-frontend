@@ -110,7 +110,7 @@ const handleSubmit = async () => {
     navigateTo('/admin/iniciativas')
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar crear el desafio`, color: 'red'})
+    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar crear el desafío`, color: 'red'})
   } finally {
     submitLoading.value = false
   }

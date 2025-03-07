@@ -12,7 +12,7 @@ definePageMeta({
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo reporte de desafio</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Nuevo reporte de desafío</h1>
     <br>
     <AdminChallengesForm />   
   </div>

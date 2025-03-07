@@ -97,7 +97,7 @@ const getCityButtonVariant = (city) => {
   <div>
     <div>
       <div class="flex flex-col items-center">
-        <p class="text-sm my-3 font-medium">Seleccione una ciudad para ver los desafios</p>
+        <p class="text-sm my-3 font-medium">Seleccione una ciudad para ver los desafíos</p>
         <div class="flex justify-center space-x-3 my-4">
           <UButton class="text-xl" :variant="getCityButtonVariant('Cali')" size="lg" color="mindaro" :loading="!mapReady"  :disabled="!mapReady" :ui="{ rounded: 'rounded-full' }"  @click="centerMapToCity('Cali')">Cali</UButton>
           <UButton class="text-xl" :variant="getCityButtonVariant('Bogotá')" size="lg" color="mindaro" :loading="!mapReady" :disabled="!mapReady" :ui="{ rounded: 'rounded-full' }"  @click="centerMapToCity('Bogotá')">Bogotá</UButton>

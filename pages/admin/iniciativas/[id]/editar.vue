@@ -25,5 +25,6 @@ const { data, refresh, status } = useAPI(`/initiatives/${route.params.id}`,{
     <h1 class="font-oswald uppercase text-4xl mb-2">Editar iniciativa</h1>
     <br>   
     <AdminInitiativesForm v-if="existingInitiative" :existing-initiative="existingInitiative" />
+    <LoadingBar v-else />
   </div>
 </template>

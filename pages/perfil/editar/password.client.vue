@@ -1,7 +1,7 @@
 <script setup>
 definePageMeta({
   middleware: ['auth'],
-  layout: 'perfil',
+  layout: 'user',
   auth: {
     unauthenticatedOnly: false,
     navigateUnauthenticatedTo: '/login'

@@ -22,25 +22,25 @@ const userSchema = YupObject({
   firstName: YupString().required('Este campo es requerido'),
   lastName: YupString().required('Este campo es requerido'),
   email: YupString().email('Por favor, ingrese un correo válido').required('Este campo es requerido'),
-  role: YupString().oneOf(['admin', 'reporter'], 'Por favor, seleccione un rol').required('Este campo es requerido'),
+  role: YupString().oneOf(['admin', 'user'], 'Por favor, seleccione un rol').required('Este campo es requerido'),
 })
 
 const submitLoading = ref(false)
 const roles = [
   { label: 'Administrador', value: 'admin' },
-  { label: 'Reportero', value: 'reporter' },
+  { label: 'Usuario', value: 'user' },
 ]
 
 const userState = reactive({
   firstName: '',
   lastName: '',
   email: '',
-  role: 'reporter',
+  role: 'user',
 })
 const userSubdivision = ref(null)
 
 if(props.existingUser){
-  console.log('props.existingUser', props.existingUser)
+  // console.log('props.existingUser', props.existingUser)
   for(const key in userState){
     userState[key] = props.existingUser[key] || ''
   }
@@ -56,13 +56,13 @@ const handleSubmit = async () => {
       ...userState,
       subdivisionId: userSubdivision.value?.id
     }
-    await $api(`/user/${props.existingUser.id}`, {
+    await $api(`/users/${props.existingUser.id}`, {
       method: 'PUT',
       body: payload
     })
 
     toast.add({ title: 'Usuario editado', description: 'El usuario ha sido editado exitosamente', color: 'green'})
-    navigateTo('/admin/users')
+    navigateTo('/admin/usuarios')
   } catch (error) {
     console.log('Error', error)
     toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar crear el usuario`, color: 'red'})

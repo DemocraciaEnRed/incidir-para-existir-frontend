@@ -34,7 +34,7 @@ const maxBogota = Math.max(...data.value.challengesPerSubdivisionOfBogota.map((i
 const optionCali = ref({
   backgroundColor: 'transparent',
   title: {
-    text: 'Desafios por localidad de Cali',
+    text: 'Desafíos por localidad de Cali',
     subtext: 'Descargar',
     sublink: 'http://www.census.gov/popest/data/datasets.html',
     left: 'right'
@@ -66,7 +66,7 @@ const optionCali = ref({
     calculable: true
   },
   series: [{
-    name: 'Desafios',
+    name: 'Desafíos',
     type: 'map',
     map: 'cali_map',
     emphasis: {
@@ -98,7 +98,7 @@ const optionCali = ref({
 const optionBogota = ref({
   backgroundColor: 'transparent',
   title: {
-    text: 'Desafios por localidad de Cali',
+    text: 'Desafíos por localidad de Cali',
     subtext: 'Descargar',
     sublink: 'http://www.census.gov/popest/data/datasets.html',
     left: 'right'
@@ -130,7 +130,7 @@ const optionBogota = ref({
     calculable: true
   },
   series: [{
-    name: 'Desafios',
+    name: 'Desafíos',
     type: 'map',
     map: 'bogota_map',
     emphasis: {

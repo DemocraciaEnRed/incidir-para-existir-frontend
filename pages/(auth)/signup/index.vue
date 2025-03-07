@@ -4,14 +4,14 @@ definePageMeta({
   name: 'signup'
 })
 
-const { data: subdivisions, error: errorFetch } = await useAPI(`/utils/subdivisions`)
+const { data: cities, error: errorFetch } = await useAPI(`/utils/cities`)
 
 </script>
 
 <template>
   <!-- A grid of 2 columns with tailwind -->
   <div class="flex flex-row justify-center items-center my-16">
-    <div class="w-3/5">
+    <div class="w-full md:w-3/5 lg:w-1/2">
           <!-- First column -->
         <div class="text-center my-auto">
           <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="mx-auto px-10 mb-10 max-w-[250px]" >
@@ -19,7 +19,6 @@ const { data: subdivisions, error: errorFetch } = await useAPI(`/utils/subdivisi
         </div>
         <!-- Second column -->
         <div class="content-stretch mt-8 lg:mt-0">
-
           <UAlert 
           v-if="errorFetch"
           class="my-8"
@@ -31,7 +30,7 @@ const { data: subdivisions, error: errorFetch } = await useAPI(`/utils/subdivisi
           />
           <div v-else>
             <ClientOnly>
-              <AuthSignUpForm :subdivisions="subdivisions" />
+              <AuthSignUpForm :cities="cities" />
             </ClientOnly>
           </div>
         </div>

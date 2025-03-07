@@ -25,12 +25,8 @@ const { data, refresh, status } = useAPI(`/users/${route.params.id}`,{
   <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Editar Usuario</h1>
     <UDivider label="Datos " class="my-8" />
-    <div v-if="existingUser">
-      <AdminUserFormEdit :existing-user="existingUser" :refresh="refresh"/>
-    </div>
-    <UDivider label="Foto de perfil" class="my-8" />
-
-    <UDivider label="Datos del usuario" class="my-8" />
+    <AdminUserFormEdit v-if="existingUser" :existing-user="existingUser" :refresh="refresh"/>
+    <LoadingBar v-else />
 
   </div>
 

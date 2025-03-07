@@ -72,11 +72,11 @@ const isLoading = computed(() => status.value === 'pending');
               <p class="">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.subdivision.city.name }}</p>
             </div>
             <div class="space-y-2">
-              <p class="text-sm text-gray-500">Descripción del desafio de la juventud</p>
+              <p class="text-sm text-gray-500">Descripción del desafío de la juventud</p>
               <p class="">{{ data.needsAndChallenges }}</p>
             </div>
             <div class="space-y-2">
-              <p class="text-sm text-gray-500">Propuesta frente al desafioo</p>
+              <p class="text-sm text-gray-500">Propuesta frente al desafíoo</p>
               <p class="">{{ data.proposal }}</p>
             </div>
 

@@ -49,13 +49,14 @@ const onError = (event) => {
 
 <template>
   <div class="flex flex-row justify-center items-center my-16">
-    <div class="w-full md:w-1/3">
+    <div class="w-full sm:w-2/3 md:w-3/5 lg:w-1/3">
       <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="mx-auto px-10 mb-10 max-w-[250px]" >
       <UCard v-if="showErrorAlert" color="red" class="mb-4">
-        <p class="text-white text-center">Por favor, verifica los datos ingresados</p>
+        <p class="text-pumpkin text-center">Error al iniciar sesión</p>
+        <p class="text-white text-center">Por favor, verifica que tu email y contraseña sean correctos</p>
       </UCard>
       <UCard>
-        <p class="font-oswald font-normal mb-3 uppercase text-2xl text-[#D4F779]">Login</p>
+        <p class="font-oswald font-normal mb-3 uppercase text-2xl text-[#D4F779]">INGRESA A TU CUENTA</p>
         <UForm ref="theForm" :schema="schema" :state="state" class="space-y-4" @error="onError" @submit.prevent="handleLogin" >
           <UFormGroup name="email" label="Email" required>
             <UInput v-model="state.email" icon="i-heroicons-envelope" size="xl" placeholder="Ingrese su email" />
@@ -71,12 +72,10 @@ const onError = (event) => {
           </div>
         </UForm>
       </UCard>
-      <!-- <div class="flex flex-col items-center justify-center mt-8">
+      <div class="flex flex-col items-center justify-center mt-8">
         <p class="font-medium mb-3 text-lg">¿Aun nó tienes cuenta?</p>
-        <div>
-          <UButton to="signup" color="orange"  variant="outline">Registrate</UButton>
-        </div>
-      </div> -->
+        <UButton to="signup" color="orange" variant="outline" size="xl" class="text-xl" block trailing :ui="{ rounded: 'rounded-full' }">Registrate</UButton>
+      </div>
     </div>
   </div>
 </template>

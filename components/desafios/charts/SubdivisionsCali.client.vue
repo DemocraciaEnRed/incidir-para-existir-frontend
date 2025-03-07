@@ -71,7 +71,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
         calculable: true
       },
       series: [{
-        name: 'Desafios',
+        name: 'Desafíos',
         type: 'map',
         roam: true,
         map: 'cali_map',

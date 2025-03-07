@@ -39,7 +39,7 @@ function deleteEntry() {
       <div class="space-y-2">
       <h1 class="font-oswald uppercase text-2xl mb-2">Eliminar categoría</h1>
       <p>¿Desea eliminar la categoría <span class="font-bold">{{ props.categoryToDelete.name }}</span>?</p>
-      <p class="text-sm text-gray-400">Nota: Debe elegir una categoria a la cual los enlaces de interes pertenecen a la categoria que va a eliminar</p>
+      <p class="text-sm text-gray-400">Nota: Debe elegir una categoria a la cual los enlaces de interés pertenecen a la categoria que va a eliminar</p>
       <USelectMenu v-model="selectedCategory" class="w-full" :options="props.categories" placeholder="Seleccione una categoria" >
         <template #option="{ option }">
           <div class="flex items-center">

@@ -1,21 +1,32 @@
 <script setup lang="ts">
-const links = [
+const links = [[
+    {
+      label: 'Mi perfil',
+      icon: 'i-heroicons-user',
+      to: '/perfil'
+    },
+    {
+      label: 'Cambiar foto de perfil',
+      icon: 'i-heroicons-pencil',
+      to: '/perfil/editar/avatar'
+    },
+    {
+      label: 'Cambiar contraseña',
+      icon: 'i-heroicons-pencil',
+      to: '/perfil/editar/password'
+    },
+  ], [
   {
-    label: 'Mi perfil',
-    icon: 'i-heroicons-user',
-    to: '/perfil'
+    label: 'Mis posteos',
+    icon: 'i-heroicons-document-text',
+    to: '/perfil/posts'
   },
   {
-    label: 'Cambiar foto de perfil',
-    icon: 'i-heroicons-pencil',
-    to: '/perfil/editar/avatar'
+    label: 'Crear posteo',
+    icon: 'i-heroicons-plus',
+    to: '/perfil/posts/crear'
   },
-  {
-    label: 'Cambiar contraseña',
-    icon: 'i-heroicons-pencil',
-    to: '/perfil/editar/password'
-  },
-  ]
+  ]]
 </script>
 
 

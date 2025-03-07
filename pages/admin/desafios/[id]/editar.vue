@@ -23,9 +23,10 @@ const { data, refresh, status } = useAPI(`/challenges/${route.params.id}`,{
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Editar reporte de desafio</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Editar reporte de desafío</h1>
     <br>
     <AdminChallengesForm v-if="existingChallenge" :existing-challenge="existingChallenge" />
+    <LoadingBar v-else />
   </div>
 </template>
 

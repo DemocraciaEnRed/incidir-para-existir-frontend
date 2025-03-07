@@ -68,9 +68,9 @@ const accordionItems = [
       </div>
       <UDivider class="my-6"/>
 
-      <p class="font-oswald text-4xl uppercase text-center text-mindaro leading-tight my-10">Explorá las líneas temáticas</p>
+      <p class="font-oswald text-4xl uppercase text-center text-mindaro leading-tight my-10">Explora las líneas temáticas</p>
 
-      <UAccordion multiple :items="accordionItems"
+      <UAccordion :items="accordionItems"
         :ui="{ wrapper: 'w-full grid grid-cols-1 md:grid-cols-2 gap-5 my-10' }">
         <template #default="{ item, index, open }">
           <UButton color="white" variant="outline" class="rounded-full text-xl border-white px-6"
@@ -151,7 +151,7 @@ const accordionItems = [
         <div class="flex justify-center items-center gap-5 text-5xl text-pumpkin">
           <UIcon name="i-heroicons-arrow-small-down" />
           <p class="font-oswald text-5xl uppercase font-medium text-center text-pumpkin leading-tight">
-             ¡Súma tu iniciativa aquí!
+             ¡Suma tu iniciativa aquí!
              </p>
           <UIcon name="i-heroicons-arrow-small-down" />
         </div>
@@ -175,7 +175,7 @@ const accordionItems = [
     </UContainer>
     <div class="bg-electricViolet-800 py-1 my-12" />
     <UContainer class="my-12">
-      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADISTICAS</p>
+      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADÍSTICAS</p>
       <ClientOnly>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <IniciativasChartsDimensions class="md:col-span-2" />
@@ -191,10 +191,9 @@ const accordionItems = [
         </template>
       </ClientOnly>
       <div class="my-12 text-center">
-        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">CREA TUS PROPIOS REPORTES</p>
+        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">¿TE INTERESAN LOS DATOS ABIERTOS?</p>
         <div class="my-4">
-          <p>¿Te interesan los datos abiertos?</p>
-          <p>Descarga los datos completos aquí para conocer más detalles sobre las iniciativas reportadas en cada ciudad.</p>
+          <p>Descarga los datos completos aquí para conocer más detalles sobre las iniciativas reportadas en cada ciudad. Esta información puede ser útil para investigaciones, propuestas y acciones de incidencia de juventudes y tomadores de decisión.</p>
         </div>
         <div class="w-6/12 mx-auto">
           <IniciativasDownloadCsv />

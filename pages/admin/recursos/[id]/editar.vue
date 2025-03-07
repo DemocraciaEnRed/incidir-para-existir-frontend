@@ -25,9 +25,10 @@ const { data, refresh, status } = useAPI(`/resources/${route.params.id}`,{
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Editar Enlace de interes</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Editar Enlace de interés</h1>
     <br>    
     <AdminResourcesForm v-if="existingEntry" :existing-entry="existingEntry" :refresh="refresh"/>
+    <LoadingBar v-else />
   </div>
 </template>
 

@@ -16,6 +16,7 @@ const mobileBurgerActive = ref(false)
 const handleLogout = async () => {
   try {
     await signOut({ callbackUrl: '/' })
+    mobileBurgerActive.value = false
   } catch (error) {
     console.error('Error logging out:', error)
   }
@@ -35,28 +36,32 @@ const items = computed(() => {
     const adminOptions = [[{
       label: 'Admin',
       to: '/admin',
-      icon: 'i-heroicons-cog'
+      icon: 'i-heroicons-cog',
+      click: () => mobileBurgerActive.value = false
     }], [{
       label: 'Mi perfil',
       to: '/perfil',
-      icon: 'i-heroicons-user'
+      icon: 'i-heroicons-user',
+      click: () => mobileBurgerActive.value = false
     }, {
       label: 'Salir',
       icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
       click: () => handleLogout()
     }]]
     navbarOptions.push(...adminOptions)
-  } else if (userData && userData.value.role == 'reporter') {
+  } else {
     const memberOptions = [
     [{
       label: 'Mis posteos',
-      to: '/reporterx',
-      icon: 'i-heroicons-document-text'
+      to: '/perfil/posts',
+      icon: 'i-heroicons-document-text',
+      click: () => mobileBurgerActive.value = false
     }],
     [{
       label: 'Mi perfil',
       to: '/perfil',
-      icon: 'i-heroicons-user'
+      icon: 'i-heroicons-user',
+      click: () => mobileBurgerActive.value = false
     }, {
       label: 'Salir',
       icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
@@ -64,17 +69,6 @@ const items = computed(() => {
     }]
     ]
     navbarOptions.push(...memberOptions)
-  } else {
-    const memberOptions = [{
-      label: 'Mi perfil',
-      to: '/perfil',
-      icon: 'i-heroicons-user'
-    }, {
-      label: 'Salir',
-      icon: 'i-heroicons-arrow-left-start-on-rectangle-16-solid',
-      click: () => handleLogout()
-    }]
-    navbarOptions.push(memberOptions)
   }
 
   return navbarOptions
@@ -93,14 +87,10 @@ const items = computed(() => {
             <NuxtLink to="/" active-class="text-mindaro" class="navbar-item">Inicio</NuxtLink>
             <NuxtLink to="/quienes-somos" active-class="text-mindaro" class="navbar-item">¿Quienes Somos?</NuxtLink>
             <NuxtLink to="/iniciativas" active-class="text-mindaro" class="navbar-item leading-none text-center">Iniciativas<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
-            <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item leading-none text-center">Desafios<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
+            <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item leading-none text-center">Desafíos<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item leading-none text-center">Actualidad<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize">Contactanos</UButton>
-            <!-- <UButton v-if="!loggedIn" to="/login" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton> -->
-            <!-- <UButton v-if="loggedIn" color="orange" variant="solid" icon="i-heroicons-arrow-left-start-on-rectangle-16-solid" @click="handleLogout">Salir</UButton> -->
-            <!-- <NuxtLink v-if="!loggedIn" to="/login" class="navbar-item">
-              Ingresa<UIcon name="i-heroicons-arrow-left-end-on-rectangle-16-solid" class="size-6 ml-2" />
-            </NuxtLink> -->
+            <UButton v-if="!loggedIn" to="/login" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton>
             <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
               <UAvatar :src="userData.imageUrl" :alt="userFullname" />
             </UDropdown>
@@ -123,11 +113,12 @@ const items = computed(() => {
         <NuxtLink to="/" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Inicio</NuxtLink>
         <NuxtLink to="/quienes-somos" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">¿Quienes Somos?</NuxtLink>
         <NuxtLink to="/iniciativas" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Iniciativas</NuxtLink>
-        <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Desafios</NuxtLink>
+        <NuxtLink to="/desafios" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Desafíos</NuxtLink>
         <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Actualidad</NuxtLink>
         <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize" @click="mobileBurgerActive = !mobileBurgerActive">Contactanos</UButton>
+        <UButton v-if="!loggedIn" to="/login"  @click="mobileBurgerActive = !mobileBurgerActive" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton>
         <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
-          <UAvatar :alt="userFullname" />
+          <UAvatar :src="userData.imageUrl" :alt="userFullname" />
         </UDropdown>
       </div>
     </div>

@@ -105,21 +105,21 @@ const handleSubmit = async () => {
 
     submitLoading.value = true
     if(editMode.value){
-      await $api(`/reporter/blog/${props.existingEntry.id}`, {
+      await $api(`/users/posts/${props.existingEntry.id}`, {
         method: 'PUT',
         body: formData,
       })
       // await props.refresh()
       toast.add({ title: 'Exito', description: 'El posteo ha sido actualizado exitosamente', color: 'green'})
     } else {
-      await $api('/reporter/blog', {
+      await $api('/users/posts', {
         method: 'POST',
         body: formData,
       })
       toast.add({ title: 'Exito', description: 'El post ha sido creado exitosamente', color: 'green'})
     }
 
-    navigateTo('/reporterx')
+    navigateTo('/perfil/posts')
   } catch (error) {
     console.log('Error', error)
     toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar ${editMode.value ? 'editar' : 'crear'} el post`, color: 'red'})

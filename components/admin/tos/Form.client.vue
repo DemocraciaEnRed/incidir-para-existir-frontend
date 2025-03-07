@@ -29,10 +29,10 @@ const handleSubmit = async () => {
       }
     })
     // await props.refresh()
-    toast.add({ title: 'Terminos y condiciones actualizado', description: 'El texto ha sido actualizado exitosamente', color: 'green'})
+    toast.add({ title: 'Términos y condiciones actualizado', description: 'El texto ha sido actualizado exitosamente', color: 'green'})
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar editar los terminos y condiciones`, color: 'red'})
+    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar editar los términos y condiciones`, color: 'red'})
   } finally {
     submitLoading.value = false
   }

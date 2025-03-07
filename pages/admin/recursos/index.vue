@@ -130,7 +130,7 @@ const deleteEntry = async (entry) => {
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Enlaces de interes</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Enlaces de interés</h1>
     <br>
     <div class="flex gap-2">
       <AdminResourcesCategorySelector v-model="selectedCategory" class="w-full"/>

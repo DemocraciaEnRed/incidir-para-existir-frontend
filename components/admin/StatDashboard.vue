@@ -33,7 +33,7 @@
 
     } catch (error) {
       console.error(error)
-      toast.add({ title: 'Error', description: 'Hubo un error al cargar las estadisticas', color: 'red' })
+      toast.add({ title: 'Error', description: 'Hubo un error al cargar las estadísticas', color: 'red' })
     } finally {
       isLoading.value = false
     }
@@ -83,13 +83,13 @@
         </div>
       </UCard>
       <div>
-        <UDivider label="Desafios" :ui="{ wrapper: { base: 'my-5' } }" />
+        <UDivider label="Desafíos" :ui="{ wrapper: { base: 'my-5' } }" />
       </div>
       <UCard>
         <div class="flex justify-between items-center">
           <div>
-            <p class="font-medium text-lg">Total Desafios</p>
-            <p class="text-gray-500 text-sm">Desafios en la plataforma</p>
+            <p class="font-medium text-lg">Total Desafíos</p>
+            <p class="text-gray-500 text-sm">Desafíos en la plataforma</p>
           </div>
           <p class="font-mono text-3xl font-bold ml-5">{{ stats.totalChallenges }}</p>
         </div>

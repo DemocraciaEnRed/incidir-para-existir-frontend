@@ -76,7 +76,7 @@ const openResourceNewTab = (resource) => {
           Todas las categorías
         </UBadge> <!-- Closed the UBadge tag here -->
         <UBadge
-v-for="(category, index) in categories" :key="`category-${category.id}`" size="lg" 
+          v-for="(category, index) in categories" :key="`category-${category.id}`" size="lg" 
           :ui="{ rounded: 'rounded-full' }"
           class="cursor-pointer select-none"
           :color="getBadgeColor(category)" :variant="getVariant(category)" @click="selectedCategory = category">

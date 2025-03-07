@@ -36,7 +36,7 @@ onMounted(async () => {
 <template>
   <!-- A grid of 2 columns with tailwind -->
   <div class="flex flex-row justify-center items-center my-16">
-    <div class="w-3/5">
+    <div class="w-full md:w-3/5">
           <!-- First column -->
         <div class="text-center my-auto">
           <img src="/img/incidir-para-existir-logo.png" alt="Incidir para existir" class="mx-auto px-10 mb-10 max-w-[250px]" >

@@ -67,7 +67,7 @@ const itemsMenu = (row) => {
 const columns = [
   {
     key:'title',
-    label: 'Desafio',
+    label: 'Desafío',
     rowClass: 'text-wrap'
   },
   {
@@ -123,10 +123,10 @@ const deleteChallenge = async (challenge) => {
     refresh()
     // close the modal
     modal.close()
-    toast.add({ title: 'Exito', description: 'Desafio eliminado', color: 'green' })
+    toast.add({ title: 'Exito', description: 'Desafío eliminado', color: 'green' })
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafio', color: 'red' })
+    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafío', color: 'red' })
   }
 }
 
@@ -134,7 +134,7 @@ const deleteChallenge = async (challenge) => {
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">REPORTES DE DESAFIOS</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">REPORTES DE DESAFÍOS</h1>
     <br>
     <div class="flex gap-2">
       <AdminDimensionSelector v-model="selectedDimension" class="w-full"/>

@@ -77,12 +77,12 @@ const handleSubmit = async () => {
         method: 'POST',
         body: payload
       })
-      toast.add({ title: 'Desafio creado', description: 'El desafio ha sido creado exitosamente', color: 'green'}) 
+      toast.add({ title: 'Desafío creado', description: 'El desafío ha sido creado exitosamente', color: 'green'}) 
     }
     navigateTo('/admin/desafios')
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar crear el desafio`, color: 'red'})
+    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar crear el desafío`, color: 'red'})
   } finally {
     submitLoading.value = false
   }
@@ -101,13 +101,13 @@ const onError = (event) => {
   <UForm :state="challengeState" :schema="challengeSchema" class="space-y-4" @submit="handleSubmit" @error="onError">
     <UFormGroup name="source" label="Fuente de la iniciativa" required>
       <template #description>
-        ¿Cómo llegó el reporte de desafio a Incidir para Existir?
+        ¿Cómo llegó el reporte de desafío a Incidir para Existir?
       </template>
       <USelect v-model="challengeState.source" :options="[{ label: 'Web', value: 'web' }, { label: 'Whatsapp', value: 'whatsapp' }]" />
     </UFormGroup>
     <UFormGroup class="" label="Necesidades y desafíos" name="needsAndChallenges" required>
       <template #description>
-        Comparte el desafio de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+        Comparte el desafío de la juventud en tu territorio <i class="text-pumpkin">(Máximo 500 caracteres)</i>
       </template>
       <template #help>
         <span v-if="challengeState.needsAndChallenges" class="text-xs">Caracteres: {{ challengeState.needsAndChallenges.length }}</span>
@@ -123,7 +123,7 @@ const onError = (event) => {
       </template>
       <UTextarea v-model="challengeState.proposal" placeholder="Escribe aquí..."  :disabled="submitLoading" autoresize/>
     </UFormGroup>
-    <UFormGroup class="" label="En máximo dos palabras ¿Cómo resumirias el desafio que enfrenta la juventud?" name="inWords" required>
+    <UFormGroup class="" label="En máximo dos palabras ¿Cómo resumirias el desafío que enfrenta la juventud?" name="inWords" required>
       <UInput v-model="challengeState.inWords" :disabled="submitLoading" placeholder="Escriba aquí..." />
     </UFormGroup>
     <UFormGroup label="Eje temático">
@@ -132,9 +132,9 @@ const onError = (event) => {
     <UFormGroup label="Ubicación">
       <AdminSubdivisionSelector v-model="challengeState.subdivision" />
     </UFormGroup>
-    <UFormGroup v-if="challengeState.subdivision" label="Ubicación del desafio en el mapa" class="w-full">
+    <UFormGroup v-if="challengeState.subdivision" label="Ubicación del desafío en el mapa" class="w-full">
       <template #description>
-        <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafio en el mapa. Si el desafio no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
+        <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafío en el mapa. Si el desafío no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
       </template>
       <MapSelectPosition :key="`map-subdivision-${challengeState.subdivision.id}`" v-model="selectedCoordinates" :selected-subdivision="challengeState.subdivision" />
     </UFormGroup>

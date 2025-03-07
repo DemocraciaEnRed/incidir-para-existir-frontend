@@ -123,7 +123,7 @@ const createCategory = async (name) => {
     toast.add({ title: 'Exito', description: 'Categoria creada', color: 'green' })
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: 'Hubo un error al crear el desafio', color: 'red' })
+    toast.add({ title: 'Error', description: 'Hubo un error al crear el desafío', color: 'red' })
   }
 }
 
@@ -142,7 +142,7 @@ const updateCategory = async (category, name) => {
     toast.add({ title: 'Exito', description: 'Categoria actualizada', color: 'green' })
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafio', color: 'red' })
+    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafío', color: 'red' })
   }
 }
 
@@ -160,7 +160,7 @@ const deleteCategory = async (category, categoryToMigrate) => {
     toast.add({ title: 'Exito', description: 'Categoria eliminada', color: 'green' })
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafio', color: 'red' })
+    toast.add({ title: 'Error', description: 'Hubo un error al eliminar el desafío', color: 'red' })
   }
 }
 
@@ -173,7 +173,7 @@ const deleteCategory = async (category, categoryToMigrate) => {
 <template>
   <div>
     <h1 class="font-oswald uppercase text-4xl mb-2">Categorias</h1>
-    <p>Las categorias son utilizadas para organizar los enlaces de interes en la plataforma. Puede crear, editar el nombre, y eliminar categorias existentes. Note que siempre tiene que haber al menos una categoría presente.</p>
+    <p>Las categorias son utilizadas para organizar los enlaces de interés en la plataforma. Puede crear, editar el nombre, y eliminar categorias existentes. Note que siempre tiene que haber al menos una categoría presente.</p>
     <UDivider class="my-4" />
     
     <UTable :rows="categories" :columns="columns" :loading="isLoading">

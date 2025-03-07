@@ -143,7 +143,7 @@ const handleSubmit = async () => {
             </UCheckbox>
           </UFormGroup>
           <UDivider />
-          <UButton class="text-xl font-medium" :loading="submitLoading" type="submit" color="pumpkin" block size="lg" :ui="{ rounded: 'rounded-full' }">Reportar</UButton>
+          <UButton class="text-xl font-medium" :loading="submitLoading" type="submit" color="pumpkin" block size="lg" :ui="{ rounded: 'rounded-full' }">Enviar mensaje</UButton>
       </UForm>
     </div>
     <div v-else ref="success-message" class="text-center">

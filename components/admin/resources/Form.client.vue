@@ -58,19 +58,19 @@ const handleSubmit = async () => {
         body: JSON.stringify(payload)
       })
       // await props.refresh()
-      toast.add({ title: 'Enlace de interes actualizado', description: 'El enlace de interes ha sido actualizado exitosamente', color: 'green'})
+      toast.add({ title: 'Enlace de interés actualizado', description: 'El enlace de interés ha sido actualizado exitosamente', color: 'green'})
     } else {
       await $api('/resources', {
         method: 'POST',
         body: JSON.stringify(payload)
       })
-      toast.add({ title: 'Enlace de interes creado', description: 'El enlace de interes ha sido creado exitosamente', color: 'green'})
+      toast.add({ title: 'Enlace de interés creado', description: 'El enlace de interés ha sido creado exitosamente', color: 'green'})
     }
 
     navigateTo('/admin/recursos')
   } catch (error) {
     console.log('Error', error)
-    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar ${editMode.value ? 'editar' : 'crear'} el enlace de interes`, color: 'red'})
+    toast.add({ title: 'Error', description: `Ha ocurrido un error al intentar ${editMode.value ? 'editar' : 'crear'} el enlace de interés`, color: 'red'})
   } finally {
     submitLoading.value = false
   }

@@ -4,7 +4,7 @@
 </script>
 <template>
   <UContainer>
-    <h3 class="text-left font-oswald text-2xl lg:text-5xl text-mindaro uppercase">Terminos y condiciones</h3>
+    <h3 class="text-left font-oswald text-2xl lg:text-5xl text-mindaro uppercase">Términos y condiciones</h3>
     <hr class="my-10" />
     <div class="prose dark:prose-invert focus:outline-none max-w-none" v-html="configs.tos"/>
   </UContainer>

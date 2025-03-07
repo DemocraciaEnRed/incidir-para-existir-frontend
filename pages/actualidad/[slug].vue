@@ -1,14 +1,14 @@
 <script setup>
 definePageMeta({
   name: 'blog-post',
-  layout: 'full-width-with-fb'
+  layout: 'full-width'
 })
 
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
 const slug = route.params.slug
 
 const { data } = await useAPI(`/blog/${slug}`)
-const runtimeConfig = useRuntimeConfig()
 
 // SEO
 useSeoMeta({
@@ -25,9 +25,6 @@ useSeoMeta({
   twitterImage: () => data.value.imageUrl || `${runtimeConfig.public.fullUrl}/img/quienes-somos-01.png`,
   twitterCard: () => 'summary_large_image',
 })
-
-
-const pageUrl = `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`
 
 </script>
 
@@ -67,16 +64,11 @@ const pageUrl = `${runtimeConfig.public.fullUrl}/actualidad/${data.value.slug}`
         <div class="w-full md:w-9/12 md:mx-auto">
           <div class="px-3 py-5 rounded-lg w-full prose focus:outline-none max-w-none" v-html="data.text" />
         </div>
-        <UDivider label="Comentarios" class="my-5" :ui="{ label: 'text-black' }" />
-        <ClientOnly>
-          <div class="fb-comments" :data-href="pageUrl" data-width="100%" data-numposts="10">
-            <LoadingBar class="w-full md:w-9/12 md:mx-auto" />
-          </div>
-          <template #fallback>
-            <!-- this will be rendered on server side -->
-            <p>Loading comments...</p>
-          </template>
-        </ClientOnly>
+        <UDivider label="Comentarios" class="my-10" :ui="{ label: 'text-black' }" />
+        <div class="w-full md:w-9/12 md:mx-auto">
+          <BlogCommentsList :entry-id="data.id" />
+        </div>
+
       </UContainer>
     </div>
   </div>

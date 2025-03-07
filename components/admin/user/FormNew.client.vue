@@ -12,13 +12,13 @@ const userSchema = YupObject({
   lastName: YupString().required('Este campo es requerido'),
   email: YupString().email('Por favor, ingrese un correo válido').required('Este campo es requerido'),
   password: YupString().min(6, 'La contraseña debe tener al menos 6 caracteres').required('Este campo es requerido'),
-  role: YupString().oneOf(['admin', 'reporter'], 'Por favor, seleccione un rol').required('Este campo es requerido'),
+  role: YupString().oneOf(['admin', 'user'], 'Por favor, seleccione un rol').required('Este campo es requerido'),
 })
 
 const submitLoading = ref(false)
 const roles = [
   { label: 'Administrador', value: 'admin' },
-  { label: 'Reportero', value: 'reporter' },
+  { label: 'Usuario', value: 'user' },
 ]
 
 const userState = reactive({
@@ -26,7 +26,7 @@ const userState = reactive({
   lastName: '',
   email: '',
   password: '',
-  role: 'reporter',
+  role: 'user',
   subdivision: null,
 })
 
