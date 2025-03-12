@@ -25,3 +25,4 @@ logs
 
 # Needed for nuxt-auth
 !.env.production
+!.env.staging
