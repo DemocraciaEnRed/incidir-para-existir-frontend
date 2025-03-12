@@ -6,6 +6,11 @@ const links = [
     to: '/admin'
   },
   {
+    label: 'Estadisticas detalladas',
+    icon: 'i-heroicons-presentation-chart-bar',
+    to: '/admin/estadisticas'
+  },
+  {
     label: 'Iniciativas',
     icon: 'i-heroicons-document-text',
     to: '/admin/iniciativas'
