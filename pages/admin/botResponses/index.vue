@@ -32,7 +32,9 @@ const { data, refresh, status } = useAPI('/admin/bot-responses', {
     entries.value = response._data.rows.map((entry) => {
       return {
         ...entry,
-        label: 'Respuesta el ' + formatDate(entry.createdAt),
+        label: `${entry.success ? 'Éxito' : 'Fallo'} - Fecha ${formatDate(entry.createdAt)}`,
+        icon: entry.success ? 'i-heroicons-check' : 'i-heroicons-x-mark',
+        color: entry.success ? 'green' : 'red',
       }
     })
     totalEntries.value = response._data.count
@@ -57,10 +59,18 @@ const isLoading = computed(() => {
     <h1 class="font-oswald uppercase text-4xl mb-2">Respuestas de Bot</h1>
     <p>asd</p>
     <br>
-    <UAccordion v-if="!isLoading" :items="entries" color="white" variant="solid">
+    <UAccordion v-if="!isLoading" :items="entries" color="white" variant="solid" multiple>
       <template #item="{ item }">
-        <pre>{{ item.payload }}</pre>
-      </template>
+        <div class="ml-3 border-l border-gray-700 pl-3 py-2">
+          <p class="font-bold">Respuesta</p>
+          <pre>{{ item.payload }}</pre>
+        </div>
+        <div class="ml-3 border-l border-gray-700 pl-3 py-2">
+          <p class="font-bold">Stack Error</p>
+          <pre v-if="item.errorTrace">{{ item.errorTrace }}</pre>
+          <p v-else class="text-gray-500">No hay información de error</p>
+        </div>
+        </template>
     </UAccordion>
     <div v-else class="space-y-2">
       <USkeleton class="h-8" />
