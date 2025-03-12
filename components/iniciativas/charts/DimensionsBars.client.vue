@@ -15,7 +15,8 @@ const dataCali = computed(() => {
 
 const totalCali = computed(() => {
   if(data.value) {
-    return data.value.countOfInitiativesPerCity.find((item) => item.cityId === 1).count
+    const city = data.value.countOfInitiativesPerCity.find((item) => item.cityId === 1)
+    return city ? city.count : 0
   }
   return 0
 })
@@ -29,7 +30,8 @@ const dataBogota = computed(() => {
 
 const totalBogota = computed(() => {
   if(data.value) {
-    return data.value.countOfInitiativesPerCity.find((item) => item.cityId === 2).count
+    const city = data.value.countOfInitiativesPerCity.find((item) => item.cityId === 2)
+    return city ? city.count : 0
   }
   return 0
 })

@@ -36,7 +36,7 @@
   // When the map is ready
   const onMapReady = () => {
     // Access the Leaflet map instance
-    console.log(map.value.leafletObject)
+    // console.log(map.value.leafletObject)
 
     if(selectedCoordinates.value && selectedCoordinates.value.length > 0) {
       originalCoordinates.value = selectedCoordinates.value

@@ -116,36 +116,39 @@ const clearFilters = () => {
       <p class="text-center text-sm my-3 font-medium">Filtrar por eje temático (Hasta 1)</p>
       <DimensionesBadgesSelector v-model="selectedDimensions" :limit="1" />
       <UDivider class="my-7" />
-      <div v-for="row in data.rows" :key="`desafio-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-gray-900 hover:bg-gray-800 border-slate-800 transition-colors duration-200">
-        <div class="grow w-9/12">
-          <div class="flex-wrap flex flex-row items-center font-inter gap-x-2 mb-2">
-            <p 
-          class="text-xs text-white border-r pr-2 border-purple-500" 
-          >#{{ addLeadingZeros(row.id) }}</p>
-          <p
-          class="text-xs uppercase text-white border-r pr-2 border-purple-500" 
-          >
-            {{ row.subdivision.city.name }}
-          </p>
-          <p
-          class="text-xs text-white border-r pr-2 border-purple-500" 
-          >
-            {{ row.subdivision.type }} {{ row.subdivision.name }}
-          </p>
-          <p
-            class="text-xs text-mindaro truncate" 
-          >{{ row.dimension.name }}</p>
+      <div v-if="data && data.rows && data.rows.length">
+        <div v-for="row in data.rows" :key="`desafio-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-gray-900 hover:bg-gray-800 border-slate-800 transition-colors duration-200">
+          <div class="grow w-9/12">
+            <div class="flex-wrap flex flex-row items-center font-inter gap-x-2 mb-2">
+              <p 
+            class="text-xs text-white border-r pr-2 border-purple-500" 
+            >#{{ addLeadingZeros(row.id) }}</p>
+            <p
+            class="text-xs uppercase text-white border-r pr-2 border-purple-500" 
+            >
+              {{ row.city.name }}
+            </p>
+            <p
+            v-if="row.subdivision"
+            class="text-xs text-white border-r pr-2 border-purple-500" 
+            >
+              {{ row.subdivision.type }} {{ row.subdivision.name }}
+            </p>
+            <p
+              class="text-xs text-mindaro truncate" 
+            >{{ row.dimension.name }}</p>
+            </div>
+            <p class="font-bold font-inter text-xl cursor-pointer hover:text-mindaro transition-colors duration-500"  @click="goToDetail(row.id)" >{{ row.inWords }}</p>
+            <p class="text-sm font-inter text-gray-500 truncate">{{ row.needsAndChallenges }}</p>
           </div>
-          <p class="font-bold font-inter text-xl cursor-pointer hover:text-mindaro transition-colors duration-500"  @click="goToDetail(row.id)" >{{ row.inWords }}</p>
-          <p class="text-sm font-inter text-gray-500 truncate">{{ row.needsAndChallenges }}</p>
+          <UButton  icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }"  size="xl" class="ml-3" @click="goToDetail(row.id)" />
         </div>
-        <UButton  icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }"  size="xl" class="ml-3" @click="goToDetail(row.id)" />
-      </div>
 
-      <div class="flex justify-between items-center">
-        <p v-if="!isLoading" class="text-gray-600 text-sm">Total: {{ totalItems }}</p>
-        <UProgress v-if="isLoading" class="mr-4" animation="carousel" color="mindaro" />
-        <UPagination v-model="page" :page-count="pageCount" :total="totalItems" />
+        <div class="flex justify-between items-center">
+          <p v-if="!isLoading" class="text-gray-600 text-sm">Total: {{ totalItems }}</p>
+          <UProgress v-if="isLoading" class="mr-4" animation="carousel" color="mindaro" />
+          <UPagination v-model="page" :page-count="pageCount" :total="totalItems" />
+        </div>
       </div>
     </div>
   </div>

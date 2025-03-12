@@ -14,7 +14,7 @@ const props = defineProps({
 
 const isOpen = ref(false)
 
-const { data, error, status, refresh } = await useAPI(`/initiatives/${props.iniciativaId}`)
+const { data, error, status } = await useAPI(`/initiatives/${props.iniciativaId}`)
 
 const isLoading = computed(() => status.value === 'pending');
 
@@ -69,21 +69,22 @@ const isLoading = computed(() => status.value === 'pending');
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Ubicación</p>
-              <p class="">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.subdivision.city.name }}</p>
+              <p v-if="data.subdivision">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.city.name }}</p>
+              <p v-else>{{ data.city.name }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Descripción de la iniciativa</p>
-              <p class="">{{ data.description }}</p>
+              <p class="">{{ data.description || '- Sin completar -' }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Necesidades de la iniciativa</p>
-              <p class="">{{ data.needsAndOffers }}</p>
+              <p class="">{{ data.needsAndOffers || '- Sin completar -' }}</p>
             </div>
             <UDivider />
             <p class="font-bold text-xl">Datos de contacto</p>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Nombre del contacto</p>
-              <p class="">{{ data.contact.publicData.fullname }}</p>
+              <p class="">{{ data.contact.publicData.fullname || '- Sin completar -' }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Email de contacto</p>

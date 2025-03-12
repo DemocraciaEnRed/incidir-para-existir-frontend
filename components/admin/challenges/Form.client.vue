@@ -17,9 +17,10 @@ const props = defineProps({
 const challengeSchema = YupObject({
   source: YupString().oneOf(['web', 'whatsapp' ], 'Por favor, seleccione un equipo').required('Este campo es requerido'),
   needsAndChallenges: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
-  proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
+  proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').nullable(),
   inWords: YupString().matches(/^\w+(\s\w+)?$/, { excludeEmptyString: true, message: 'Solo se permite una o dos palabras' }).required('Este campo es requerido'),
   dimension: YupObject().required('Este campo es requerido'),
+  city: YupObject().required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
 })
 
@@ -29,9 +30,10 @@ const submitLoading = ref(false)
 const challengeState = reactive({
   source: 'web',
   needsAndChallenges: '',
-  proposal: '',
+  proposal: null,
   inWords: '',
   dimension: null,
+  city: null,
   subdivision: null,
 })
 
@@ -55,15 +57,16 @@ const handleSubmit = async () => {
     const payload = {
       source: challengeState.source,
       needsAndChallenges: challengeState.needsAndChallenges,
-      proposal: challengeState.proposal,
+      proposal: challengeState.proposal || undefined,
       inWords: challengeState.inWords,
       dimensionId: challengeState.dimension.id,
-      subdivisionId: challengeState.subdivision.id,
+      cityId: challengeState.city.id,
+      subdivisionId: challengeState.subdivision && challengeState.subdivision.id != null ? challengeState.subdivision.id : undefined,
       recaptchaResponse: '-',
       latitude: undefined,
       longitude: undefined
     }
-    if(selectedCoordinates.value){
+    if(selectedCoordinates.value && challengeState.subdivision && challengeState.subdivision.id != null){
       payload.latitude = selectedCoordinates.value[0]
       payload.longitude = selectedCoordinates.value[1]
     }
@@ -114,9 +117,9 @@ const onError = (event) => {
       </template>
       <UTextarea v-model="challengeState.needsAndChallenges"  :disabled="submitLoading" placeholder="Escribe aquí..." autoresize/>
     </UFormGroup>
-    <UFormGroup class="" label="Propuesta" name="proposal" required>
+    <UFormGroup class="" label="Propuesta" name="proposal">
       <template #description>
-        ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+        <b class="text-pumpkin">Opcional</b>. ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
       </template>
       <template #help>
         <span v-if="challengeState.proposal" class="text-xs">Caracteres: {{ challengeState.proposal.length }}</span>
@@ -130,9 +133,9 @@ const onError = (event) => {
       <AdminDimensionSelector v-model="challengeState.dimension" />
     </UFormGroup>
     <UFormGroup label="Ubicación">
-      <AdminSubdivisionSelector v-model="challengeState.subdivision" />
+      <AdminLocalizationSelector v-model:selected-city="challengeState.city" v-model:selected-subdivision="challengeState.subdivision" />
     </UFormGroup>
-    <UFormGroup v-if="challengeState.subdivision" label="Ubicación del desafío en el mapa" class="w-full">
+    <UFormGroup v-if="challengeState.subdivision && challengeState.subdivision.id && challengeState.subdivision.id != null" label="Ubicación del desafío en el mapa" class="w-full">
       <template #description>
         <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafío en el mapa. Si el desafío no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
       </template>

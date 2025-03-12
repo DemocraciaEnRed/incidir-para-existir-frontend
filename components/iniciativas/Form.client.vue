@@ -107,10 +107,26 @@ const addDimention = (dimension) => {
   }
 }
 
+const getNullOption = () => {
+  let nameString = 'Cualquier ubicación / No aplica'
+  if(initiativeState.city && initiativeState.city.name === 'Cali') {
+    nameString = 'Cualquier comuna o corregimiento / No aplica'
+  } else if(initiativeState.city && initiativeState.city.name === 'Bogotá') {
+    nameString = 'Cualquier localidad / No aplica'
+  }
+  const nullOption = {
+    id: null,
+    name: nameString,
+    type: '(No ubicable)'
+  }
+  return nullOption
+}
+
 const subdivisionsOptions = computed(() => {
   if(!initiativeState.city) return []
   // filtered subdivisions
-  return initiativeState.city.subdivisions
+  const nullOption = getNullOption()
+  return [nullOption, ...initiativeState.city.subdivisions]
 })
 
 // const selectedLabelSubdivisions = computed(() => {
@@ -149,7 +165,8 @@ const handleSubmit = async () => {
       source: 'web',
       description: initiativeState.description,
       needsAndOffers: initiativeState.needsAndOffers,
-      subdivisionId: initiativeState.subdivision.id,
+      cityId: initiativeState.city.id,
+      subdivisionId: initiativeState.subdivision && initiativeState.subdivision.id != null ? initiativeState.subdivision.id : undefined,
       dimensionIds: initiativeState.dimensionIds,
       latitude: undefined,
       longitude: undefined,
@@ -205,7 +222,8 @@ const handleSubmit = async () => {
 }
 
 watch(() => initiativeState.city, () => {
-  initiativeState.subdivision = null
+  const nullOption = getNullOption()
+  initiativeState.subdivision = nullOption
   selectedCoordinates.value = null
 })
 
@@ -297,7 +315,7 @@ watch(() => initiativeState.city, () => {
           </UFormGroup>
           <UFormGroup name="name" label="Nombre de la iniciativa" required>
             <template #description>
-              ¿Cómo se llama tu iniciativa / parche o movimiento?
+              ¿Cómo se llama tu iniciativa, parche, movimiento y/o proyecto?
             </template>
             <UInput v-model="initiativeState.name" size="lg" placeholder="Escriba aquí..." />
           </UFormGroup>
@@ -315,7 +333,7 @@ watch(() => initiativeState.city, () => {
               </template>
             </USelectMenu>
           </UFormGroup>
-          <UFormGroup v-if="initiativeState.subdivision" :key="`map-city-${initiativeState.city.id}-subdivision-${initiativeState.subdivision.id}`" label="Ubicación de la iniciativa en el mapa" class="w-full">
+          <UFormGroup v-if="initiativeState.subdivision && initiativeState.subdivision.id != null" :key="`map-city-${initiativeState.city.id}-subdivision-${initiativeState.subdivision.id}`" label="Ubicación de la iniciativa en el mapa" class="w-full">
             <template #description>
               <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación de la iniciativa en el mapa. Si la iniciativa no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
             </template>
@@ -329,7 +347,7 @@ watch(() => initiativeState.city, () => {
           </UFormGroup>
           <UFormGroup name="needsAndOffers" label="Necesidades y ofertas" required>
             <template #description>
-              ¿Qué podría ofrecer o compartir la red a mi iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+              ¿Qué podría ofrecer o compartir a la red de jóvenes mi iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
             </template>
             <UTextarea v-model="initiativeState.needsAndOffers" placeholder="Escriba aquí..." />
           </UFormGroup>

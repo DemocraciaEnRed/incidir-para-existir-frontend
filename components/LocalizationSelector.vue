@@ -75,7 +75,7 @@
       <UIcon name="i-heroicons-backspace" class="text-lg"/>
     </UButton>
   </div>
-  <div v-if="selectedCity" class="flex gap-2 mx-auto">
+  <div v-if="selectedCity" class="flex gap-2 mx-auto w-1/2">
       <USelectMenu v-model="selectedSubdivision" :options="subdivisionsOptions" :loading="isLoading" placeholder="Filtrar por ubicación" size="lg" class="w-full" :ui-menu="{ container: 'z-[1500] group' }">
         <template #option="{ option }">
           <span>{{ option.type }} {{ option.name }}</span>

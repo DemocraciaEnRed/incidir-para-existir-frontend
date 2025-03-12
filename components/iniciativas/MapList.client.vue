@@ -56,13 +56,16 @@ const onMapReady = () => {
 } 
 
 const getTooltipHtml = (initiative) => {
-
+  let extraString = ''
+  if(initiative.subdivision){
+    extraString = ` | ${initiative.subdivision.type} ${initiative.subdivision.name}`
+  }
   return `
     <div>
       <p class="font-inter text-xs text-white">Iniciativa <span class="text-mindaro"># ${addLeadingZeros(initiative.id)}</span></p>
       <p class="font-inter text-mindaro text-xs my-1">${initiative.dimensions.map(d => d.name).join(' <span class="text-purple-500">|</span> ')}</p>
       <h1 class="font-inter text-white leading-tight text-lg font-semibold my-1">${initiative.name}</h1>
-      <p class="font-inter text-white text-xs"><span class="uppercase">${initiative.subdivision.city.name}</span> | ${initiative.subdivision.type} ${initiative.subdivision.name}</p>
+      <p class="font-inter text-white text-xs"><span class="uppercase">${initiative.city.name}</span>${extraString}</p>
     </div>
   `
 }

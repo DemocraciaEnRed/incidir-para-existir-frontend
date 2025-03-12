@@ -26,6 +26,7 @@ const initiativeSchema = YupObject({
   source: YupString().oneOf(['web', 'whatsapp' ], 'Por favor, seleccione un equipo').required('Este campo es requerido'),
   description: YupString().max(500).required('Este campo es requerido'),
   needsAndOffers: YupString().max(500).required('Este campo es requerido'),
+  city: YupObject().required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
   // dimensionsIds must be an array and there must be one or two dimension IDs 
   dimensions: YupArray().min(1, 'Debes seleccionar uno o dos ejes temáticos').max(2, 'Solo puedes seleccionar hasta dos ejes temáticos').required('Este campo es requerido')
@@ -44,6 +45,7 @@ const initiativeState = reactive({
   source: 'web',
   description: '',
   needsAndOffers: '',
+  city: null,
   subdivision: null,
   dimensions: []
 })
@@ -62,6 +64,7 @@ if(props.existingInitiative){
   initiativeState.source = props.existingInitiative.source || 'web'
   initiativeState.description = props.existingInitiative.description
   initiativeState.needsAndOffers = props.existingInitiative.needsAndOffers
+  initiativeState.city = props.existingInitiative.city
   initiativeState.subdivision = props.existingInitiative.subdivision
   initiativeState.dimensions = props.existingInitiative.dimensions
   if(props.existingInitiative.latitude && props.existingInitiative.longitude){
@@ -85,13 +88,14 @@ const handleSubmit = async () => {
       description: initiativeState.description,
       needsAndOffers: initiativeState.needsAndOffers,
       dimensionIds: initiativeState.dimensions.map(d => d.id),
-      subdivisionId: initiativeState.subdivision.id,
+      cityId: initiativeState.city.id,
+      subdivisionId: initiativeState.subdivision && initiativeState.subdivision.id != null ? initiativeState.subdivision.id : undefined,
       recaptchaResponse: '-',
       latitude: undefined,
       longitude: undefined,
       contact: contactPayload,
     }
-    if(selectedCoordinates.value){
+    if(selectedCoordinates.value && initiativeState.subdivision && initiativeState.subdivision.id != null){
       payload.latitude = selectedCoordinates.value[0]
       payload.longitude = selectedCoordinates.value[1]
     }
@@ -166,7 +170,7 @@ const onError = (event) => {
     </UFormGroup>
     <UFormGroup name="name" label="Nombre de la iniciativa" required>
       <template #description>
-        ¿Cómo se llama la iniciativa / parche o movimiento?
+        ¿Cómo se llama la iniciativa, parche, movimiento y/o proyecto?
       </template>
       <UInput v-model="initiativeState.name" size="lg" placeholder="Escriba aquí..." />
     </UFormGroup>
@@ -183,9 +187,9 @@ const onError = (event) => {
       <AdminMultipleDimensionSelector v-model="initiativeState.dimensions" :show-badges="true" />
     </UFormGroup>
     <UFormGroup name="subdivision" label="Ubicación">
-      <AdminSubdivisionSelector v-model="initiativeState.subdivision" />
+      <AdminLocalizationSelector v-model:selected-city="initiativeState.city" v-model:selected-subdivision="initiativeState.subdivision" />
     </UFormGroup>
-    <UFormGroup v-if="initiativeState.subdivision" label="Ubicación de la iniciativa en el mapa" class="w-full">
+    <UFormGroup v-if="initiativeState.subdivision && initiativeState.subdivision.id && initiativeState.subdivision.id != null"  label="Ubicación de la iniciativa en el mapa" class="w-full">
       <template #description>
         <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación en el mapa. Si no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
       </template>
@@ -199,7 +203,7 @@ const onError = (event) => {
     </UFormGroup>
     <UFormGroup name="needsAndOffers" label="Necesidades y ofertas" required>
       <template #description>
-        ¿Qué podría ofrecer o compartir a la red la iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+        ¿Qué podría ofrecer o compartir a la red de jóvenes mi iniciativa? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
       </template>
       <UTextarea v-model="initiativeState.needsAndOffers" placeholder="Escriba aquí..." />
     </UFormGroup>

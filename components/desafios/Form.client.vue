@@ -33,7 +33,8 @@ const schema = YupObject({
   city: YupObject().required('Este campo es requerido'),
   subdivision: YupObject().required('Este campo es requerido'),
   needsAndChallenges: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
-  proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').required('Este campo es requerido'),
+  // proposal is optional or if filled, max 500 characters
+  proposal: YupString().max(500, 'El máximo es hasta 500 caracteres').nullable(),
   inWords: YupString().matches(/^\w+(\s\w+)?$/, { excludeEmptyString: true, message: 'Solo se permite una o dos palabras' }).required('Este campo es requerido'),
   acceptsTerms: YupBoolean().oneOf([true], 'Debes aceptar los términos y condiciones')
 })
@@ -71,14 +72,31 @@ const getInitData = async () => {
   }
 }
 
+const getNullOption = () => {
+  let nameString = 'Cualquier ubicación / No aplica'
+  if(state.city && state.city.name === 'Cali') {
+    nameString = 'Cualquier comuna o corregimiento / No aplica'
+  } else if(state.city && state.city.name === 'Bogotá') {
+    nameString = 'Cualquier localidad / No aplica'
+  }
+  const nullOption = {
+    id: null,
+    name: nameString,
+    type: '(No ubicable)'
+  }
+  return nullOption
+}
+
 const subdivisionsOptions = computed(() => {
   if(!state.city) return []
   // filtered subdivisions
-  return state.city.subdivisions
+  const nullOption = getNullOption()
+  return [nullOption, ...state.city.subdivisions]
 })
 
 watch(() => state.city, () => {
-  state.subdivision = null
+  const nullOption = getNullOption()
+  state.subdivision = nullOption
   selectedCoordinates.value = null
 })
 
@@ -100,11 +118,12 @@ const handleSubmit = async () => {
     const payload = {
       dimensionId: state.dimensionId,
       source: 'web',
-      subdivisionId: state.subdivision.id,
+      cityId: state.city.id,
+      subdivisionId: state.subdivision && state.subdivision.id != null ? state.subdivision.id : undefined,
       needsAndChallenges: state.needsAndChallenges,
       latitude: undefined,
       longitude: undefined,
-      proposal: state.proposal,
+      proposal: state.proposal || undefined,
       inWords: state.inWords,
     }
 
@@ -222,7 +241,7 @@ const selectDimension = (dimension) => {
             </template>
           </USelectMenu>
         </UFormGroup>
-        <UFormGroup v-if="state.subdivision"  :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" label="Ubicación del desafío en el mapa" class="w-full">
+        <UFormGroup v-if="state.subdivision && state.subdivision.id != null" :key="`map-city-${state.city.id}-subdivision-${state.subdivision.id}`" label="Ubicación del desafío en el mapa" class="w-full">
           <template #description>
             <p><b class="text-pumpkin">Opcional</b>. Haga clic para marcar la ubicación del desafío en el mapa. Si el desafío no tiene una ubicación específica, puede dejar el mapa sin marcar.</p>
           </template>
@@ -234,9 +253,9 @@ const selectDimension = (dimension) => {
           </template>
           <UTextarea v-model="state.needsAndChallenges"  :disabled="submitLoading" />
         </UFormGroup>
-        <UFormGroup class="" label="Propuesta" name="proposal" required>
+        <UFormGroup class="" label="Propuesta" name="proposal">
           <template #description>
-            ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
+            <b class="text-pumpkin">Opcional</b>. ¿Tienes alguna propuesta frente a esta situación? <i class="text-pumpkin">(Máximo 500 caracteres)</i>
           </template>
           <template #help>
             <span v-if="state.proposal" class="text-xs">Caracteres: {{ state.proposal.length }}</span>

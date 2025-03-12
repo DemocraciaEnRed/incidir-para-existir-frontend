@@ -69,15 +69,16 @@ const isLoading = computed(() => status.value === 'pending');
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Ubicación</p>
-              <p class="">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.subdivision.city.name }}</p>
+              <p v-if="data.subdivision">{{ data.subdivision.type }} {{ data.subdivision.name }}, {{ data.city.name }}</p>
+              <p v-else>{{ data.city.name || '- Sin completar -' }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Descripción del desafío de la juventud</p>
-              <p class="">{{ data.needsAndChallenges }}</p>
+              <p class="">{{ data.needsAndChallenges || '- Sin completar -' }}</p>
             </div>
             <div class="space-y-2">
               <p class="text-sm text-gray-500">Propuesta frente al desafíoo</p>
-              <p class="">{{ data.proposal }}</p>
+              <p class="">{{ data.proposal || '- Sin completar -' }}</p>
             </div>
 
           </div>

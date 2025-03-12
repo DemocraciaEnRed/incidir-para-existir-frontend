@@ -27,7 +27,7 @@ const accordionItems = [{
       <p class="font-oswald text-5xl leading-tight text-[#D4F779]">JUVENTUDES QUE TRANSFORMAN</p>
       <p class="font-medium text-2xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
         la construcción de realidades dignas para las juventudes</p>
-      <p class="text-xl text-pumpkin-500 font-bold">MINI DOCUMENTAL</p>
+      <p class="text-2xl text-pumpkin-500 font-bold">DOCUMENTAL</p>
       <!-- YouTube Video -->
       <div class="px-10 my-10">
         <div class="aspect-w-16 aspect-h-9 bg-gray-900 rounded-lg">
