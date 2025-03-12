@@ -9,6 +9,8 @@ import {
 const { $api } = useNuxtApp()
 const toast = useToast()
 
+const runtimeConfig = useRuntimeConfig()
+
 const props = defineProps({
   existingEntry: {
     type: [Object, null, undefined],
@@ -129,8 +131,8 @@ const handleSubmit = async () => {
 }
 
 const urlFinal = computed(() => {
-  if(!state.slug) return null
-  return `https://incidirparaexistir.democraciaenred.org/actualidad/${state.slug}`
+  if(!state.slug) return `${runtimeConfig.public.fullUrl}/actualidad/`
+  return `${runtimeConfig.public.fullUrl}/actualidad/${state.slug}`
 })
 
 </script>
@@ -141,9 +143,36 @@ const urlFinal = computed(() => {
     <UFormGroup name="title" label="Titulo" required>
       <UInput v-model="state.title" size="xl" placeholder="Escriba aquí..." @blur="updateSlug" />
     </UFormGroup>
-    <UFormGroup name="slug" label="Slug" :help="urlFinal" required>        
-      <UInput v-model="state.slug" :disabled="!enableSlugEdit" />
-      <UCheckbox v-model="enableSlugEdit" class="mt-2" label="Editar slug" />
+    <UFormGroup name="slug" label="Slug de URL" required>        
+      <UInput v-model="state.slug" :disabled="!enableSlugEdit && editMode" />
+      <UCheckbox v-if="!editMode" v-model="enableSlugEdit" class="mt-2" label="Editar slug manualmente" />
+      <template #description>
+        <div class="p-2 my-2 border border-pumpkin-800 rounded-xl">
+          <p class="text-pumpkin-700 mb-2"><b>¿Que es el "slug" de un post?</b></p>
+          <p class="text-xs">El slug es una parte importante de la dirección web (URL) que generalmente se genera en relación al título del post. Elegir un slug único ayuda a que sea más fácil de encontrar y evitar conflictos con otras páginas.</p>
+          <p class="text-xs">El slug es la parte final de la URL que se muestra en el navegador, por ejemplo: <b>https://juventudesquetransforman.co/actualidad/</b><b class="text-pumpkin-700">este-es-el-slug</b></p>          
+          <br>
+          <p class="text-xs">Un buen slug es importante para la optimización en motores de búsqueda y para compartir en redes sociales y aplicaciones de mensajeria.</p>
+          <br>
+          <p class="text-xs">Debe ser <b>corto</b>, <b>descriptivo</b> y <b>no debe repetirse</b> dentro del sitio con otros posteos.</p>
+          <p class="text-xs">Si no se especifica un slug, se <b>generará automáticamente a partir del título</b> del post.</p>
+          <br>
+          <!-- Consejos -->
+          <p class="text-pumpkin-700 mb-2"><b>Consejos para elegir un buen slug:</b></p>
+          <p class="text-xs">1. Mantenga el slug corto y relevante.</p>
+          <p class="text-xs">2. Use guiones en lugar de espacios.</p>
+          <p class="text-xs">3. Evite caracteres especiales y números, si es posible.</p>
+          <p class="text-xs">4. No use mayúsculas.</p>
+          <p class="text-xs">5. No repita slugs de otros posteos.</p>
+          <p class="text-xs">6. No use palabras genéricas como "el", "la", "de", "en", "con", etc.</p>
+          <p class="text-xs">7. No use palabras que no tengan relación con el contenido del post.</p>
+          <br>
+          <p class="text-pumpkin-700 mb-2"><b><u>IMPORTANTE</u>:<br>No se podrá cambiar el slug una vez creado el posteo, en caso de necesitar, contacta a los administradores.</b></p>
+        </div>
+      </template>
+      <template #help>
+        <p><b>URL:</b> {{ urlFinal }}</p>
+      </template>
     </UFormGroup>
     <UFormGroup name="subtitle" label="Subtitulo" help="" required>
       <UTextarea v-model="state.subtitle" autoresize placeholder="Escriba aquí..." />
