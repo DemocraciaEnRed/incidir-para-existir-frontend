@@ -116,8 +116,8 @@ const columns = [
   {
     key: 'subdivision',
     label: 'Ubicación',
-    class: "w-[20%]",
     rowClass: 'text-xs',
+    class: ''
   },
   {
     key: 'publishedAt',
@@ -241,10 +241,12 @@ const unpublishInitiative = async (initiative) => {
         </div>
       </template>
       <template #subdivision-data="{ row }">
-        <p>{{ row.subdivision.name }}</p>
-        <p class="text-xs text-gray-500">
-          {{ row.subdivision.city.name }}
-        </p>
+        <div class="text-center">
+          <p v-if="row.city" class="font-medium">
+            {{ row.city.name }}
+          </p>
+          <p v-if="row.subdivision"  class="text-xs text-gray-500">{{ row.subdivision.name }}</p>
+        </div>
       </template>
       <template #publishedAt-data="{ row }">
         <div>

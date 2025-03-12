@@ -31,6 +31,7 @@ const { data, refresh, status } = useAPI('/challenges', {
   query: {
     page,
     limit: pageCount,
+    includeUnpublished: true,
     dimension: selectedDimensionId,
   },
   watch: [page, selectedDimensionId],
@@ -47,6 +48,7 @@ const isLoading = computed(() => {
 
 // function to truncate to 100 characters
 const truncateText = (text, count) => {
+  if(!text) return '- Sin completar -'
   return text.length > count ? text.substring(0, count) + '...' : text
 }
 
@@ -61,7 +63,50 @@ const itemsMenu = (row) => {
     icon: 'i-heroicons-trash-20-solid',
     click: () => openDeleteChallengeModal(row)
   }]
+
+  if(row.publishedAt) {
+    // push at the beginning
+    options.unshift({
+      label: 'Despublicar',
+      icon: 'i-heroicons-eye-slash-20-solid',
+      click: () => unpublishChallenge(row)
+    })
+  } else {
+    options.unshift({
+      label: 'Publicar',
+      icon: 'i-heroicons-eye-20-solid',
+      click: () => publishChallenge(row)
+    })
+  }
+
   return [options]
+}
+
+
+const publishChallenge = async (entry) => {
+  try {
+    await $api(`/challenges/${entry.id}/publish`, {
+      method: 'PUT'
+    })
+    refresh()
+    toast.add({ title: 'Exito', description: 'Desafío publicado', color: 'green' })
+  } catch (error) {
+    console.log('Error', error)
+    toast.add({ title: 'Error', description: 'Hubo un error al publicar el desafío', color: 'red' })
+  }
+}
+
+const unpublishChallenge = async (entry) => {
+  try {
+    await $api(`/challenges/${entry.id}/unpublish`, {
+      method: 'PUT'
+    })
+    refresh()
+    toast.add({ title: 'Exito', description: 'El desafío se ha ocultado correctamente', color: 'green' })
+  } catch (error) {
+    console.log('Error', error)
+    toast.add({ title: 'Error', description: 'Hubo un error al ocultar el desafío', color: 'red' })
+  }
 }
 
 const columns = [
@@ -74,13 +119,20 @@ const columns = [
     key: 'subdivision',
     label: 'Ubicación',
     rowClass: 'text-xs',
-    class: ''
+    class: 'text-center'
   },
   {
     key: 'dimension.name',
     label: 'Ejé temático',
     rowClass: 'text-xs text-center',
     class: 'text-center'
+  },
+  {
+    key: 'publishedAt',
+    label: {
+      icon: 'i-heroicons-check-circle-20-solid',
+    },
+    class: "w-[1%]",
   },
   {
     key: 'source',
@@ -94,12 +146,12 @@ const columns = [
     label: {
       icon: 'i-heroicons-map-pin',
     },
-    // class: "w-1/6",
+    class: "w-[1%]",
   },
   {
     key: 'actions',
     rowClass: 'text-right',
-  },
+    class: "w-[1%]",  },
 ]
 
 
@@ -146,6 +198,11 @@ const deleteChallenge = async (challenge) => {
           <LoadingBar class="text-gray-400" />
         </div>
       </template>
+      <template #publishedAt-header>
+        <UTooltip text="¿Publicado?">
+          <UIcon name="i-heroicons-eye" class="flex flex-row items-center text-lg" />
+        </UTooltip>
+      </template>
       <template #source-header>
         <UTooltip text="Fuente">
           <UIcon name="i-heroicons-rss-16-solid" class="flex flex-row items-center text-lg" />
@@ -161,15 +218,23 @@ const deleteChallenge = async (challenge) => {
         <p class="font-inter text-xs">#{{addLeadingZeros(row.id)}} | <span class="text-gray-600">Propuesta: {{ truncateText(row.proposal, 75) }}</span></p>
       </template>
       <template #subdivision-data="{ row }">
-        <p>{{ row.subdivision.name }}</p>
-        <p class="text-xs text-gray-500">
-          {{ row.subdivision.city.name }}
-        </p>
+        <div class="text-center">
+          <p v-if="row.city" class="font-medium">
+            {{ row.city.name }}
+          </p>
+          <p v-if="row.subdivision"  class="text-xs text-gray-500">{{ row.subdivision.name }}</p>
+        </div>
       </template>
       <template #source-data="{ row }">
         <div>
           <UIcon v-if="row.source == 'web'" name="i-heroicons-computer-desktop" class="text-sky-400 text-lg" />
           <UIcon v-else name="i-fa6-brands-whatsapp" class="text-green-500 text-lg" />
+        </div>
+      </template>
+      <template #publishedAt-data="{ row }">
+        <div>
+          <UIcon v-if="row.publishedAt" name="i-heroicons-check" class="text-green-500 text-lg" />
+          <UIcon v-else name="i-heroicons-x-mark" class="text-red-500 text-lg" />
         </div>
       </template>
       <template #map-data="{ row }">
