@@ -33,8 +33,8 @@ export default defineNuxtConfig({
     }
   },
   gtag: {
-    // enabled: process.env.NODE_ENV === 'production',
-    id: 'G-PEBQCM582H'
+    enabled: process.env.NODE_ENV === 'production',
+    id: process.env.NUXT_GOOGLE_TAG_ID || 'G-XXXXXXXXXX',
   },
   // refer to https://auth.sidebase.io/guide/local/quick-start (0.9.4)
   auth: {
