@@ -1,11 +1,11 @@
 # version 1.0
-name: Build and push
+name: Build and push (Production)
 on:
   push:
     tags:
       - '*'
-    tags-ignore:
-      - '*-staging'
+      - '!*-staging'
+      - '!*-dev'
 
 jobs:
   work:
