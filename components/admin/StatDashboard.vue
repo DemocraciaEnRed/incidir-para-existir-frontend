@@ -37,6 +37,13 @@
     totalBotResponses: 0,
     totalBotResponsesSuccess: 0,
     totalBotResponsesError: 0,
+    totalBotResponsesUnknown: 0,
+    totalBotResponsesInitiative: 0,
+    totalBotResponsesInitiativeSuccess: 0,
+    totalBotResponsesInitiativeError: 0,
+    totalBotResponsesChallenge: 0,
+    totalBotResponsesChallengeSuccess: 0,
+    totalBotResponsesChallengeError: 0,
   }) 
 
   const fetchData = async () => {
@@ -76,6 +83,13 @@
       stats.totalBotResponses = data.totalBotResponses;
       stats.totalBotResponsesSuccess = data.totalBotResponsesSuccess;
       stats.totalBotResponsesError = data.totalBotResponsesError;
+      stats.totalBotResponsesUnknown = data.totalBotResponsesUnknown;
+      stats.totalBotResponsesInitiative = data.totalBotResponsesInitiative;
+      stats.totalBotResponsesInitiativeSuccess = data.totalBotResponsesInitiativeSuccess;
+      stats.totalBotResponsesInitiativeError = data.totalBotResponsesInitiativeError;
+      stats.totalBotResponsesChallenge = data.totalBotResponsesChallenge;
+      stats.totalBotResponsesChallengeSuccess = data.totalBotResponsesChallengeSuccess;
+      stats.totalBotResponsesChallengeError = data.totalBotResponsesChallengeError;
     } catch (error) {
       console.error(error)
       toast.add({ title: 'Error', description: 'Hubo un error al cargar las estadísticas', color: 'red' })
@@ -93,7 +107,7 @@
 
 <template>
   <div>
-    <UCard class="my-3" v-if="isLoading">
+    <UCard v-if="isLoading" class="my-3">
       <LoadingBar  />
     </UCard>
     <div class="space-y-3">
@@ -186,6 +200,46 @@
           </div>
           <p class="font-mono ml-5">{{ stats.totalChallengesUnpublished }}</p>
         </div>
+        <hr class="border-gray-700 my-2">
+        <!-- Web -->
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Web</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWeb }}</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Web Publicados</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWebPublished }}</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Web No Publicados</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWebUnpublished }}</p>
+        </div>
+        <hr class="border-gray-700 my-2">
+        <!-- Whatsapp -->
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Whatsapp</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWhatsapp }}</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Whatsapp Publicados</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWhatsappPublished }}</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm">Desafíos Whatsapp No Publicados</p>
+          </div>
+          <p class="font-mono ml-5">{{ stats.totalChallengesWhatsappUnpublished }}</p>
+        </div>
       </UCard>
       <div>
         <UDivider label="Blog" :ui="{ wrapper: { base: 'my-5' } }" />
@@ -265,15 +319,60 @@
           <hr class="border-gray-700 my-2">
           <div class="flex justify-between items-center">
             <div>
-              <p class="text-sm">Procesamientos hecho con éxito</p>
+              <p class="text-sm">Procesados existosamente</p>
             </div>
             <p class="font-mono ml-5">{{ stats.totalBotResponsesSuccess }}</p>
           </div>
           <div class="flex justify-between items-center">
             <div>
-              <p class="text-sm">Procesamientos que fallaron</p>
+              <p class="text-sm">Procesados fallidamente</p>
             </div>
             <p class="font-mono ml-5">{{ stats.totalBotResponsesError }}</p>
+          </div>
+          <hr class="border-gray-700 my-2" >
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Procesados desconocidos</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesUnknown }}</p>
+          </div>
+          <hr class="border-gray-700 my-2" >
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Iniciativas</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesInitiative }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Iniciativas Procesadas exitosamente</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesInitiativeSuccess }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Iniciativas Procesadas fallidamente</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesInitiativeError }}</p>
+          </div>
+          <hr class="border-gray-700 my-2" >
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Desafíos</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesChallenge }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Desafíos Procesados exitosamente</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesChallengeSuccess }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm">Desafíos Procesados fallidamente</p>
+            </div>
+            <p class="font-mono ml-5">{{ stats.totalBotResponsesChallengeError }}</p>
           </div>
         </UCard>
       </div>
