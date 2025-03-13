@@ -63,7 +63,7 @@ const isLoading = computed(() => {
       <template #item="{ item }">
         <div class="ml-3 border-l border-gray-700 pl-3 py-2">
           <p class="font-bold">Respuesta</p>
-          <pre>{{ item.payload }}</pre>
+          <pre class="whitespace-pre-wrap">{{ item.payload }}</pre>
         </div>
         <div class="ml-3 border-l border-gray-700 pl-3 py-2">
           <p class="font-bold">Stack Error</p>
