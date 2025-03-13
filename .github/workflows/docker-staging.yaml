@@ -3,8 +3,6 @@ name: Build and push
 on:
   push:
     tags:
-      - '*'
-    tags-ignore:
       - '*-staging'
 
 jobs:
@@ -24,7 +22,7 @@ jobs:
         with:
           image: ${{ steps.lower.outputs.lowercase }}
           registry: ghcr.io
-          dockerfile: Dockerfile
+          dockerfile: Dockerfile-staging
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Notify Slack
