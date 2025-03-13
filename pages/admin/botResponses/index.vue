@@ -32,7 +32,7 @@ const { data, refresh, status } = useAPI('/admin/bot-responses', {
     entries.value = response._data.rows.map((entry) => {
       return {
         ...entry,
-        label: `${entry.success ? 'Éxito' : 'Fallo'} - Fecha ${formatDate(entry.createdAt)}`,
+        label: `${entry.success ? 'Éxito' : 'Fallo'} | Tipo: ${entry.type.toUpperCase()} | Fecha ${formatDate(entry.createdAt)}`,
         icon: entry.success ? 'i-heroicons-check' : 'i-heroicons-x-mark',
         color: entry.success ? 'green' : 'red',
       }
@@ -67,7 +67,7 @@ const isLoading = computed(() => {
         </div>
         <div class="ml-3 border-l border-gray-700 pl-3 py-2">
           <p class="font-bold">Stack Error</p>
-          <pre v-if="item.errorTrace">{{ item.errorTrace }}</pre>
+          <pre v-if="item.errorTrace" class="whitespace-pre-wrap">{{ item.errorTrace }}</pre>
           <p v-else class="text-gray-500">No hay información de error</p>
         </div>
         </template>
