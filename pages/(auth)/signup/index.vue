@@ -31,6 +31,8 @@ const { data: cities, error: errorFetch } = await useAPI(`/utils/cities`)
           <div v-else>
             <ClientOnly>
               <AuthSignUpForm :cities="cities" />
+              <br>
+              <UButton to="login" variant="ghost" block color="white" ><UIcon name="i-heroicons-arrow-left-16-solid" />Volver al Login</UButton>
             </ClientOnly>
           </div>
         </div>

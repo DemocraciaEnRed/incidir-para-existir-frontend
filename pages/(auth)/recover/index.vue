@@ -60,7 +60,7 @@ const onError = (event) => {
           <p class="font-oswald font-normal mb-3 uppercase text-2xl text-[#D4F779]">RECUPERAR CONTRASEÑA</p>
           <UForm :schema="schema" :state="state" class="space-y-4" @submit.prevent="handleRecover" @error="onError">
             <UFormGroup class="" label="Email" name="email" >
-              <UInput v-model="state.email" size="xl" icon="i-heroicons-envelope" placeholder="Ingresa tu email" />
+              <UInput v-model="state.email" size="xl" icon="i-heroicons-envelope" placeholder="Ingresa tu email" :disabled="isLoading" />
             </UFormGroup>
             <UButton color="primary" variant="soft" type="submit" icon="i-heroicons-paper-airplane" size="xl" block trailing :loading="isLoading" :ui="{ rounded: 'rounded-full' }">Recuperar contraseña</UButton>
           </UForm>

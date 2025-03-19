@@ -130,6 +130,7 @@ function closeTheButton() {
       <p>Por favor, verifique los campos y vuelva a intentarlo</p>
     </template>
   </UAlert>
+  
   <UCard v-if="successfulSignUp" class="text-center space-y-3">
     <UIcon name="i-heroicons-check-circle" class="text-6xl text-green-500" />
     <p class="text-green-500 font-oswald uppercase text-3xl mb-3">¡Registro exitoso!</p>
