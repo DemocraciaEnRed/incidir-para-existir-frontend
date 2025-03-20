@@ -63,8 +63,8 @@ const isLoading = computed(() => {
       <template #acerca-de>
         <div class="px-2">
           <p>Las inciativas o reportes de desafíos que se procesan tienen 2 estados: </p>
-          <p><b class="text-green-500">Éxito</b> - Indica que el desafío fue procesado correctamente.</p>
-          <p><b class="text-red-500">Fallo</b> - Indica que hubo un error en el procesamiento del desafío. La razón del error puede variar, pero cuando esto ocurre, la persona que interactuó con el bot no recibe un error. Los administradores pueden revisar los datos que el usuario le ingresó al bot, y además ver el mensaje de error que el servidor devuelve. Un administrador luego puede revisar los datos y crear la iniciativa o el reporte de desafio manualmente en el caso de que sea necesario.</p>
+          <p><b class="text-green-500">Éxito</b> - Indica que fue procesado correctamente.</p>
+          <p><b class="text-red-500">Fallo</b> - Indica que hubo un error en el procesamiento. La razón del error puede variar, pero cuando esto ocurre, la persona que interactuó con el bot no recibe un error. Los administradores pueden revisar los datos que el usuario le ingresó al bot, y además ver el mensaje de error que el servidor devuelve. Un administrador luego puede revisar los datos y crear la iniciativa o el reporte de desafío manualmente en el caso de que sea necesario.</p>
           <hr class="my-2 border-gray-500">
           <p><code class="text-mindaro">type:</code> Indica si la respuesta es una iniciativa o un desafio.</p>
           <p><code class="text-cyan-500">iniciativa</code> - Iniciativa</p>
@@ -85,7 +85,7 @@ const isLoading = computed(() => {
           <p><code class="text-cyan-500">A</code> - Cali</p>
           <p><code class="text-cyan-500">B</code> - Bogotá</p>
           <hr class="my-2 border-gray-500">
-          <p><code class="text-mindaro">locality_cali:</code> Selecciona que tipo de localidad de Cali es:</p>
+          <p><code class="text-mindaro">locality_cali:</code> Selecciona qué tipo de localidad de Cali es:</p>
           <p><code class="text-cyan-500">A</code> - Comuna</p>
           <p><code class="text-cyan-500">B</code> - Corregimiento</p>
           <p><code class="text-cyan-500">C</code> - Indiferente o aplica a todas</p>

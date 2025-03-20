@@ -26,7 +26,7 @@ const links = [
     to: '/admin/miembros'
   }, 
   {
-    label: 'Actualidad (Blog)',
+    label: 'Actualidad de la juventud',
     icon: 'i-heroicons-document-text',
     to: '/admin/blog',
   }, 

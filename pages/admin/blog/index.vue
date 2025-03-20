@@ -192,7 +192,7 @@ const unpublishPost = async (entry) => {
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Actualidad (Blog)</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Actualidad de la juventud</h1>
     <br>
     <div class="flex gap-2">
       <AdminBlogSectionSelector v-model="selectedSection" class="w-full"/>
