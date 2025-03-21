@@ -26,6 +26,11 @@ const imgPhotoCarrousel = [
 
 const carouselRef = ref()
 
+const isSafari = computed(() => {
+  if(!navigator || !navigator.userAgent) return false
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+})  
+
 onMounted(() => {
   setInterval(() => {
     if (!carouselRef.value) return
@@ -69,19 +74,19 @@ onMounted(() => {
             <div class="space-y-3">
               <div class="flex items-center">
                 <UButton to="/quienes-somos" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                <p>Encontrar y conectar con una <NuxtLink to="/quienes-somos" class="text-mindaro-500 underline">red de jóvenes</NuxtLink> apasionados por crear cambio</p>
+                <p>Encontrar y conectar con una <NuxtLink v-if="!isSafari" to="/quienes-somos" class="text-mindaro-500 underline">red de jóvenes</NuxtLink><a v-else href="/quienes-somos" class="text-mindaro-500 underline">red de jóvenes</a> apasionados por crear cambio</p>
               </div>
               <div class="flex items-center">
                 <UButton to="/iniciativas" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                <p>Ver y rastrear <NuxtLink to="/iniciativas" class="text-mindaro-500 underline">iniciativas</NuxtLink> juveniles, proyectos y acciones que buscan transformar la sociedad</p>
+                <p>Ver y rastrear <NuxtLink v-if="!isSafari" to="/iniciativas" class="text-mindaro-500 underline">iniciativas</NuxtLink><a v-else href="/iniciativas" class="text-mindaro-500 underline">iniciativas</a> juveniles, proyectos y acciones que buscan transformar la sociedad</p>
               </div>
               <div class="flex items-center">
                 <UButton to="/desafios" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                <p>Reportar y conocer los <NuxtLink to="/desafios" class="text-mindaro-500 underline">desafíos</NuxtLink> de la juventud en Bogotá y Cali</p>
+                <p>Reportar y conocer los <NuxtLink v-if="!isSafari" to="/desafios" class="text-mindaro-500 underline">desafíos</NuxtLink><a v-else href="/desafios" class="text-mindaro-500 underline">desafíos</a> de la juventud en Bogotá y Cali</p>
               </div>
               <div class="flex items-center">
                 <UButton to="/actualidad" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                <p><NuxtLink to="/actualidad" class="text-mindaro-500 underline">Descubrir</NuxtLink> las voces y en qué anda la juventud caleña y bogotana</p>
+                <p><NuxtLink v-if="!isSafari" to="/actualidad" class="text-mindaro-500 underline">Descubrir</NuxtLink><a v-else href="/actualidad" class="text-mindaro-500 underline">Descubrir</a> las voces y en qué anda la juventud caleña y bogotana</p>
               </div>
             </div>
             <p class="font-medium italic">Únete a nuestra comunidad y sé parte del cambio que queremos ver en el mundo</p>
