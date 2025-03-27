@@ -105,6 +105,8 @@ onMounted(() => {
     <UCarousel v-slot="{ item }" :items="imgPhotoCarrousel" :ui="{ wrapper: 'relative px-10',item: 'basis-full md:basis-1/2 lg:basis-1/4 my-3 mx-4 rounded-lg' }" arrows>
       <img :src="item" class="w-full rounded-lg cursor-grab" draggable="false">
     </UCarousel>
-    <h3 class="text-center font-black text-2xl lg:text-3xl text-pumpkin-500 my-20">¡WOW! ¡Gracias por creer en el poder de la juventud! Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</h3>
+
+    <WhatsappBot />
+    <!-- <h3 class="text-center font-black text-2xl lg:text-3xl text-pumpkin-500 my-20">¡WOW! ¡Gracias por creer en el poder de la juventud! Al visitar esta página, estás uniéndote a una revolución de jóvenes que quieren cambiar el mundo.</h3> -->
   </div>
 </template>
