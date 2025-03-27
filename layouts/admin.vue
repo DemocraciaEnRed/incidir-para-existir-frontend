@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+  title: 'Panel de administración'
+})
 const links = [
   {
     label: 'Dashboard',
@@ -16,7 +19,7 @@ const links = [
     to: '/admin/iniciativas'
   },
   {
-    label: 'Reportes de Desafíos',
+    label: 'Reportes de desafíos',
     icon: 'i-heroicons-document-text',
     to: '/admin/desafios'
   }, 
@@ -36,17 +39,17 @@ const links = [
     to: '/admin/recursos',
   }, 
   {
-    label: 'Términos y Condiciones',
+    label: 'Términos y condiciones',
     icon: 'i-heroicons-document-text',
     to: '/admin/tos',
   }, 
   {
-    label: 'Política de Privacidad',
+    label: 'Política de privacidad',
     icon: 'i-heroicons-document-text',
     to: '/admin/privacidad',
   }, 
   {
-    label: 'Respuestas de Bot',
+    label: 'Envios al bot',
     icon: 'i-heroicons-chat-bubble-bottom-center-text',
     to: '/admin/botResponses',
   }, 

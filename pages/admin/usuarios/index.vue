@@ -1,6 +1,8 @@
 <script setup>
 import { AdminUserDisableModal, AdminUserEnableModal  } from '#components'
-
+useHead({
+  title: 'Usuarios - Panel de administración'
+})
 
 definePageMeta({
   middleware: ['auth', 'only-admins'],

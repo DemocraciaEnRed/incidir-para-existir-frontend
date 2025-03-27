@@ -1,10 +1,14 @@
 <script setup>
+
 import {
   string as YupString,
   object as YupObject
 } from 'yup'
 import { definePageMeta, useAuth } from '#imports'
 
+useHead({
+  title: 'Iniciar sesión'
+})
 definePageMeta({
   auth: {
     unauthenticatedOnly: true,

@@ -3,7 +3,9 @@
 definePageMeta({
   name: 'signup'
 })
-
+useHead({
+  title: 'Registrarse'
+})
 const { data: cities, error: errorFetch } = await useAPI(`/utils/cities`)
 
 </script>

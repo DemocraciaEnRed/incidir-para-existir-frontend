@@ -1,5 +1,7 @@
 <script setup>
-
+useHead({
+  title: 'Iniciativas - Panel de administración'
+})
 const { $api } = useNuxtApp();
 const toast = useToast();
 

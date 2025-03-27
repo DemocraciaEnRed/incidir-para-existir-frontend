@@ -1,8 +1,8 @@
 <script setup>
 useHead({
   title: null,
-  titleTemplate: (title) => title ? `${title} - Incidir para Existir` : 'Incidir para Existir',
-  description: 'Unite a la revolución de jóvenes que quieren cambiar el mundo.',
+  titleTemplate: (title) => title ? `${title} - Incidir para Existir: Juventudes que transforman` : 'Incidir para Existir: Juventudes que transforman',
+  description: 'Únete a la revolución de jóvenes que quieren cambiar el mundo.',
   htmlAttrs: {
     lang: 'es'
   },
@@ -16,11 +16,11 @@ useHead({
 })
 useSeoMeta({
   ogTitle: 'Incidir para existir',
-  description: 'Unite a la revolución de jóvenes que quieren cambiar el mundo.',
-  ogDescription: 'Unite a la revolución de jóvenes que quieren cambiar el mundo.',
+  description: 'Únete a la revolución de jóvenes que quieren cambiar el mundo.',
+  ogDescription: 'Únete a la revolución de jóvenes que quieren cambiar el mundo.',
   ogImage: '/sharer.jpg',
   twitterTitle: 'Incidir para existir',
-  twitterDescription: 'Unite a la revolución de jóvenes que quieren cambiar el mundo.',
+  twitterDescription: 'Únete a la revolución de jóvenes que quieren cambiar el mundo.',
   twitterImage: '/sharer.jpg',
   twitterCard: 'summary_large_image',
 })

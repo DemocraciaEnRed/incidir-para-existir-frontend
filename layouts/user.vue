@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+  title: 'Mi perfil'
+})
 const links = [[
     {
       label: 'Mi perfil',

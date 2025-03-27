@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Crear nuevo posteo'
+})
 definePageMeta({
   middleware: ['auth'],
   layout: 'user',

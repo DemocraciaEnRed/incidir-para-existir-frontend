@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Cambiar contraseña'
+})
 definePageMeta({
   middleware: ['auth'],
   layout: 'user',

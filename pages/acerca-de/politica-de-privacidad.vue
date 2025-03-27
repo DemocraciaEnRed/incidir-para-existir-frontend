@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Pólitica de Privacidad'
+})
   const { data: configs } = await useAPI(`/utils/configs?keys=privacy`)
 
 </script>

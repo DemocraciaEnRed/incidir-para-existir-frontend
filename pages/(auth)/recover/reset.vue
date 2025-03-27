@@ -9,6 +9,9 @@ import {
 definePageMeta({
   name: 'resetPassword'
 })
+useHead({
+  title: 'Resetear contraseña'
+})
 
 const { $api } = useNuxtApp()
 const toast = useToast();

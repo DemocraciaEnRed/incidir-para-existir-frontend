@@ -2,6 +2,10 @@
 
 import { PerfilPostDeleteModal } from '#components'
 
+useHead({
+  title: 'Mis posteos'
+})
+
 definePageMeta({
   middleware: ['auth'],
   layout: 'user',

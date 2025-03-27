@@ -14,7 +14,9 @@ definePageMeta({
     navigateAuthenticatedTo: 'index'
   }
 })
-
+useHead({
+  title: 'Recuperar contraseña'
+})
 const schema = YupObject({
   email: YupString().email('Por favor, ingresa un email válido').required('Este campo es requerido'),
 })

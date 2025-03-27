@@ -1,5 +1,7 @@
 <script setup>
-
+useHead({
+  title: 'Envios al bot - Panel de administración'
+})
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',
@@ -56,7 +58,7 @@ const isLoading = computed(() => {
 
 <template>
   <div>
-    <h1 class="font-oswald uppercase text-4xl mb-2">Respuestas de Bot</h1>
+    <h1 class="font-oswald uppercase text-4xl mb-2">Envios al Bot</h1>
     <p>Aquí podrá ver las respuestas que el bot de Whatsapp ha recibido y el estado del procesamiento de las mismas.</p>
     <br>
     <UAccordion :items="[{label: 'Acerca de',icon: 'i-heroicons-information-circle',defaultOpen: false,slot: 'acerca-de'}]">

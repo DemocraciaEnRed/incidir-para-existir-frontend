@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Términos y condiciones - Panel de administración'
+})
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',

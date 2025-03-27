@@ -1,5 +1,8 @@
 <script setup>
 // import { definePageMeta } from '#imports'
+useHead({
+  title: 'Verificar cuenta'
+})
 definePageMeta({
   name: 'signup-verify'
 })

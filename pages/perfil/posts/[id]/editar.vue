@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Editar posteo'
+})
 definePageMeta({
   middleware: ['auth'],
   layout: 'user',

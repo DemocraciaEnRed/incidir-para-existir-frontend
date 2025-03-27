@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Estadisticas - Panel de administración'
+})
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',

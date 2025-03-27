@@ -10,6 +10,11 @@
   @apply bg-red-500 text-white;
 }
 
+/* Force the blinking cursor text for input and textarea to be white */
+input, textarea {
+  caret-color: #FFFFFF !important;
+}
+
 @font-face {
   font-family: 'Gotham';
   src: url('../../public/fonts/Gotham-BookItalic.woff2') format('woff2'),

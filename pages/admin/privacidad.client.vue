@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Pólitica de Privacidad - Panel de administración'
+})
 definePageMeta({
   middleware: ['auth', 'only-admins'],
   layout: 'admin',

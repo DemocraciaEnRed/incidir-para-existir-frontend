@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+  title: 'Cambiar foto de perfil'
+})
 definePageMeta({
   middleware: ['auth'],
   layout: 'user',

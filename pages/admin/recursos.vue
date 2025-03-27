@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+useHead({
+  title: 'Enlaces de interés - Panel de administración'
+})
 const links = [{
   label: 'Listado',
   icon: 'i-heroicons-list-bullet',
