@@ -5,7 +5,7 @@
       <div class="w-full md:w-4/12 gap-6 flex flex-col">
         <div class="bubble">
           <div class="txt">
-            <p class="name text-electricViolet-700">Incidir para Existir</p>
+            <p class="name text-electricViolet-700">Juventudes que transforman</p>
             <p class="message">Hola! 👋🏻 Soy el BOT de Incidir para Existir. <br><br><b>¿Tienes una iniciativa juvenil o quieres reportar una situación que afecta a las juventudes en Cali o Bogotá?</b></p>
               <span class="timestamp">10:20 pm</span>
           </div>
@@ -13,8 +13,8 @@
         </div>
         <div class="bubble">
           <div class="txt">
-            <p class="name text-electricViolet-700">Incidir para Existir</p>
-            <p class="message">¡Agendame y llevame a todas partes!</p>
+            <p class="name text-electricViolet-700">Juventudes que transforman</p>
+            <p class="message">¡Agregame a tus contactos al número +5715110567 y llevame a todas partes!</p>
               <span class="timestamp">10:20 pm</span>
           </div>
           <div class="bubble-arrow"/>
