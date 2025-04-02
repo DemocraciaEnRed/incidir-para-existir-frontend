@@ -1,8 +1,8 @@
 <script setup>
 import { 
-  AdminBlogCategoryCreateModal,
-  AdminBlogCategoryEditModal,
-  AdminBlogCategoryDeleteModal,
+  AdminResourcesCategoryCreateModal,
+  AdminResourcesCategoryEditModal,
+  AdminResourcesCategoryDeleteModal,
   UDivider,
 } from '#components'
 
@@ -74,7 +74,7 @@ const itemsMenu = row => [
 
 
 const openCreateCategoryModal = () => {
-  modal.open(AdminBlogCategoryCreateModal, {
+  modal.open(AdminResourcesCategoryCreateModal, {
     onCloseModal: () => {
       modal.close()
     },
@@ -83,7 +83,7 @@ const openCreateCategoryModal = () => {
 }
 
 const openEditCategoryModal = (row) => {
-  modal.open(AdminBlogCategoryEditModal, {
+  modal.open(AdminResourcesCategoryEditModal, {
     entry: row,
     onCloseModal: () => {
       modal.close()
@@ -98,7 +98,7 @@ const openDeleteCategoryModal = (row) => {
     return
   }
 
-  modal.open(AdminBlogCategoryDeleteModal, {
+  modal.open(AdminResourcesCategoryDeleteModal, {
     categories: categories.value,
     categoryToDelete: row,
     onCloseModal: () => {
