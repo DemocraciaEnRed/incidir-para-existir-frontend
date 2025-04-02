@@ -123,7 +123,7 @@ const columns = [
   },
   {
     key: 'dimension.name',
-    label: 'Ejé temático',
+    label: 'Eje temático',
     rowClass: 'text-xs text-center',
     class: 'text-center'
   },
