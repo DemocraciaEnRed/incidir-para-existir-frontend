@@ -180,7 +180,7 @@ const onError = (event) => {
       </template>
       <USelect v-model="initiativeState.source" :options="[{ label: 'Web', value: 'web' }, { label: 'Whatsapp', value: 'whatsapp' }]" />
     </UFormGroup>
-    <UFormGroup name="dimensions" label="Dimensiones de la iniciativa">
+    <UFormGroup name="dimensions" label="Ejes tematicos de la iniciativa">
       <template #description>
         Selecciona los ejes temáticos de la iniciativa. <i class="text-pumpkin">(Hasta 2)</i>
       </template>

@@ -102,7 +102,7 @@ const onError = (event) => {
 
 <template>
   <UForm :state="challengeState" :schema="challengeSchema" class="space-y-4" @submit="handleSubmit" @error="onError">
-    <UFormGroup name="source" label="Fuente de la iniciativa" required>
+    <UFormGroup name="source" label="Fuente del reporte de desafío" required>
       <template #description>
         ¿Cómo llegó el reporte de desafío a Incidir para Existir?
       </template>
