@@ -9,7 +9,7 @@ const { data, error, status, refresh } = await useAPI('/challenges/stats/chart/c
     chartOption.value = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Cantidad de desafíos por dimensiones',
+        text: 'Cantidad de desafíos por eje temático',
         subtext: 'Cada serie representa una ciudad',
         top: 0,
         left: 0
