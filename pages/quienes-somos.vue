@@ -24,13 +24,17 @@ const accordionItems = [{
 <template>
   <div>
     <UContainer class="my-9">
-      <p class="font-oswald text-5xl leading-tight text-[#D4F779]">JUVENTUDES QUE TRANSFORMAN</p>
-      <p class="font-medium text-2xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
+      <p class="font-oswald text-center text-5xl leading-tight text-[#D4F779]">JUVENTUDES QUE TRANSFORMAN</p>
+      <p class="font-medium text-center text-2xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
         la construcción de realidades dignas para las juventudes</p>
-      <p class="text-2xl text-pumpkin-500 font-bold">DOCUMENTAL</p>
-      <!-- YouTube Video -->
-      <div class="px-10 my-10">
-        <div class="aspect-w-16 aspect-h-9 bg-gray-900 rounded-lg">
+        <!-- YouTube Video -->
+        <div class="px-10 my-10">
+          <!--<div class="aspect-w-16 aspect-h-9 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">-->
+            <div class="aspect-w-10 aspect-h-3 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">
+              <div class="flex flex-col items-center justify-center h-full">
+                <p class="font-oswald text-3xl text-mindaro md:text-6xl">MUY PRONTO</p>
+                <p class="text-2xl text-pumpkin-500 font-bold">Un nuevo DOCUMENTAL</p>
+          </div>
           <!-- <iframe src="https://www.youtube.com/embed/LvXX1St1Qac?si=cD-_eBMSGUarJLSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen/> -->
         </div>
       </div>
