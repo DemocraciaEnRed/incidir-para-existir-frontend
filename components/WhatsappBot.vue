@@ -24,7 +24,7 @@
         <!-- <h1 class="text-xl">¿Tienes una iniciativa juvenil o quieres reportar una situación que afecta a las juventudes en Cali o Bogotá? </h1> -->
         <p class="text-4xl text-[#25d366] font-oswald font-medium uppercase">Escríbenos por WhatsApp y hazlo de manera rápida y sencilla</p>
         <div class="flex gap-2 items-center justify-center md:justify-end mt-5">
-          <p class="text-3xl font-semibold">¡Haz que tu voz cuente!</p><UIcon name="i-heroicons-arrow-right-16-solid" class="text-2xl"/> <UIcon name="fa-brands-whatsapp" class="text-5xl text-[#25d366]" />
+          <p class="text-3xl font-semibold">¡Haz que tu voz cuente!</p><UIcon name="i-heroicons-arrow-right-16-solid" class="text-2xl"/> <UIcon name="i-fa6-brands-whatsapp" class="text-5xl text-[#25d366]" />
         </div>
       </div>
     </div>
