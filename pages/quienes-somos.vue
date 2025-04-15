@@ -30,14 +30,14 @@ const accordionItems = [{
         <!-- YouTube Video -->
         <div class="px-10 my-10">
           <!--<div class="aspect-w-16 aspect-h-9 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">-->
-            <div class="aspect-w-10 aspect-h-3 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">
-              <div class="flex flex-col items-center justify-center h-full">
-                <p class="font-oswald text-3xl text-mindaro md:text-6xl">MUY PRONTO</p>
-                <p class="text-2xl text-pumpkin-500 font-bold">Un nuevo DOCUMENTAL</p>
+          <div class="aspect-w-10 aspect-h-4 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">
+            <div class="flex flex-col items-center justify-center h-full">
+              <p class="font-oswald text-3xl text-mindaro md:text-6xl">MUY PRONTO</p>
+              <p class="text-md font-medium md:text-2xl text-pumpkin-500 md:font-bold">Un nuevo DOCUMENTAL</p>
+            </div>
+            <!-- <iframe src="https://www.youtube.com/embed/LvXX1St1Qac?si=cD-_eBMSGUarJLSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen/> -->
           </div>
-          <!-- <iframe src="https://www.youtube.com/embed/LvXX1St1Qac?si=cD-_eBMSGUarJLSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen/> -->
         </div>
-      </div>
       <div>
         <!-- <UAccordion color="white" variant="outline" size="xl" multiple :items="accordionItems"
           :ui="{ default: { class: 'text-xl font-semibold my-3 rounded-full px-6' } }"> -->

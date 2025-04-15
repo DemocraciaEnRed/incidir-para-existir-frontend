@@ -101,7 +101,7 @@ const onError = (event) => {
           <UFormGroup name="password" label="Password" required>
             <UInput v-model="state.password" icon="i-heroicons-lock-closed" size="xl" type="password" placeholder="Ingrese su contraseña"  :disabled="isLoading"/>
             <template #help>
-              <UIcon name="i-heroicons-information-circle" /> <ULink :to="{name: 'recoverPassword'}" class="text-sm" >¿Olvidaste tú contraseña?</ULink>
+              <UIcon name="i-heroicons-information-circle" /> <NuxtLink to="/recover" class="text-sm" >¿Olvidaste tú contraseña?</NuxtLink>
             </template>
           </UFormGroup>
           <div class="text-right">
