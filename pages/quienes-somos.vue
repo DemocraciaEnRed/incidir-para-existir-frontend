@@ -24,13 +24,13 @@ const accordionItems = [{
 <template>
   <div>
     <UContainer class="my-9">
-      <p class="font-oswald text-center text-5xl leading-tight text-[#D4F779]">JUVENTUDES QUE TRANSFORMAN</p>
+      <p class="font-oswald text-center text-5xl leading-tight text-[#D4F779] mb-2">JUVENTUDES QUE TRANSFORMAN</p>
       <p class="font-medium text-center text-2xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
         la construcción de realidades dignas para las juventudes</p>
         <!-- YouTube Video -->
-        <div class="px-10 my-10">
+        <div class="sm:px-10 sm:my-10">
           <!--<div class="aspect-w-16 aspect-h-9 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">-->
-          <div class="aspect-w-10 aspect-h-4 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">
+          <div class="aspect-w-16 aspect-h-9 bg-electricViolet-900 rounded-lg overflow-hidden border border-gray-800">
             <div class="flex flex-col items-center justify-center h-full">
               <p class="font-oswald text-3xl text-mindaro md:text-6xl">MUY PRONTO</p>
               <p class="text-md font-medium md:text-2xl text-pumpkin-500 md:font-bold">Un nuevo DOCUMENTAL</p>
@@ -60,8 +60,24 @@ const accordionItems = [{
             <QuienesSomosTimeline/>
           </template>
           <template #que-hemos-logrado>
-            <div class="text-base text-white space-y-3 text-justify my-3 px-6">
-              <ul class="list-disc space-y-3">
+            <div class="text-base dark:text-white space-y-3 sm:text-justify my-3 px-6">
+              <!-- <ClientOnly>
+              <ul v-if="$isIphone()" class="space-y-3 py-1">
+                <li>• Hemos consolidado una red de más de 60 jóvenes entre Cali y Bogotá, generando juntanza y trabajo en red.</li>
+                <li>• Nos hemos formado para incidir de manera efectiva! +50 horas de formación continua, +32 horas de mentoría que nos han llevado a fortalecer nuestras habilidades. ¡Incidir es comprender para accionar!</li>
+                <li>• Hemos co-creado 2 agendas ciudadanas (una para <NuxtLink to="https://drive.google.com/file/d/1llrOZtZeeN6PQo9QOayvNtVniI2eYLb9/view" target="blank" class="text-mindaro">Cali <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink> y otra para <NuxtLink to="https://drive.google.com/file/d/1w2kIddGQ-1NfjzF1d0yUI-gP3FQx66Nn/view" target="blank" class="text-mindaro">Bogotá <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink>) donde se reflejan los sentires de las juventudes, sus problemáticas, exigencias y propuestas.</li>
+                <li>• Creemos fielmente en el diálogo y la creación de consensos. Por ello, nos hemos reunido con candidatos, tomadores de decisión, sociedad civil. ¡Nuestras demandas se mueven!</li>
+                <li>• Le hemos apostado por las acciones en calle y campañas en linea que promuevan la incidencia e involucramiento de juventudes. ¡Nuestra acción es poder!</li>
+              </ul>
+              <ul v-else class="list-disc space-y-3 py-1">
+                <li>Hemos consolidado una red de más de 60 jóvenes entre Cali y Bogotá, generando juntanza y trabajo en red.</li>
+                <li>Nos hemos formado para incidir de manera efectiva! +50 horas de formación continua, +32 horas de mentoría que nos han llevado a fortalecer nuestras habilidades. ¡Incidir es comprender para accionar!</li>
+                <li>Hemos co-creado 2 agendas ciudadanas (una para <NuxtLink to="https://drive.google.com/file/d/1llrOZtZeeN6PQo9QOayvNtVniI2eYLb9/view" target="blank" class="text-mindaro">Cali <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink> y otra para <NuxtLink to="https://drive.google.com/file/d/1w2kIddGQ-1NfjzF1d0yUI-gP3FQx66Nn/view" target="blank" class="text-mindaro">Bogotá <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink>) donde se reflejan los sentires de las juventudes, sus problemáticas, exigencias y propuestas.</li>
+                <li>Creemos fielmente en el diálogo y la creación de consensos. Por ello, nos hemos reunido con candidatos, tomadores de decisión, sociedad civil. ¡Nuestras demandas se mueven!</li>
+                <li>Le hemos apostado por las acciones en calle y campañas en linea que promuevan la incidencia e involucramiento de juventudes. ¡Nuestra acción es poder!</li>
+              </ul>
+              </ClientOnly> -->
+              <ul class="list-disc space-y-3 py-1">
                 <li>Hemos consolidado una red de más de 60 jóvenes entre Cali y Bogotá, generando juntanza y trabajo en red.</li>
                 <li>Nos hemos formado para incidir de manera efectiva! +50 horas de formación continua, +32 horas de mentoría que nos han llevado a fortalecer nuestras habilidades. ¡Incidir es comprender para accionar!</li>
                 <li>Hemos co-creado 2 agendas ciudadanas (una para <NuxtLink to="https://drive.google.com/file/d/1llrOZtZeeN6PQo9QOayvNtVniI2eYLb9/view" target="blank" class="text-mindaro">Cali <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink> y otra para <NuxtLink to="https://drive.google.com/file/d/1w2kIddGQ-1NfjzF1d0yUI-gP3FQx66Nn/view" target="blank" class="text-mindaro">Bogotá <UIcon name="i-heroicons-arrow-top-right-on-square" /></NuxtLink>) donde se reflejan los sentires de las juventudes, sus problemáticas, exigencias y propuestas.</li>
@@ -71,16 +87,28 @@ const accordionItems = [{
             </div>
           </template>
           <template #que-nos-mueve>
-            <div class="text-base text-white space-y-3 text-justify my-3 px-6">
-              <ul class="list-disc space-y-3">
-                <li>Nos mueve la pasión de tomar el control de nuestro futuro. Queremos liderar y ser parte de las
-                  decisiones que nos afectan, para construir un mundo que sea justo y cool para todos.</li>
-                <li>Nos mueve la necesidad de ser escuchados. Queremos que los líderes de Bogotá y Cali se tomen en
-                  serio nuestras demandas y sentires, y los incluyan en sus planes, porque somos el presente y el futuro
-                  de estas ciudades.</li>
-                <li>Nos mueve el deseo de unirnos y hacer que nuestra voz sea más fuerte. Queremos aliarnos con otros
-                  jóvenes y organizaciones para crear un movimiento que sea sostenible y que genere un impacto real en
-                  nuestras vidas y comunidades.</li>
+            <div class="text-base text-white space-y-3 sm:text-justify my-3 px-6">
+              <!-- <ClientOnly>
+                <ul v-if="$isIphone()" class="space-y-3">
+                  <li>• Nos mueve la pasión de tomar el control de nuestro futuro. Queremos liderar y ser parte de las
+                    decisiones que nos afectan, para construir un mundo que sea justo y cool para todos.</li>
+                  <li>• Nos mueve la necesidad de ser escuchados. Queremos que los líderes de Bogotá y Cali se tomen en
+                    serio nuestras demandas y sentires, y los incluyan en sus planes, porque somos el presente y el futuro
+                    de estas ciudades.</li>
+                  <li>• Nos mueve el deseo de unirnos y hacer que nuestra voz sea más fuerte. Queremos aliarnos con otros
+                    jóvenes y organizaciones para crear un movimiento que sea sostenible y que genere un impacto real en
+                    nuestras vidas y comunidades.</li>
+                </ul>
+                <ul v-else class="list-disc space-y-3">
+                  <li>Nos mueve la pasión de tomar el control de nuestro futuro. Queremos liderar y ser parte de las decisiones que nos afectan, para construir un mundo que sea justo y cool para todos.</li>
+                  <li>Nos mueve la necesidad de ser escuchados. Queremos que los líderes de Bogotá y Cali se tomen en serio nuestras demandas y sentires, y los incluyan en sus planes, porque somos el presente y el futuro de estas ciudades.</li>
+                  <li>Nos mueve el deseo de unirnos y hacer que nuestra voz sea más fuerte. Queremos aliarnos con otros jóvenes y organizaciones para crear un movimiento que sea sostenible y que genere un impacto real en nuestras vidas y comunidades.</li>
+                </ul>
+              </ClientOnly> -->
+              <ul class="list-disc space-y-3 py-1">
+ <li>Nos mueve la pasión de tomar el control de nuestro futuro. Queremos liderar y ser parte de las decisiones que nos afectan, para construir un mundo que sea justo y cool para todos.</li>
+                  <li>Nos mueve la necesidad de ser escuchados. Queremos que los líderes de Bogotá y Cali se tomen en serio nuestras demandas y sentires, y los incluyan en sus planes, porque somos el presente y el futuro de estas ciudades.</li>
+                  <li>Nos mueve el deseo de unirnos y hacer que nuestra voz sea más fuerte. Queremos aliarnos con otros jóvenes y organizaciones para crear un movimiento que sea sostenible y que genere un impacto real en nuestras vidas y comunidades.</li>
               </ul>
             </div>
           </template>

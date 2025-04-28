@@ -9,7 +9,7 @@ export default <Partial<Config>>{
     extend: {
       fontFamily: {
         oswald: ['Oswald', ...defaultTheme.fontFamily.sans],
-        sans: ['Gotham', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
         serif: ['Merriweather', ...defaultTheme.fontFamily.serif],
         inter: ['Inter', ...defaultTheme.fontFamily.sans],
       },
