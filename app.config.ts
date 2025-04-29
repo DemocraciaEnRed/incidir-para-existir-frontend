@@ -2,17 +2,6 @@ export default defineAppConfig({
   ui: {
     primary: 'electricViolet',
     gray: 'zinc',
-    button: {
-      base: 'font-inter'
-    },
-    badge: {
-      base: 'font-inter'
-    },
-    
-    avatar: {
-      text: 'font-inter',
-      placeholder: 'font-inter'
-    },
     table: {
       wrapper: 'border border-gray-200 dark:border-gray-800 rounded-lg',
       th: {

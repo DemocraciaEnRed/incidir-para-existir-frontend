@@ -87,7 +87,7 @@ const openResourceNewTab = (resource) => {
     <div class="md:col-span-2">
       <div v-for="resource in resources.rows" :key="resource.id" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-electricViolet-950 hover:bg-electricViolet-900 border-electricViolet-400 transition-colors duration-200">
         <div class="grow w-9/12">
-          <div class="flex-wrap flex flex-row items-center font-inter gap-x-2 mb-2">
+          <div class="flex-wrap flex flex-row items-center gap-x-2 mb-2">
             <!-- <p 
             class="text-xs text-white border-r pr-2 border-purple-500" 
             >#{{ addLeadingZeros(resource.id) }}</p> -->
@@ -102,9 +102,9 @@ const openResourceNewTab = (resource) => {
               Ultima actualización {{ formatDate(resource.updatedAt) }}
             </p>
             </div>
-          <h2 class="font-inter font-semibold text-2xl">{{ resource.title }}</h2>
-          <p v-if="resource.description" class="font-inter text-gray-200 text-sm">{{ resource.description }}</p>
-        <p class="font-inter text-sm truncate"><a class="cursor-pointer text-blue-300" @click.prevent="openResourceNewTab(resource)"><UIcon name="i-heroicons-arrow-top-right-on-square" /> Ir al recurso</a> - <span class="opacity-60"> {{ resource.url }}</span></p>
+          <h2 class="font-semibold text-2xl">{{ resource.title }}</h2>
+          <p v-if="resource.description" class="text-gray-200 text-sm">{{ resource.description }}</p>
+        <p class="text-sm truncate"><a class="cursor-pointer text-blue-300" @click.prevent="openResourceNewTab(resource)"><UIcon name="i-heroicons-arrow-top-right-on-square" /> Ir al recurso</a> - <span class="opacity-60"> {{ resource.url }}</span></p>
         </div>
         <UButton color="mindaro" icon="i-heroicons-arrow-top-right-on-square" variant="soft" :ui="{ rounded: 'rounded-full' }" size="xl" class="ml-3" @click="openResourceNewTab(resource)" />
       </div>

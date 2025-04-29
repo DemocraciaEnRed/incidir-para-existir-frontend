@@ -43,7 +43,7 @@ const showDesafiosForm = ref(false)
         </div>
       </div>
       <div class="my-10 w-full md:w-4/5 mx-auto space-y-5">
-        <UButton v-if="!showDesafiosForm" color="pumpkin" block size="xl" class="text-center text-xl sm:text-2x lg:text-3xl font-weight font-inter font-black rounded-full" @click="showDesafiosForm = true">Quiero reportar desafíos y propuestas de la juventud</UButton>
+        <UButton v-if="!showDesafiosForm" color="pumpkin" block size="xl" class="text-center text-xl sm:text-2x lg:text-3xl font-weight font-black rounded-full" @click="showDesafiosForm = true">Quiero reportar desafíos y propuestas de la juventud</UButton>
         <p class="font-center text-lg leading-tight text-center">Recuerda que los <b>datos tienen poder</b>. Las propuestas y reportes que compartas serán analizados y utilizados para visibilizar los desafíos de las juventudes. Esta información buscará sensibilizar a diferentes actores clave y promover una mayor atención a las necesidades planteadas</p>
       </div>
       <div v-if="showDesafiosForm" class="my-10 w-full md:w-2/3 mx-auto">

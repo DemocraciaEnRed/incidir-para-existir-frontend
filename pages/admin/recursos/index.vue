@@ -145,7 +145,7 @@ const deleteEntry = async (entry) => {
       <template #title-data="{ row }">
         <p class="font-medium">{{ row.title }}</p>
         <p class="text-xs text-gray-500">{{ row.description }}</p>
-        <a class="font-inter text-xs text-sky-500 truncate" :href="row.url" target="_blank" >{{ row.url }}</a>
+        <a class="text-xs text-sky-500 truncate" :href="row.url" target="_blank" >{{ row.url }}</a>
       </template>
       <template #updatedAt-data="{ row }">
         <p>{{ formatDate(row.updatedAt) }}</p>

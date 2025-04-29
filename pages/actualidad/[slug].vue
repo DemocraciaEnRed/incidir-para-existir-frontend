@@ -49,7 +49,7 @@ useSeoMeta({
             <UBadge color="pumpkin" size="lg" :ui="{ rounded: 'rounded-full'}">{{data.category.name}}</UBadge>
           </div>
           <p class="font-oswald text-3xl md:text-6xl uppercase text-justify md:text-center text-electricViolet my-2">{{ data.title }}</p>
-          <p class="font-inter font-light text-justify md:text-center text-xl md:text-2xl my-3">{{ data.subtitle }}</p>
+          <p class="font-light text-justify md:text-center text-xl md:text-2xl my-3">{{ data.subtitle }}</p>
           <div class="flex md:flex-col items-center w-full my-5">
             <UAvatar :src="data.author.imageUrl" size="3xl" class="mr-3 mb-0 md:mr-3 md:mb-3" :alt="data.author.fullName" />
             <div class="flex flex-col items-start md:items-center w-full">

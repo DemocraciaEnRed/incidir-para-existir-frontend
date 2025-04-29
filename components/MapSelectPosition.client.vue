@@ -114,7 +114,7 @@
       </LMap>
     </div>
     <div class="flex items-center mt-4" :class="selectedCoordinates ? 'justify-between' : 'justify-end'">
-      <span v-if="selectedCoordinates" class="font-inter text-gray-600 text-xs">¡Pin posicionado!<br>Latitud: {{ latitude }} - Longitud: {{ longitude }}</span>
+      <span v-if="selectedCoordinates" class="text-gray-600 text-xs">¡Pin posicionado!<br>Latitud: {{ latitude }} - Longitud: {{ longitude }}</span>
       <div class="flex gap-2">
         <UButton v-if="originalCoordinates" variant="ghost" color="mindaro" @click="restoreOriginalCoordinates">Restaurar pin original</UButton>
         <UButton variant="outline" color="mindaro" :disabled="!selectedCoordinates" @click="clearMarker">Quitar pin</UButton>

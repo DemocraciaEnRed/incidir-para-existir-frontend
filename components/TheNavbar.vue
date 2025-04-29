@@ -91,7 +91,7 @@ const items = computed(() => {
             <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item leading-none text-center">Actualidad<br><span class="text-sm font-normal">de la juventud</span></NuxtLink>
             <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize">Contactanos</UButton>
             <UButton v-if="!loggedIn" to="/login" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton>
-            <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
+            <UDropdown v-if="loggedIn" :items="items" class="capitalize" :popper="{ placement: 'bottom-end' }">
               <UAvatar :src="userData.imageUrl" :alt="userFullname" />
             </UDropdown>
           </div>
@@ -117,7 +117,7 @@ const items = computed(() => {
         <NuxtLink to="/actualidad" active-class="text-mindaro" class="navbar-item" @click="mobileBurgerActive = !mobileBurgerActive">Actualidad</NuxtLink>
         <UButton to="/contacto" color="mindaro" :ui="{ rounded: 'rounded-full' }" class="capitalize" @click="mobileBurgerActive = !mobileBurgerActive">Contactanos</UButton>
         <UButton v-if="!loggedIn" to="/login"  @click="mobileBurgerActive = !mobileBurgerActive" color="orange" variant="solid" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-arrow-left-end-on-rectangle-16-solid">Ingresa</UButton>
-        <UDropdown v-if="loggedIn" :items="items" class="font-inter capitalize" :popper="{ placement: 'bottom-end' }">
+        <UDropdown v-if="loggedIn" :items="items" class="capitalize" :popper="{ placement: 'bottom-end' }">
           <UAvatar :src="userData.imageUrl" :alt="userFullname" />
         </UDropdown>
       </div>

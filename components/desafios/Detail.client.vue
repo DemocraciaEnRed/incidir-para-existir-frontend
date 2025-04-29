@@ -35,7 +35,7 @@ const isLoading = computed(() => status.value === 'pending');
       <template #header>
         <div class="flex items-center justify-between">
           <h3
-            class="font-inter text-base font-semibold leading-6 text-gray-900 dark:text-white"
+            class="text-base font-semibold leading-6 text-gray-900 dark:text-white"
           >
             Reporte N° {{ addLeadingZeros(props.desafioId) }}
           </h3>

@@ -119,7 +119,7 @@ const clearFilters = () => {
       <div v-if="data && data.rows && data.rows.length">
         <div v-for="row in data.rows" :key="`desafio-id-${row.id}`" class="flex items-center gap-4 rounded-xl my-2 px-5 py-3 border bg-gray-900 hover:bg-gray-800 border-slate-800 transition-colors duration-200">
           <div class="grow w-9/12">
-            <div class="flex-wrap flex flex-row items-center font-inter gap-x-2 mb-2">
+            <div class="flex-wrap flex flex-row items-center gap-x-2 mb-2">
               <p 
             class="text-xs text-white border-r pr-2 border-purple-500" 
             >#{{ addLeadingZeros(row.id) }}</p>
@@ -138,8 +138,8 @@ const clearFilters = () => {
               class="text-xs text-mindaro truncate" 
             >{{ row.dimension.name }}</p>
             </div>
-            <p class="font-bold font-inter text-xl cursor-pointer hover:text-mindaro transition-colors duration-500"  @click="goToDetail(row.id)" >{{ row.inWords }}</p>
-            <p class="text-sm font-inter text-gray-500 truncate">{{ row.needsAndChallenges }}</p>
+            <p class="font-bold text-xl cursor-pointer hover:text-mindaro transition-colors duration-500"  @click="goToDetail(row.id)" >{{ row.inWords }}</p>
+            <p class="text-sm text-gray-500 truncate">{{ row.needsAndChallenges }}</p>
           </div>
           <UButton  icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }"  size="xl" class="ml-3" @click="goToDetail(row.id)" />
         </div>

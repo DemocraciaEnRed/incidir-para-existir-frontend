@@ -62,10 +62,10 @@ const getTooltipHtml = (challenge) => {
   }
   return `
     <div>
-      <p class="font-inter text-xs text-white">Reporte <span class="text-mindaro"># ${addLeadingZeros(challenge.id)}</span></p>
-      <p class="font-inter text-mindaro text-xs my-1">${challenge.dimension.name}</p>
-      <h1 class="font-inter text-gray-400 leading-tight text-xs italic my-1">${challenge.needsAndChallenges}</h1>
-      <p class="font-inter text-white text-xs"><span class="uppercase">${challenge.city.name}</span>${extraString}</p>
+      <p class="text-xs text-white">Reporte <span class="text-mindaro"># ${addLeadingZeros(challenge.id)}</span></p>
+      <p class="text-mindaro text-xs my-1">${challenge.dimension.name}</p>
+      <h1 class="text-gray-400 leading-tight text-xs italic my-1">${challenge.needsAndChallenges}</h1>
+      <p class="text-white text-xs"><span class="uppercase">${challenge.city.name}</span>${extraString}</p>
     </div>
   `
 }

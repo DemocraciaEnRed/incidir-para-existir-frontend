@@ -43,14 +43,14 @@ const rounded = computed(() => {
           <NuxtLink to="/contacto" active-class="text-mindaro" class="text-center leading-none hover:text-mindaro">Contacto</NuxtLink>
           <ULink to="https://linktr.ee/incidirparaexistir" target="_blank" class="text-center text-sm"><img src="/svg/linktree-logo-icon.svg" class="h-5" alt="Linktree"></ULink>
         </div>
-        <div class="flex flex-col justify-center gap-2 sm:flex-row font-inter items-center text-xs">
+        <div class="flex flex-col justify-center gap-2 sm:flex-row items-center text-xs">
           <NuxtLink to="/acerca-de/terminos-y-condiciones" class="text-center leading-none hover:text-mindaro">Términos y condiciones</NuxtLink>
           <p class="hidden sm:block">|</p>
           <NuxtLink to="/acerca-de/politica-de-privacidad" class="text-center leading-none hover:text-mindaro">Política de privacidad</NuxtLink>
         </div>
       </div>
       <hr class="opacity-30">
-      <p class="font-inter my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
+      <p class="my-8 text-center text-xs">Desarrollado por <ULink to="https://democraciaenred.org" class="font-semibold hover:text-pumpkin-300" target="_blank">Democracia en Red</ULink></p>
     </UContainer>
   </footer>
 </template>

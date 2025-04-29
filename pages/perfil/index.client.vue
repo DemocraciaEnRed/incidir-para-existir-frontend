@@ -27,7 +27,7 @@ const { data: userData } = useAuth()
         <div class="flex items-center space-x-4">
           <UAvatar size="3xl" :src="userData && userData.imageUrl || undefined" :alt="userData.fullName" />
           <div> 
-            <p class="font-inter text-3xl font-bold">{{ userData.fullName }}</p>
+            <p class="text-3xl font-bold">{{ userData.fullName }}</p>
             <p v-if="userData.subdivisionId">{{ userData.subdivision.name }}, {{ userData.subdivision.city.name }}</p>
           </div>
         </div>

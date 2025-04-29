@@ -215,7 +215,7 @@ const deleteChallenge = async (challenge) => {
       </template>
       <template #title-data="{ row }">
         <p class="font-medium">{{ truncateText(row.needsAndChallenges, 50) }}</p>
-        <p class="font-inter text-xs">#{{addLeadingZeros(row.id)}} | <span class="text-gray-600">Propuesta: {{ truncateText(row.proposal, 75) }}</span></p>
+        <p class="text-xs">#{{addLeadingZeros(row.id)}} | <span class="text-gray-600">Propuesta: {{ truncateText(row.proposal, 75) }}</span></p>
       </template>
       <template #subdivision-data="{ row }">
         <div class="text-center">

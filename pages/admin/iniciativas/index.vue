@@ -233,7 +233,7 @@ const unpublishInitiative = async (initiative) => {
       </template>
       <template #name-data="{ row }">
         <p class="font-medium">{{ row.name }}</p>
-        <div class="flex-wrap flex items-center font-inter text-xs text-gray-500">
+        <div class="flex-wrap flex items-center text-xs text-gray-500">
           <p>#{{ addLeadingZeros(row.id) }} |&nbsp;</p>
           <div v-for="(dimension, index) in row.dimensions" :key="`ini-${row.id}-dim-${dimension.id}`" class="">
             {{ dimension.name }}{{ index < row.dimensions.length - 1 ? '&nbsp;|&nbsp;' : '' }}

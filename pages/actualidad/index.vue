@@ -46,7 +46,7 @@ const handleAuthorsCallToAction = () => {
       <BlogScroller :section="2" />
       
       <div class="py-8 px-5 text-center bg-[#cacaca11] shadow-[0px_0px_10px_2px_rgba(212,_247,_121,_0.8)] my-20 rounded-2xl">
-        <p class="text-xl font-inter">Si tienes algo que decir sobre incidencia y participación, <b class="uppercase text-mindaro">este es tu espacio</b>.<br>Comparte tu artículo, opinión o idea y haz que más juventudes te lean.</p>
+        <p class="text-xl">Si tienes algo que decir sobre incidencia y participación, <b class="uppercase text-mindaro">este es tu espacio</b>.<br>Comparte tu artículo, opinión o idea y haz que más juventudes te lean.</p>
         <p class="my-3 text-4xl text-mindaro font-oswald font-medium uppercase">Escribe, envía y haz la diferencia.</p>
         <UButton size="xl" class="mt-5 text-xl md:text-3xl font-semibold px-8" color="mindaro" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-megaphone" @click="handleAuthorsCallToAction">¡Haz que tu voz cuente!</UButton>
       </div>

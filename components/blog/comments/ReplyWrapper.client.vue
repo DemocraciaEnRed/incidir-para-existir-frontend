@@ -64,7 +64,7 @@ const deleteComment = async (reply) => {
             <p class="text-xs text-gray-500">{{ formatDate(reply.createdAt) }}</p>
           </div>
         </div>
-        <p class="text-sm font-inter text-justify whitespace-pre-line">{{ reply.text }}</p>
+        <p class="text-sm text-justify whitespace-pre-line">{{ reply.text }}</p>
       </div>
     </div>
   </div>

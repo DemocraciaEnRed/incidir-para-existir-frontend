@@ -124,7 +124,7 @@ const deleteComment = async (comment) => {
             <p class="text-sm text-gray-500">{{ formatDate(comment.createdAt) }}</p>
           </div>
         </div>
-        <p class="font-inter text-justify whitespace-pre-line">{{ comment.text }}</p>
+        <p class="text-justify whitespace-pre-line">{{ comment.text }}</p>
         <div class="">
           <UButton v-if="isLoggedIn" variant="link" color="primary" :padded="false" icon="i-heroicons-arrow-uturn-left" :trailing="true" @click="showReplyForm = !showReplyForm">Responder ({{ totalReplies }})</UButton>          
         </div>
