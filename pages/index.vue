@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { definePageMeta } from '#imports'
-const { $isIphone } = useNuxtApp()
 
 definePageMeta({
   name: 'index'
@@ -68,45 +67,6 @@ onMounted(() => {
       <div class="w-full md:w-8/12 lg:w-1/2">
           <div class="space-y-4">
             <p class="font-medium text-center sm:text-left">Somos una red de jóvenes activistas en Cali y Bogotá que buscan la construcción de realidades dignas para las juventudes. <span class="text-pumpkin-500">En esta plataforma, podrás:</span></p>
-            <!-- ClientOnly>
-
-              <div v-if="!$isIphone()" class="space-y-3 ">
-                <div class="flex items-start sm:items-center">
-                  <UButton to="/quienes-somos" color="pumpkin" icon="i-heroicons-arrow-right" variant="solid" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-3" />
-                  <p class="my-1">Encontrar y conectar con una <b class="text-pumpkin-300">red de jóvenes</b> apasionados por crear cambio</p>
-                </div>
-                <div class="flex items-start sm:items-center">
-                  <UButton to="/iniciativas" color="pumpkin" icon="i-heroicons-arrow-right" variant="solid" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-3" />
-                  <p class="my-1">Ver y rastrear <b class="text-pumpkin-300">iniciativas</b> juveniles, proyectos y acciones que buscan transformar la sociedad</p>
-                </div>
-                <div class="flex items-start sm:items-center">
-                  <UButton to="/desafios" color="pumpkin" icon="i-heroicons-arrow-right" variant="solid" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-3" />
-                  <p class="my-1">Reportar y conocer los <b class="text-pumpkin-300">desafíos</b> de la juventud en Bogotá y Cali</p>
-                </div>
-                <div class="flex items-start sm:items-center">
-                  <UButton to="/actualidad" color="pumpkin" icon="i-heroicons-arrow-right" variant="solid" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-3" />
-                  <p class="my-1"><b class="text-pumpkin-300">Descubrir</b> las voces y en qué anda la juventud caleña y bogotana</p>
-                </div>
-              </div>
-              <div v-else class="space-y-3">
-                <div class="flex items-center">
-                  <UButton to="/quienes-somos" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                  <p>Encontrar y conectar con una <NuxtLink to="/quienes-somos" class="text-mindaro-500 underline">red de jóvenes</NuxtLink> apasionados por crear cambio</p>
-                </div>
-                <div class="flex items-center">
-                  <UButton to="/iniciativas" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                  <p>Ver y rastrear <NuxtLink to="/iniciativas" class="text-mindaro-500 underline">iniciativas</NuxtLink> juveniles, proyectos y acciones que buscan transformar la sociedad</p>
-                </div>
-                <div class="flex items-center">
-                  <UButton to="/desafios" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                  <p>Reportar y conocer los <NuxtLink to="/desafios" class="text-mindaro-500 underline">desafíos</NuxtLink> de la juventud en Bogotá y Cali</p>
-                </div>
-                <div class="flex items-center">
-                  <UButton to="/actualidad" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
-                  <p><NuxtLink to="/actualidad" class="text-mindaro-500 underline">Descubrir</NuxtLink> las voces y en qué anda la juventud caleña y bogotana</p>
-                </div>
-              </div>
-            </ClientOnly> -->
             <div class="space-y-3">
               <div class="flex items-center">
                 <UButton to="/quienes-somos" icon="i-heroicons-arrow-right-circle" variant="soft" :ui="{ rounded: 'rounded-full' }" size="lg" class="mr-4" />
