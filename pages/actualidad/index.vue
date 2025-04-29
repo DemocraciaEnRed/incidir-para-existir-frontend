@@ -25,7 +25,7 @@ const handleAuthorsCallToAction = () => {
     <UContainer class="">
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full lg:w-1/2 text-center">
-          <p class="font-oswald text-5xl  leading-tight text-[#D4F779] mb-5">ACTUALIDAD DE LA JUVENTUD</p>
+          <p class="font-oswald text-4xl leading-tight text-mindaro mb-5">ACTUALIDAD DE LA JUVENTUD</p>
           <p class="font-bold text-xl leading-tight mb-5">En este espacio podrás interactuar con noticias, eventos, actualidad, opiniones y enlaces que te pueden interesar.<br><br>¡Explora y mantente al tanto de todo lo que le importa a la juventud!</p>
           <UButton size="lg" class="text-xl font-semibold px-5" color="pumpkin" :ui="{ rounded: 'rounded-full' }" icon="i-heroicons-megaphone" @click="handleAuthorsCallToAction">¡Publica aquí!</UButton>
         </div>
@@ -37,12 +37,12 @@ const handleAuthorsCallToAction = () => {
     <div class="bg-electricViolet-800">
       <UContainer class="py-9">
         <p class="text-[#D4F779] font-bold">NOTICIAS, EVENTOS Y ACTUALIDAD</p>
-        <p class="font-oswald text-5xl  leading-tight text-[#ffffff] mb-5">¿EN QUE VÁ LA JUVENTUD?</p>
+        <p class="font-oswald text-4xl  leading-tight text-[#ffffff] mb-5">¿EN QUE VÁ LA JUVENTUD?</p>
         <BlogScroller :section="1" />
       </UContainer>
     </div>
     <UContainer class="py-9">
-      <p class="font-oswald text-5xl  leading-tight text-[#D4F779] mb-5">¿QUÉ PIENSA LA JUVENTUD SOBRE LA INCIDENCIA Y LA PARTICIPACIÓN?</p>
+      <p class="font-oswald text-4xl leading-tight text-[#D4F779] mb-5">¿QUÉ PIENSA LA JUVENTUD SOBRE LA INCIDENCIA Y LA PARTICIPACIÓN?</p>
       <BlogScroller :section="2" />
       
       <div class="py-8 px-5 text-center bg-[#cacaca11] shadow-[0px_0px_10px_2px_rgba(212,_247,_121,_0.8)] my-20 rounded-2xl">

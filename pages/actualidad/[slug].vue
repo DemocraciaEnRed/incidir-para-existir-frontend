@@ -48,8 +48,8 @@ useSeoMeta({
           <div class="flex flex-row gap-2 my-5 w-full items-center justify-center">
             <UBadge color="pumpkin" size="lg" :ui="{ rounded: 'rounded-full'}">{{data.category.name}}</UBadge>
           </div>
-          <p class="font-oswald text-3xl md:text-6xl uppercase text-justify md:text-center text-electricViolet my-2">{{ data.title }}</p>
-          <p class="font-light text-justify md:text-center text-xl md:text-2xl my-3">{{ data.subtitle }}</p>
+          <p class="font-oswald font-medium text-3xl md:text-5xl uppercase text-center text-electricViolet my-2">{{ data.title }}</p>
+          <p class="font-light text-center text-xl md:text-2xl my-3">{{ data.subtitle }}</p>
           <div class="flex md:flex-col items-center w-full my-5">
             <UAvatar :src="data.author.imageUrl" size="3xl" class="mr-3 mb-0 md:mr-3 md:mb-3" :alt="data.author.fullName" />
             <div class="flex flex-col items-start md:items-center w-full">
@@ -64,7 +64,7 @@ useSeoMeta({
         <div class="w-full md:w-9/12 md:mx-auto">
           <div class="px-3 py-5 rounded-lg w-full prose focus:outline-none max-w-none" v-html="data.text" />
         </div>
-        <UDivider label="Comentarios" class="my-10" :ui="{ label: 'text-black' }" />
+        <UDivider label="Comentarios" class="mt-10" :ui="{ label: 'text-black' }" />
         <div class="w-full md:w-9/12 md:mx-auto">
           <BlogCommentsList :entry-id="data.id" />
         </div>

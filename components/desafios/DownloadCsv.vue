@@ -66,5 +66,5 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <UButton color="mindaro" class="text-xl font-medium" :loading="isLoading" size="lg" block icon="i-heroicons-arrow-down-tray" :ui="{ rounded: 'rounded-full' }" @click="startRecaptchaChallenge">Descargar CSV</UButton>
+  <UButton color="mindaro" class="sm:text-xl font-medium" :loading="isLoading" size="lg" block icon="i-heroicons-arrow-down-tray" :ui="{ rounded: 'rounded-full' }" @click="startRecaptchaChallenge">Descargar CSV</UButton>
 </template>

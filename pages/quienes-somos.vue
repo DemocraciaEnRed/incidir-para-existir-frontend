@@ -24,8 +24,8 @@ const accordionItems = [{
 <template>
   <div>
     <UContainer class="my-9">
-      <p class="font-oswald text-center text-5xl leading-tight text-[#D4F779] mb-2">JUVENTUDES QUE TRANSFORMAN</p>
-      <p class="font-medium text-center text-2xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
+      <p class="text-center font-oswald text-4xl leading-tight text-mindaro mb-5">JUVENTUDES QUE TRANSFORMAN</p>
+      <p class="text-center font-bold text-xl leading-tight mb-5">Somos una red de jóvenes activistas en Cali y Bogotá que buscan
         la construcción de realidades dignas para las juventudes</p>
         <!-- YouTube Video -->
         <div class="sm:px-10 sm:my-10">
@@ -56,7 +56,7 @@ const accordionItems = [{
             </UButton>
           </template>
           <template #nuestra-historia>
-            <h1 class="text-4xl uppercase font-oswald text-white">Línea de tiempo:<br>El nacimiento y evolución de "Incidir para Existir"</h1>
+            <h1 class="text-center text-2xl sm:text-left sm:text-4xl uppercase font-oswald text-white">Línea de tiempo:<br>El nacimiento y evolución de "Incidir para Existir"</h1>
             <QuienesSomosTimeline/>
           </template>
           <template #que-hemos-logrado>

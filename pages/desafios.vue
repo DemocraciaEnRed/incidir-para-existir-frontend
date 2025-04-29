@@ -34,7 +34,7 @@ const showDesafiosForm = ref(false)
     <UContainer>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full lg:w-1/2 text-center">
-          <p class="font-oswald text-5xl uppercase leading-tight text-mindaro mb-5">Entérate de los desafíos de las juventudes en tu ciudad y déjanos saber cuáles son tus propuestas</p>
+          <p class="font-oswald text-4xl leading-tight text-mindaro mb-5 uppercase">Entérate de los desafíos de las juventudes en tu ciudad y déjanos saber cuáles son tus propuestas</p>
           <p class="font-bold text-xl leading-tight mb-5">Los desafíos de las juventudes son las problemáticas y barreras que limitan su acceso a derechos, oportunidades y espacios seguros para participar y transformar su entorno.</p>
 
         </div>
@@ -52,21 +52,21 @@ const showDesafiosForm = ref(false)
     </UContainer> 
     <div class="bg-electricViolet-800 py-12 rounded-tr-2xl rounded-tl-2xl">
       <UContainer class="">
-        <p class="font-oswald text-5xl leading-tight text-mindaro text-center">MAPA DE DESAFÍOS</p>
+        <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center">MAPA DE DESAFÍOS</p>
         <DesafiosMapList />
       </UContainer>
     </div>
     <UContainer class="my-12">
       <div class="space-y-7">
         <div class="text-center">
-          <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">REPORTES DE DESAFÍOS</p>
+          <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-10">REPORTES DE DESAFÍOS</p>
         </div>
         <DesafiosList />
       </div>
     </UContainer>
     <div class="bg-electricViolet-800 py-1 my-12" />
     <UContainer class="my-12">
-      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADÍSTICAS</p>
+      <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-10">ESTADÍSTICAS</p>
       <ClientOnly>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <DesafiosChartsDimensions class="md:col-span-2" />
@@ -82,7 +82,7 @@ const showDesafiosForm = ref(false)
         </template>
       </ClientOnly>
       <div class="my-12 text-center">
-        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">¿TE INTERESAN LOS DATOS ABIERTOS?</p>
+        <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-4">¿TE INTERESAN LOS DATOS ABIERTOS?</p>
         <div class="my-4">
           <p>Descarga los datos completos aquí para conocer más detalles sobre los desafíos reportados en cada ciudad. Esta información puede ser útil para investigaciones, propuestas y acciones de incidencia de juventudes y tomadores de decisión.</p>
         </div>

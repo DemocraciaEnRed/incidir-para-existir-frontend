@@ -58,7 +58,7 @@ const accordionItems = [
     <UContainer>
       <div class="flex gap-5 justify-between items-center my-10 flex-col md:flex-row">
         <div class="w-full lg:w-1/2 text-center">
-          <p class="font-oswald text-5xl  leading-tight text-mindaro mb-5">¿QUIERES UNIRTE Y SER UN AGENTE DE CAMBIO?
+          <p class="font-oswald text-4xl leading-tight text-mindaro mb-5">¿QUIERES UNIRTE Y SER UN AGENTE DE CAMBIO?
           </p>
           <p class="font-bold text-xl leading-tight mb-5">Explora nuestras líneas temáticas y conoce cómo trabajamos colectivamente por un cambio transformador en Cali y Bogotá.</p>
         </div>
@@ -147,10 +147,10 @@ const accordionItems = [
       </UAccordion>
       <UDivider class="my-6"/>
       <div class="space-y-5 my-6">
-        <p class="text-2xl font-medium text-center leading-tight">¿Tienes una iniciativa, parche, movimiento y/o proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
-        <div class="flex justify-center items-center gap-5 text-5xl text-pumpkin">
+        <p class="text-xl sm:text-2xl font-medium text-center leading-tight">¿Tienes una iniciativa, parche, movimiento y/o proyecto que se enmarca en las líneas temáticas de esta feria de causas?</p>
+        <div class="flex justify-center items-center gap-5 text-2xl sm:text-5xl text-pumpkin">
           <UIcon name="i-heroicons-arrow-small-down" />
-          <p class="font-oswald text-5xl uppercase font-medium text-center text-pumpkin leading-tight">
+          <p class="font-oswald uppercase font-medium text-center text-pumpkin leading-tight">
              ¡Suma tu iniciativa aquí!
              </p>
           <UIcon name="i-heroicons-arrow-small-down" />
@@ -161,21 +161,21 @@ const accordionItems = [
     </UContainer>
     <div class="bg-electricViolet-800 py-12 rounded-tr-2xl rounded-tl-2xl">
       <UContainer class="">
-        <p class="font-oswald text-5xl leading-tight text-mindaro text-center">MAPA DE INICIATIVAS</p>
+        <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center">MAPA DE INICIATIVAS</p>
         <IniciativasMapList />
       </UContainer>
     </div>
     <UContainer class="my-12">
       <div class="space-y-7">
         <div class="text-center">
-          <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">LISTADO DE INICIATIVAS</p>
+          <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-10">LISTADO DE INICIATIVAS</p>
         </div>
         <IniciativasList />
       </div>
     </UContainer>
     <div class="bg-electricViolet-800 py-1 my-12" />
     <UContainer class="my-12">
-      <p class="font-oswald text-5xl leading-tight text-mindaro text-center my-10">ESTADÍSTICAS</p>
+      <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-10">ESTADÍSTICAS</p>
       <ClientOnly>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <IniciativasChartsDimensions class="md:col-span-2" />
@@ -191,7 +191,7 @@ const accordionItems = [
         </template>
       </ClientOnly>
       <div class="my-12 text-center">
-        <p class="font-oswald text-3xl leading-tight text-mindaro text-center my-4">¿TE INTERESAN LOS DATOS ABIERTOS?</p>
+        <p class="font-oswald text-4xl sm:text-5xl leading-tight text-mindaro text-center my-4">¿TE INTERESAN LOS DATOS ABIERTOS?</p>
         <div class="my-4">
           <p>Descarga los datos completos aquí para conocer más detalles sobre las iniciativas reportadas en cada ciudad. Esta información puede ser útil para investigaciones, propuestas y acciones de incidencia de juventudes y tomadores de decisión.</p>
         </div>
